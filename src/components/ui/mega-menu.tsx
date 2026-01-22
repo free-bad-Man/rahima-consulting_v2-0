@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSession } from "next-auth/react";
@@ -215,7 +216,7 @@ const MegaMenu = React.forwardRef<HTMLUListElement, MegaMenuProps>(
               onMouseLeave={!isModalMenu ? () => handleHover(null) : undefined}
             >
               <div className="relative">
-                {isModalMenu ? (
+                {isModalMenu && hasSubmenu ? (
                   <button
                     type="button"
                     className="relative"
@@ -231,6 +232,21 @@ const MegaMenu = React.forwardRef<HTMLUListElement, MegaMenuProps>(
                   >
                     {triggerContent}
                   </button>
+                ) : navItem.link ? (
+                  <Link
+                    href={navItem.link}
+                    className="relative"
+                    onMouseEnter={() => {
+                      setIsHover(navItem.id);
+                      setTooltipHover(navItem.label);
+                    }}
+                    onMouseLeave={() => {
+                      setIsHover(null);
+                      setTooltipHover(null);
+                    }}
+                  >
+                    {triggerContent}
+                  </Link>
                 ) : navItem.label === "Кейсы и отзывы" && onCasesAndReviewsClick ? (
                   <button
                     type="button"
