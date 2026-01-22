@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSession } from "next-auth/react";
@@ -211,26 +212,43 @@ const MegaMenu = React.forwardRef<HTMLUListElement, MegaMenuProps>(
             <li
               key={navItem.label}
               className="relative"
-              onMouseEnter={!isModalMenu ? () => handleHover(navItem.label) : undefined}
-              onMouseLeave={!isModalMenu ? () => handleHover(null) : undefined}
+              onMouseEnter={() => hasSubmenu && !isMobile ? handleHover(navItem.label) : undefined}
+              onMouseLeave={() => hasSubmenu && !isMobile ? handleHover(null) : undefined}
             >
               <div className="relative">
-                {isModalMenu ? (
-                  <button
-                    type="button"
-                    className="relative"
-                    onMouseEnter={() => {
-                      setIsHover(navItem.id);
-                      setTooltipHover(navItem.label);
-                    }}
-                    onMouseLeave={() => {
-                      setIsHover(null);
-                      setTooltipHover(null);
-                    }}
-                    onClick={() => handleClick(navItem.label)}
-                  >
-                    {triggerContent}
-                  </button>
+                {navItem.link ? (
+                  hasSubmenu && isMobile ? (
+                    <button
+                      type="button"
+                      className="relative"
+                      onMouseEnter={() => {
+                        setIsHover(navItem.id);
+                        setTooltipHover(navItem.label);
+                      }}
+                      onMouseLeave={() => {
+                        setIsHover(null);
+                        setTooltipHover(null);
+                      }}
+                      onClick={() => handleClick(navItem.label)}
+                    >
+                      {triggerContent}
+                    </button>
+                  ) : (
+                    <Link
+                      href={navItem.link}
+                      className="relative"
+                      onMouseEnter={() => {
+                        setIsHover(navItem.id);
+                        setTooltipHover(navItem.label);
+                      }}
+                      onMouseLeave={() => {
+                        setIsHover(null);
+                        setTooltipHover(null);
+                      }}
+                    >
+                      {triggerContent}
+                    </Link>
+                  )
                 ) : navItem.label === "Кейсы и отзывы" && onCasesAndReviewsClick ? (
                   <button
                     type="button"

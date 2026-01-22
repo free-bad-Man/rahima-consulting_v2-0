@@ -2,12 +2,15 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X, ArrowLeft, Home } from "lucide-react";
 import AuthButton from "./auth-button";
 import NotificationsDropdown from "./notifications-dropdown";
 
 export default function PageHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   const navItems = [
     { label: "Услуги", href: "/services" },
@@ -35,6 +38,15 @@ export default function PageHeader() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
+            {!isHomePage && (
+              <Link
+                href="/"
+                className="text-white/90 hover:text-white transition-colors duration-200 font-semibold flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20"
+              >
+                <Home className="w-4 h-4" />
+                <span>На главную</span>
+              </Link>
+            )}
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -73,6 +85,16 @@ export default function PageHeader() {
         {mobileMenuOpen && (
           <div className="lg:hidden mt-4 pb-4 animate-slide-down">
             <nav className="flex flex-col space-y-3">
+              {!isHomePage && (
+                <Link
+                  href="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-white/90 hover:text-white transition-colors duration-200 font-semibold px-4 py-3 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 flex items-center gap-2"
+                >
+                  <Home className="w-4 h-4" />
+                  <span>На главную</span>
+                </Link>
+              )}
               {navItems.map((item) => (
                 <Link
                   key={item.href}
