@@ -88,3 +88,48 @@ dev/~/.chrome-data/
 **/~/.chrome-data/
 # Ignore local file that may contain secrets
 public/keys
+
+# === Project cleanup: temporary and generated files ===
+
+# Backups and old data
+backups/
+tmp/
+*.bak
+*.old
+
+# PID files
+*.pid
+
+# Large binary/compiled files
+bcrypt,sys
+
+# Old documentation and generated data
+data/docs/
+data/qdrant/*.jsonl
+data/services/generated*.json
+
+# IDE and editor files
+.cursor/
+.vscode/
+
+# Dev utilities and scripts (if not needed in prod)
+scripts/
+dev/
+
+# Old images
+img/
+
+# Stub and temporary files
+*_stub.*
+wf_dev_stub.json
+embed_server_stub.py
+
+# PowerShell scripts (Windows-specific)
+*.ps1
+
+# Deployment scripts (use standard git workflow instead)
+pull
+push
+
+# Documentation (already in main docs)
+SEO_TRANSFORMATION_README.md
