@@ -1,0 +1,8 @@
+{
+  "slug": "merged_tax/05_profit.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/merged_tax/05_profit.meta.json",
+  "content": "{\n  \"title\": \"Налог на прибыль\",\n  \"slug\": \"05_profit\",\n  \"source_files\": [\n    \"03_налог_на_прибыль_организаций_базовая_ставка_25_вместо_прежних_20.txt\",\n    \"118_налог_на_прибыль_организаций_фнс_россии_91_республика_крым.txt\"\n  ],\n  \"tags\": [\n    \"profit\"\n  ],\n  \"references\": [\n    \"https://glavkniga.ru/situations/s518929\",\n    \"https://normativ.kontur.ru/document?moduleId=182&documentId=28301\",\n    \"https://normativ.kontur.ru/document?moduleId=41&documentId=249931\",\n    \"https://www.consultant.ru/document/cons_doc_LAW_28165/000b377ae50d81133cfb3dfb679082a4a8b2076e/\",\n    \"https://www.consultant.ru/document/cons_doc_LAW_308390/a2a07c87841d702f428595c68e66f83527ce8b20/\",\n    \"https://www.klerk.ru/blogs/moedelo/671330/?srsltid=AfmBOopFZboYm4Kr1FIsdoehiuTTG4aMRA69gVk8R4z-wptHguEwSJTd\",\n    \"https://www.klerk.ru/blogs/wisoft/672338/?srsltid=AfmBOop_dWLhKUIpcN-gL-FXqywiMr2r_ocEfAJ4xbvK0IxpuuINs3xr\",\n    \"https://www.klerk.ru/buh/news/673088/?srsltid=AfmBOor0MxsQgIV0XaH0xdlFeFjWJUnEESDX42AsrmNs1g2ABk53ZACk\",\n    \"https://www.nalog.gov.ru/rn91/taxation/taxes/profitul/\",\n    \"https://www.nalog.gov.ru/rn92/news/activities_fts/16586778/\"\n  ],\n  \"language\": \"ru\",\n  \"index\": 5\n}"
+}

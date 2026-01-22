@@ -1,0 +1,190 @@
+"use client";
+
+import { useState, Suspense } from "react";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import Image from "next/image";
+import { Mail, Phone, Mic } from "lucide-react";
+import TelegramIcon from "@/components/icons/telegram-icon";
+
+const APP_EMAIL = "info@rahima-consulting.ru";
+const APP_PHONE = "+7 (978) 998-72-22";
+
+// Динамическая загрузка чат-помощника
+const AIChatAssistant = dynamic(() => import("@/components/ai-chat-assistant"), {
+  ssr: false,
+});
+
+// Динамическая загрузка модального окна политики конфиденциальности
+const PrivacyPolicyModal = dynamic(() => import("@/components/privacy-policy-modal"), {
+  ssr: false,
+});
+
+// Динамическая загрузка модального окна условий использования
+const TermsOfUseModal = dynamic(() => import("@/components/terms-of-use-modal"), {
+  ssr: false,
+});
+
+const socialLinks = [
+  {
+    image: "/img/vkontakte.png",
+    href: "https://vk.com/rahimabiz",
+    label: "ВКонтакте",
+    color: "bg-gradient-to-r from-purple-600/70 to-blue-600/70 hover:from-purple-600 hover:to-blue-600",
+  },
+  {
+    image: "/img/yandex.png",
+    href: "https://yandex.ru",
+    label: "Яндекс",
+    color: "bg-white/70 hover:bg-white/80",
+  },
+  {
+    icon: TelegramIcon,
+    href: "https://t.me/centr_reg",
+    label: "Telegram",
+    color: "bg-[#229ED9] hover:bg-[#1E8BC3]", // Фирменный цвет Telegram
+  },
+  {
+    image: "/img/max.png",
+    href: "https://max.com",
+    label: "Макс",
+    color: "bg-gradient-to-r from-purple-600/70 to-blue-600/70 hover:from-purple-600 hover:to-blue-600",
+  },
+];
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [startWithVoice, setStartWithVoice] = useState(false);
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
+  
+  const handleVoiceAssistantClick = () => {
+    setStartWithVoice(true);
+    setIsChatOpen(true);
+  };
+
+  return (
+    <>
+      <footer className="fixed bottom-0 left-0 right-0 z-40 px-2 sm:px-3 md:px-4 pb-2 sm:pb-3 md:pb-4">
+        <div className="mx-auto max-w-7xl">
+          <div className="rounded-xl md:rounded-2xl bg-black/75 backdrop-blur-sm border border-white/10 px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 md:gap-6">
+              {/* Блок 1: Контакты (слева) - скрыт на мобильных */}
+              <div className="hidden md:flex flex-col items-start gap-1.5 sm:gap-2 w-full md:w-auto">
+                <a
+                  href={`mailto:${APP_EMAIL}`}
+                  className="flex items-center gap-1.5 sm:gap-2 text-white text-xs sm:text-sm hover:text-purple-400 transition-colors break-all"
+                >
+                  <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0" />
+                  <span className="truncate max-w-[200px] sm:max-w-none">{APP_EMAIL}</span>
+                </a>
+                <a
+                  href={`tel:${APP_PHONE.replace(/\s/g, "")}`}
+                  className="flex items-center gap-1.5 sm:gap-2 text-white text-xs sm:text-sm hover:text-purple-400 transition-colors"
+                >
+                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0" />
+                  <span>{APP_PHONE}</span>
+                </a>
+              </div>
+
+              {/* Блок 2: Соц сети + кнопки ИИ + копирайт (по центру) */}
+              <div className="flex flex-col items-center gap-2 sm:gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  {socialLinks.map((link) => {
+                    const Icon = link.icon;
+                    const isYandex = link.label === "Яндекс";
+                    const hasImage = link.image !== undefined;
+                    
+                    return (
+                      <div key={link.label} className="contents">
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`flex items-center justify-center rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 transition-transform hover:scale-110 shadow-lg shadow-purple-500/40 overflow-hidden`}
+                          aria-label={link.label}
+                          title={link.label}
+                        >
+                          {hasImage ? (
+                            <Image
+                              src={link.image!}
+                              alt={link.label}
+                              width={24}
+                              height={24}
+                              className="w-4 h-4 sm:w-5 sm:h-5 object-contain opacity-70"
+                              unoptimized
+                            />
+                          ) : (
+                            Icon && <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white/70" />
+                          )}
+                        </a>
+                        {/* Кнопка голосового помощника между Яндекс и Telegram - больше остальных */}
+                        {isYandex && (
+                          <button
+                            type="button"
+                            onClick={handleVoiceAssistantClick}
+                            className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:scale-110 transition-transform shadow-lg shadow-purple-500/50"
+                            aria-label="Голосовой помощник"
+                          >
+                            <Mic className="w-4 h-4 sm:w-5 sm:h-5" />
+                          </button>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+                <span className="text-white/50 text-[10px] sm:text-xs md:text-sm">
+                  © {currentYear} Rahima Consulting
+                </span>
+              </div>
+
+              {/* Блок 3: Правовая информация (справа) */}
+              <div className="flex flex-col items-center md:items-end gap-1.5 sm:gap-2 w-full md:w-auto">
+                <button
+                  onClick={() => setIsPrivacyModalOpen(true)}
+                  className="text-white/70 hover:text-white text-[10px] sm:text-xs md:text-sm transition-colors text-center md:text-right"
+                >
+                  Политика конфиденциальности
+                </button>
+                <button
+                  onClick={() => setIsTermsModalOpen(true)}
+                  className="text-white/70 hover:text-white text-[10px] sm:text-xs md:text-sm transition-colors text-center md:text-right"
+                >
+                  Условия использования
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      
+      {/* Чат помощник */}
+      <Suspense fallback={null}>
+        <AIChatAssistant 
+          isOpen={isChatOpen} 
+          onOpenChange={(open) => {
+            setIsChatOpen(open);
+            if (!open) {
+              setStartWithVoice(false);
+            }
+          }} 
+          hideButton={true}
+          startWithVoice={startWithVoice}
+        />
+      </Suspense>
+
+      {/* Модальное окно политики конфиденциальности */}
+      <Suspense fallback={null}>
+        <PrivacyPolicyModal isOpen={isPrivacyModalOpen} onClose={() => setIsPrivacyModalOpen(false)} />
+      </Suspense>
+
+      {/* Модальное окно условий использования */}
+      <Suspense fallback={null}>
+        <TermsOfUseModal isOpen={isTermsModalOpen} onClose={() => setIsTermsModalOpen(false)} />
+      </Suspense>
+    </>
+  );
+}
+
+

@@ -1,0 +1,11 @@
+PRISMA_DATABASE_URL=postgresql://<user>:<password>@<host>:5432/<db>
+DATABASE_URL=postgresql://<user>:<password>@<host>:5432/<db>
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=replace-with-secure-random
+OPENAI_API_KEY=sk-REPLACE_ME
+OPENAI_MODEL=gpt-5-nano
+QDRANT_URL=http://localhost:6333
+QDRANT_API_KEY=__REPLACE_ME__
+
+# Copy this file to public/keys (local only) or set values in /root/dev/.env
+

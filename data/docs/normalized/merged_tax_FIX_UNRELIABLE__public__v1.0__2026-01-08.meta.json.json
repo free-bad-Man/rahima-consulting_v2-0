@@ -1,0 +1,8 @@
+{
+  "slug": "merged_tax/FIX_UNRELIABLE__public__v1.0__2026-01-08.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/merged_tax/FIX_UNRELIABLE__public__v1.0__2026-01-08.meta.json",
+  "content": "{\n  \"service_code\": \"FIX_UNRELIABLE\",\n  \"title\": \"FIX_UNRELIABLE\",\n  \"slug\": \"fix-unreliable-public-v10-2026-01-08\",\n  \"access\": \"public\",\n  \"language\": \"ru\",\n  \"source\": \"victory_package\",\n  \"source_file\": \"FIX_UNRELIABLE__public__v1.0__2026-01-08.md\",\n  \"updated_at\": \"2026-01-08\"\n}"
+}

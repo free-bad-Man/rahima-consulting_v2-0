@@ -1,0 +1,8 @@
+{
+  "slug": "split_tax/59_взносам_псн_не_дает.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/split_tax/59_взносам_псн_не_дает.meta.json",
+  "content": "{\n  \"title\": \"взносам ПСН не дает).\",\n  \"slug\": \"взносам_псн_не_дает\",\n  \"source\": \"02_tax_regimes_crimea_2026_ru.txt\",\n  \"index\": 59,\n  \"language\": \"ru\"\n}"
+}

@@ -1,0 +1,8 @@
+{
+  "slug": "merged_tax/06_property.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/merged_tax/06_property.meta.json",
+  "content": "{\n  \"title\": \"Налог на имущество\",\n  \"slug\": \"06_property\",\n  \"source_files\": [\n    \"15_налог_на_имущество_организаций_в_республике_крым_этот_налог_установлен.txt\"\n  ],\n  \"tags\": [\n    \"property\"\n  ],\n  \"references\": [],\n  \"language\": \"ru\",\n  \"index\": 6\n}"
+}

@@ -1,0 +1,90 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+.env.local
+.env.production
+.env.development
+*.local
+
+# vercel
+.vercel
+
+# Docker compose with secrets (use docker-compose.yml.example instead)
+docker-compose.yml
+docker-compose.override.yml
+
+# Secrets and credentials
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+secrets/
+credentials/
+*.secret
+*secret*
+*password*
+*token*
+*credential*
+
+# npm data (contains sensitive nginx configs)
+npm_data/
+npm_letsencrypt/
+
+# Logs (may contain sensitive info)
+*.log
+logs/
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Database
+/prisma/dev.db
+/prisma/dev.db-journal
+*.db
+*.db-journal
+
+# Uploads
+/uploads
+
+# Main-app specific (legacy files)
+/lib/
+# Ignore literal chrome-data directories (sometimes committed by mistake)
+~/.chrome-data/
+dev/~/.chrome-data/
+**/~/.chrome-data/
+# Ignore local file that may contain secrets
+public/keys

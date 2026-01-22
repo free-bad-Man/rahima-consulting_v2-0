@@ -1,0 +1,8 @@
+{
+  "slug": "merged_tax/LEGAL_ADDRESS__public__v1.0__2026-01-08.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/merged_tax/LEGAL_ADDRESS__public__v1.0__2026-01-08.meta.json",
+  "content": "{\n  \"service_code\": \"LEGAL_ADDRESS\",\n  \"title\": \"LEGAL_ADDRESS\",\n  \"slug\": \"legal-address-public-v10-2026-01-08\",\n  \"access\": \"public\",\n  \"language\": \"ru\",\n  \"source\": \"victory_package\",\n  \"source_file\": \"LEGAL_ADDRESS__public__v1.0__2026-01-08.md\",\n  \"updated_at\": \"2026-01-08\"\n}"
+}

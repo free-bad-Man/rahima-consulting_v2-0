@@ -1,0 +1,8 @@
+{
+  "slug": "split_tax/02_общая_система_налогообложения_осно.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/split_tax/02_общая_система_налогообложения_осно.meta.json",
+  "content": "{\n  \"title\": \"Общая система налогообложения (ОСНО)\",\n  \"slug\": \"общая_система_налогообложения_осно\",\n  \"source\": \"02_tax_regimes_crimea_2026_ru.txt\",\n  \"index\": 2,\n  \"language\": \"ru\"\n}"
+}

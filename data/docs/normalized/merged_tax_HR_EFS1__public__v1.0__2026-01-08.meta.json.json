@@ -1,0 +1,8 @@
+{
+  "slug": "merged_tax/HR_EFS1__public__v1.0__2026-01-08.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/merged_tax/HR_EFS1__public__v1.0__2026-01-08.meta.json",
+  "content": "{\n  \"service_code\": \"HR_EFS1\",\n  \"title\": \"HR_EFS1\",\n  \"slug\": \"hr-efs1-public-v10-2026-01-08\",\n  \"access\": \"public\",\n  \"language\": \"ru\",\n  \"source\": \"victory_package\",\n  \"source_file\": \"HR_EFS1__public__v1.0__2026-01-08.md\",\n  \"updated_at\": \"2026-01-08\"\n}"
+}

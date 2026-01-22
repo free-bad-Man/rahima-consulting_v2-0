@@ -1,0 +1,2329 @@
+{
+  "generatedAt": "2026-01-17T16:53:22.218Z",
+  "items": [
+    {
+      "path": "data/docs/01_bux_soprovodzenie_overview_ru.txt",
+      "slug": "01_bux_soprovodzenie_overview_ru.txt",
+      "title": "Общая концепция услуги «под ключ»",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/02_tax_regimes_crimea_2026_ru.txt",
+      "slug": "02_tax_regimes_crimea_2026_ru.txt",
+      "title": "Налоговые режимы в Республике Крым с",
+      "access": "public",
+      "price_from": "12"
+    },
+    {
+      "path": "data/docs/03_usn_income_rate_crimea_2026_ru.txt",
+      "slug": "03_usn_income_rate_crimea_2026_ru.txt",
+      "title": "Ставка УСН («доходы») в Республике Крым на",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/merged_tax/01_nds.meta.json",
+      "slug": "merged_tax/01_nds.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/01_nds.txt",
+      "slug": "merged_tax/01_nds.txt",
+      "title": "(для доходов от этой деятельности) и НДС – ИП на патенте не платит налог на доходы с",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/merged_tax/02_usn.meta.json",
+      "slug": "merged_tax/02_usn.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/02_usn.txt",
+      "slug": "merged_tax/02_usn.txt",
+      "title": "переходе на УСН и может меняться, подав уведомление до 31 декабря предшествующего",
+      "access": "public",
+      "price_from": "р"
+    },
+    {
+      "path": "data/docs/merged_tax/03_psn.meta.json",
+      "slug": "merged_tax/03_psn.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/03_psn.txt",
+      "slug": "merged_tax/03_psn.txt",
+      "title": "взносам ПСН не дает).",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/merged_tax/04_npd.meta.json",
+      "slug": "merged_tax/04_npd.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/04_npd.txt",
+      "slug": "merged_tax/04_npd.txt",
+      "title": "Несовместимость режимов: НПД нельзя совмещать с другими спецрежимами. ИП на",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/merged_tax/05_profit.meta.json",
+      "slug": "merged_tax/05_profit.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/05_profit.txt",
+      "slug": "merged_tax/05_profit.txt",
+      "title": "Налог на прибыль организаций: Базовая ставка – 25% (вместо прежних 20%).",
+      "access": "public",
+      "price_from": "12"
+    },
+    {
+      "path": "data/docs/merged_tax/06_property.meta.json",
+      "slug": "merged_tax/06_property.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/06_property.txt",
+      "slug": "merged_tax/06_property.txt",
+      "title": "Налог на имущество организаций: В Республике Крым этот налог установлен",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/merged_tax/07_general.meta.json",
+      "slug": "merged_tax/07_general.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/07_general.txt",
+      "slug": "merged_tax/07_general.txt",
+      "title": "взносы за себя и за работников ИП уплачивает отдельно, независимо от патента (льгот по",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/merged_tax/AI_ASSISTANTS__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/AI_ASSISTANTS__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/AI_ASSISTANTS__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/AI_ASSISTANTS__public__v1.0__2026-01-08.txt",
+      "title": "# AI_ASSISTANTS — Внедрение ИИ-ассистентов",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/merged_tax/AUTO_N8N__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/AUTO_N8N__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/AUTO_N8N__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/AUTO_N8N__public__v1.0__2026-01-08.txt",
+      "title": "# AUTO_N8N — Автоматизация процессов (n8n)",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/merged_tax/BANK_ACCOUNT__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/BANK_ACCOUNT__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/BANK_ACCOUNT__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/BANK_ACCOUNT__public__v1.0__2026-01-08.txt",
+      "title": "# BANK_ACCOUNT — Открытие расчётного счёта",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/merged_tax/BANK_BLOCK__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/BANK_BLOCK__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/BANK_BLOCK__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/BANK_BLOCK__public__v1.0__2026-01-08.txt",
+      "title": "# BANK_BLOCK — Блокировка счёта (115-ФЗ)",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/merged_tax/BUH_IP_SIMPLE__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/BUH_IP_SIMPLE__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/BUH_IP_SIMPLE__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/BUH_IP_SIMPLE__public__v1.0__2026-01-08.txt",
+      "title": "# BUH_IP_SIMPLE — Бухгалтерское сопровождение ИП без сотрудников",
+      "access": "public",
+      "price_from": "3 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/BUH_OOO_USN__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/BUH_OOO_USN__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/BUH_OOO_USN__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/BUH_OOO_USN__public__v1.0__2026-01-08.txt",
+      "title": "# BUH_OOO_USN — Бухгалтерское сопровождение ООО на УСН",
+      "access": "public",
+      "price_from": "7 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/CHG_ADDR__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/CHG_ADDR__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/CHG_ADDR__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/CHG_ADDR__public__v1.0__2026-01-08.txt",
+      "title": "# CHG_ADDR — Смена юридического адреса ООО",
+      "access": "public",
+      "price_from": "5 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/CHG_DIR__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/CHG_DIR__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/CHG_DIR__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/CHG_DIR__public__v1.0__2026-01-08.txt",
+      "title": "# CHG_DIR — Смена директора ООО",
+      "access": "public",
+      "price_from": "4 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/CLOSE_IP__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/CLOSE_IP__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/CLOSE_IP__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/CLOSE_IP__public__v1.0__2026-01-08.txt",
+      "title": "# CLOSE_IP — Закрытие индивидуального предпринимателя",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/merged_tax/CRM_AMO_SETUP__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/CRM_AMO_SETUP__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/CRM_AMO_SETUP__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/CRM_AMO_SETUP__public__v1.0__2026-01-08.txt",
+      "title": "# CRM_AMO_SETUP — Внедрение amoCRM",
+      "access": "public",
+      "price_from": "30 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/DEAL_SHARE__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/DEAL_SHARE__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/DEAL_SHARE__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/DEAL_SHARE__public__v1.0__2026-01-08.txt",
+      "title": "# DEAL_SHARE — Сопровождение сделки купли-продажи доли",
+      "access": "public",
+      "price_from": "4 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/DECL_3NDFL__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/DECL_3NDFL__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/DECL_3NDFL__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/DECL_3NDFL__public__v1.0__2026-01-08.txt",
+      "title": "# DECL_3NDFL — Декларация 3-НДФЛ",
+      "access": "public",
+      "price_from": "2 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/DECL_USN__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/DECL_USN__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/DECL_USN__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/DECL_USN__public__v1.0__2026-01-08.txt",
+      "title": "# DECL_USN — Декларация по УСН",
+      "access": "public",
+      "price_from": "3 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/EDO_SETUP__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/EDO_SETUP__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/EDO_SETUP__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/EDO_SETUP__public__v1.0__2026-01-08.txt",
+      "title": "# EDO_SETUP — Электронный документооборот (ЭДО)",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/merged_tax/EDS_SETUP__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/EDS_SETUP__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/EDS_SETUP__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/EDS_SETUP__public__v1.0__2026-01-08.txt",
+      "title": "# EDS_SETUP — Электронная подпись (ЭЦП/УКЭП)",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/merged_tax/EXIT_PARTNER__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/EXIT_PARTNER__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/EXIT_PARTNER__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/EXIT_PARTNER__public__v1.0__2026-01-08.txt",
+      "title": "# EXIT_PARTNER — Выход участника из ООО",
+      "access": "public",
+      "price_from": "5 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/FIX_UNRELIABLE__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/FIX_UNRELIABLE__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/FIX_UNRELIABLE__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/FIX_UNRELIABLE__public__v1.0__2026-01-08.txt",
+      "title": "# FIX_UNRELIABLE — Устранение недостоверности в ЕГРЮЛ",
+      "access": "public",
+      "price_from": "15 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/HR_EFS1__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/HR_EFS1__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/HR_EFS1__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/HR_EFS1__public__v1.0__2026-01-08.txt",
+      "title": "# HR_EFS1 — Отчётность ЕФС-1",
+      "access": "public",
+      "price_from": "2 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/LEGAL_ADDRESS__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/LEGAL_ADDRESS__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/LEGAL_ADDRESS__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/LEGAL_ADDRESS__public__v1.0__2026-01-08.txt",
+      "title": "# LEGAL_ADDRESS — Юридический адрес",
+      "access": "public",
+      "price_from": "5 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/LIQ_OOO_VOL__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/LIQ_OOO_VOL__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/LIQ_OOO_VOL__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/LIQ_OOO_VOL__public__v1.0__2026-01-08.txt",
+      "title": "# LIQ_OOO_VOL — Добровольная ликвидация ООО",
+      "access": "public",
+      "price_from": "15 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/MCHD_SETUP__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/MCHD_SETUP__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/MCHD_SETUP__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/MCHD_SETUP__public__v1.0__2026-01-08.txt",
+      "title": "# MCHD_SETUP — Машиночитаемая доверенность",
+      "access": "public",
+      "price_from": "2 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/POST_SERVICE__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/POST_SERVICE__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/POST_SERVICE__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/POST_SERVICE__public__v1.0__2026-01-08.txt",
+      "title": "# POST_SERVICE — Почтово-секретарское сопровождение",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/merged_tax/REG_IP__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/REG_IP__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/REG_IP__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/REG_IP__public__v1.0__2026-01-08.txt",
+      "title": "# REG_IP — Регистрация индивидуального предпринимателя (ИП)",
+      "access": "public",
+      "price_from": "0 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/REG_OOO__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/REG_OOO__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/REG_OOO__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/REG_OOO__public__v1.0__2026-01-08.txt",
+      "title": "# REG_OOO — Регистрация общества с ограниченной ответственностью (ООО)",
+      "access": "public",
+      "price_from": "5 900 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/STAMP__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/STAMP__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/STAMP__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/STAMP__public__v1.0__2026-01-08.txt",
+      "title": "# STAMP — Печати и штампы",
+      "access": "public",
+      "price_from": "2 000 ₽"
+    },
+    {
+      "path": "data/docs/merged_tax/ZERO_REPORT__public__v1.0__2026-01-08.meta.json",
+      "slug": "merged_tax/ZERO_REPORT__public__v1.0__2026-01-08.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/merged_tax/ZERO_REPORT__public__v1.0__2026-01-08.txt",
+      "slug": "merged_tax/ZERO_REPORT__public__v1.0__2026-01-08.txt",
+      "title": "# ZERO_REPORT — Нулевая отчётность",
+      "access": "public",
+      "price_from": "1 000 ₽"
+    },
+    {
+      "path": "data/docs/public/AUTO_N8N/AUTO_N8N__public__v1.0__2026-01-08.md",
+      "slug": "public/AUTO_N8N/AUTO_N8N__public__v1.0__2026-01-08.md",
+      "title": "AUTO_N8N — Автоматизация процессов (n8n)",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/public/BANK_ACCOUNT/BANK_ACCOUNT__public__v1.0__2026-01-08.md",
+      "slug": "public/BANK_ACCOUNT/BANK_ACCOUNT__public__v1.0__2026-01-08.md",
+      "title": "BANK_ACCOUNT — Открытие расчётного счёта",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/public/BANK_BLOCK/BANK_BLOCK__public__v1.0__2026-01-08.md",
+      "slug": "public/BANK_BLOCK/BANK_BLOCK__public__v1.0__2026-01-08.md",
+      "title": "BANK_BLOCK — Блокировка счёта (115-ФЗ)",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/public/BUH_IP_SIMPLE/BUH_IP_SIMPLE__public__v1.0__2026-01-08.md",
+      "slug": "public/BUH_IP_SIMPLE/BUH_IP_SIMPLE__public__v1.0__2026-01-08.md",
+      "title": "BUH_IP_SIMPLE — Бухгалтерское сопровождение ИП без сотрудников",
+      "access": "public",
+      "price_from": "3 000 ₽"
+    },
+    {
+      "path": "data/docs/public/BUH_OOO_USN/BUH_OOO_USN__public__v1.0__2026-01-08.md",
+      "slug": "public/BUH_OOO_USN/BUH_OOO_USN__public__v1.0__2026-01-08.md",
+      "title": "BUH_OOO_USN — Бухгалтерское сопровождение ООО на УСН",
+      "access": "public",
+      "price_from": "7 000 ₽"
+    },
+    {
+      "path": "data/docs/public/CHG_ADDR/CHG_ADDR__public__v1.0__2026-01-08.md",
+      "slug": "public/CHG_ADDR/CHG_ADDR__public__v1.0__2026-01-08.md",
+      "title": "CHG_ADDR — Смена юридического адреса ООО",
+      "access": "public",
+      "price_from": "5 000 ₽"
+    },
+    {
+      "path": "data/docs/public/CHG_DIR/CHG_DIR__public__v1.0__2026-01-08.md",
+      "slug": "public/CHG_DIR/CHG_DIR__public__v1.0__2026-01-08.md",
+      "title": "CHG_DIR — Смена директора ООО",
+      "access": "public",
+      "price_from": "4 000 ₽"
+    },
+    {
+      "path": "data/docs/public/CLOSE_IP/CLOSE_IP__public__v1.0__2026-01-08.md",
+      "slug": "public/CLOSE_IP/CLOSE_IP__public__v1.0__2026-01-08.md",
+      "title": "CLOSE_IP — Закрытие индивидуального предпринимателя",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/public/CRM_AMO_SETUP/CRM_AMO_SETUP__public__v1.0__2026-01-08.md",
+      "slug": "public/CRM_AMO_SETUP/CRM_AMO_SETUP__public__v1.0__2026-01-08.md",
+      "title": "CRM_AMO_SETUP — Внедрение amoCRM",
+      "access": "public",
+      "price_from": "30 000 ₽"
+    },
+    {
+      "path": "data/docs/public/DEAL_SHARE/DEAL_SHARE__public__v1.0__2026-01-08.md",
+      "slug": "public/DEAL_SHARE/DEAL_SHARE__public__v1.0__2026-01-08.md",
+      "title": "DEAL_SHARE — Сопровождение сделки купли-продажи доли",
+      "access": "public",
+      "price_from": "4 000 ₽"
+    },
+    {
+      "path": "data/docs/public/DECL_3NDFL/DECL_3NDFL__public__v1.0__2026-01-08.md",
+      "slug": "public/DECL_3NDFL/DECL_3NDFL__public__v1.0__2026-01-08.md",
+      "title": "DECL_3NDFL — Декларация 3-НДФЛ",
+      "access": "public",
+      "price_from": "2 000 ₽"
+    },
+    {
+      "path": "data/docs/public/DECL_USN/DECL_USN__public__v1.0__2026-01-08.md",
+      "slug": "public/DECL_USN/DECL_USN__public__v1.0__2026-01-08.md",
+      "title": "DECL_USN — Декларация по УСН",
+      "access": "public",
+      "price_from": "3 000 ₽"
+    },
+    {
+      "path": "data/docs/public/EDO_SETUP/EDO_SETUP__public__v1.0__2026-01-08.md",
+      "slug": "public/EDO_SETUP/EDO_SETUP__public__v1.0__2026-01-08.md",
+      "title": "EDO_SETUP — Электронный документооборот (ЭДО)",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/public/EDS_SETUP/EDS_SETUP__public__v1.0__2026-01-08.md",
+      "slug": "public/EDS_SETUP/EDS_SETUP__public__v1.0__2026-01-08.md",
+      "title": "EDS_SETUP — Электронная подпись (ЭЦП/УКЭП)",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/public/EXIT_PARTNER/EXIT_PARTNER__public__v1.0__2026-01-08.md",
+      "slug": "public/EXIT_PARTNER/EXIT_PARTNER__public__v1.0__2026-01-08.md",
+      "title": "EXIT_PARTNER — Выход участника из ООО",
+      "access": "public",
+      "price_from": "5 000 ₽"
+    },
+    {
+      "path": "data/docs/public/FIX_UNRELIABLE/FIX_UNRELIABLE__public__v1.0__2026-01-08.md",
+      "slug": "public/FIX_UNRELIABLE/FIX_UNRELIABLE__public__v1.0__2026-01-08.md",
+      "title": "FIX_UNRELIABLE — Устранение недостоверности в ЕГРЮЛ",
+      "access": "public",
+      "price_from": "15 000 ₽"
+    },
+    {
+      "path": "data/docs/public/HR_EFS1/HR_EFS1__public__v1.0__2026-01-08.md",
+      "slug": "public/HR_EFS1/HR_EFS1__public__v1.0__2026-01-08.md",
+      "title": "HR_EFS1 — Отчётность ЕФС-1",
+      "access": "public",
+      "price_from": "2 000 ₽"
+    },
+    {
+      "path": "data/docs/public/LEGAL_ADDRESS/LEGAL_ADDRESS__public__v1.0__2026-01-08.md",
+      "slug": "public/LEGAL_ADDRESS/LEGAL_ADDRESS__public__v1.0__2026-01-08.md",
+      "title": "LEGAL_ADDRESS — Юридический адрес",
+      "access": "public",
+      "price_from": "5 000 ₽"
+    },
+    {
+      "path": "data/docs/public/LIQ_OOO_VOL/LIQ_OOO_VOL__public__v1.0__2026-01-08.md",
+      "slug": "public/LIQ_OOO_VOL/LIQ_OOO_VOL__public__v1.0__2026-01-08.md",
+      "title": "LIQ_OOO_VOL — Добровольная ликвидация ООО",
+      "access": "public",
+      "price_from": "15 000 ₽"
+    },
+    {
+      "path": "data/docs/public/MCHD_SETUP/MCHD_SETUP__public__v1.0__2026-01-08.md",
+      "slug": "public/MCHD_SETUP/MCHD_SETUP__public__v1.0__2026-01-08.md",
+      "title": "MCHD_SETUP — Машиночитаемая доверенность",
+      "access": "public",
+      "price_from": "2 000 ₽"
+    },
+    {
+      "path": "data/docs/public/POST_SERVICE/POST_SERVICE__public__v1.0__2026-01-08.md",
+      "slug": "public/POST_SERVICE/POST_SERVICE__public__v1.0__2026-01-08.md",
+      "title": "POST_SERVICE — Почтово-секретарское сопровождение",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/public/REG_IP/REG_IP__public__v1.0__2026-01-08.md",
+      "slug": "public/REG_IP/REG_IP__public__v1.0__2026-01-08.md",
+      "title": "REG_IP — Регистрация индивидуального предпринимателя (ИП)",
+      "access": "public",
+      "price_from": "0 ₽"
+    },
+    {
+      "path": "data/docs/public/REG_OOO/REG_OOO__public__v1.0__2026-01-08.md",
+      "slug": "public/REG_OOO/REG_OOO__public__v1.0__2026-01-08.md",
+      "title": "REG_OOO — Регистрация общества с ограниченной ответственностью (ООО)",
+      "access": "public",
+      "price_from": "5 900 ₽"
+    },
+    {
+      "path": "data/docs/public/STAMP/STAMP__public__v1.0__2026-01-08.md",
+      "slug": "public/STAMP/STAMP__public__v1.0__2026-01-08.md",
+      "title": "STAMP — Печати и штампы",
+      "access": "public",
+      "price_from": "2 000 ₽"
+    },
+    {
+      "path": "data/docs/public/ZERO_REPORT/ZERO_REPORT__public__v1.0__2026-01-08.md",
+      "slug": "public/ZERO_REPORT/ZERO_REPORT__public__v1.0__2026-01-08.md",
+      "title": "ZERO_REPORT — Нулевая отчётность",
+      "access": "public",
+      "price_from": "1 000 ₽"
+    },
+    {
+      "path": "data/docs/split_tax/01_section_1.meta.json",
+      "slug": "split_tax/01_section_1.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/01_section_1.txt",
+      "slug": "split_tax/01_section_1.txt",
+      "title": "Налоговые режимы в Республике Крым с",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/02_общая_система_налогообложения_осно.meta.json",
+      "slug": "split_tax/02_общая_система_налогообложения_осно.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/02_общая_система_налогообложения_осно.txt",
+      "slug": "split_tax/02_общая_система_налогообложения_осно.txt",
+      "title": "Общая система налогообложения (ОСНО)",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/03_налог_на_прибыль_организаций_базовая_ставка_25_вместо_прежних_20.meta.json",
+      "slug": "split_tax/03_налог_на_прибыль_организаций_базовая_ставка_25_вместо_прежних_20.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/03_налог_на_прибыль_организаций_базовая_ставка_25_вместо_прежних_20.txt",
+      "slug": "split_tax/03_налог_на_прибыль_организаций_базовая_ставка_25_вместо_прежних_20.txt",
+      "title": "Налог на прибыль организаций: Базовая ставка – 25% (вместо прежних 20%).",
+      "access": "public",
+      "price_from": "12"
+    },
+    {
+      "path": "data/docs/split_tax/04_налог_на_добавленную_стоимость_ндс_стандартная_ставка_с_1_января_2026_года.meta.json",
+      "slug": "split_tax/04_налог_на_добавленную_стоимость_ндс_стандартная_ставка_с_1_января_2026_года.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/04_налог_на_добавленную_стоимость_ндс_стандартная_ставка_с_1_января_2026_года.txt",
+      "slug": "split_tax/04_налог_на_добавленную_стоимость_ндс_стандартная_ставка_с_1_января_2026_года.txt",
+      "title": "Налог на добавленную стоимость (НДС): Стандартная ставка с 1 января 2026 года",
+      "access": "public",
+      "price_from": "28"
+    },
+    {
+      "path": "data/docs/split_tax/05_льготы_например_освобождение_ндс_для_отечественного_программного_обеспечения_из.meta.json",
+      "slug": "split_tax/05_льготы_например_освобождение_ндс_для_отечественного_программного_обеспечения_из.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/05_льготы_например_освобождение_ндс_для_отечественного_программного_обеспечения_из.txt",
+      "slug": "split_tax/05_льготы_например_освобождение_ндс_для_отечественного_программного_обеспечения_из.txt",
+      "title": "льготы (например, освобождение НДС для отечественного программного обеспечения из",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/06_плательщиками_ндс_впервые_организации_и_ип_которые_применяли_усн_и_с_2026_года.meta.json",
+      "slug": "split_tax/06_плательщиками_ндс_впервые_организации_и_ип_которые_применяли_усн_и_с_2026_года.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/06_плательщиками_ндс_впервые_организации_и_ип_которые_применяли_усн_и_с_2026_года.txt",
+      "slug": "split_tax/06_плательщиками_ндс_впервые_организации_и_ип_которые_применяли_усн_и_с_2026_года.txt",
+      "title": "плательщиками НДС впервые. Организации и ИП, которые применяли УСН и с 2026 года",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/07_обязаны_платить_ндс_см_раздел_усн_ниже_могут_выбрать_либо_общую_ставку_22_с.meta.json",
+      "slug": "split_tax/07_обязаны_платить_ндс_см_раздел_усн_ниже_могут_выбрать_либо_общую_ставку_22_с.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/07_обязаны_платить_ндс_см_раздел_усн_ниже_могут_выбрать_либо_общую_ставку_22_с.txt",
+      "slug": "split_tax/07_обязаны_платить_ндс_см_раздел_усн_ниже_могут_выбрать_либо_общую_ставку_22_с.txt",
+      "title": "обязаны платить НДС (см. раздел УСН ниже), могут выбрать либо общую ставку 22% с",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/08_правом_вычета_входного_ндс_либо_пониженную_ставку_5_или_7_без_вычетов_ставка.meta.json",
+      "slug": "split_tax/08_правом_вычета_входного_ндс_либо_пониженную_ставку_5_или_7_без_вычетов_ставка.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/08_правом_вычета_входного_ндс_либо_пониженную_ставку_5_или_7_без_вычетов_ставка.txt",
+      "slug": "split_tax/08_правом_вычета_входного_ндс_либо_пониженную_ставку_5_или_7_без_вычетов_ставка.txt",
+      "title": "правом вычета входного НДС, либо пониженную ставку 5% или 7% без вычетов . Ставка",
+      "access": "public",
+      "price_from": "20"
+    },
+    {
+      "path": "data/docs/split_tax/09_плательщикам_усн_в_переходный_период_и_не_дают_права_на_вычеты_но_позволяют.meta.json",
+      "slug": "split_tax/09_плательщикам_усн_в_переходный_период_и_не_дают_права_на_вычеты_но_позволяют.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/09_плательщикам_усн_в_переходный_период_и_не_дают_права_на_вычеты_но_позволяют.txt",
+      "slug": "split_tax/09_плательщикам_усн_в_переходный_период_и_не_дают_права_на_вычеты_но_позволяют.txt",
+      "title": "плательщикам УСН в переходный период и не дают права на вычеты, но позволяют",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/100_могут_быть_на_нпд_поскольку_у_них_иные_режимы_в_крыму_действуют_те_же_ограничения.meta.json",
+      "slug": "split_tax/100_могут_быть_на_нпд_поскольку_у_них_иные_режимы_в_крыму_действуют_те_же_ограничения.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/100_могут_быть_на_нпд_поскольку_у_них_иные_режимы_в_крыму_действуют_те_же_ограничения.txt",
+      "slug": "split_tax/100_могут_быть_на_нпд_поскольку_у_них_иные_режимы_в_крыму_действуют_те_же_ограничения.txt",
+      "title": "могут быть на НПД, поскольку у них иные режимы). В Крыму действуют те же ограничения,",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/101_несовместимость_режимов_нпд_нельзя_совмещать_с_другими_спецрежимами_ип_на.meta.json",
+      "slug": "split_tax/101_несовместимость_режимов_нпд_нельзя_совмещать_с_другими_спецрежимами_ип_на.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/101_несовместимость_режимов_нпд_нельзя_совмещать_с_другими_спецрежимами_ип_на.txt",
+      "slug": "split_tax/101_несовместимость_режимов_нпд_нельзя_совмещать_с_другими_спецрежимами_ип_на.txt",
+      "title": "Несовместимость режимов: НПД нельзя совмещать с другими спецрежимами. ИП на",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/102_нпд_не_может_параллельно_применять_усн_или_патент_по_другому_виду_деятельности_при.meta.json",
+      "slug": "split_tax/102_нпд_не_может_параллельно_применять_усн_или_патент_по_другому_виду_деятельности_при.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/102_нпд_не_может_параллельно_применять_усн_или_патент_по_другому_виду_деятельности_при.txt",
+      "slug": "split_tax/102_нпд_не_может_параллельно_применять_усн_или_патент_по_другому_виду_деятельности_при.txt",
+      "title": "НПД не может параллельно применять УСН или патент по другому виду деятельности (при",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/103_переходе_на_нпд_он_обязан_отказаться_от_иных_режимов_п_8_ст_4_закона_422-фз_.meta.json",
+      "slug": "split_tax/103_переходе_на_нпд_он_обязан_отказаться_от_иных_режимов_п_8_ст_4_закона_422-фз_.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/103_переходе_на_нпд_он_обязан_отказаться_от_иных_режимов_п_8_ст_4_закона_422-фз_.txt",
+      "slug": "split_tax/103_переходе_на_нпд_он_обязан_отказаться_от_иных_режимов_п_8_ст_4_закона_422-фз_.txt",
+      "title": "переходе на НПД он обязан отказаться от иных режимов, п. 8 ст. 4 закона 422-ФЗ) .",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/104_регистрация_и_учет_процесс_максимально_упрощен_достаточно_зарегистрироваться.meta.json",
+      "slug": "split_tax/104_регистрация_и_учет_процесс_максимально_упрощен_достаточно_зарегистрироваться.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/104_регистрация_и_учет_процесс_максимально_упрощен_достаточно_зарегистрироваться.txt",
+      "slug": "split_tax/104_регистрация_и_учет_процесс_максимально_упрощен_достаточно_зарегистрироваться.txt",
+      "title": "Регистрация и учет: Процесс максимально упрощен – достаточно зарегистрироваться",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/105_налоговую_не_предоставляется_фнс_сама_контролирует_поступления_переход_на_нпд.meta.json",
+      "slug": "split_tax/105_налоговую_не_предоставляется_фнс_сама_контролирует_поступления_переход_на_нпд.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/105_налоговую_не_предоставляется_фнс_сама_контролирует_поступления_переход_на_нпд.txt",
+      "slug": "split_tax/105_налоговую_не_предоставляется_фнс_сама_контролирует_поступления_переход_на_нпд.txt",
+      "title": "налоговую не предоставляется – ФНС сама контролирует поступления. Переход на НПД",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/106_ограничение_повторно_выбрать_нпд_после_отказа_можно_не_ранее_чем_через_90_дней.meta.json",
+      "slug": "split_tax/106_ограничение_повторно_выбрать_нпд_после_отказа_можно_не_ранее_чем_через_90_дней.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/106_ограничение_повторно_выбрать_нпд_после_отказа_можно_не_ранее_чем_через_90_дней.txt",
+      "slug": "split_tax/106_ограничение_повторно_выбрать_нпд_после_отказа_можно_не_ранее_чем_через_90_дней.txt",
+      "title": "(ограничение: повторно выбрать НПД после отказа можно не ранее чем через 90 дней).",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/107_республики_крым_принят_закон_67-зрк2020_внедривший_нпд_на_территории_с_2020.meta.json",
+      "slug": "split_tax/107_республики_крым_принят_закон_67-зрк2020_внедривший_нпд_на_территории_с_2020.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/107_республики_крым_принят_закон_67-зрк2020_внедривший_нпд_на_территории_с_2020.txt",
+      "slug": "split_tax/107_республики_крым_принят_закон_67-зрк2020_внедривший_нпд_на_территории_с_2020.txt",
+      "title": "Республики Крым принят закон № 67-ЗРК/2020, внедривший НПД на территории с 2020",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/108_года_в_налоговый_кодекс_рф_нпд_включен_отдельной_главой_пока_не_был_режим.meta.json",
+      "slug": "split_tax/108_года_в_налоговый_кодекс_рф_нпд_включен_отдельной_главой_пока_не_был_режим.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/108_года_в_налоговый_кодекс_рф_нпд_включен_отдельной_главой_пока_не_был_режим.txt",
+      "slug": "split_tax/108_года_в_налоговый_кодекс_рф_нпд_включен_отдельной_главой_пока_не_был_режим.txt",
+      "title": "года . В Налоговый кодекс РФ НПД включен отдельной главой пока не был (режим",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/109_основные_положения_дублируются_в_нк_ст_2_нк_разрешает_введение_спецрежима_нпд.meta.json",
+      "slug": "split_tax/109_основные_положения_дублируются_в_нк_ст_2_нк_разрешает_введение_спецрежима_нпд.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/109_основные_положения_дублируются_в_нк_ст_2_нк_разрешает_введение_спецрежима_нпд.txt",
+      "slug": "split_tax/109_основные_положения_дублируются_в_нк_ст_2_нк_разрешает_введение_спецрежима_нпд.txt",
+      "title": "основные положения дублируются в НК (ст. 2 НК разрешает введение спецрежима НПД",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/10_оставаться_на_упрощенной_системе_при_уплате_ндс_предусмотрена_возможность_менять.meta.json",
+      "slug": "split_tax/10_оставаться_на_упрощенной_системе_при_уплате_ндс_предусмотрена_возможность_менять.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/10_оставаться_на_упрощенной_системе_при_уплате_ндс_предусмотрена_возможность_менять.txt",
+      "slug": "split_tax/10_оставаться_на_упрощенной_системе_при_уплате_ндс_предусмотрена_возможность_менять.txt",
+      "title": "оставаться на упрощенной системе при уплате НДС. Предусмотрена возможность менять",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/110_отдельным_законом_в_20222023_годах_нпд_стал_постоянным_и_распространился_на_все.meta.json",
+      "slug": "split_tax/110_отдельным_законом_в_20222023_годах_нпд_стал_постоянным_и_распространился_на_все.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/110_отдельным_законом_в_20222023_годах_нпд_стал_постоянным_и_распространился_на_все.txt",
+      "slug": "split_tax/110_отдельным_законом_в_20222023_годах_нпд_стал_постоянным_и_распространился_на_все.txt",
+      "title": "отдельным законом). В 2022–2023 годах НПД стал постоянным и распространился на все",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/111_экспериментальная_территория_а_постоянная_поэтому_на_2026_год_нпд_устоявшийся.meta.json",
+      "slug": "split_tax/111_экспериментальная_территория_а_постоянная_поэтому_на_2026_год_нпд_устоявшийся.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/111_экспериментальная_территория_а_постоянная_поэтому_на_2026_год_нпд_устоявшийся.txt",
+      "slug": "split_tax/111_экспериментальная_территория_а_постоянная_поэтому_на_2026_год_нпд_устоявшийся.txt",
+      "title": "“экспериментальная” территория, а постоянная. Поэтому на 2026 год НПД – устоявшийся",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/112_отметим_лишь_что_с_2023_года_плательщики_нпд_получили_право_добровольно_платить.meta.json",
+      "slug": "split_tax/112_отметим_лишь_что_с_2023_года_плательщики_нпд_получили_право_добровольно_платить.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/112_отметим_лишь_что_с_2023_года_плательщики_нпд_получили_право_добровольно_платить.txt",
+      "slug": "split_tax/112_отметим_лишь_что_с_2023_года_плательщики_нпд_получили_право_добровольно_платить.txt",
+      "title": "отметим лишь, что с 2023 года плательщики НПД получили право добровольно платить",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/113_страховые_взносы_на_пенсионное_страхование_для_формирования_пенсии_эта_норма.meta.json",
+      "slug": "split_tax/113_страховые_взносы_на_пенсионное_страхование_для_формирования_пенсии_эта_норма.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/113_страховые_взносы_на_пенсионное_страхование_для_формирования_пенсии_эта_норма.txt",
+      "slug": "split_tax/113_страховые_взносы_на_пенсионное_страхование_для_формирования_пенсии_эта_норма.txt",
+      "title": "страховые взносы на пенсионное страхование (для формирования пенсии) – эта норма",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/114_закреплена_на_федеральном_уровне_но_по-прежнему_эти_взносы_не_обязательны.meta.json",
+      "slug": "split_tax/114_закреплена_на_федеральном_уровне_но_по-прежнему_эти_взносы_не_обязательны.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/114_закреплена_на_федеральном_уровне_но_по-прежнему_эти_взносы_не_обязательны.txt",
+      "slug": "split_tax/114_закреплена_на_федеральном_уровне_но_по-прежнему_эти_взносы_не_обязательны.txt",
+      "title": "закреплена на федеральном уровне, но по-прежнему эти взносы не обязательны.",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/115_вывод_в_2026_году_в_республике_крым_действуют_все_основные_налоговые_режимы_осно_усн.meta.json",
+      "slug": "split_tax/115_вывод_в_2026_году_в_республике_крым_действуют_все_основные_налоговые_режимы_осно_усн.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/115_вывод_в_2026_году_в_республике_крым_действуют_все_основные_налоговые_режимы_осно_усн.txt",
+      "slug": "split_tax/115_вывод_в_2026_году_в_республике_крым_действуют_все_основные_налоговые_режимы_осно_усн.txt",
+      "title": "Вывод: В 2026 году в Республике Крым действуют все основные налоговые режимы – ОСНО, УСН,",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/116_псн_нпд_в_рамках_правового_поля_рф_однако_произошел_ряд_реформ_влияющих_на_ставки_и.meta.json",
+      "slug": "split_tax/116_псн_нпд_в_рамках_правового_поля_рф_однако_произошел_ряд_реформ_влияющих_на_ставки_и.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/116_псн_нпд_в_рамках_правового_поля_рф_однако_произошел_ряд_реформ_влияющих_на_ставки_и.txt",
+      "slug": "split_tax/116_псн_нпд_в_рамках_правового_поля_рф_однако_произошел_ряд_реформ_влияющих_на_ставки_и.txt",
+      "title": "ПСН, НПД – в рамках правового поля РФ, однако произошел ряд реформ, влияющих на ставки и",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/117_условия_отмена_единых_региональных_льгот_по_усн_рост_ставок_ндс_и_ндфл_для_больших.meta.json",
+      "slug": "split_tax/117_условия_отмена_единых_региональных_льгот_по_усн_рост_ставок_ндс_и_ндфл_для_больших.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/117_условия_отмена_единых_региональных_льгот_по_усн_рост_ставок_ндс_и_ндфл_для_больших.txt",
+      "slug": "split_tax/117_условия_отмена_единых_региональных_льгот_по_усн_рост_ставок_ндс_и_ндфл_для_больших.txt",
+      "title": "условия. Отмена единых региональных льгот по УСН, рост ставок НДС и НДФЛ для больших",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/118_налог_на_прибыль_организаций_фнс_россии_91_республика_крым.meta.json",
+      "slug": "split_tax/118_налог_на_прибыль_организаций_фнс_россии_91_республика_крым.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/118_налог_на_прибыль_организаций_фнс_россии_91_республика_крым.txt",
+      "slug": "split_tax/118_налог_на_прибыль_организаций_фнс_россии_91_республика_крым.txt",
+      "title": "Налог на прибыль организаций | ФНС России | 91 Республика Крым",
+      "access": "public",
+      "price_from": "01"
+    },
+    {
+      "path": "data/docs/split_tax/119_в_крыму_продолжают_действовать_льготные_ставки_по_усн_фнс_россии_91_республика.meta.json",
+      "slug": "split_tax/119_в_крыму_продолжают_действовать_льготные_ставки_по_усн_фнс_россии_91_республика.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/119_в_крыму_продолжают_действовать_льготные_ставки_по_усн_фнс_россии_91_республика.txt",
+      "slug": "split_tax/119_в_крыму_продолжают_действовать_льготные_ставки_по_усн_фнс_россии_91_республика.txt",
+      "title": "В Крыму продолжают действовать льготные ставки по УСН | ФНС России | 91 Республика",
+      "access": "public",
+      "price_from": "25"
+    },
+    {
+      "path": "data/docs/split_tax/11_новых_плательщиков_ндс_из_усн_введен_мораторий_на_штрафы_за_первые_ошибки_в.meta.json",
+      "slug": "split_tax/11_новых_плательщиков_ндс_из_усн_введен_мораторий_на_штрафы_за_первые_ошибки_в.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/11_новых_плательщиков_ндс_из_усн_введен_мораторий_на_штрафы_за_первые_ошибки_в.txt",
+      "slug": "split_tax/11_новых_плательщиков_ндс_из_усн_введен_мораторий_на_штрафы_за_первые_ошибки_в.txt",
+      "title": "новых плательщиков НДС из УСН введен мораторий на штрафы за первые ошибки в",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/12_расчете_ндс_в_2026_году_.meta.json",
+      "slug": "split_tax/12_расчете_ндс_в_2026_году_.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/12_расчете_ндс_в_2026_году_.txt",
+      "slug": "split_tax/12_расчете_ндс_в_2026_году_.txt",
+      "title": "расчете НДС в 2026 году .",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/13_страховые_взносы_с_2026_года_вводится_единый_порядок_отменяющий_широкие_льготы.meta.json",
+      "slug": "split_tax/13_страховые_взносы_с_2026_года_вводится_единый_порядок_отменяющий_широкие_льготы.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/13_страховые_взносы_с_2026_года_вводится_единый_порядок_отменяющий_широкие_льготы.txt",
+      "slug": "split_tax/13_страховые_взносы_с_2026_года_вводится_единый_порядок_отменяющий_широкие_льготы.txt",
+      "title": "Страховые взносы: С 2026 года вводится единый порядок, отменяющий широкие льготы",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/14_только_пенсионные_и_медицинские_взносы_эти_ставки_соответствуют_совокупности.meta.json",
+      "slug": "split_tax/14_только_пенсионные_и_медицинские_взносы_эти_ставки_соответствуют_совокупности.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/14_только_пенсионные_и_медицинские_взносы_эти_ставки_соответствуют_совокупности.txt",
+      "slug": "split_tax/14_только_пенсионные_и_медицинские_взносы_эти_ставки_соответствуют_совокупности.txt",
+      "title": "(только пенсионные и медицинские взносы) . Эти ставки соответствуют совокупности:",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/15_налог_на_имущество_организаций_в_республике_крым_этот_налог_установлен.meta.json",
+      "slug": "split_tax/15_налог_на_имущество_организаций_в_республике_крым_этот_налог_установлен.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/15_налог_на_имущество_организаций_в_республике_крым_этот_налог_установлен.txt",
+      "slug": "split_tax/15_налог_на_имущество_организаций_в_республике_крым_этот_налог_установлен.txt",
+      "title": "Налог на имущество организаций: В Республике Крым этот налог установлен",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/16_упрощенная_система_налогообложения_усн.meta.json",
+      "slug": "split_tax/16_упрощенная_система_налогообложения_усн.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/16_упрощенная_система_налогообложения_усн.txt",
+      "slug": "split_tax/16_упрощенная_система_налогообложения_усн.txt",
+      "title": "Упрощенная система налогообложения (УСН)",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/17_упрощенная_система_усн_специальный_налоговый_режим_для_малого_бизнеса_действующий.meta.json",
+      "slug": "split_tax/17_упрощенная_система_усн_специальный_налоговый_режим_для_малого_бизнеса_действующий.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/17_упрощенная_система_усн_специальный_налоговый_режим_для_малого_бизнеса_действующий.txt",
+      "slug": "split_tax/17_упрощенная_система_усн_специальный_налоговый_режим_для_малого_бизнеса_действующий.txt",
+      "title": "Упрощенная система (УСН) – специальный налоговый режим для малого бизнеса, действующий",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/18_усн_актуальные_на_2026_год.meta.json",
+      "slug": "split_tax/18_усн_актуальные_на_2026_год.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/18_усн_актуальные_на_2026_год.txt",
+      "slug": "split_tax/18_усн_актуальные_на_2026_год.txt",
+      "title": "УСН, актуальные на 2026 год:",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/19_объекты_налогообложения_усн_предприниматель_или_организация_на_упрощенке.meta.json",
+      "slug": "split_tax/19_объекты_налогообложения_усн_предприниматель_или_организация_на_упрощенке.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/19_объекты_налогообложения_усн_предприниматель_или_организация_на_упрощенке.txt",
+      "slug": "split_tax/19_объекты_налогообложения_усн_предприниматель_или_организация_на_упрощенке.txt",
+      "title": "Объекты налогообложения УСН: Предприниматель или организация на упрощенке",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/20_переходе_на_усн_и_может_меняться_подав_уведомление_до_31_декабря_предшествующего.meta.json",
+      "slug": "split_tax/20_переходе_на_усн_и_может_меняться_подав_уведомление_до_31_декабря_предшествующего.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/20_переходе_на_усн_и_может_меняться_подав_уведомление_до_31_декабря_предшествующего.txt",
+      "slug": "split_tax/20_переходе_на_усн_и_может_меняться_подав_уведомление_до_31_декабря_предшествующего.txt",
+      "title": "переходе на УСН и может меняться, подав уведомление до 31 декабря предшествующего",
+      "access": "public",
+      "price_from": "р"
+    },
+    {
+      "path": "data/docs/split_tax/21_налоговые_ставки_усн_базовые_установленные_нк_рф_ставки_составляют_6_если.meta.json",
+      "slug": "split_tax/21_налоговые_ставки_усн_базовые_установленные_нк_рф_ставки_составляют_6_если.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/21_налоговые_ставки_усн_базовые_установленные_нк_рф_ставки_составляют_6_если.txt",
+      "slug": "split_tax/21_налоговые_ставки_усн_базовые_установленные_нк_рф_ставки_составляют_6_если.txt",
+      "title": "Налоговые ставки УСН: Базовые (установленные НК РФ) ставки составляют 6% – если",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/22_предоставления_региональных_льгот_по_усн_меняется_на_федеральном_уровне_согласно.meta.json",
+      "slug": "split_tax/22_предоставления_региональных_льгот_по_усн_меняется_на_федеральном_уровне_согласно.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/22_предоставления_региональных_льгот_по_усн_меняется_на_федеральном_уровне_согласно.txt",
+      "slug": "split_tax/22_предоставления_региональных_льгот_по_усн_меняется_на_федеральном_уровне_согласно.txt",
+      "title": "предоставления региональных льгот по УСН меняется на федеральном уровне. Согласно",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/23_пониженные_ставки_усн_допустимы_только_для_определенных_видов_деятельности.meta.json",
+      "slug": "split_tax/23_пониженные_ставки_усн_допустимы_только_для_определенных_видов_деятельности.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/23_пониженные_ставки_усн_допустимы_только_для_определенных_видов_деятельности.txt",
+      "slug": "split_tax/23_пониженные_ставки_усн_допустимы_только_для_определенных_видов_деятельности.txt",
+      "title": "пониженные ставки УСН допустимы только для определенных видов деятельности,",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/24_всех_вместо_этого_льготы_по_усн_смогут_получить_только_определенные_категории.meta.json",
+      "slug": "split_tax/24_всех_вместо_этого_льготы_по_усн_смогут_получить_только_определенные_категории.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/24_всех_вместо_этого_льготы_по_усн_смогут_получить_только_определенные_категории.txt",
+      "slug": "split_tax/24_всех_вместо_этого_льготы_по_усн_смогут_получить_только_определенные_категории.txt",
+      "title": "всех. Вместо этого льготы по УСН смогут получить только определенные категории",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/25_плательщиков_усн_в_2026_г_применяются_базовые_ставки_6_и_15_пример_в_2025_году_в.meta.json",
+      "slug": "split_tax/25_плательщиков_усн_в_2026_г_применяются_базовые_ставки_6_и_15_пример_в_2025_году_в.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/25_плательщиков_усн_в_2026_г_применяются_базовые_ставки_6_и_15_пример_в_2025_году_в.txt",
+      "slug": "split_tax/25_плательщиков_усн_в_2026_г_применяются_базовые_ставки_6_и_15_пример_в_2025_году_в.txt",
+      "title": "плательщиков УСН в 2026 г. применяются базовые ставки 6% и 15%. Пример: в 2025 году в",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/26_каникулы_нулевую_ставку_усн_на_2_года_в_производственной_социальной_или_научной.meta.json",
+      "slug": "split_tax/26_каникулы_нулевую_ставку_усн_на_2_года_в_производственной_социальной_или_научной.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/26_каникулы_нулевую_ставку_усн_на_2_года_в_производственной_социальной_или_научной.txt",
+      "slug": "split_tax/26_каникулы_нулевую_ставку_усн_на_2_года_в_производственной_социальной_или_научной.txt",
+      "title": "каникулы» – нулевую ставку УСН на 2 года в производственной, социальной или научной",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/27_ограничения_и_требования_для_усн_применять_усн_могут_организации_с_численностью.meta.json",
+      "slug": "split_tax/27_ограничения_и_требования_для_усн_применять_усн_могут_организации_с_численностью.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/27_ограничения_и_требования_для_усн_применять_усн_могут_организации_с_численностью.txt",
+      "slug": "split_tax/27_ограничения_и_требования_для_усн_применять_усн_могут_организации_с_численностью.txt",
+      "title": "Ограничения и требования для УСН: Применять УСН могут организации с численностью",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/28_рф_лимиты_доходов_на_2026_год_лимит_выручки_для_сохранения_права_на_усн_повышен.meta.json",
+      "slug": "split_tax/28_рф_лимиты_доходов_на_2026_год_лимит_выручки_для_сохранения_права_на_усн_повышен.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/28_рф_лимиты_доходов_на_2026_год_лимит_выручки_для_сохранения_права_на_усн_повышен.txt",
+      "slug": "split_tax/28_рф_лимиты_доходов_на_2026_год_лимит_выручки_для_сохранения_права_на_усн_повышен.txt",
+      "title": "РФ). Лимиты доходов: на 2026 год лимит выручки для сохранения права на УСН повышен",
+      "access": "public",
+      "price_from": "р"
+    },
+    {
+      "path": "data/docs/split_tax/29_образом_усн_охватывает_более_крупный_бизнес_одновременно_снижена_граница_дохода.meta.json",
+      "slug": "split_tax/29_образом_усн_охватывает_более_крупный_бизнес_одновременно_снижена_граница_дохода.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/29_образом_усн_охватывает_более_крупный_бизнес_одновременно_снижена_граница_дохода.txt",
+      "slug": "split_tax/29_образом_усн_охватывает_более_крупный_бизнес_одновременно_снижена_граница_дохода.txt",
+      "title": "образом УСН охватывает более крупный бизнес. Одновременно снижена граница дохода",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/30_для_освобождения_от_ндс_с_2026_года_только_плательщики_с_выручкой_за_2025_год_до.meta.json",
+      "slug": "split_tax/30_для_освобождения_от_ндс_с_2026_года_только_плательщики_с_выручкой_за_2025_год_до.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/30_для_освобождения_от_ндс_с_2026_года_только_плательщики_с_выручкой_за_2025_год_до.txt",
+      "slug": "split_tax/30_для_освобождения_от_ндс_с_2026_года_только_плательщики_с_выручкой_за_2025_год_до.txt",
+      "title": "для освобождения от НДС: с 2026 года только плательщики с выручкой за 2025 год до",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/31_20_млн_руб_сохраняют_право_работать_на_усн_без_уплаты_ндс_если_же_доход_за.meta.json",
+      "slug": "split_tax/31_20_млн_руб_сохраняют_право_работать_на_усн_без_уплаты_ндс_если_же_доход_за.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/31_20_млн_руб_сохраняют_право_работать_на_усн_без_уплаты_ндс_если_же_доход_за.txt",
+      "slug": "split_tax/31_20_млн_руб_сохраняют_право_работать_на_усн_без_уплаты_ндс_если_же_доход_за.txt",
+      "title": "20 млн руб. сохраняют право работать на УСН без уплаты НДС . Если же доход за",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/32_предыдущий_год_превысил_20_млн_руб_то_с_нового_года_организация_на_усн_обязана.meta.json",
+      "slug": "split_tax/32_предыдущий_год_превысил_20_млн_руб_то_с_нового_года_организация_на_усн_обязана.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/32_предыдущий_год_превысил_20_млн_руб_то_с_нового_года_организация_на_усн_обязана.txt",
+      "slug": "split_tax/32_предыдущий_год_превысил_20_млн_руб_то_с_нового_года_организация_на_усн_обязана.txt",
+      "title": "предыдущий год превысил 20 млн руб., то с нового года организация на УСН обязана",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/33_встать_на_учет_как_плательщик_ндс_при_этом_сама_усн-статус_не_теряется_в_течение.meta.json",
+      "slug": "split_tax/33_встать_на_учет_как_плательщик_ндс_при_этом_сама_усн-статус_не_теряется_в_течение.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/33_встать_на_учет_как_плательщик_ндс_при_этом_сама_усн-статус_не_теряется_в_течение.txt",
+      "slug": "split_tax/33_встать_на_учет_как_плательщик_ндс_при_этом_сама_усн-статус_не_теряется_в_течение.txt",
+      "title": "встать на учет как плательщик НДС (при этом сама УСН-статус не теряется) . В течение",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/34_года_если_доходы_с_начала_2026-го_превысят_20_млн_руб_придется_начать_начислять_ндс.meta.json",
+      "slug": "split_tax/34_года_если_доходы_с_начала_2026-го_превысят_20_млн_руб_придется_начать_начислять_ндс.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/34_года_если_доходы_с_начала_2026-го_превысят_20_млн_руб_придется_начать_начислять_ндс.txt",
+      "slug": "split_tax/34_года_если_доходы_с_начала_2026-го_превысят_20_млн_руб_придется_начать_начислять_ндс.txt",
+      "title": "года, если доходы с начала 2026-го превысят 20 млн руб., придется начать начислять НДС",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/35_со_следующего_квартала_фактически_вводится_режим_совмещения_усн_ндс_для_средних.meta.json",
+      "slug": "split_tax/35_со_следующего_квартала_фактически_вводится_режим_совмещения_усн_ндс_для_средних.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/35_со_следующего_квартала_фактически_вводится_режим_совмещения_усн_ндс_для_средних.txt",
+      "slug": "split_tax/35_со_следующего_квартала_фактически_вводится_режим_совмещения_усн_ндс_для_средних.txt",
+      "title": "со следующего квартала (фактически вводится режим совмещения УСН + НДС для средних",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/36_предприятий_максимальный_доход_для_работы_на_усн_4905_млн_руб_превышение.meta.json",
+      "slug": "split_tax/36_предприятий_максимальный_доход_для_работы_на_усн_4905_млн_руб_превышение.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/36_предприятий_максимальный_доход_для_работы_на_усн_4905_млн_руб_превышение.txt",
+      "slug": "split_tax/36_предприятий_максимальный_доход_для_работы_на_усн_4905_млн_руб_превышение.txt",
+      "title": "предприятий). Максимальный доход для работы на УСН – 490,5 млн руб.: превышение",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/37_этой_суммы_нарастающим_итогом_с_начала_года_ведет_к_утрате_права_на_усн_и_переходу.meta.json",
+      "slug": "split_tax/37_этой_суммы_нарастающим_итогом_с_начала_года_ведет_к_утрате_права_на_усн_и_переходу.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/37_этой_суммы_нарастающим_итогом_с_начала_года_ведет_к_утрате_права_на_усн_и_переходу.txt",
+      "slug": "split_tax/37_этой_суммы_нарастающим_итогом_с_начала_года_ведет_к_утрате_права_на_усн_и_переходу.txt",
+      "title": "этой суммы (нарастающим итогом с начала года) ведет к утрате права на УСН и переходу",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/38_рф_основные_средства_лимит_остаточной_стоимости_основных_средств_для_усн_также.meta.json",
+      "slug": "split_tax/38_рф_основные_средства_лимит_остаточной_стоимости_основных_средств_для_усн_также.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/38_рф_основные_средства_лимит_остаточной_стоимости_основных_средств_для_усн_также.txt",
+      "slug": "split_tax/38_рф_основные_средства_лимит_остаточной_стоимости_основных_средств_для_усн_также.txt",
+      "title": "РФ). Основные средства: лимит остаточной стоимости основных средств для УСН также",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/39_нарушении_условий_превышении_лимитов_переход_на_осно_теперь_влечет_обязанность.meta.json",
+      "slug": "split_tax/39_нарушении_условий_превышении_лимитов_переход_на_осно_теперь_влечет_обязанность.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/39_нарушении_условий_превышении_лимитов_переход_на_осно_теперь_влечет_обязанность.txt",
+      "slug": "split_tax/39_нарушении_условий_превышении_лимитов_переход_на_осно_теперь_влечет_обязанность.txt",
+      "title": "нарушении условий (превышении лимитов) переход на ОСНО теперь влечет обязанность",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/40_уплаты_ндс_однако_предусмотрены_специальные_переходные_положения_см_выше_про.meta.json",
+      "slug": "split_tax/40_уплаты_ндс_однако_предусмотрены_специальные_переходные_положения_см_выше_про.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/40_уплаты_ндс_однако_предусмотрены_специальные_переходные_положения_см_выше_про.txt",
+      "slug": "split_tax/40_уплаты_ндс_однако_предусмотрены_специальные_переходные_положения_см_выше_про.txt",
+      "title": "уплаты НДС, однако предусмотрены специальные переходные положения (см. выше про",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/41_нормативная_база_и_недавние_изменения_усн_регулируется_ст_3461134625_нк_рф_в.meta.json",
+      "slug": "split_tax/41_нормативная_база_и_недавние_изменения_усн_регулируется_ст_3461134625_нк_рф_в.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/41_нормативная_база_и_недавние_изменения_усн_регулируется_ст_3461134625_нк_рф_в.txt",
+      "slug": "split_tax/41_нормативная_база_и_недавние_изменения_усн_регулируется_ст_3461134625_нк_рф_в.txt",
+      "title": "Нормативная база и недавние изменения: УСН регулируется ст. 346.11–346.25 НК РФ. В",
+      "access": "public",
+      "price_from": "28"
+    },
+    {
+      "path": "data/docs/split_tax/42_изменения_снижение_порога_усн_без_ндс_с_60_до_20_млн_руб_повышение_ндс_до_22.meta.json",
+      "slug": "split_tax/42_изменения_снижение_порога_усн_без_ндс_с_60_до_20_млн_руб_повышение_ндс_до_22.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/42_изменения_снижение_порога_усн_без_ндс_с_60_до_20_млн_руб_повышение_ндс_до_22.txt",
+      "slug": "split_tax/42_изменения_снижение_порога_усн_без_ндс_с_60_до_20_млн_руб_повышение_ндс_до_22.txt",
+      "title": "изменения: снижение порога «УСН без НДС» с 60 до 20 млн руб., повышение НДС до 22%,",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/43_например_с_2026_года_расходы_при_усн_доходы_минус_расходы_учитываются_по.meta.json",
+      "slug": "split_tax/43_например_с_2026_года_расходы_при_усн_доходы_минус_расходы_учитываются_по.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/43_например_с_2026_года_расходы_при_усн_доходы_минус_расходы_учитываются_по.txt",
+      "slug": "split_tax/43_например_с_2026_года_расходы_при_усн_доходы_минус_расходы_учитываются_по.txt",
+      "title": "Например, с 2026 года расходы при УСН «доходы минус расходы» учитываются по",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/44_упрощенцев_были_ограничения_это_сближает_усн_с_осно_также_начиная_с_2026_года.meta.json",
+      "slug": "split_tax/44_упрощенцев_были_ограничения_это_сближает_усн_с_осно_также_начиная_с_2026_года.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/44_упрощенцев_были_ограничения_это_сближает_усн_с_осно_также_начиная_с_2026_года.txt",
+      "slug": "split_tax/44_упрощенцев_были_ограничения_это_сближает_усн_с_осно_также_начиная_с_2026_года.txt",
+      "title": "упрощенцев были ограничения) – это сближает УСН с ОСНО. Также, начиная с 2026 года,",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/45_вводится_единая_форма_уведомления_для_всех_случаев_связанных_с_усн_переход_смена.meta.json",
+      "slug": "split_tax/45_вводится_единая_форма_уведомления_для_всех_случаев_связанных_с_усн_переход_смена.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/45_вводится_единая_форма_уведомления_для_всех_случаев_связанных_с_усн_переход_смена.txt",
+      "slug": "split_tax/45_вводится_единая_форма_уведомления_для_всех_случаев_связанных_с_усн_переход_смена.txt",
+      "title": "вводится единая форма уведомления для всех случаев, связанных с УСН (переход, смена",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/46_патентная_система_налогообложения_псн.meta.json",
+      "slug": "split_tax/46_патентная_система_налогообложения_псн.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/46_патентная_система_налогообложения_псн.txt",
+      "slug": "split_tax/46_патентная_система_налогообложения_псн.txt",
+      "title": "Патентная система налогообложения (ПСН)",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/47_патентная_система_псн_специальный_режим_для_индивидуальных_предпринимателей_при.meta.json",
+      "slug": "split_tax/47_патентная_система_псн_специальный_режим_для_индивидуальных_предпринимателей_при.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/47_патентная_система_псн_специальный_режим_для_индивидуальных_предпринимателей_при.txt",
+      "slug": "split_tax/47_патентная_система_псн_специальный_режим_для_индивидуальных_предпринимателей_при.txt",
+      "title": "Патентная система (ПСН) – специальный режим для индивидуальных предпринимателей, при",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/48_котором_приобретается_патент_на_определенный_вид_деятельности_в_республике_крым_псн.meta.json",
+      "slug": "split_tax/48_котором_приобретается_патент_на_определенный_вид_деятельности_в_республике_крым_псн.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/48_котором_приобретается_патент_на_определенный_вид_деятельности_в_республике_крым_псн.txt",
+      "slug": "split_tax/48_котором_приобретается_патент_на_определенный_вид_деятельности_в_республике_крым_псн.txt",
+      "title": "котором приобретается патент на определенный вид деятельности. В Республике Крым ПСН",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/49_применение_псн_в_крыму_патентную_систему_могут_применять_только_ип.meta.json",
+      "slug": "split_tax/49_применение_псн_в_крыму_патентную_систему_могут_применять_только_ип.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/49_применение_псн_в_крыму_патентную_систему_могут_применять_только_ип.txt",
+      "slug": "split_tax/49_применение_псн_в_крыму_патентную_систему_могут_применять_только_ип.txt",
+      "title": "Применение ПСН в Крыму: Патентную систему могут применять только ИП",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/50_организации_не_вправе_использовать_псн_в_крыму_режим_введен_с_2015_года_после.meta.json",
+      "slug": "split_tax/50_организации_не_вправе_использовать_псн_в_крыму_режим_введен_с_2015_года_после.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/50_организации_не_вправе_использовать_псн_в_крыму_режим_введен_с_2015_года_после.txt",
+      "slug": "split_tax/50_организации_не_вправе_использовать_псн_в_крыму_режим_введен_с_2015_года_после.txt",
+      "title": "(организации не вправе использовать ПСН). В Крыму режим введен с 2015 года (после",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/51_видов_предпринимательской_деятельности_на_которые_можно_получить_патент_ремонт_и.meta.json",
+      "slug": "split_tax/51_видов_предпринимательской_деятельности_на_которые_можно_получить_патент_ремонт_и.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/51_видов_предпринимательской_деятельности_на_которые_можно_получить_патент_ремонт_и.txt",
+      "slug": "split_tax/51_видов_предпринимательской_деятельности_на_которые_можно_получить_патент_ремонт_и.txt",
+      "title": "видов предпринимательской деятельности, на которые можно получить патент (ремонт и",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/52_приложениях_к_закону_перечислены_эти_суммы_патент_выдается_на_срок_от_1_до_12.meta.json",
+      "slug": "split_tax/52_приложениях_к_закону_перечислены_эти_суммы_патент_выдается_на_срок_от_1_до_12.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": "1"
+    },
+    {
+      "path": "data/docs/split_tax/52_приложениях_к_закону_перечислены_эти_суммы_патент_выдается_на_срок_от_1_до_12.txt",
+      "slug": "split_tax/52_приложениях_к_закону_перечислены_эти_суммы_патент_выдается_на_срок_от_1_до_12.txt",
+      "title": "приложениях к закону перечислены эти суммы. Патент выдается на срок от 1 до 12",
+      "access": "public",
+      "price_from": "1"
+    },
+    {
+      "path": "data/docs/split_tax/53_ставка_и_расчет_налога_ставка_налога_при_псн_фиксирована_6_однако_она.meta.json",
+      "slug": "split_tax/53_ставка_и_расчет_налога_ставка_налога_при_псн_фиксирована_6_однако_она.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/53_ставка_и_расчет_налога_ставка_налога_при_псн_фиксирована_6_однако_она.txt",
+      "slug": "split_tax/53_ставка_и_расчет_налога_ставка_налога_при_псн_фиксирована_6_однако_она.txt",
+      "title": "Ставка и расчет налога: Ставка налога при ПСН фиксирована – 6%. Однако она",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/54_годового_дохода_установленного_законом_для_данного_вида_бизнеса_если_патент_берется.meta.json",
+      "slug": "split_tax/54_годового_дохода_установленного_законом_для_данного_вида_бизнеса_если_патент_берется.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/54_годового_дохода_установленного_законом_для_данного_вида_бизнеса_если_патент_берется.txt",
+      "slug": "split_tax/54_годового_дохода_установленного_законом_для_данного_вида_бизнеса_если_патент_берется.txt",
+      "title": "годового дохода, установленного законом для данного вида бизнеса (если патент берется",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/55_крыму_определен_потенциальный_доход_1_000_000_руб_в_год_то_патент_на_полный_год.meta.json",
+      "slug": "split_tax/55_крыму_определен_потенциальный_доход_1_000_000_руб_в_год_то_патент_на_полный_год.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/55_крыму_определен_потенциальный_доход_1_000_000_руб_в_год_то_патент_на_полный_год.txt",
+      "slug": "split_tax/55_крыму_определен_потенциальный_доход_1_000_000_руб_в_год_то_патент_на_полный_год.txt",
+      "title": "Крыму определен потенциальный доход 1 000 000 руб. в год, то патент на полный год",
+      "access": "public",
+      "price_from": "6"
+    },
+    {
+      "path": "data/docs/split_tax/56_для_доходов_от_этой_деятельности_и_ндс_ип_на_патенте_не_платит_налог_на_доходы_с.meta.json",
+      "slug": "split_tax/56_для_доходов_от_этой_деятельности_и_ндс_ип_на_патенте_не_платит_налог_на_доходы_с.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/56_для_доходов_от_этой_деятельности_и_ндс_ип_на_патенте_не_платит_налог_на_доходы_с.txt",
+      "slug": "split_tax/56_для_доходов_от_этой_деятельности_и_ндс_ип_на_патенте_не_платит_налог_на_доходы_с.txt",
+      "title": "(для доходов от этой деятельности) и НДС – ИП на патенте не платит налог на доходы с",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/57_этих_поступлений_и_освобождается_от_ндс_по_ним_также_патентная_система.meta.json",
+      "slug": "split_tax/57_этих_поступлений_и_освобождается_от_ндс_по_ним_также_патентная_система.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/57_этих_поступлений_и_освобождается_от_ндс_по_ним_также_патентная_система.txt",
+      "slug": "split_tax/57_этих_поступлений_и_освобождается_от_ндс_по_ним_также_патентная_система.txt",
+      "title": "этих поступлений и освобождается от НДС по ним . Также патентная система",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/58_взносы_за_себя_и_за_работников_ип_уплачивает_отдельно_независимо_от_патента_льгот_по.meta.json",
+      "slug": "split_tax/58_взносы_за_себя_и_за_работников_ип_уплачивает_отдельно_независимо_от_патента_льгот_по.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/58_взносы_за_себя_и_за_работников_ип_уплачивает_отдельно_независимо_от_патента_льгот_по.txt",
+      "slug": "split_tax/58_взносы_за_себя_и_за_работников_ип_уплачивает_отдельно_независимо_от_патента_льгот_по.txt",
+      "title": "взносы за себя и за работников ИП уплачивает отдельно, независимо от патента (льгот по",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/59_взносам_псн_не_дает.meta.json",
+      "slug": "split_tax/59_взносам_псн_не_дает.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/59_взносам_псн_не_дает.txt",
+      "slug": "split_tax/59_взносам_псн_не_дает.txt",
+      "title": "взносам ПСН не дает).",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/60_ограничения_и_условия_использования_псн_патент_предназначен_для_малого_бизнеса.meta.json",
+      "slug": "split_tax/60_ограничения_и_условия_использования_псн_патент_предназначен_для_малого_бизнеса.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/60_ограничения_и_условия_использования_псн_патент_предназначен_для_малого_бизнеса.txt",
+      "slug": "split_tax/60_ограничения_и_условия_использования_псн_патент_предназначен_для_малого_бизнеса.txt",
+      "title": "Ограничения и условия использования ПСН: Патент предназначен для малого бизнеса,",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/61_псн_если_его_доход_от_патентной_деятельности_превысит_20_млн_руб_ранее_лимит_был_60.meta.json",
+      "slug": "split_tax/61_псн_если_его_доход_от_патентной_деятельности_превысит_20_млн_руб_ранее_лимит_был_60.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/61_псн_если_его_доход_от_патентной_деятельности_превысит_20_млн_руб_ранее_лимит_был_60.txt",
+      "slug": "split_tax/61_псн_если_его_доход_от_патентной_деятельности_превысит_20_млн_руб_ранее_лимит_был_60.txt",
+      "title": "ПСН, если его доход от патентной деятельности превысит 20 млн руб. (ранее лимит был 60",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/62_2025_превысил_20_млн_предприниматель_не_сможет_получить_патент_на_2026_год_.meta.json",
+      "slug": "split_tax/62_2025_превысил_20_млн_предприниматель_не_сможет_получить_патент_на_2026_год_.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/62_2025_превысил_20_млн_предприниматель_не_сможет_получить_патент_на_2026_год_.txt",
+      "slug": "split_tax/62_2025_превысил_20_млн_предприниматель_не_сможет_получить_патент_на_2026_год_.txt",
+      "title": "(2025) превысил 20 млн, предприниматель не сможет получить патент на 2026 год .",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/63_патент_утрачивается_досрочно_в_таком_случае_ип_обязан_перейти_на_общую_систему.meta.json",
+      "slug": "split_tax/63_патент_утрачивается_досрочно_в_таком_случае_ип_обязан_перейти_на_общую_систему.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/63_патент_утрачивается_досрочно_в_таком_случае_ип_обязан_перейти_на_общую_систему.txt",
+      "slug": "split_tax/63_патент_утрачивается_досрочно_в_таком_случае_ип_обязан_перейти_на_общую_систему.txt",
+      "title": "патент утрачивается досрочно . В таком случае ИП обязан перейти на общую систему",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/64_уплачивая_ндфл_и_ндс_с_начала_того_квартала_в_котором_превышен_лимит_и_доплатить.meta.json",
+      "slug": "split_tax/64_уплачивая_ндфл_и_ндс_с_начала_того_квартала_в_котором_превышен_лимит_и_доплатить.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/64_уплачивая_ндфл_и_ндс_с_начала_того_квартала_в_котором_превышен_лимит_и_доплатить.txt",
+      "slug": "split_tax/64_уплачивая_ндфл_и_ндс_с_начала_того_квартала_в_котором_превышен_лимит_и_доплатить.txt",
+      "title": "(уплачивая НДФЛ и НДС) с начала того квартала, в котором превышен лимит, и доплатить",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/65_налоги_рассчитанные_по_осно_за_период_после_утраты_права_п_6_ст_34645_нк_рф.meta.json",
+      "slug": "split_tax/65_налоги_рассчитанные_по_осно_за_период_после_утраты_права_п_6_ст_34645_нк_рф.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/65_налоги_рассчитанные_по_осно_за_период_после_утраты_права_п_6_ст_34645_нк_рф.txt",
+      "slug": "split_tax/65_налоги_рассчитанные_по_осно_за_период_после_утраты_права_п_6_ст_34645_нк_рф.txt",
+      "title": "налоги, рассчитанные по ОСНО, за период после утраты права (п. 6 ст. 346.45 НК РФ).",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/66_предусмотрен_переходный_спад_лимита_в_2027_году_предельная_сумма_доходов_для_псн.meta.json",
+      "slug": "split_tax/66_предусмотрен_переходный_спад_лимита_в_2027_году_предельная_сумма_доходов_для_псн.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/66_предусмотрен_переходный_спад_лимита_в_2027_году_предельная_сумма_доходов_для_псн.txt",
+      "slug": "split_tax/66_предусмотрен_переходный_спад_лимита_в_2027_году_предельная_сумма_доходов_для_псн.txt",
+      "title": "Предусмотрен переходный спад лимита: в 2027 году предельная сумма доходов для ПСН",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/67_по_видам_деятельности_ип_может_получить_патент_только_на_виды_бизнеса_указанные_в.meta.json",
+      "slug": "split_tax/67_по_видам_деятельности_ип_может_получить_патент_только_на_виды_бизнеса_указанные_в.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/67_по_видам_деятельности_ип_может_получить_патент_только_на_виды_бизнеса_указанные_в.txt",
+      "slug": "split_tax/67_по_видам_деятельности_ип_может_получить_патент_только_на_виды_бизнеса_указанные_в.txt",
+      "title": "По видам деятельности: ИП может получить патент только на виды бизнеса, указанные в",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/68_федеральному_перечню_некоторые_виды_деятельности_в_нк_прямо_исключены_из_псн.meta.json",
+      "slug": "split_tax/68_федеральному_перечню_некоторые_виды_деятельности_в_нк_прямо_исключены_из_псн.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/68_федеральному_перечню_некоторые_виды_деятельности_в_нк_прямо_исключены_из_псн.txt",
+      "slug": "split_tax/68_федеральному_перечню_некоторые_виды_деятельности_в_нк_прямо_исключены_из_псн.txt",
+      "title": "федеральному перечню). Некоторые виды деятельности в НК прямо исключены из ПСН:",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/69_товарищества_и_доверительного_управления_и_др_патент_на_них_получить_нельзя_п_6.meta.json",
+      "slug": "split_tax/69_товарищества_и_доверительного_управления_и_др_патент_на_них_получить_нельзя_п_6.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/69_товарищества_и_доверительного_управления_и_др_патент_на_них_получить_нельзя_п_6.txt",
+      "slug": "split_tax/69_товарищества_и_доверительного_управления_и_др_патент_на_них_получить_нельзя_п_6.txt",
+      "title": "товарищества и доверительного управления и др. – патент на них получить нельзя (п. 6",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/70_ст_34643_нк_рф_также_нельзя_применять_псн_в_отношении_видов_деятельности.meta.json",
+      "slug": "split_tax/70_ст_34643_нк_рф_также_нельзя_применять_псн_в_отношении_видов_деятельности.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/70_ст_34643_нк_рф_также_нельзя_применять_псн_в_отношении_видов_деятельности.txt",
+      "slug": "split_tax/70_ст_34643_нк_рф_также_нельзя_применять_псн_в_отношении_видов_деятельности.txt",
+      "title": "ст. 346.43 НК РФ). Также нельзя применять ПСН в отношении видов деятельности,",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/71_совмещение_режимов_ип_может_сочетать_патент_с_другими_режимами_усн_нпд_осно.meta.json",
+      "slug": "split_tax/71_совмещение_режимов_ип_может_сочетать_патент_с_другими_режимами_усн_нпд_осно.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/71_совмещение_режимов_ип_может_сочетать_патент_с_другими_режимами_усн_нпд_осно.txt",
+      "slug": "split_tax/71_совмещение_режимов_ип_может_сочетать_патент_с_другими_режимами_усн_нпд_осно.txt",
+      "title": "Совмещение режимов: ИП может сочетать патент с другими режимами (УСН, НПД, ОСНО)",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/72_нельзя_одновременно_иметь_два_режима_если_вид_деятельности_переведен_на_патент.meta.json",
+      "slug": "split_tax/72_нельзя_одновременно_иметь_два_режима_если_вид_деятельности_переведен_на_патент.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/72_нельзя_одновременно_иметь_два_режима_если_вид_деятельности_переведен_на_патент.txt",
+      "slug": "split_tax/72_нельзя_одновременно_иметь_два_режима_если_вид_деятельности_переведен_на_патент.txt",
+      "title": "нельзя одновременно иметь два режима. Если вид деятельности переведен на патент,",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/73_на_усн_или_осно_нельзя_совмещать_псн_с_нпд_налог_на_профдоход_ип_должен.meta.json",
+      "slug": "split_tax/73_на_усн_или_осно_нельзя_совмещать_псн_с_нпд_налог_на_профдоход_ип_должен.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/73_на_усн_или_осно_нельзя_совмещать_псн_с_нпд_налог_на_профдоход_ип_должен.txt",
+      "slug": "split_tax/73_на_усн_или_осно_нельзя_совмещать_псн_с_нпд_налог_на_профдоход_ип_должен.txt",
+      "title": "на УСН или ОСНО. Нельзя совмещать ПСН с НПД (налог на профдоход) – ИП должен",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/74_подать_заявление_на_новый_патент_с_пересчетом_налога_со_дня_изменения_показателя_.meta.json",
+      "slug": "split_tax/74_подать_заявление_на_новый_патент_с_пересчетом_налога_со_дня_изменения_показателя_.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/74_подать_заявление_на_новый_патент_с_пересчетом_налога_со_дня_изменения_показателя_.txt",
+      "slug": "split_tax/74_подать_заявление_на_новый_патент_с_пересчетом_налога_со_дня_изменения_показателя_.txt",
+      "title": "подать заявление на новый патент с пересчетом налога со дня изменения показателя .",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/75_это_важно_в_случаях_когда_бизнес_сокращается_чтобы_не_переплачивать_за_патент_также.meta.json",
+      "slug": "split_tax/75_это_важно_в_случаях_когда_бизнес_сокращается_чтобы_не_переплачивать_за_патент_также.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/75_это_важно_в_случаях_когда_бизнес_сокращается_чтобы_не_переплачивать_за_патент_также.txt",
+      "slug": "split_tax/75_это_важно_в_случаях_когда_бизнес_сокращается_чтобы_не_переплачивать_за_патент_также.txt",
+      "title": "Это важно в случаях, когда бизнес сокращается – чтобы не переплачивать за патент. Также",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/76_с_2025_года_отменена_возможность_уменьшать_стоимость_патента_на_страховые_взносы.meta.json",
+      "slug": "split_tax/76_с_2025_года_отменена_возможность_уменьшать_стоимость_патента_на_страховые_взносы.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/76_с_2025_года_отменена_возможность_уменьшать_стоимость_патента_на_страховые_взносы.txt",
+      "slug": "split_tax/76_с_2025_года_отменена_возможность_уменьшать_стоимость_патента_на_страховые_взносы.txt",
+      "title": "с 2025 года отменена возможность уменьшать стоимость патента на страховые взносы",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/77_ранее_ип_мог_вычитать_взносы_за_себя_и_сотрудников_из_налога_по_патенту_в_некоторых.meta.json",
+      "slug": "split_tax/77_ранее_ип_мог_вычитать_взносы_за_себя_и_сотрудников_из_налога_по_патенту_в_некоторых.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/77_ранее_ип_мог_вычитать_взносы_за_себя_и_сотрудников_из_налога_по_патенту_в_некоторых.txt",
+      "slug": "split_tax/77_ранее_ип_мог_вычитать_взносы_за_себя_и_сотрудников_из_налога_по_патенту_в_некоторых.txt",
+      "title": "(ранее ИП мог вычитать взносы за себя и сотрудников из налога по патенту в некоторых",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/78_отмены_енвд_нормативная_база_псн_ст_3464334653_нк_рф_закон_рк_129-зрк2020_с.meta.json",
+      "slug": "split_tax/78_отмены_енвд_нормативная_база_псн_ст_3464334653_нк_рф_закон_рк_129-зрк2020_с.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/78_отмены_енвд_нормативная_база_псн_ст_3464334653_нк_рф_закон_рк_129-зрк2020_с.txt",
+      "slug": "split_tax/78_отмены_енвд_нормативная_база_псн_ст_3464334653_нк_рф_закон_рк_129-зрк2020_с.txt",
+      "title": "отмены ЕНВД). Нормативная база ПСН: ст. 346.43–346.53 НК РФ, Закон РК № 129-ЗРК/2020 (с",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/79_единый_налог_на_профессиональный_доход_енпд_налог.meta.json",
+      "slug": "split_tax/79_единый_налог_на_профессиональный_доход_енпд_налог.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/79_единый_налог_на_профессиональный_доход_енпд_налог.txt",
+      "slug": "split_tax/79_единый_налог_на_профессиональный_доход_енпд_налог.txt",
+      "title": "Единый налог на профессиональный доход (ЕНПД, «налог",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/80_налог_на_профессиональный_доход_нпд_специальный_режим_для_самозанятых_граждан_и.meta.json",
+      "slug": "split_tax/80_налог_на_профессиональный_доход_нпд_специальный_режим_для_самозанятых_граждан_и.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/80_налог_на_профессиональный_доход_нпд_специальный_режим_для_самозанятых_граждан_и.txt",
+      "slug": "split_tax/80_налог_на_профессиональный_доход_нпд_специальный_режим_для_самозанятых_граждан_и.txt",
+      "title": "Налог на профессиональный доход (НПД) – специальный режим для самозанятых граждан и",
+      "access": "public",
+      "price_from": "р"
+    },
+    {
+      "path": "data/docs/split_tax/81_ведущих_деятельность_без_работодателя_и_наемных_работников_основные_параметры_нпд.meta.json",
+      "slug": "split_tax/81_ведущих_деятельность_без_работодателя_и_наемных_работников_основные_параметры_нпд.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/81_ведущих_деятельность_без_работодателя_и_наемных_работников_основные_параметры_нпд.txt",
+      "slug": "split_tax/81_ведущих_деятельность_без_работодателя_и_наемных_работников_основные_параметры_нпд.txt",
+      "title": "ведущих деятельность без работодателя и наемных работников. Основные параметры НПД:",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/82_возможность_применения_в_крыму_нпд_изначально_запускался_как_эксперимент_в.meta.json",
+      "slug": "split_tax/82_возможность_применения_в_крыму_нпд_изначально_запускался_как_эксперимент_в.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/82_возможность_применения_в_крыму_нпд_изначально_запускался_как_эксперимент_в.txt",
+      "slug": "split_tax/82_возможность_применения_в_крыму_нпд_изначально_запускался_как_эксперимент_в.txt",
+      "title": "Возможность применения в Крыму: НПД изначально запускался как эксперимент в",
+      "access": "public",
+      "price_from": "27"
+    },
+    {
+      "path": "data/docs/split_tax/83_может_добровольно_зарегистрироваться_в_качестве_плательщика_нпд_через_мобильное.meta.json",
+      "slug": "split_tax/83_может_добровольно_зарегистрироваться_в_качестве_плательщика_нпд_через_мобильное.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/83_может_добровольно_зарегистрироваться_в_качестве_плательщика_нпд_через_мобильное.txt",
+      "slug": "split_tax/83_может_добровольно_зарегистрироваться_в_качестве_плательщика_нпд_через_мобильное.txt",
+      "title": "может добровольно зарегистрироваться в качестве плательщика НПД через мобильное",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/84_ставки_нпд_установлены_две_пониженные_ставки.meta.json",
+      "slug": "split_tax/84_ставки_нпд_установлены_две_пониженные_ставки.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/84_ставки_нпд_установлены_две_пониженные_ставки.txt",
+      "slug": "split_tax/84_ставки_нпд_установлены_две_пониженные_ставки.txt",
+      "title": "Ставки НПД: Установлены две пониженные ставки:",
+      "access": "public",
+      "price_from": ""
+    },
+    {
+      "path": "data/docs/split_tax/85_режиме_нпд_предусмотрен_налоговый_вычет_10_000_руб_при_регистрации_самозанятому.meta.json",
+      "slug": "split_tax/85_режиме_нпд_предусмотрен_налоговый_вычет_10_000_руб_при_регистрации_самозанятому.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/85_режиме_нпд_предусмотрен_налоговый_вычет_10_000_руб_при_регистрации_самозанятому.txt",
+      "slug": "split_tax/85_режиме_нпд_предусмотрен_налоговый_вычет_10_000_руб_при_регистрации_самозанятому.txt",
+      "title": "режиме НПД предусмотрен налоговый вычет 10 000 руб.: при регистрации самозанятому",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/86_налоговые_льготы_и_освобождения_плательщики_нпд_освобождены_от_ряда_налогов_и.meta.json",
+      "slug": "split_tax/86_налоговые_льготы_и_освобождения_плательщики_нпд_освобождены_от_ряда_налогов_и.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": "р"
+    },
+    {
+      "path": "data/docs/split_tax/86_налоговые_льготы_и_освобождения_плательщики_нпд_освобождены_от_ряда_налогов_и.txt",
+      "slug": "split_tax/86_налоговые_льготы_и_освобождения_плательщики_нпд_освобождены_от_ряда_налогов_и.txt",
+      "title": "Налоговые льготы и освобождения: Плательщики НПД освобождены от ряда налогов и",
+      "access": "public",
+      "price_from": "р"
+    },
+    {
+      "path": "data/docs/split_tax/87_взносов_в_частности_самозанятый_не_платит_ндфл_с_доходов_облагаемых_нпд_13_на.meta.json",
+      "slug": "split_tax/87_взносов_в_частности_самозанятый_не_платит_ндфл_с_доходов_облагаемых_нпд_13_на.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/87_взносов_в_частности_самозанятый_не_платит_ндфл_с_доходов_облагаемых_нпд_13_на.txt",
+      "slug": "split_tax/87_взносов_в_частности_самозанятый_не_платит_ндфл_с_доходов_облагаемых_нпд_13_на.txt",
+      "title": "взносов. В частности, самозанятый не платит НДФЛ с доходов, облагаемых НПД (13% на",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/88_эти_доходы_не_распространяются_также_операции_самозанятого_не_облагаются_ндс.meta.json",
+      "slug": "split_tax/88_эти_доходы_не_распространяются_также_операции_самозанятого_не_облагаются_ндс.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/88_эти_доходы_не_распространяются_также_операции_самозанятого_не_облагаются_ндс.txt",
+      "slug": "split_tax/88_эти_доходы_не_распространяются_также_операции_самозанятого_не_облагаются_ндс.txt",
+      "title": "эти доходы не распространяются) . Также операции самозанятого не облагаются НДС",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/89_за_исключением_импортного_ндс_и_случаев_когда_самозанятый_выступает_налоговым.meta.json",
+      "slug": "split_tax/89_за_исключением_импортного_ндс_и_случаев_когда_самозанятый_выступает_налоговым.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/89_за_исключением_импортного_ндс_и_случаев_когда_самозанятый_выступает_налоговым.txt",
+      "slug": "split_tax/89_за_исключением_импортного_ндс_и_случаев_когда_самозанятый_выступает_налоговым.txt",
+      "title": "(за исключением импортного НДС и случаев, когда самозанятый выступает налоговым",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/90_агентом_по_ндс_кроме_того_самозанятые_не_обязаны_уплачивать_страховые.meta.json",
+      "slug": "split_tax/90_агентом_по_ндс_кроме_того_самозанятые_не_обязаны_уплачивать_страховые.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/90_агентом_по_ндс_кроме_того_самозанятые_не_обязаны_уплачивать_страховые.txt",
+      "slug": "split_tax/90_агентом_по_ндс_кроме_того_самозанятые_не_обязаны_уплачивать_страховые.txt",
+      "title": "агентом по НДС) . Кроме того, самозанятые не обязаны уплачивать страховые",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/91_взносы_за_себя_взносы_в_пфр_и_фомс_носят_добровольный_характер_для_плательщиков.meta.json",
+      "slug": "split_tax/91_взносы_за_себя_взносы_в_пфр_и_фомс_носят_добровольный_характер_для_плательщиков.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/91_взносы_за_себя_взносы_в_пфр_и_фомс_носят_добровольный_характер_для_плательщиков.txt",
+      "slug": "split_tax/91_взносы_за_себя_взносы_в_пфр_и_фомс_носят_добровольный_характер_для_плательщиков.txt",
+      "title": "взносы за себя – взносы в ПФР и ФОМС носят добровольный характер для плательщиков",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/92_нпд_таким_образом_нагрузка_существенно_ниже_общей_системы_нет_также.meta.json",
+      "slug": "split_tax/92_нпд_таким_образом_нагрузка_существенно_ниже_общей_системы_нет_также.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/92_нпд_таким_образом_нагрузка_существенно_ниже_общей_системы_нет_также.txt",
+      "slug": "split_tax/92_нпд_таким_образом_нагрузка_существенно_ниже_общей_системы_нет_также.txt",
+      "title": "НПД . Таким образом, нагрузка существенно ниже общей системы. Нет также",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/93_ограничения_для_самозанятых_режим_нпд_предназначен_для_небольшого_личного.meta.json",
+      "slug": "split_tax/93_ограничения_для_самозанятых_режим_нпд_предназначен_для_небольшого_личного.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/93_ограничения_для_самозанятых_режим_нпд_предназначен_для_небольшого_личного.txt",
+      "slug": "split_tax/93_ограничения_для_самозанятых_режим_нпд_предназначен_для_небольшого_личного.txt",
+      "title": "Ограничения для самозанятых: Режим НПД предназначен для небольшого личного",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/94_перейти_на_другие_системы_ип_на_осно_или_усн_физлицо_платить_ндфл_как_обычный.meta.json",
+      "slug": "split_tax/94_перейти_на_другие_системы_ип_на_осно_или_усн_физлицо_платить_ндфл_как_обычный.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/94_перейти_на_другие_системы_ип_на_осно_или_усн_физлицо_платить_ндфл_как_обычный.txt",
+      "slug": "split_tax/94_перейти_на_другие_системы_ип_на_осно_или_усн_физлицо_платить_ндфл_как_обычный.txt",
+      "title": "перейти на другие системы (ИП – на ОСНО или УСН, физлицо – платить НДФЛ как обычный",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/95_лишает_права_на_нпд_для_тех_кто_хочет_нанимать_сотрудников_предназначена_усн_или.meta.json",
+      "slug": "split_tax/95_лишает_права_на_нпд_для_тех_кто_хочет_нанимать_сотрудников_предназначена_усн_или.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/95_лишает_права_на_нпд_для_тех_кто_хочет_нанимать_сотрудников_предназначена_усн_или.txt",
+      "slug": "split_tax/95_лишает_права_на_нпд_для_тех_кто_хочет_нанимать_сотрудников_предназначена_усн_или.txt",
+      "title": "лишает права на НПД (для тех, кто хочет нанимать сотрудников, предназначена УСН или",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/96_осно.meta.json",
+      "slug": "split_tax/96_осно.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/96_осно.txt",
+      "slug": "split_tax/96_осно.txt",
+      "title": "ОСНО).",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/97_по_видам_деятельности_закон_содержит_перечень_запрещенных_для_нпд_видов.meta.json",
+      "slug": "split_tax/97_по_видам_деятельности_закон_содержит_перечень_запрещенных_для_нпд_видов.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/97_по_видам_деятельности_закон_содержит_перечень_запрещенных_для_нпд_видов.txt",
+      "slug": "split_tax/97_по_видам_деятельности_закон_содержит_перечень_запрещенных_для_нпд_видов.txt",
+      "title": "По видам деятельности: закон содержит перечень запрещенных для НПД видов",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/98_деятельности_нельзя_применять_нпд_при_перепродаже_товаров_например_торговые.meta.json",
+      "slug": "split_tax/98_деятельности_нельзя_применять_нпд_при_перепродаже_товаров_например_торговые.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/98_деятельности_нельзя_применять_нпд_при_перепродаже_товаров_например_торговые.txt",
+      "slug": "split_tax/98_деятельности_нельзя_применять_нпд_при_перепродаже_товаров_например_торговые.txt",
+      "title": "деятельности. Нельзя применять НПД при перепродаже товаров (например, торговые",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/99_товаров_добыче_полезных_ископаемых_также_недопустимо_применять_нпд_в_отношении.meta.json",
+      "slug": "split_tax/99_товаров_добыче_полезных_ископаемых_также_недопустимо_применять_нпд_в_отношении.meta.json",
+      "title": "{",
+      "access": "public",
+      "price_from": null
+    },
+    {
+      "path": "data/docs/split_tax/99_товаров_добыче_полезных_ископаемых_также_недопустимо_применять_нпд_в_отношении.txt",
+      "slug": "split_tax/99_товаров_добыче_полезных_ископаемых_также_недопустимо_применять_нпд_в_отношении.txt",
+      "title": "товаров, добыче полезных ископаемых. Также недопустимо применять НПД в отношении",
+      "access": "public",
+      "price_from": ""
+    }
+  ]
+}

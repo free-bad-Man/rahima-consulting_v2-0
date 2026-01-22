@@ -1,0 +1,8 @@
+{
+  "slug": "split_tax/12_расчете_ндс_в_2026_году_.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/split_tax/12_расчете_ндс_в_2026_году_.meta.json",
+  "content": "{\n  \"title\": \"расчете НДС в 2026 году .\",\n  \"slug\": \"расчете_ндс_в_2026_году_\",\n  \"source\": \"02_tax_regimes_crimea_2026_ru.txt\",\n  \"index\": 12,\n  \"language\": \"ru\"\n}"
+}

@@ -1,0 +1,8 @@
+{
+  "slug": "split_tax/01_section_1.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/split_tax/01_section_1.meta.json",
+  "content": "{\n  \"title\": \"section_1\",\n  \"slug\": \"section_1\",\n  \"source\": \"02_tax_regimes_crimea_2026_ru.txt\",\n  \"index\": 1,\n  \"language\": \"ru\"\n}"
+}

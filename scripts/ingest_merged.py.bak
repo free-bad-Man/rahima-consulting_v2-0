@@ -1,0 +1,90 @@
+#!/usr/bin/env python3
+# Ingest merged tax docs into Qdrant with chunking (800 chars, overlap 200)
+import os
+from pathlib import Path
+from typing import List
+
+CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "800"))
+OVERLAP = int(os.getenv("OVERLAP", "200"))
+QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
+COLLECTION = os.getenv("QDRANT_COLLECTION", "viki_docs")
+MODEL = os.getenv("EMBED_MODEL", "all-MiniLM-L6-v2")
+
+def chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = OVERLAP) -> List[str]:
+    if size <= overlap:
+        raise ValueError("CHUNK_SIZE must be larger than OVERLAP")
+    chunks = []
+    start = 0
+    L = len(text)
+    while start < L:
+        end = min(start + size, L)
+        chunk = text[start:end]
+        chunks.append(chunk.strip())
+        if end == L:
+            break
+        start = end - overlap
+    return chunks
+
+def main():
+    try:
+        from sentence_transformers import SentenceTransformer
+        from qdrant_client import QdrantClient
+        from qdrant_client.http.models import VectorParams, Distance, PointStruct
+    except Exception as e:
+        print("Missing python packages. Please install: sentence-transformers qdrant-client")
+        raise
+
+    model = SentenceTransformer(MODEL)
+    dim = model.get_sentence_embedding_dimension()
+    client = QdrantClient(url=QDRANT_URL)
+
+    # create collection if not exists
+    existing = [c.name for c in client.get_collections().collections]
+    if COLLECTION not in existing:
+        client.recreate_collection(
+            collection_name=COLLECTION,
+            vectors_config=VectorParams(size=dim, distance=Distance.COSINE),
+        )
+        print("Created collection", COLLECTION)
+
+    merged_dir = Path("/root/main-app/data/docs/merged_tax")
+    files = sorted(merged_dir.glob("*.txt"))
+    print("Files to ingest:", len(files))
+
+    batch = []
+    batch_size = 64
+    total = 0
+    for f in files:
+        text = f.read_text(encoding="utf-8")
+        # extract meta if exists
+        meta_path = f.with_suffix(".meta.json")
+        meta = {}
+        if meta_path.exists():
+            import json
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        title = meta.get("title", f.stem)
+        chunks = chunk_text(text)
+        embeddings = model.encode(chunks, show_progress_bar=False)
+        for i, emb in enumerate(embeddings):
+            pid = f"{f.stem}-{i}"
+            payload = {
+                "source_file": f.name,
+                "title": title,
+                "chunk_index": i,
+            }
+            point = PointStruct(id=pid, vector=emb.tolist(), payload=payload)
+            batch.append(point)
+            if len(batch) >= batch_size:
+                client.upsert(collection_name=COLLECTION, points=batch)
+                total += len(batch)
+                print("Upserted", total)
+                batch = []
+    if batch:
+        client.upsert(collection_name=COLLECTION, points=batch)
+        total += len(batch)
+    print("Ingest finished. Total vectors:", total)
+
+if __name__ == "__main__":
+    main()
+
+

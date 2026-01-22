@@ -1,0 +1,57 @@
+/* tv-fallback.css (copy from dev/tv-fix)
+   Упрощённые стили для телевизоров — применяются когда <html> имеет класс .tv-browser.
+   Этот файл минимально вмешивается в десктоп/мобильные стили (влияет только на устройства, распознанные как TV).
+*/
+
+/* Отключаем тяжёлые анимации для большинства анимированных элементов на TV */
+html.tv-browser .animate,
+html.tv-browser [class*="anim"],
+html.tv-browser [class*="Anim"],
+html.tv-browser [class*="motion"],
+html.tv-browser [data-animate] {
+  animation: none !important;
+  -webkit-animation: none !important;
+  transition: none !important;
+  -webkit-transition: none !important;
+  will-change: auto !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Отключаем вращающиеся/loop loaders */
+html.tv-browser .orbit-loader,
+html.tv-browser .spinner,
+html.tv-browser .loader {
+  animation: none !important;
+  -webkit-animation: none !important;
+}
+
+/* Конкретный упрощённый вариант для главного hero: используем только opacity/transform */
+html.tv-browser .hero-anim {
+  -webkit-animation: none !important;
+  animation: none !important;
+  transition: transform 700ms ease, opacity 700ms ease;
+  -webkit-transition: -webkit-transform 700ms ease, opacity 700ms ease;
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  will-change: transform, opacity;
+  -webkit-transform: translateZ(0);
+}
+
+/* Ускоряем или убираем длительные переходы, но не ломаем layout */
+html.tv-browser * {
+  /* ОСТОРОЖНО: это глобальное правило только для TV, чтобы избежать подвисаний */
+  transition-duration: 300ms !important;
+  -webkit-transition-duration: 300ms !important;
+  transition-timing-function: ease !important;
+}
+
+/* Респект системному reduced motion (ещё один уровень защиты) */
+@media (prefers-reduced-motion: reduce) {
+  html.tv-browser * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+

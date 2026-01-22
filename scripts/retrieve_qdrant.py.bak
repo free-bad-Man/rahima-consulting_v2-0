@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+import os, json, time
+from urllib import request, error
+from pathlib import Path
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
+COLLECTION = os.getenv("QDRANT_COLLECTION", "viki_docs")
+EMBED_MODEL = os.getenv("EMBED_MODEL", "text-embedding-3-small")
+
+if not OPENAI_API_KEY:
+    print("OPENAI_API_KEY not set")
+    raise SystemExit(1)
+
+def openai_embeddings(inputs):
+    url = "https://api.openai.com/v1/embeddings"
+    body = json.dumps({"model": EMBED_MODEL, "input": inputs}).encode("utf-8")
+    headers = {"Content-Type":"application/json","Authorization":f"Bearer {OPENAI_API_KEY}"}
+    req = request.Request(url, data=body, headers=headers, method="POST")
+    with request.urlopen(req, timeout=60) as r:
+        data = json.load(r)
+        return [item["embedding"] for item in data["data"]]
+
+def qdrant_search(vector, top=5):
+    url = f"{QDRANT_URL}/collections/{COLLECTION}/points/search"
+    payload = {"vector": vector, "top": top, "with_payload": True}
+    req = request.Request(url, data=json.dumps(payload).encode("utf-8"), headers={"Content-Type":"application/json"}, method="POST")
+    with request.urlopen(req, timeout=30) as r:
+        return json.load(r)
+
+queries = [
+    "Какая ставка НДС с 1 января 2026 года?",
+    "Какова ставка УСН для объекта 'доходы'?",
+    "Кто может применять патентную систему ПСН в Крыму?",
+    "Какие льготы для резидентов СЭЗ по налогу на прибыль?",
+    "Как работает налог на профессиональный доход (НПД)?",
+]
+
+def main():
+    print("Running retrieval tests (OpenAI embeddings -> Qdrant search)...")
+    for q in queries:
+        try:
+            emb = openai_embeddings([q])[0]
+        except Exception as e:
+            print("Embedding error:", e)
+            continue
+        res = qdrant_search(emb, top=5)
+        hits = res.get("result") or res.get("hits") or res
+        print("\n=== QUERY ===")
+        print(q)
+        print("Top hits:")
+        for idx, h in enumerate(hits[:5], start=1):
+            payload = h.get("payload", {})
+            score = h.get("score") or h.get("dist") or h.get("payload",{}).get("_score")
+            print(f"{idx}. id={h.get('id')} score={score}")
+            title = payload.get("title") or payload.get("source_file")
+            print("   title/source:", title)
+            text = payload.get("text","")
+            print("   snippet:", text[:300].replace('\\n',' ') + ("..." if len(text)>300 else ""))
+    print("\nDone.")
+
+if __name__ == '__main__':
+    main()
+
+

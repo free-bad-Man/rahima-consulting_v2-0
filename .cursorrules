@@ -1,0 +1,19 @@
+Absolute rules:
+Never make edits without explicit permission. Always provide a summary and step-by-step solution first, and only then, once the user has selected your suggested solution, act!!!
+
+CRITICAL INFRASTRUCTURE RULES
+
+NEVER modify the directory: ./main-app/
+ALL development work must be done ONLY in the ./dev/ directory.
+PREVENT any synchronization or file copying between ./dev/ and ./main-app/.
+PRISMA: Always use prisma@6. NEVER run "npx prisma" without version @6. DO NOT upgrade to version 7+.
+DEPLOYMENT: Any changes to main-app must go through GitHub PR (dev -> main branch), never via direct local copy.
+
+We edit the /root/dev directory, commit, and push from it to the dev branch.
+Create a PR dev → main and merge after review.
+On production, in the /root/main-app directory, run git pull origin main and then docker compose pull && docker compose up -d --build — this will rebuild and restart the containers.
+
+CRITICAL INFRASTRUCTURE RULES (CONTAINERS)
+
+ACCESS & READ ONLY: You may access and read logs or configurations of containers with main-app in their name. However, NEVER perform any write operations, modify files, or execute state-changing commands (e.g., docker stop, docker rm, or interactive shell modifications).
+ISOLATION: PREVENT any data synchronization, volume sharing, or manual file copying between dev containers and main-app containers.

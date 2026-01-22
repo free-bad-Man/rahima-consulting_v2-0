@@ -1,0 +1,8 @@
+{
+  "slug": "split_tax/96_осно.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/split_tax/96_осно.meta.json",
+  "content": "{\n  \"title\": \"ОСНО).\",\n  \"slug\": \"осно\",\n  \"source\": \"02_tax_regimes_crimea_2026_ru.txt\",\n  \"index\": 96,\n  \"language\": \"ru\"\n}"
+}

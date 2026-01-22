@@ -1,0 +1,8 @@
+{
+  "slug": "merged_tax/BANK_ACCOUNT__public__v1.0__2026-01-08.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/merged_tax/BANK_ACCOUNT__public__v1.0__2026-01-08.meta.json",
+  "content": "{\n  \"service_code\": \"BANK_ACCOUNT\",\n  \"title\": \"BANK_ACCOUNT\",\n  \"slug\": \"bank-account-public-v10-2026-01-08\",\n  \"access\": \"public\",\n  \"language\": \"ru\",\n  \"source\": \"victory_package\",\n  \"source_file\": \"BANK_ACCOUNT__public__v1.0__2026-01-08.md\",\n  \"updated_at\": \"2026-01-08\"\n}"
+}

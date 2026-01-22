@@ -1,0 +1,10 @@
+{
+  "service_code": "BANK_BLOCK",
+  "title": "BANK_BLOCK",
+  "slug": "bank-block-public-v10-2026-01-08",
+  "access": "public",
+  "language": "ru",
+  "source": "victory_package",
+  "source_file": "BANK_BLOCK__public__v1.0__2026-01-08.md",
+  "updated_at": "2026-01-08"
+}

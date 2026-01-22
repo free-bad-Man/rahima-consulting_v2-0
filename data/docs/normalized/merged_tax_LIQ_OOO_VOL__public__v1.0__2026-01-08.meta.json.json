@@ -1,0 +1,8 @@
+{
+  "slug": "merged_tax/LIQ_OOO_VOL__public__v1.0__2026-01-08.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/merged_tax/LIQ_OOO_VOL__public__v1.0__2026-01-08.meta.json",
+  "content": "{\n  \"service_code\": \"LIQ_OOO_VOL\",\n  \"title\": \"LIQ_OOO_VOL\",\n  \"slug\": \"liq-ooo-vol-public-v10-2026-01-08\",\n  \"access\": \"public\",\n  \"language\": \"ru\",\n  \"source\": \"victory_package\",\n  \"source_file\": \"LIQ_OOO_VOL__public__v1.0__2026-01-08.md\",\n  \"updated_at\": \"2026-01-08\"\n}"
+}

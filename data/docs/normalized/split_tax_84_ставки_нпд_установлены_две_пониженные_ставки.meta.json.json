@@ -1,0 +1,8 @@
+{
+  "slug": "split_tax/84_ставки_нпд_установлены_две_пониженные_ставки.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/split_tax/84_ставки_нпд_установлены_две_пониженные_ставки.meta.json",
+  "content": "{\n  \"title\": \"Ставки НПД: Установлены две пониженные ставки:\",\n  \"slug\": \"ставки_нпд_установлены_две_пониженные_ставки\",\n  \"source\": \"02_tax_regimes_crimea_2026_ru.txt\",\n  \"index\": 84,\n  \"language\": \"ru\"\n}"
+}

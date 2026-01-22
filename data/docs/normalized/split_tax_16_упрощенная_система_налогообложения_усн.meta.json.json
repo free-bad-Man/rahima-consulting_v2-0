@@ -1,0 +1,8 @@
+{
+  "slug": "split_tax/16_упрощенная_система_налогообложения_усн.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/split_tax/16_упрощенная_система_налогообложения_усн.meta.json",
+  "content": "{\n  \"title\": \"Упрощенная система налогообложения (УСН)\",\n  \"slug\": \"упрощенная_система_налогообложения_усн\",\n  \"source\": \"02_tax_regimes_crimea_2026_ru.txt\",\n  \"index\": 16,\n  \"language\": \"ru\"\n}"
+}

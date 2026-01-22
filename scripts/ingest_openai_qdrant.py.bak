@@ -1,0 +1,162 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Ingest merged_tax files into Qdrant using OpenAI embeddings (no heavy deps).
+Requires env var OPENAI_API_KEY. Qdrant must be reachable at QDRANT_URL (default http://localhost:6333).
+"""
+import os
+import time
+import json
+import sys
+from pathlib import Path
+from urllib import request, error
+import uuid
+
+CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "800"))
+OVERLAP = int(os.getenv("OVERLAP", "200"))
+QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")
+COLLECTION = os.getenv("QDRANT_COLLECTION", "viki_docs")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+EMBED_MODEL = os.getenv("EMBED_MODEL", "text-embedding-3-small")
+BATCH = int(os.getenv("BATCH_SIZE", "16"))
+
+if not OPENAI_API_KEY:
+    print("ERROR: OPENAI_API_KEY not set in environment. Please set it and retry.")
+    sys.exit(1)
+
+def chunk_text(text, size=CHUNK_SIZE, overlap=OVERLAP):
+    if size <= overlap:
+        raise ValueError("CHUNK_SIZE must be larger than OVERLAP")
+    chunks = []
+    start = 0
+    L = len(text)
+    while start < L:
+        end = min(start + size, L)
+        chunk = text[start:end].strip()
+        if chunk:
+            chunks.append(chunk)
+        if end == L:
+            break
+        start = end - overlap
+    return chunks
+
+def qdrant_collections():
+    url = f"{QDRANT_URL}/collections"
+    try:
+        with request.urlopen(url, timeout=10) as r:
+            data = json.load(r)
+            return [c["name"] for c in data.get("result", {}).get("collections", [])]
+    except Exception:
+        return []
+
+def create_collection_if_missing(dim):
+    cols = qdrant_collections()
+    if COLLECTION in cols:
+        print("Collection exists:", COLLECTION)
+        return
+    url = f"{QDRANT_URL}/collections/{COLLECTION}"
+    payload = {
+        "vectors": {"size": dim, "distance": "Cosine"}
+    }
+    req = request.Request(url, data=json.dumps(payload).encode("utf-8"), method="PUT", headers={"Content-Type":"application/json"})
+    with request.urlopen(req, timeout=30) as r:
+        print("Created collection:", COLLECTION, r.status)
+
+def openai_embeddings(inputs):
+    url = "https://api.openai.com/v1/embeddings"
+    body = json.dumps({"model": EMBED_MODEL, "input": inputs}).encode("utf-8")
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {OPENAI_API_KEY}",
+    }
+    req = request.Request(url, data=body, headers=headers, method="POST")
+    tries = 0
+    while True:
+        try:
+            with request.urlopen(req, timeout=60) as r:
+                data = json.load(r)
+                embs = [item["embedding"] for item in data["data"]]
+                return embs
+        except error.HTTPError as e:
+            body = e.read().decode("utf-8", errors="ignore")
+            status = e.code
+            print("OpenAI HTTPError", status, body)
+            if status in (429, 503) and tries < 5:
+                tries += 1
+                wait = 2 ** tries
+                print("Retrying after", wait, "s")
+                time.sleep(wait)
+                continue
+            raise
+        except Exception as e:
+            print("OpenAI request failed:", e)
+            raise
+
+def qdrant_upsert(points):
+    url = f"{QDRANT_URL}/collections/{COLLECTION}/points"
+    payload = {"points": points}
+    req = request.Request(url, data=json.dumps(payload).encode("utf-8"), headers={"Content-Type":"application/json"}, method="PUT")
+    with request.urlopen(req, timeout=30) as r:
+        return r.status
+
+def main():
+    merged_dir = Path("/root/main-app/data/docs/merged_tax")
+    if not merged_dir.exists():
+        print("Merged dir not found:", merged_dir)
+        return
+    files = sorted(merged_dir.glob("*.txt"))
+    print("Files to ingest:", len(files))
+    # Heuristic embed dimension by calling one small request after first chunk
+    sample = "test"
+    try:
+        emb = openai_embeddings([sample])[0]
+        dim = len(emb)
+        print("Embedding dim detected:", dim)
+    except Exception as e:
+        print("Failed to get embedding from OpenAI:", e)
+        return
+
+    create_collection_if_missing(dim)
+
+    points_batch = []
+    total_points = 0
+    for f in files:
+        text = f.read_text(encoding="utf-8")
+        # read meta if exists
+        meta_path = f.with_suffix(".meta.json")
+        meta = {}
+        if meta_path.exists():
+            try:
+                meta = json.loads(meta_path.read_text(encoding="utf-8"))
+            except Exception:
+                meta = {}
+        title = meta.get("title", f.stem)
+        chunks = chunk_text(text)
+        # batch embed chunks
+        for i in range(0, len(chunks), BATCH):
+            batch_chunks = chunks[i:i+BATCH]
+            try:
+                embs = openai_embeddings(batch_chunks)
+            except Exception as e:
+                print("Stopping due to embedding error:", e)
+                return
+            for j, vec in enumerate(embs):
+                idx = i + j
+                pid = str(uuid.uuid4())
+                payload = {"source_file": f.name, "title": title, "chunk_index": idx, "text": batch_chunks[j]}
+                points_batch.append({"id": pid, "vector": vec, "payload": payload})
+            # upsert if batch large
+            if len(points_batch) >= 64:
+                qdrant_upsert(points_batch)
+                total_points += len(points_batch)
+                print("Upserted", total_points, "points")
+                points_batch = []
+    if points_batch:
+        qdrant_upsert(points_batch)
+        total_points += len(points_batch)
+    print("Ingestion complete. Total points:", total_points)
+
+if __name__ == "__main__":
+    main()
+
+

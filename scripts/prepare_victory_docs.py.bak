@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Prepare Victory PUBLIC markdown files for ingestion:
+ - recursively find .md files under data/docs/public
+ - extract YAML frontmatter (if present)
+ - write body to data/docs/merged_victory/<basename>.txt
+ - write metadata to data/docs/merged_victory/<basename>.meta.json
+"""
+import os
+import io
+import json
+from pathlib import Path
+
+ROOT = Path("/root/main-app/data/docs")
+PUBLIC_DIR = ROOT / "public"
+OUT_DIR = ROOT / "merged_victory"
+
+def parse_frontmatter(text):
+    lines = text.splitlines()
+    meta = {}
+    if len(lines) >= 1 and lines[0].strip() == '---':
+        # find closing ---
+        end = None
+        for i in range(1, len(lines)):
+            if lines[i].strip() == '---':
+                end = i
+                break
+        if end:
+            fm_lines = lines[1:end]
+            body = "\n".join(lines[end+1:]).strip()
+            for l in fm_lines:
+                if ":" in l:
+                    k, v = l.split(":", 1)
+                    meta[k.strip()] = v.strip().strip('"').strip("'")
+            return meta, body
+    return {}, text
+
+def slugify(name: str) -> str:
+    s = name.lower().replace(' ', '-').replace('__', '-').replace('_', '-')
+    s = ''.join(c for c in s if c.isalnum() or c in '-')
+    return s.strip('-')
+
+def main():
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    md_files = list(PUBLIC_DIR.rglob("*.md"))
+    print("Found md files:", len(md_files))
+    for md in md_files:
+        text = md.read_text(encoding="utf-8")
+        meta, body = parse_frontmatter(text)
+        basename = md.stem
+        out_txt = OUT_DIR / f"{basename}.txt"
+        out_meta = OUT_DIR / f"{basename}.meta.json"
+        # derive title and slug
+        title = meta.get("service_code") or meta.get("title") or basename
+        slug = meta.get("slug") or slugify(basename)
+        access = meta.get("access") or "public"
+        language = meta.get("language") or meta.get("lang") or "ru"
+        out_txt.write_text(body, encoding="utf-8")
+        md_meta = {
+            "service_code": meta.get("service_code"),
+            "title": title,
+            "slug": slug,
+            "access": access,
+            "language": language,
+            "source": "victory_package",
+            "source_file": md.name,
+            "updated_at": meta.get("updated_at")
+        }
+        out_meta.write_text(json.dumps(md_meta, ensure_ascii=False, indent=2), encoding="utf-8")
+        print("Wrote:", out_txt, out_meta)
+
+if __name__ == '__main__':
+    main()
+
+

@@ -1,0 +1,10 @@
+{
+  "service_code": "EDS_SETUP",
+  "title": "EDS_SETUP",
+  "slug": "eds-setup-public-v10-2026-01-08",
+  "access": "public",
+  "language": "ru",
+  "source": "victory_package",
+  "source_file": "EDS_SETUP__public__v1.0__2026-01-08.md",
+  "updated_at": "2026-01-08"
+}

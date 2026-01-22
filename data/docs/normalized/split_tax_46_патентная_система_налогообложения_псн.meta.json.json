@@ -1,0 +1,8 @@
+{
+  "slug": "split_tax/46_патентная_система_налогообложения_псн.meta.json",
+  "title": "{",
+  "access": "public",
+  "price_from": null,
+  "path": "data/docs/split_tax/46_патентная_система_налогообложения_псн.meta.json",
+  "content": "{\n  \"title\": \"Патентная система налогообложения (ПСН)\",\n  \"slug\": \"патентная_система_налогообложения_псн\",\n  \"source\": \"02_tax_regimes_crimea_2026_ru.txt\",\n  \"index\": 46,\n  \"language\": \"ru\"\n}"
+}

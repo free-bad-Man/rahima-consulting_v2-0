@@ -1,0 +1,10 @@
+{
+  "service_code": "CRM_AMO_SETUP",
+  "title": "CRM_AMO_SETUP",
+  "slug": "crm-amo-setup-public-v10-2026-01-08",
+  "access": "public",
+  "language": "ru",
+  "source": "victory_package",
+  "source_file": "CRM_AMO_SETUP__public__v1.0__2026-01-08.md",
+  "updated_at": "2026-01-08"
+}

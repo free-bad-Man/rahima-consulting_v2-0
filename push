@@ -1,0 +1,228 @@
+#!/bin/bash
+# Скрипт push: отправляет изменения в GitHub репозиторий
+# Репозиторий: https://github.com/free-bad-Man/rahima-consalting.git
+# ВАЖНО: Проверяет наличие секретов перед отправкой
+
+set -e  # Остановка при ошибке
+
+# Цвета для вывода
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+REPO_URL="https://github.com/free-bad-Man/rahima-consalting.git"
+BRANCH="main"
+
+echo -e "${BLUE}🚀 Git Push в GitHub${NC}"
+echo -e "${YELLOW}Репозиторий: $REPO_URL${NC}"
+echo ""
+
+# Проверка, что мы в git репозитории
+if [ ! -d ".git" ]; then
+    echo -e "${RED}❌ Ошибка: это не git репозиторий${NC}"
+    echo -e "${YELLOW}💡 Инициализируйте репозиторий: git init${NC}"
+    exit 1
+fi
+
+# Функция проверки на секреты
+check_secrets() {
+    local files_to_check=$(git diff --cached --name-only 2>/dev/null || git ls-files 2>/dev/null || echo "")
+    
+    if [ -z "$files_to_check" ]; then
+        return 0
+    fi
+    
+    echo -e "${BLUE}🔍 Проверка на наличие секретов...${NC}"
+    
+    # Список паттернов для поиска секретов
+    local secret_patterns=(
+        "password.*=.*[^=]{8,}"
+        "secret.*=.*[^=]{8,}"
+        "token.*=.*[^=]{16,}"
+        "api_key.*=.*[^=]{16,}"
+        "private_key.*=.*[^=]{16,}"
+        "GOOGLE_CLIENT_SECRET.*=.*GOCSPX-"
+        "NEXTAUTH_SECRET.*=.*[^=]{16,}"
+        "SMTP_PASSWORD.*=.*[^=]{4,}"
+        "POSTGRES_PASSWORD.*=.*[^=]{4,}"
+        "AMOCRM.*SECRET.*=.*[^=]{16,}"
+        "AMOCRM_AUTH_CODE.*=.*[^=]{32,}"
+        "N8N_ENCRYPTION_KEY.*=.*[^=]{8,}"
+        "N8N_CALLBACK_SECRET.*=.*[^=]{16,}"
+    )
+    
+    local found_secrets=false
+    
+    for file in $files_to_check; do
+        # Пропускаем безопасные файлы (шаблоны, скрипты, документация)
+        if [[ "$file" == *".env"* ]] || \
+           [[ "$file" == *"docker-compose.yml" ]] || \
+           [[ "$file" == *".secret"* ]] || \
+           [[ "$file" == *".example"* ]] || \
+           [[ "$file" == "push" ]] || \
+           [[ "$file" == "pull" ]] || \
+           [[ "$file" == *"SECURITY.md" ]] || \
+           [[ "$file" == *"README"* ]]; then
+            continue
+        fi
+        
+        # Проверяем только текстовые файлы
+        if [ -f "$file" ] && file "$file" | grep -q "text"; then
+            for pattern in "${secret_patterns[@]}"; do
+                # Ищем строки с паттерном секрета
+                matching_lines=$(grep -iE "$pattern" "$file" 2>/dev/null || true)
+                
+                if [ -n "$matching_lines" ]; then
+                    # Проверяем каждую найденную строку
+                    while IFS= read -r line; do
+                        # Игнорируем строки с process.env или ${VAR} (переменные окружения)
+                        if ! echo "$line" | grep -qiE "(process\.env|\\\$\{)" 2>/dev/null; then
+                            # Это реальный секрет, а не переменная окружения
+                            echo -e "${RED}⚠️  ВНИМАНИЕ: Найден возможный секрет в файле: $file${NC}"
+                            echo -e "${YELLOW}   Паттерн: $pattern${NC}"
+                            echo -e "${YELLOW}   Строка: ${line:0:80}...${NC}"
+                            found_secrets=true
+                            break  # Достаточно одного найденного секрета в файле
+                        fi
+                    done <<< "$matching_lines"
+                fi
+            done
+        fi
+    done
+    
+    if [ "$found_secrets" = true ]; then
+        echo ""
+        echo -e "${RED}❌ ОШИБКА БЕЗОПАСНОСТИ!${NC}"
+        echo -e "${YELLOW}Обнаружены возможные секреты в файлах, которые будут отправлены в GitHub!${NC}"
+        echo ""
+        echo -e "${BLUE}Рекомендации:${NC}"
+        echo -e "1. Убедитесь, что файлы с секретами добавлены в .gitignore"
+        echo -e "2. Используйте переменные окружения (.env файлы) вместо хардкода секретов"
+        echo -e "3. Для docker-compose.yml используйте docker-compose.yml.example без секретов"
+        echo ""
+        read -p "$(echo -e ${YELLOW}Всё равно продолжить? [y/N]: ${NC})" -n 1 -r
+        echo
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            echo -e "${YELLOW}❌ Отменено пользователем${NC}"
+            exit 1
+        fi
+    else
+        echo -e "${GREEN}✅ Проверка безопасности пройдена${NC}"
+    fi
+}
+
+# Проверка наличия remote
+if ! git remote | grep -q "origin"; then
+    echo -e "${YELLOW}⚠️  Remote 'origin' не найден. Добавляю...${NC}"
+    git remote add origin "$REPO_URL"
+fi
+
+# Проверка URL remote
+CURRENT_URL=$(git remote get-url origin 2>/dev/null || echo "")
+if [ "$CURRENT_URL" != "$REPO_URL" ]; then
+    echo -e "${YELLOW}⚠️  URL remote отличается. Обновляю...${NC}"
+    git remote set-url origin "$REPO_URL"
+fi
+
+# Функция для отправки в GitHub
+push_to_github() {
+    echo -e "${GREEN}⬆️  Отправка в GitHub (branch: $BRANCH)...${NC}"
+    if git push -u origin "$BRANCH" 2>&1; then
+        echo -e "${GREEN}✅ Успешно отправлено в GitHub!${NC}"
+        echo -e "${BLUE}🔗 Репозиторий: $REPO_URL${NC}"
+        return 0
+    else
+        echo -e "${RED}❌ Ошибка при отправке${NC}"
+        echo ""
+        echo -e "${YELLOW}💡 Проблема с аутентификацией GitHub${NC}"
+        echo -e "${BLUE}Настройте Personal Access Token:${NC}"
+        echo -e "1. Перейдите: https://github.com/settings/tokens"
+        echo -e "2. Создайте новый token (classic) с правами 'repo'"
+        echo -e "3. Используйте token вместо пароля при запросе"
+        echo ""
+        echo -e "${YELLOW}Или используйте SSH:${NC}"
+        echo -e "git remote set-url origin git@github.com:free-bad-Man/rahima-consalting.git"
+        return 1
+    fi
+}
+
+# Проверка наличия изменений
+UNCOMMITTED=$(git status --porcelain)
+# Проверяем, есть ли неотправленные коммиты
+UNPUSHED_COUNT=$(git rev-list --count origin/$BRANCH..HEAD 2>/dev/null || echo "0")
+
+# Если нет ни незакоммиченных изменений, ни неотправленных коммитов
+if [ -z "$UNCOMMITTED" ] && [ "$UNPUSHED_COUNT" = "0" ]; then
+    echo -e "${YELLOW}⚠️  Нет изменений для коммита и нет неотправленных коммитов${NC}"
+    exit 0
+fi
+
+# Если есть неотправленные коммиты, но нет незакоммиченных изменений
+if [ -z "$UNCOMMITTED" ] && [ "$UNPUSHED_COUNT" != "0" ]; then
+    echo -e "${BLUE}📊 Есть неотправленные коммиты ($UNPUSHED_COUNT):${NC}"
+    git log origin/$BRANCH..HEAD --oneline 2>/dev/null || git log --oneline -5
+    echo ""
+    read -p "$(echo -e ${YELLOW}Отправить коммиты в GitHub? [y/N]: ${NC})" -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo -e "${YELLOW}❌ Отменено${NC}"
+        exit 0
+    fi
+    
+    if push_to_github; then
+        exit 0
+    else
+        exit 1
+    fi
+fi
+
+# Если есть незакоммиченные изменения - продолжаем обычный процесс
+echo -e "${BLUE}📊 Статус изменений:${NC}"
+git status --short
+echo ""
+
+# Проверка на секреты перед добавлением
+check_secrets
+
+# Спросить подтверждение
+read -p "$(echo -e ${YELLOW}Продолжить? [y/N]: ${NC})" -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo -e "${YELLOW}❌ Отменено${NC}"
+    exit 0
+fi
+
+# Добавить все изменения
+echo -e "${GREEN}📦 Добавление файлов...${NC}"
+git add .
+
+# Проверка на секреты после добавления
+check_secrets
+
+# Показать что будет закоммичено
+echo -e "${BLUE}📝 Файлы для коммита:${NC}"
+git status --short
+echo ""
+
+# Запросить сообщение коммита
+if [ -z "$1" ]; then
+    read -p "$(echo -e ${YELLOW}Введите сообщение коммита: ${NC})" COMMIT_MSG
+    if [ -z "$COMMIT_MSG" ]; then
+        COMMIT_MSG="Update: $(date '+%Y-%m-%d %H:%M:%S')"
+        echo -e "${YELLOW}💡 Используется сообщение по умолчанию: $COMMIT_MSG${NC}"
+    fi
+else
+    COMMIT_MSG="$1"
+fi
+
+# Создать коммит
+echo -e "${GREEN}💾 Создание коммита...${NC}"
+git commit -m "$COMMIT_MSG"
+
+# Отправить в GitHub
+if ! push_to_github; then
+    exit 1
+fi
+
