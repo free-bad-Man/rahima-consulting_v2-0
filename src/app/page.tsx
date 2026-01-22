@@ -37,64 +37,9 @@ const sections = [
 
 // Выносим navItems за пределы компонента
 const navItems: MegaMenuItem[] = [
-  {
-    id: 1,
-    label: "Услуги",
-    link: "/services",
-    subMenus: [
-      {
-        title: "Бухгалтерия",
-        items: [
-          { label: "Бухгалтерское сопровождение ООО", description: "Полное ведение бухгалтерского учета для ООО", icon: "FileText" },
-          { label: "Бухгалтерское сопровождение ИП", description: "Ведение учета и отчетности для ИП", icon: "FileText" },
-          { label: "Постановка учёта с нуля", description: "Организация системы учета для нового бизнеса", icon: "Settings" },
-          { label: "Восстановление учёта", description: "Восстановление утерянных записей", icon: "RotateCcw" },
-          { label: "Кадровый учёт и зарплата", description: "Ведение кадрового делопроизводства", icon: "Users" },
-          { label: "Сдача отчётности", description: "Подготовка и сдача отчетности", icon: "Send" },
-        ],
-      },
-      {
-        title: "Регистрация бизнеса",
-        items: [
-          { label: "Регистрация ИП", description: "Быстрая регистрация ИП", icon: "Building2" },
-          { label: "Регистрация ООО", description: "Регистрация ООО под ключ", icon: "Building2" },
-          { label: "Изменения в ЕГРЮЛ/ЕГРИП", description: "Внесение изменений в реестр", icon: "FileCheck" },
-          { label: "Ликвидация ИП и ООО", description: "Закрытие бизнеса", icon: "Trash2" },
-          { label: "Юридический адрес", description: "Предоставление юр. адреса", icon: "MapPin" },
-          { label: "Электронная подпись (ЭЦП)", description: "Получение ЭЦП", icon: "Key" },
-        ],
-      },
-    ],
-  },
-  {
-    id: 2,
-    label: "Решения",
-    link: "/solutions",
-    subMenus: [
-      {
-        title: "Готовые решения",
-        items: [
-          { label: "Старт бизнеса под ключ", description: "Регистрация + бухгалтерия + консультации", icon: "Rocket" },
-          { label: "Переезд бизнеса в Крым", description: "Полное сопровождение переезда", icon: "Globe" },
-          { label: "Бизнес на аутсорсе", description: "Полная передача бухгалтерии и HR", icon: "Briefcase" },
-        ],
-      },
-    ],
-  },
-  {
-    id: 3,
-    label: "ИИ-Ассистенты",
-    link: "/ai-assistants",
-    subMenus: [
-      {
-        title: "Наши ИИ-продукты",
-        items: [
-          { label: "Викки - Консультант", description: "ИИ-ассистент для консультаций", icon: "Cpu" },
-          { label: "Автоматизация с ИИ", description: "Внедрение ИИ в бизнес-процессы", icon: "Zap" },
-        ],
-      },
-    ],
-  },
+  { id: 1, label: "Услуги", link: "/services" },
+  { id: 2, label: "Решения", link: "/solutions" },
+  { id: 3, label: "ИИ-Ассистенты", link: "/ai-assistants" },
   { id: 4, label: "Кейсы и отзывы", link: "/cases" },
   { id: 7, label: "Контакты", link: "/contacts" },
 ];
