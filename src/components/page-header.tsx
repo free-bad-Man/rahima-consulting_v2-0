@@ -29,7 +29,7 @@ export default function PageHeader() {
             <img
               src="/logo.png"
               alt="Rahima Consulting"
-              className="h-14 md:h-16 w-auto object-contain"
+              className="h-28 md:h-32 w-auto object-contain"
               style={{
                 filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(2000%) hue-rotate(250deg) brightness(1.5) contrast(1.1)',
               }}
