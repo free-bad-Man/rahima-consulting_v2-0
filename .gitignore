@@ -106,7 +106,7 @@ bcrypt,sys
 # Old documentation and generated data
 data/docs/
 data/qdrant/*.jsonl
-data/services/generated*.json
+# Note: data/services/generated*.json are NEEDED for the app to work!
 
 # IDE and editor files
 .cursor/
