@@ -212,27 +212,11 @@ const MegaMenu = React.forwardRef<HTMLUListElement, MegaMenuProps>(
             <li
               key={navItem.label}
               className="relative"
-              onMouseEnter={!isModalMenu ? () => handleHover(navItem.label) : undefined}
-              onMouseLeave={!isModalMenu ? () => handleHover(null) : undefined}
+              onMouseEnter={() => hasSubmenu ? handleClick(navItem.label) : undefined}
+              onMouseLeave={() => hasSubmenu ? closeModal() : undefined}
             >
               <div className="relative">
-                {isModalMenu && hasSubmenu ? (
-                  <button
-                    type="button"
-                    className="relative"
-                    onMouseEnter={() => {
-                      setIsHover(navItem.id);
-                      setTooltipHover(navItem.label);
-                    }}
-                    onMouseLeave={() => {
-                      setIsHover(null);
-                      setTooltipHover(null);
-                    }}
-                    onClick={() => handleClick(navItem.label)}
-                  >
-                    {triggerContent}
-                  </button>
-                ) : navItem.link ? (
+                {navItem.link ? (
                   <Link
                     href={navItem.link}
                     className="relative"
