@@ -255,32 +255,32 @@ export default function Page() {
                     <div className="relative">
                       <div ref={logoTrackRef} className="logo-track flex items-center gap-6" aria-hidden>
                         <div className="logo-set flex items-center gap-6">
-                          <img src="/logos/1_1C.png" alt="1C" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/2_tailwind.png" alt="Tailwind" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/3_alfa.png" alt="Alfa" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/4_next.png" alt="Next.js" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/5_amocrm.png" alt="amoCRM" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/6_node.png" alt="Node.js" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/7_PSB.png" alt="PSB" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/8_saby.png" alt="Saby" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/9_tbank.png" alt="TBank" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/10_typescript-logo.png" alt="TypeScript" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/11_sber-856.png" alt="Sber" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/12_tochka.png" alt="Tochka" className="logo-img h-32 w-[320px] object-contain" />
+                          <img src="/logos/1_1C.png" alt="1C" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/2_tailwind.png" alt="Tailwind" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/3_alfa.png" alt="Alfa" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/4_next.png" alt="Next.js" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/5_amocrm.png" alt="amoCRM" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/6_node.png" alt="Node.js" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/7_PSB.png" alt="PSB" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/8_saby.png" alt="Saby" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/9_tbank.png" alt="TBank" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/10_typescript-logo.png" alt="TypeScript" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/11_sber-856.png" alt="Sber" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/12_tochka.png" alt="Tochka" className="logo-img h-64 w-[640px] object-contain" />
                         </div>
                         <div className="logo-set flex items-center gap-6" aria-hidden>
-                          <img src="/logos/1_1C.png" alt="" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/2_tailwind.png" alt="" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/3_alfa.png" alt="" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/4_next.png" alt="" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/5_amocrm.png" alt="" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/6_node.png" alt="" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/7_PSB.png" alt="" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/8_saby.png" alt="" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/9_tbank.png" alt="" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/10_typescript-logo.png" alt="" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/11_sber-856.png" alt="" className="logo-img h-32 w-[320px] object-contain" />
-                          <img src="/logos/12_tochka.png" alt="" className="logo-img h-32 w-[320px] object-contain" />
+                          <img src="/logos/1_1C.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/2_tailwind.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/3_alfa.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/4_next.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/5_amocrm.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/6_node.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/7_PSB.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/8_saby.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/9_tbank.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/10_typescript-logo.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/11_sber-856.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/12_tochka.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
                         </div>
                       </div>
 
@@ -292,7 +292,7 @@ export default function Page() {
                           width: max-content;
                           background: transparent;
                           box-shadow: none;
-                          opacity: 0.5;
+                          opacity: 1.0;
                           animation: scroll-logos var(--scroll-duration, 20s) linear infinite;
                           will-change: transform;
                         }
