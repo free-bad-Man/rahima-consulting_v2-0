@@ -26,14 +26,16 @@ export default function PageHeader() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <img
-              src="/logo.png"
-              alt="Rahima Consulting"
-              className="h-28 md:h-32 w-auto object-contain"
-              style={{
-                filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(2000%) hue-rotate(250deg) brightness(1.5) contrast(1.1)',
-              }}
-            />
+            <div className="relative p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg shadow-black/50 hover:bg-white/15 transition-all">
+              <img
+                src="/logo.png"
+                alt="Rahima Consulting"
+                className="h-20 md:h-24 w-auto object-contain"
+                style={{
+                  filter: 'brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))',
+                }}
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
