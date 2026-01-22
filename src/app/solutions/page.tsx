@@ -4,7 +4,8 @@ import PageHeader from "@/components/page-header";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import GlassCard from "@/components/ui/glass-card";
 import ShaderBackground from "@/components/ui/shader-background";
-import { Rocket, TrendingUp, Shield, Users, ArrowRight } from "lucide-react";
+import { Briefcase, ArrowRight, CheckCircle } from "lucide-react";
+import { getAllSolutions } from "@/lib/solutions-data";
 
 export const metadata: Metadata = {
   title: "Решения для бизнеса | Rahima Consulting",
@@ -16,106 +17,9 @@ export const metadata: Metadata = {
   },
 };
 
-const solutions = [
-  {
-    category: "Для старта бизнеса",
-    icon: Rocket,
-    items: [
-      {
-        title: "Бизнес-старт под ключ",
-        description: "Полное сопровождение запуска нового бизнеса от регистрации до первых продаж",
-        slug: "biznes-start-pod-klyuch",
-        price: "от 50 000 ₽",
-      },
-      {
-        title: "Финансовая модель для нового бизнеса",
-        description: "Разработка финансовой модели и планирование на 12 месяцев",
-        slug: "finansovaya-model",
-        price: "от 30 000 ₽",
-      },
-      {
-        title: "Базовая упаковка: сайт + Яндекс.Бизнес + VK",
-        description: "Комплексная упаковка бизнеса в интернете для быстрого старта",
-        slug: "bazovaya-upakovka",
-        price: "от 40 000 ₽",
-      },
-    ],
-  },
-  {
-    category: "Для действующего бизнеса",
-    icon: TrendingUp,
-    items: [
-      {
-        title: "Искусственный интеллект в твоей бухгалтерии",
-        description: "Внедрение ИИ для автоматизации бухгалтерских процессов и аналитики",
-        slug: "ii-v-buhgalterii",
-        price: "от 80 000 ₽",
-      },
-      {
-        title: "Перевод бухгалтерии в облачную 1С",
-        description: "Миграция бухгалтерского учета в облачные решения с настройкой доступов",
-        slug: "oblachnaya-1c",
-        price: "от 25 000 ₽",
-      },
-      {
-        title: "Комплексное сопровождение (бухгалтер + юрист)",
-        description: "Полная поддержка бизнеса с командой профессионалов",
-        slug: "kompleksnoe-soprovozhdenie",
-        price: "от 35 000 ₽/мес",
-      },
-    ],
-  },
-  {
-    category: "Продажи и маркетинг",
-    icon: Users,
-    items: [
-      {
-        title: "Автоматизированный отдел продаж",
-        description: "Настройка CRM, воронок продаж и автоматизации процессов",
-        slug: "avtomatizirovannyj-otdel-prodazh",
-        price: "от 60 000 ₽",
-      },
-      {
-        title: "Маркетинг под ключ",
-        description: "Разработка и реализация комплексных маркетинговых стратегий",
-        slug: "marketing-pod-klyuch",
-        price: "от 70 000 ₽/мес",
-      },
-      {
-        title: "CRM + сайт + сквозная аналитика",
-        description: "Интеграция всех систем для полного контроля маркетинга",
-        slug: "crm-sajt-analitika",
-        price: "от 90 000 ₽",
-      },
-    ],
-  },
-  {
-    category: "Контроль и безопасность",
-    icon: Shield,
-    items: [
-      {
-        title: "Бизнес без штрафов",
-        description: "Системы контроля и аудита для предотвращения штрафов и санкций",
-        slug: "biznes-bez-shtrafov",
-        price: "от 15 000 ₽/мес",
-      },
-      {
-        title: "Аудит договоров и корпоративных документов",
-        description: "Юридическая экспертиза документов для минимизации рисков",
-        slug: "audit-dogovorov",
-        price: "от 20 000 ₽",
-      },
-      {
-        title: "Настройка ИИ-ассистентов под процессы компании",
-        description: "Индивидуальная настройка ИИ для оптимизации бизнес-процессов",
-        slug: "nastrojka-ii-assistentov",
-        price: "от 50 000 ₽",
-      },
-    ],
-  },
-];
-
 export default function SolutionsPage() {
+  const solutions = getAllSolutions();
+  
   return (
     <div className="relative min-h-screen">
       <ShaderBackground />
@@ -141,63 +45,56 @@ export default function SolutionsPage() {
               </p>
             </GlassCard>
 
-            {/* Solutions Categories */}
-            {solutions.map((category, catIndex) => {
-              const Icon = category.icon;
-              
-              return (
-                <div key={category.category} className="mb-12">
+            {/* Solutions Grid */}
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              {solutions.map((solution, index) => (
+                <Link 
+                  key={solution.slug} 
+                  href={`/solutions/${solution.slug}`}
+                  className="block group"
+                >
                   <GlassCard 
-                    className="mb-6" 
-                    animationDelay={100 + catIndex * 50}
-                    hover={false}
+                    className="h-full flex flex-col"
+                    animationDelay={100 + index * 50}
                   >
-                    <div className="flex items-center gap-3">
-                      <div className="p-3 rounded-lg bg-gradient-to-br from-purple-500/20 to-blue-500/20">
-                        <Icon className="w-6 h-6 text-purple-300" />
+                    <div className="flex items-start gap-3 mb-4">
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex-shrink-0">
+                        <Briefcase className="w-6 h-6 text-purple-300" />
                       </div>
-                      <h2 className="text-2xl md:text-3xl font-bold text-white">
-                        {category.category}
-                      </h2>
+                      <div className="flex-grow">
+                        <h3 className="text-xl font-semibold text-white mb-2">
+                          {solution.title}
+                        </h3>
+                        <p className="text-white/70 text-sm mb-3">
+                          {solution.short_tagline}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="mb-4 flex-grow">
+                      <div className="space-y-2">
+                        {solution.advantages.slice(0, 3).map((advantage, i) => (
+                          <div key={i} className="flex items-start gap-2">
+                            <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
+                            <span className="text-white/60 text-sm">{advantage}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                      <span className="text-xl font-bold text-purple-300">
+                        {solution.price_display}
+                      </span>
+                      <div className="flex items-center text-purple-300 font-medium group-hover:text-purple-200 transition-colors">
+                        Подробнее
+                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
                   </GlassCard>
-
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {category.items.map((solution, solutionIndex) => (
-                      <Link 
-                        key={solution.slug} 
-                        href={`/solutions/${solution.slug}`}
-                        className="block group"
-                      >
-                        <GlassCard 
-                          className="h-full flex flex-col"
-                          animationDelay={200 + catIndex * 50 + solutionIndex * 50}
-                        >
-                          <h3 className="text-xl font-semibold text-white mb-3">
-                            {solution.title}
-                          </h3>
-                          
-                          <p className="text-white/70 mb-4 flex-grow">
-                            {solution.description}
-                          </p>
-
-                          <div className="mb-4">
-                            <span className="text-2xl font-bold text-purple-300">
-                              {solution.price}
-                            </span>
-                          </div>
-
-                          <div className="flex items-center text-purple-300 font-medium group-hover:text-purple-200 transition-colors">
-                            Подробнее
-                            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                          </div>
-                        </GlassCard>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
+                </Link>
+              ))}
+            </div>
 
             {/* CTA Section */}
             <GlassCard className="text-center" animationDelay={400}>

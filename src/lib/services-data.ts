@@ -31,17 +31,21 @@ export function getAllServices(): Service[] {
   }
 
   try {
-    const servicesPath = path.join(process.cwd(), 'data/services/generated_services_normalized.json');
+    // Use the better structured generated_services.json file
+    const servicesPath = path.join(process.cwd(), 'data/services/generated_services.json');
     
     if (fs.existsSync(servicesPath)) {
       const data = fs.readFileSync(servicesPath, 'utf-8');
       const services = JSON.parse(data) as Service[];
       
-      // Ensure all services have slugs
-      cachedServices = services.map(service => ({
-        ...service,
-        slug: service.slug || slugify(service.title),
-      }));
+      // Filter out invalid services and ensure all have proper slugs
+      cachedServices = services
+        .filter(service => service.title && service.title.length > 2)
+        .map(service => ({
+          ...service,
+          slug: service.slug || slugify(service.title),
+          short_tagline: service.short_tagline || (service.full_text ? service.full_text.substring(0, 150) : ''),
+        }));
       
       return cachedServices;
     }
