@@ -212,25 +212,43 @@ const MegaMenu = React.forwardRef<HTMLUListElement, MegaMenuProps>(
             <li
               key={navItem.label}
               className="relative"
-              onMouseEnter={() => hasSubmenu ? handleClick(navItem.label) : undefined}
-              onMouseLeave={() => hasSubmenu ? closeModal() : undefined}
+              onMouseEnter={() => hasSubmenu && !isMobile ? handleHover(navItem.label) : undefined}
+              onMouseLeave={() => hasSubmenu && !isMobile ? handleHover(null) : undefined}
             >
               <div className="relative">
                 {navItem.link ? (
-                  <Link
-                    href={navItem.link}
-                    className="relative"
-                    onMouseEnter={() => {
-                      setIsHover(navItem.id);
-                      setTooltipHover(navItem.label);
-                    }}
-                    onMouseLeave={() => {
-                      setIsHover(null);
-                      setTooltipHover(null);
-                    }}
-                  >
-                    {triggerContent}
-                  </Link>
+                  hasSubmenu && isMobile ? (
+                    <button
+                      type="button"
+                      className="relative"
+                      onMouseEnter={() => {
+                        setIsHover(navItem.id);
+                        setTooltipHover(navItem.label);
+                      }}
+                      onMouseLeave={() => {
+                        setIsHover(null);
+                        setTooltipHover(null);
+                      }}
+                      onClick={() => handleClick(navItem.label)}
+                    >
+                      {triggerContent}
+                    </button>
+                  ) : (
+                    <Link
+                      href={navItem.link}
+                      className="relative"
+                      onMouseEnter={() => {
+                        setIsHover(navItem.id);
+                        setTooltipHover(navItem.label);
+                      }}
+                      onMouseLeave={() => {
+                        setIsHover(null);
+                        setTooltipHover(null);
+                      }}
+                    >
+                      {triggerContent}
+                    </Link>
+                  )
                 ) : navItem.label === "Кейсы и отзывы" && onCasesAndReviewsClick ? (
                   <button
                     type="button"
