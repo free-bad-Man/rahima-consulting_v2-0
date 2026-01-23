@@ -32,10 +32,10 @@ function cleanText(text: string): string {
   if (!text) return '';
   
   return text
-    // Удаляем невидимые символы, zero-width spaces, BOM
-    .replace(/[\u200B-\u200D\uFEFF]/g, '')
+    // Удаляем невидимые символы, zero-width spaces, BOM, form feed
+    .replace(/[\u200B-\u200D\uFEFF\f]/g, '')
     // Удаляем квадратики и другие placeholder символы
-    .replace(/[\uFFFD\u25A1]/g, '')
+    .replace(/[\uFFFD\u25A1\u25A0\u2610]/g, '')
     // Нормализуем пробелы (заменяем множественные на один)
     .replace(/\s+/g, ' ')
     // Убираем пробелы перед знаками препинания
@@ -142,6 +142,28 @@ function mergeIncludesItems(items: string[]): string[] {
 }
 
 /**
+ * Извлекает цену из full_text если price_from отсутствует
+ * Ищет в разделе "Стоимость" или "Цена"
+ */
+function extractPriceFromText(fullText: string): number | null {
+  if (!fullText) return null;
+  
+  // Ищем секцию со стоимостью
+  const priceSection = fullText.match(/\d+\.\s*(Стоимость|Цена)[\s\S]{0,500}?(?:\d[\s\d]+рубл)/i);
+  if (!priceSection) return null;
+  
+  // Извлекаем число (от X руб, под ключ от X руб и т.д.)
+  const priceMatch = priceSection[0].match(/(?:от\s+)?(\d[\s\d]{1,10})[\s]*рубл/i);
+  if (priceMatch && priceMatch[1]) {
+    const priceStr = priceMatch[1].replace(/\s+/g, '');
+    const price = parseInt(priceStr, 10);
+    return isNaN(price) ? null : price;
+  }
+  
+  return null;
+}
+
+/**
  * Извлекает описание из full_text для услуги
  * Пытается найти текст между заголовком и "1. Суть услуги",
  * если не находит - берет первые 2-3 предложения из "Суть услуги"
@@ -198,10 +220,14 @@ export function getAllServices(): Service[] {
             description = extractDescription(service.full_text || '', service.title);
           }
           
+          // Если price_from отсутствует - пытаемся извлечь из full_text
+          const price = service.price_from || extractPriceFromText(service.full_text || '');
+          
           return {
             ...service,
             slug: service.slug || slugify(service.title),
             short_tagline: description,
+            price_from: price,
             includes: service.includes ? mergeIncludesItems(service.includes) : [],
             excludes: service.excludes ? mergeIncludesItems(service.excludes) : [],
             requirements: service.requirements ? mergeIncludesItems(service.requirements) : [],
