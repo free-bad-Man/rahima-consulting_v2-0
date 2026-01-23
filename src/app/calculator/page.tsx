@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import PageHeader from "@/components/page-header";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import GlassCard from "@/components/ui/glass-card";
-import ShaderBackground from "@/components/ShaderBackground";
+import ShaderBackground from "@/components/ui/shader-background";
 import { Calculator, CheckCircle2, AlertCircle } from "lucide-react";
 
 // ============ ТИПЫ ============
