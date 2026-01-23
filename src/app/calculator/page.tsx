@@ -172,7 +172,7 @@ export default function CalculatorPage() {
 
       if (basePrice > 0) {
         accountingItems.push({
-          name: `Бухгалтерское сопровождение (${entityType} ${taxSystem.replace('_', ' ')})`,
+          name: `Бухгалтерское сопровождение (${entityType === 'IP' ? 'ИП' : entityType} ${taxSystem.replace('_', ' ')})`,
           price: basePrice,
           type: 'monthly',
         });
@@ -231,7 +231,7 @@ export default function CalculatorPage() {
       }
 
       if (accountingItems.length > 0) {
-        breakdown.push({ category: '📊 Бухгалтерское сопровождение', items: accountingItems });
+        breakdown.push({ category: 'БУХГАЛТЕРСКОЕ СОПРОВОЖДЕНИЕ', items: accountingItems });
       }
     }
 
@@ -239,14 +239,14 @@ export default function CalculatorPage() {
     if (mainService === 'reporting' && entityType) {
       const reportingPrice = PRICES.reportingOnly[entityType] || 0;
       if (reportingPrice > 0) {
-        breakdown.push({
-          category: '📋 Отчётность',
-          items: [{
-            name: `Сдача отчётности (${entityType})`,
-            price: reportingPrice,
-            type: 'monthly',
-          }],
-        });
+      breakdown.push({
+        category: 'ОТЧЁТНОСТЬ',
+        items: [{
+          name: `Сдача отчётности (${entityType === 'IP' ? 'ИП' : entityType})`,
+          price: reportingPrice,
+          type: 'monthly',
+        }],
+      });
         monthlyTotal += reportingPrice;
       }
     }
@@ -255,7 +255,7 @@ export default function CalculatorPage() {
     if (payroll) {
       const payrollPrice = PRICES.payroll.base + (employees * PRICES.payroll.perEmployee);
       breakdown.push({
-        category: '👥 Зарплата и кадры',
+        category: 'ЗАРПЛАТА И КАДРЫ',
         items: [{
           name: `Зарплата и кадры (${employees} сотр.)`,
           price: payrollPrice,
@@ -270,18 +270,18 @@ export default function CalculatorPage() {
     
     if (restoreAccounting && entityType) {
       const price = PRICES.oneTime.restoreAccounting[entityType] || 0;
-      oneTimeAccounting.push({ name: `Восстановление учёта (${entityType}, за квартал)`, price, type: 'one-time' });
+      oneTimeAccounting.push({ name: `Восстановление учёта (${entityType === 'IP' ? 'ИП' : entityType}, за квартал)`, price, type: 'one-time' });
       oneTimeTotal += price;
     }
 
     if (setupAccounting && entityType) {
       const price = PRICES.oneTime.setupAccounting[entityType] || 0;
-      oneTimeAccounting.push({ name: `Постановка учёта с нуля (${entityType})`, price, type: 'one-time' });
+      oneTimeAccounting.push({ name: `Постановка учёта с нуля (${entityType === 'IP' ? 'ИП' : entityType})`, price, type: 'one-time' });
       oneTimeTotal += price;
     }
 
     if (oneTimeAccounting.length > 0) {
-      breakdown.push({ category: '🔧 Разовые бухгалтерские услуги', items: oneTimeAccounting });
+      breakdown.push({ category: 'РАЗОВЫЕ БУХГАЛТЕРСКИЕ УСЛУГИ', items: oneTimeAccounting });
     }
 
     // 5. РЕГИСТРАЦИЯ БИЗНЕСА
@@ -289,7 +289,7 @@ export default function CalculatorPage() {
 
     if (registration && entityType) {
       const price = PRICES.oneTime.registration[entityType] || 0;
-      registrationItems.push({ name: `Регистрация ${entityType}`, price, type: 'one-time' });
+      registrationItems.push({ name: `Регистрация ${entityType === 'IP' ? 'ИП' : entityType}`, price, type: 'one-time' });
       oneTimeTotal += price;
     }
 
@@ -300,7 +300,7 @@ export default function CalculatorPage() {
 
     if (liquidation && entityType) {
       const price = PRICES.oneTime.liquidation[entityType] || 0;
-      registrationItems.push({ name: `Ликвидация ${entityType}`, price, type: 'one-time' });
+      registrationItems.push({ name: `Ликвидация ${entityType === 'IP' ? 'ИП' : entityType}`, price, type: 'one-time' });
       oneTimeTotal += price;
     }
 
@@ -315,7 +315,7 @@ export default function CalculatorPage() {
     }
 
     if (registrationItems.length > 0) {
-      breakdown.push({ category: '🏢 Регистрация бизнеса', items: registrationItems });
+      breakdown.push({ category: 'РЕГИСТРАЦИЯ БИЗНЕСА', items: registrationItems });
     }
 
     // 6. ЮРИДИЧЕСКИЕ УСЛУГИ
@@ -348,7 +348,7 @@ export default function CalculatorPage() {
     }
 
     if (legalItems.length > 0) {
-      breakdown.push({ category: '⚖️ Юридические услуги', items: legalItems });
+      breakdown.push({ category: 'ЮРИДИЧЕСКИЕ УСЛУГИ', items: legalItems });
     }
 
     // 7. АВТОМАТИЗАЦИЯ
@@ -379,7 +379,7 @@ export default function CalculatorPage() {
     }
 
     if (automationItems.length > 0) {
-      breakdown.push({ category: '🤖 Автоматизация', items: automationItems });
+      breakdown.push({ category: 'АВТОМАТИЗАЦИЯ', items: automationItems });
     }
 
     // 8. МАРКЕТИНГ
@@ -401,7 +401,7 @@ export default function CalculatorPage() {
     }
 
     if (marketingItems.length > 0) {
-      breakdown.push({ category: '📈 Маркетинг', items: marketingItems });
+      breakdown.push({ category: 'МАРКЕТИНГ', items: marketingItems });
     }
 
     return { oneTime: oneTimeTotal, monthly: monthlyTotal, breakdown };
@@ -476,7 +476,7 @@ export default function CalculatorPage() {
             <div className="lg:col-span-2 space-y-6">
               {/* 1. ТИП БИЗНЕСА */}
               <GlassCard delay={0}>
-                <h2 className="text-2xl font-bold text-white mb-6">1️⃣ Тип бизнеса</h2>
+                <h2 className="text-2xl font-bold text-white mb-6">1. Тип бизнеса</h2>
                 <div className="grid grid-cols-2 gap-4">
                   {(['IP', 'OOO'] as const).map((type) => (
                     <button
@@ -491,7 +491,7 @@ export default function CalculatorPage() {
                           : 'border-white/10 bg-white/5 hover:border-white/20'
                       }`}
                     >
-                      <span className="text-white font-semibold text-lg">{type}</span>
+                      <span className="text-white font-semibold text-lg">{type === 'IP' ? 'ИП' : type}</span>
                     </button>
                   ))}
                 </div>
@@ -500,7 +500,7 @@ export default function CalculatorPage() {
               {/* 2. СИСТЕМА НАЛОГООБЛОЖЕНИЯ */}
               {entityType && (
                 <GlassCard delay={100}>
-                  <h2 className="text-2xl font-bold text-white mb-6">2️⃣ Система налогообложения</h2>
+                  <h2 className="text-2xl font-bold text-white mb-6">2. Система налогообложения</h2>
                   <div className="grid grid-cols-2 gap-4">
                     {(['USN_6', 'USN_15', 'OSNO', ...(entityType === 'IP' ? ['PATENT'] : [])] as TaxSystem[]).map((tax) => (
                       <button
@@ -527,7 +527,7 @@ export default function CalculatorPage() {
               {/* 3. ОСНОВНАЯ УСЛУГА */}
               {entityType && taxSystem && (
                 <GlassCard delay={200}>
-                  <h2 className="text-2xl font-bold text-white mb-6">3️⃣ Основная услуга</h2>
+                  <h2 className="text-2xl font-bold text-white mb-6">3. Основная услуга</h2>
                   <div className="space-y-3">
                     {(['full', 'reporting', 'none'] as const).map((service) => (
                       <button
@@ -540,9 +540,9 @@ export default function CalculatorPage() {
                         }`}
                       >
                         <div className="text-white font-semibold">
-                          {service === 'full' && '📊 Полное бухгалтерское сопровождение'}
-                          {service === 'reporting' && '📋 Только сдача отчётности'}
-                          {service === 'none' && '❌ Не требуется'}
+                          {service === 'full' && 'Полное бухгалтерское сопровождение'}
+                          {service === 'reporting' && 'Только сдача отчётности'}
+                          {service === 'none' && 'Не требуется'}
                         </div>
                         {service !== 'none' && (
                           <div className="text-white/60 text-sm mt-1">
@@ -559,7 +559,7 @@ export default function CalculatorPage() {
               {/* 4. ПАРАМЕТРЫ БУХГАЛТЕРИИ */}
               {mainService === 'full' && (
                 <GlassCard delay={300}>
-                  <h2 className="text-2xl font-bold text-white mb-6">4️⃣ Параметры бухгалтерии</h2>
+                  <h2 className="text-2xl font-bold text-white mb-6">4. Параметры бухгалтерии</h2>
                   <div className="space-y-4">
                     <div>
                       <label className="block text-white mb-2">Количество сотрудников:</label>
@@ -624,11 +624,11 @@ export default function CalculatorPage() {
               {/* 5. ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ */}
               {entityType && (
                 <GlassCard delay={400}>
-                  <h2 className="text-2xl font-bold text-white mb-6">5️⃣ Дополнительные услуги</h2>
+                  <h2 className="text-2xl font-bold text-white mb-6">5. Дополнительные услуги</h2>
                   
                   {/* Бухгалтерия */}
                   <div className="mb-6">
-                    <h3 className="text-lg font-semibold text-white mb-3">📊 Бухгалтерия</h3>
+                    <h3 className="text-lg font-semibold text-white mb-3">Бухгалтерия</h3>
                     <div className="space-y-2">
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input type="checkbox" checked={payroll} onChange={(e) => setPayroll(e.target.checked)} className="w-5 h-5" />
@@ -636,22 +636,22 @@ export default function CalculatorPage() {
                       </label>
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input type="checkbox" checked={restoreAccounting} onChange={(e) => setRestoreAccounting(e.target.checked)} className="w-5 h-5" />
-                        <span className="text-white">Восстановление учёта <span className="text-white/60">({PRICES.oneTime.restoreAccounting[entityType]} руб./квартал)</span></span>
+                        <span className="text-white">Восстановление учёта ({entityType === 'IP' ? 'ИП' : entityType}) <span className="text-white/60">({PRICES.oneTime.restoreAccounting[entityType]} руб./квартал)</span></span>
                       </label>
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input type="checkbox" checked={setupAccounting} onChange={(e) => setSetupAccounting(e.target.checked)} className="w-5 h-5" />
-                        <span className="text-white">Постановка учёта с нуля <span className="text-white/60">({PRICES.oneTime.setupAccounting[entityType]} руб.)</span></span>
+                        <span className="text-white">Постановка учёта с нуля ({entityType === 'IP' ? 'ИП' : entityType}) <span className="text-white/60">({PRICES.oneTime.setupAccounting[entityType]} руб.)</span></span>
                       </label>
                     </div>
                   </div>
 
                   {/* Регистрация */}
                   <div className="mb-6">
-                    <h3 className="text-lg font-semibold text-white mb-3">🏢 Регистрация</h3>
+                    <h3 className="text-lg font-semibold text-white mb-3">Регистрация</h3>
                     <div className="space-y-2">
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input type="checkbox" checked={registration} onChange={(e) => setRegistration(e.target.checked)} className="w-5 h-5" />
-                        <span className="text-white">Регистрация {entityType} <span className="text-white/60">({PRICES.oneTime.registration[entityType]} руб.)</span></span>
+                        <span className="text-white">Регистрация {entityType === 'IP' ? 'ИП' : entityType} <span className="text-white/60">({PRICES.oneTime.registration[entityType]} руб.)</span></span>
                       </label>
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input type="checkbox" checked={changes} onChange={(e) => setChanges(e.target.checked)} className="w-5 h-5" />
@@ -659,7 +659,7 @@ export default function CalculatorPage() {
                       </label>
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input type="checkbox" checked={liquidation} onChange={(e) => setLiquidation(e.target.checked)} className="w-5 h-5" />
-                        <span className="text-white">Ликвидация {entityType} <span className="text-white/60">({PRICES.oneTime.liquidation[entityType]} руб.)</span></span>
+                        <span className="text-white">Ликвидация {entityType === 'IP' ? 'ИП' : entityType} <span className="text-white/60">({PRICES.oneTime.liquidation[entityType]} руб.)</span></span>
                       </label>
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input type="checkbox" checked={ecp} onChange={(e) => setEcp(e.target.checked)} className="w-5 h-5" />
@@ -674,7 +674,7 @@ export default function CalculatorPage() {
 
                   {/* Юридические */}
                   <div className="mb-6">
-                    <h3 className="text-lg font-semibold text-white mb-3">⚖️ Юридические услуги</h3>
+                    <h3 className="text-lg font-semibold text-white mb-3">Юридические услуги</h3>
                     <div className="space-y-2">
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input type="checkbox" checked={legalSupport} onChange={(e) => setLegalSupport(e.target.checked)} className="w-5 h-5" />
@@ -710,7 +710,7 @@ export default function CalculatorPage() {
 
                   {/* Автоматизация */}
                   <div className="mb-6">
-                    <h3 className="text-lg font-semibold text-white mb-3">🤖 Автоматизация</h3>
+                    <h3 className="text-lg font-semibold text-white mb-3">Автоматизация</h3>
                     <div className="space-y-2">
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input type="checkbox" checked={crm} onChange={(e) => setCrm(e.target.checked)} className="w-5 h-5" />
@@ -733,7 +733,7 @@ export default function CalculatorPage() {
 
                   {/* Маркетинг */}
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-3">📈 Маркетинг</h3>
+                    <h3 className="text-lg font-semibold text-white mb-3">Маркетинг</h3>
                     <div className="space-y-2">
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input type="checkbox" checked={smm} onChange={(e) => setSmm(e.target.checked)} className="w-5 h-5" />
@@ -758,7 +758,7 @@ export default function CalculatorPage() {
               <div className="sticky top-24 space-y-6">
                 {/* Итоги */}
                 <GlassCard delay={500}>
-                  <h2 className="text-2xl font-bold text-white mb-6">💰 Итого</h2>
+                  <h2 className="text-2xl font-bold text-white mb-6">Итого</h2>
                   
                   {result.oneTime > 0 && (
                     <div className="mb-4 p-4 rounded-lg bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20">
@@ -812,7 +812,7 @@ export default function CalculatorPage() {
 
                   <div className="mt-6 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
                     <p className="text-yellow-200/80 text-xs">
-                      💡 При комплексном заказе возможны скидки. Финальная стоимость обсуждается индивидуально.
+                      <strong>Важно:</strong> При комплексном заказе возможны скидки. Финальная стоимость обсуждается индивидуально.
                     </p>
                   </div>
                 </GlassCard>
@@ -820,7 +820,7 @@ export default function CalculatorPage() {
                 {/* Форма заявки */}
                 {(result.oneTime > 0 || result.monthly > 0) && (
                   <GlassCard delay={600}>
-                    <h2 className="text-xl font-bold text-white mb-4">📝 Оставить заявку</h2>
+                    <h2 className="text-xl font-bold text-white mb-4">Оставить заявку</h2>
                     
                     {submitStatus === 'success' && (
                       <div className="mb-4 p-4 rounded-lg bg-green-500/20 border border-green-500/30 flex items-start gap-3">
