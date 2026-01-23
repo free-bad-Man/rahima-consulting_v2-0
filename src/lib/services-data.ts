@@ -26,6 +26,24 @@ export interface Service {
 let cachedServices: Service[] | null = null;
 
 /**
+ * Очищает текст от невидимых и проблемных символов
+ */
+function cleanText(text: string): string {
+  if (!text) return '';
+  
+  return text
+    // Удаляем невидимые символы, zero-width spaces, BOM
+    .replace(/[\u200B-\u200D\uFEFF]/g, '')
+    // Удаляем квадратики и другие placeholder символы
+    .replace(/[\uFFFD\u25A1]/g, '')
+    // Нормализуем пробелы (заменяем множественные на один)
+    .replace(/\s+/g, ' ')
+    // Убираем пробелы перед знаками препинания
+    .replace(/\s+([,.;:!?)])/g, '$1')
+    .trim();
+}
+
+/**
  * Склеивает обрезанные строки массива в полные предложения/пункты
  * Если строка не начинается с заглавной буквы, маркера или ключевого слова - склеивает с предыдущей
  */
@@ -56,7 +74,7 @@ function mergeIncludesItems(items: string[]): string[] {
   };
   
   for (let i = 0; i < items.length; i++) {
-    const item = items[i].trim();
+    const item = cleanText(items[i]);
     
     // Пропускаем пустые строки
     if (!item) {
@@ -73,8 +91,17 @@ function mergeIncludesItems(items: string[]): string[] {
       
       // Ищем следующую строку с ценой (может быть число или текст со скобками)
       if (i + 1 < items.length) {
-        const nextItem = items[i + 1].trim();
-        // Проверяем на число или число с дополнительным текстом в скобках
+        const nextItem = cleanText(items[i + 1]);
+        
+        // Если следующая строка - это уже полное предложение о цене (содержит "рублей", "от", "срок" и т.д.)
+        // То используем её как есть, без форматирования
+        if (/(?:рубл[ейя]|срок|выполнени[яе]|под ключ)/i.test(nextItem)) {
+          merged.push(nextItem);
+          i++; // Пропускаем следующую строку
+          continue;
+        }
+        
+        // Проверяем на простое число или число с дополнительным текстом в скобках
         if (/^\d+/.test(nextItem)) {
           // Формируем "Цена: {текст} руб." или "Стоимость: {текст} руб."
           const label = item.replace(':', '').trim();
@@ -122,8 +149,8 @@ function mergeIncludesItems(items: string[]): string[] {
 function extractDescription(fullText: string, title: string): string {
   if (!fullText) return '';
   
-  // Убираем заголовок из начала текста
-  let text = fullText.replace(title, '').trim();
+  // Убираем заголовок из начала текста и очищаем от невидимых символов
+  let text = cleanText(fullText.replace(title, ''));
   
   // Ищем текст до "1. Суть услуги"
   const beforeSut = text.split(/1\.\s*Суть услуги/i)[0];
