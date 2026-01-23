@@ -457,7 +457,7 @@ export default function CalculatorPage() {
       <PageHeader />
       <main className="pt-24 md:pt-32 pb-48 md:pb-60 px-4 sm:px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
-          <Breadcrumbs items={breadcrumbs} className="mb-8" />
+          <Breadcrumbs items={breadcrumbs} />
 
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 mb-4">
@@ -476,7 +476,7 @@ export default function CalculatorPage() {
             {/* ЛЕВАЯ КОЛОНКА: Настройки */}
             <div className="lg:col-span-2 space-y-6">
               {/* 1. ТИП БИЗНЕСА */}
-              <GlassCard delay={0}>
+              <GlassCard animationDelay={0}>
                 <h2 className="text-2xl font-bold text-white mb-6">1. Тип бизнеса</h2>
                 <div className="grid grid-cols-2 gap-4">
                   {(['IP', 'OOO'] as const).map((type) => (
@@ -500,7 +500,7 @@ export default function CalculatorPage() {
 
               {/* 2. СИСТЕМА НАЛОГООБЛОЖЕНИЯ */}
               {entityType && (
-                <GlassCard delay={100}>
+                <GlassCard animationDelay={100}>
                   <h2 className="text-2xl font-bold text-white mb-6">2. Система налогообложения</h2>
                   <div className="grid grid-cols-2 gap-4">
                     {(['USN_6', 'USN_15', 'OSNO', ...(entityType === 'IP' ? ['PATENT'] : [])] as TaxSystem[]).map((tax) => (
@@ -527,7 +527,7 @@ export default function CalculatorPage() {
 
               {/* 3. ОСНОВНАЯ УСЛУГА */}
               {entityType && taxSystem && (
-                <GlassCard delay={200}>
+                <GlassCard animationDelay={200}>
                   <h2 className="text-2xl font-bold text-white mb-6">3. Основная услуга</h2>
                   <div className="space-y-3">
                     {(['full', 'reporting', 'none'] as const).map((service) => (
@@ -559,7 +559,7 @@ export default function CalculatorPage() {
 
               {/* 4. ПАРАМЕТРЫ БУХГАЛТЕРИИ */}
               {mainService === 'full' && (
-                <GlassCard delay={300}>
+                <GlassCard animationDelay={300}>
                   <h2 className="text-2xl font-bold text-white mb-6">4. Параметры бухгалтерии</h2>
                   <div className="space-y-4">
                     <div>
@@ -624,7 +624,7 @@ export default function CalculatorPage() {
 
               {/* 5. ДОПОЛНИТЕЛЬНЫЕ УСЛУГИ */}
               {entityType && (
-                <GlassCard delay={400}>
+                <GlassCard animationDelay={400}>
                   <h2 className="text-2xl font-bold text-white mb-6">5. Дополнительные услуги</h2>
                   
                   {/* Бухгалтерия */}
@@ -758,7 +758,7 @@ export default function CalculatorPage() {
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
                 {/* Итоги */}
-                <GlassCard delay={500}>
+                <GlassCard animationDelay={500}>
                   <h2 className="text-2xl font-bold text-white mb-6">Итого</h2>
                   
                   {result.oneTime > 0 && (
@@ -820,7 +820,7 @@ export default function CalculatorPage() {
 
                 {/* Форма заявки */}
                 {(result.oneTime > 0 || result.monthly > 0) && (
-                  <GlassCard delay={600}>
+                  <GlassCard animationDelay={600}>
                     <h2 className="text-xl font-bold text-white mb-4">Оставить заявку</h2>
                     
                     {submitStatus === 'success' && (
