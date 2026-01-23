@@ -251,8 +251,8 @@ export default function Page() {
                     Здесь Ваш личный ИИ-помощник для повышения производительности бизнеса.
                   </h1>
 
-                  <div className="w-full mt-2 bg-transparent">
-                    <div className="relative py-4" style={{
+                  <div className="w-full mt-0 bg-transparent">
+                    <div className="relative py-0" style={{
                       maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
                       WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)'
                     }}>
@@ -272,18 +272,18 @@ export default function Page() {
                           <img src="/logos/12_tochka.png" alt="Tochka" className="logo-img h-48 w-[480px] object-contain" />
                         </div>
                         <div className="logo-set flex items-center gap-6" aria-hidden>
-                          <img src="/logos/1_1C.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/2_tailwind.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/3_alfa.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/4_next.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/5_amocrm.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/6_node.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/7_PSB.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/8_saby.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/9_tbank.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/10_typescript-logo.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/11_sber-856.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/12_tochka.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/1_1C.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/2_tailwind.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/3_alfa.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/4_next.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/5_amocrm.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/6_node.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/7_PSB.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/8_saby.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/9_tbank.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/10_typescript-logo.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/11_sber-856.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/12_tochka.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
                         </div>
                       </div>
 
