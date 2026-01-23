@@ -81,8 +81,8 @@ function mergeIncludesItems(items: string[]): string[] {
       continue;
     }
     
-    // Обрабатываем "Цена:" / "Стоимость:" + число/текст
-    if (/^(Цена|Стоимость):\s*$/i.test(item)) {
+    // Обрабатываем "Цена:" / "Стоимость:" / "6. Стоимость и сроки" и т.д.
+    if (/^(\d+\.\s*)?(Цена|Стоимость)(\s*:|\s+и\s+сроки|\s*$)/i.test(item)) {
       // Сохраняем предыдущий пункт перед ценой
       if (currentItem) {
         merged.push(currentItem.trim());
