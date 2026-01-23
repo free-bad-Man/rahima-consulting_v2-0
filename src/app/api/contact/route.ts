@@ -18,7 +18,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     
-    const { name, phone } = body;
+    const { name, phone, email, service, comment } = body;
 
     // Валидация обязательных полей
     if (!name || typeof name !== "string" || name.trim().length < 2) {
@@ -37,6 +37,9 @@ export async function POST(request: Request) {
 
     const trimmedName = name.trim();
     const trimmedPhone = phone.trim();
+    const trimmedEmail = email?.trim() || '';
+    const serviceName = service || "Заказ звонка";
+    const trimmedComment = comment?.trim() || '';
 
     // Отправляем Email уведомление
     let emailResult = null;
@@ -44,7 +47,9 @@ export async function POST(request: Request) {
       emailResult = await sendContactFormEmail({
         name: trimmedName,
         phone: trimmedPhone,
-        service: "Заказ звонка",
+        email: trimmedEmail,
+        service: serviceName,
+        comment: trimmedComment,
       });
       if (emailResult.success) {
         console.log("[Contact API] ✅ Email sent:", emailResult.messageId);
@@ -61,7 +66,9 @@ export async function POST(request: Request) {
       telegramResult = await sendTelegramNotification({
         name: trimmedName,
         phone: trimmedPhone,
-        service: "Заказ звонка",
+        email: trimmedEmail,
+        service: serviceName,
+        comment: trimmedComment,
       });
       if (telegramResult.success) {
         console.log("[Contact API] ✅ Telegram sent:", telegramResult.messageId);
@@ -78,6 +85,9 @@ export async function POST(request: Request) {
       amocrmResult = await createDealFromContactForm({
         userName: trimmedName,
         userPhone: trimmedPhone,
+        userEmail: trimmedEmail,
+        serviceName: serviceName,
+        comment: trimmedComment,
       });
       console.log("[Contact API] ✅ amoCRM deal created:", amocrmResult);
     } catch (amocrmError) {

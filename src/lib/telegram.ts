@@ -1,13 +1,15 @@
 interface TelegramMessageParams {
   name: string;
   phone: string;
+  email?: string;
   service?: string;
+  comment?: string;
 }
 
 /**
  * Отправляет уведомление в Telegram группу/канал
  */
-export async function sendTelegramNotification({ name, phone, service = 'Заказ звонка' }: TelegramMessageParams) {
+export async function sendTelegramNotification({ name, phone, email, service = 'Заказ звонка', comment }: TelegramMessageParams) {
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
@@ -16,12 +18,22 @@ export async function sendTelegramNotification({ name, phone, service = 'Зак�
     return { success: false, error: 'Telegram not configured' };
   }
 
+  let additionalInfo = '';
+  if (email) {
+    additionalInfo += `\n📧 <b>Email:</b> ${email}`;
+  }
+  if (comment) {
+    // Экранируем HTML в комментарии
+    const escapedComment = comment.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    additionalInfo += `\n\n💬 <b>Комментарий:</b>\n<pre>${escapedComment}</pre>`;
+  }
+
   const message = `
 🔔 <b>Новая заявка с сайта</b>
 
-📋 <b>Услуга:</b> ${service}
+📋 <b>Тип заявки:</b> ${service}
 👤 <b>Имя:</b> ${name}
-📞 <b>Телефон:</b> <code>${phone}</code>
+📞 <b>Телефон:</b> <code>${phone}</code>${additionalInfo}
 
 ⏰ <b>Время:</b> ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}
 

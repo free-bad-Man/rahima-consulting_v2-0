@@ -427,7 +427,8 @@ export default function CalculatorPage() {
           name,
           phone,
           email,
-          comment: `Расчёт из калькулятора:\n\n📊 ИТОГО:\n- Разовые платежи: ${result.oneTime.toLocaleString('ru-RU')} руб.\n- Ежемесячные платежи: ${result.monthly.toLocaleString('ru-RU')} руб./мес\n\n${servicesDescription}\n\nКомментарий клиента:\n${comment}`,
+          service: 'Заявка из калькулятора',
+          comment: `РАСЧЁТ ИЗ КАЛЬКУЛЯТОРА\n\nИТОГО:\n- Разовые платежи: ${result.oneTime.toLocaleString('ru-RU')} руб.\n- Ежемесячные платежи: ${result.monthly.toLocaleString('ru-RU')} руб./мес\n\n${servicesDescription}\n\nКомментарий клиента:\n${comment}`,
         }),
       });
 

@@ -10,7 +10,9 @@ interface SendEmailParams {
 interface ContactFormEmailParams {
   name: string;
   phone: string;
+  email?: string;
   service?: string;
+  comment?: string;
 }
 
 /**
@@ -66,7 +68,7 @@ export async function sendEmail({ to, subject, html, text }: SendEmailParams) {
 /**
  * Отправляет уведомление о новой заявке с формы "Заказать звонок"
  */
-export async function sendContactFormEmail({ name, phone, service = 'Заказ звонка' }: ContactFormEmailParams) {
+export async function sendContactFormEmail({ name, phone, email, service = 'Заказ звонка', comment }: ContactFormEmailParams) {
   const recipientEmail = process.env.CONTACT_EMAIL || process.env.SMTP_USER;
 
   if (!recipientEmail) {
@@ -75,6 +77,24 @@ export async function sendContactFormEmail({ name, phone, service = 'Заказ 
   }
 
   const subject = `🔔 Новая заявка: ${service}`;
+  
+  // Формируем дополнительные поля
+  let additionalFields = '';
+  if (email) {
+    additionalFields += `
+        <div class="field">
+          <div class="field-label">Email</div>
+          <div class="field-value"><a href="mailto:${email}">${email}</a></div>
+        </div>`;
+  }
+  if (comment) {
+    additionalFields += `
+        <div class="field">
+          <div class="field-label">Комментарий</div>
+          <div class="field-value" style="white-space: pre-wrap;">${comment}</div>
+        </div>`;
+  }
+  
   const html = `
     <!DOCTYPE html>
     <html>
@@ -147,11 +167,11 @@ export async function sendContactFormEmail({ name, phone, service = 'Заказ 
     </head>
     <body>
       <div class="header">
-        <h1>🔔 Новая заявка с сайта</h1>
+        <h1>Новая заявка с сайта</h1>
       </div>
       <div class="content">
         <div class="field">
-          <div class="field-label">Услуга</div>
+          <div class="field-label">Тип заявки</div>
           <div class="field-value">${service}</div>
         </div>
         <div class="field">
@@ -161,12 +181,12 @@ export async function sendContactFormEmail({ name, phone, service = 'Заказ 
         <div class="field">
           <div class="field-label">Телефон</div>
           <div class="field-value"><a href="tel:${phone}">${phone}</a></div>
-        </div>
+        </div>${additionalFields}
         <div class="field">
           <div class="field-label">Время получения</div>
           <div class="field-value">${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}</div>
         </div>
-        <a href="tel:${phone}" class="cta">📞 Позвонить клиенту</a>
+        <a href="tel:${phone}" class="cta">Позвонить клиенту</a>
       </div>
       <div class="footer">
         <p>Rahima Consulting - Автоматическое уведомление</p>
