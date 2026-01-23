@@ -69,8 +69,8 @@ export default function AIAssistantsPage() {
                         <h3 className="text-xl font-semibold text-white mb-2">
                           {assistant.title}
                         </h3>
-                        <p className="text-white/70 text-sm mb-3">
-                          {assistant.short_tagline}
+                        <p className="text-white/70 text-sm mb-3 line-clamp-2">
+                          {assistant.short_tagline}...
                         </p>
                       </div>
                     </div>

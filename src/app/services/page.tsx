@@ -138,7 +138,7 @@ export default function ServicesPage() {
                           </h3>
                           
                           <p className="text-white/70 mb-4 flex-grow line-clamp-3">
-                            {service.short_tagline || service.full_text?.substring(0, 150)}
+                            {(service.short_tagline || service.full_text?.substring(0, 150) || '') + '...'}
                           </p>
 
                           {service.price_from && (
