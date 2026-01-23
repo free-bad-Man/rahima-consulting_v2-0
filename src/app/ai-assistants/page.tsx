@@ -27,7 +27,7 @@ export default function AIAssistantsPage() {
       <div className="relative z-10">
         <PageHeader />
         
-        <main className="pt-24 md:pt-32 pb-20 px-4 sm:px-6 lg:px-12">
+        <main className="pt-24 md:pt-32 pb-48 md:pb-60 px-4 sm:px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
             
             <Breadcrumbs items={[
@@ -69,8 +69,8 @@ export default function AIAssistantsPage() {
                         <h3 className="text-xl font-semibold text-white mb-2">
                           {assistant.title}
                         </h3>
-                        <p className="text-white/70 text-sm mb-3">
-                          {assistant.short_tagline}
+                        <p className="text-white/70 text-sm mb-3 line-clamp-2">
+                          {assistant.short_tagline}...
                         </p>
                       </div>
                     </div>

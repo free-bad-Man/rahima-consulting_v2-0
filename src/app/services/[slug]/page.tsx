@@ -103,7 +103,7 @@ export default async function ServicePage({ params }: PageProps) {
       <div className="relative z-10">
         <PageHeader />
         
-        <main className="pt-24 md:pt-32 pb-20 px-4 sm:px-6 lg:px-12">
+        <main className="pt-24 md:pt-32 pb-48 md:pb-60 px-4 sm:px-6 lg:px-12">
           <div className="max-w-5xl mx-auto">
             
             <Breadcrumbs items={[
@@ -150,7 +150,7 @@ export default async function ServicePage({ params }: PageProps) {
                 </a>
                 
                 <Link
-                  href="/dashboard/orders"
+                  href="/calculator"
                   className="flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 
                              bg-white/10 backdrop-blur-sm
                              rounded-lg text-white font-semibold

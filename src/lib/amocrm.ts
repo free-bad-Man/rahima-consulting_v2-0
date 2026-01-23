@@ -448,10 +448,14 @@ export async function createDealFromOrder(data: {
 export async function createDealFromContactForm(data: {
   userName: string;
   userPhone: string;
+  serviceName?: string;
+  userEmail?: string;
+  comment?: string;
 }): Promise<{ dealId: number; contactId: number }> {
   console.log("[amocrm] createDealFromContactForm called with:", {
     userName: data.userName,
     userPhone: data.userPhone,
+    serviceName: data.serviceName,
   });
   
   try {
@@ -464,16 +468,18 @@ export async function createDealFromContactForm(data: {
     }
     console.log("[amocrm] ✅ Access token obtained from environment");
 
-    // Находим или создаем контакт (email не требуется)
+    // Находим или создаем контакт
     console.log("[amocrm] Finding or creating contact...");
     const contactId = await findOrCreateContact(accessToken, {
       name: data.userName,
       phone: data.userPhone,
+      email: data.userEmail,
     });
     console.log("[amocrm] ✅ Contact ID:", contactId);
 
-    // Формируем название сделки
-    const dealName = `Заявка на звонок: ${data.userName}`;
+    // Формируем название сделки в зависимости от типа заявки
+    const serviceName = data.serviceName || "Заказ звонка";
+    const dealName = `${serviceName}: ${data.userName}`;
 
     // Создаем сделку
     const dealData: AmoCRMDeal = {
@@ -490,7 +496,14 @@ export async function createDealFromContactForm(data: {
     console.log("[amocrm] ✅ Deal created with ID:", dealId);
 
     // Добавляем заметку с информацией о заявке
-    const noteText = `Заявка на звонок\nИмя: ${data.userName}\nТелефон: ${data.userPhone}`;
+    let noteText = `${serviceName}\nИмя: ${data.userName}\nТелефон: ${data.userPhone}`;
+    if (data.userEmail) {
+      noteText += `\nEmail: ${data.userEmail}`;
+    }
+    if (data.comment) {
+      noteText += `\n\nКомментарий:\n${data.comment}`;
+    }
+    
     try {
       await addNoteToDeal(accessToken, dealId, noteText);
     } catch (noteError) {

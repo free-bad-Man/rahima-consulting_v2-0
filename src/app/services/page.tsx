@@ -83,7 +83,7 @@ export default function ServicesPage() {
       <div className="relative z-10">
         <PageHeader />
         
-        <main className="pt-24 md:pt-32 pb-20 px-4 sm:px-6 lg:px-12">
+        <main className="pt-24 md:pt-32 pb-48 md:pb-60 px-4 sm:px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
             
             <Breadcrumbs items={[
@@ -138,7 +138,7 @@ export default function ServicesPage() {
                           </h3>
                           
                           <p className="text-white/70 mb-4 flex-grow line-clamp-3">
-                            {service.short_tagline || service.full_text?.substring(0, 150)}
+                            {(service.short_tagline || service.full_text?.substring(0, 150) || '') + '...'}
                           </p>
 
                           {service.price_from && (

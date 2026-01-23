@@ -166,7 +166,7 @@ export default function Page() {
                   
                   <div className="flex flex-col gap-2">
                     <Link
-                      href="/dashboard/orders"
+                      href="/calculator"
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-gradient-to-r from-purple-900/25 to-blue-900/25 hover:from-purple-900/30 hover:to-blue-900/30 text-white/90 font-medium transition-all"
                     >
@@ -251,36 +251,39 @@ export default function Page() {
                     Здесь Ваш личный ИИ-помощник для повышения производительности бизнеса.
                   </h1>
 
-                  <div className="w-full overflow-hidden mt-6 bg-transparent">
-                    <div className="relative">
+                  <div className="w-full mt-0 bg-transparent">
+                    <div className="relative py-0" style={{
+                      maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)',
+                      WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)'
+                    }}>
                       <div ref={logoTrackRef} className="logo-track flex items-center gap-6" aria-hidden>
                         <div className="logo-set flex items-center gap-6">
-                          <img src="/logos/1_1C.png" alt="1C" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/2_tailwind.png" alt="Tailwind" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/3_alfa.png" alt="Alfa" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/4_next.png" alt="Next.js" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/5_amocrm.png" alt="amoCRM" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/6_node.png" alt="Node.js" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/7_PSB.png" alt="PSB" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/8_saby.png" alt="Saby" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/9_tbank.png" alt="TBank" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/10_typescript-logo.png" alt="TypeScript" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/11_sber-856.png" alt="Sber" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/12_tochka.png" alt="Tochka" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/1_1C.png" alt="1C" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/2_tailwind.png" alt="Tailwind" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/3_alfa.png" alt="Alfa" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/4_next.png" alt="Next.js" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/5_amocrm.png" alt="amoCRM" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/6_node.png" alt="Node.js" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/7_PSB.png" alt="PSB" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/8_saby.png" alt="Saby" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/9_tbank.png" alt="TBank" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/10_typescript-logo.png" alt="TypeScript" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/11_sber-856.png" alt="Sber" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/12_tochka.png" alt="Tochka" className="logo-img h-48 w-[480px] object-contain" />
                         </div>
                         <div className="logo-set flex items-center gap-6" aria-hidden>
-                          <img src="/logos/1_1C.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/2_tailwind.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/3_alfa.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/4_next.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/5_amocrm.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/6_node.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/7_PSB.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/8_saby.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/9_tbank.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/10_typescript-logo.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/11_sber-856.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
-                          <img src="/logos/12_tochka.png" alt="" className="logo-img h-64 w-[640px] object-contain" />
+                          <img src="/logos/1_1C.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/2_tailwind.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/3_alfa.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/4_next.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/5_amocrm.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/6_node.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/7_PSB.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/8_saby.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/9_tbank.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/10_typescript-logo.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/11_sber-856.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
+                          <img src="/logos/12_tochka.png" alt="" className="logo-img h-48 w-[480px] object-contain" />
                         </div>
                       </div>
 
@@ -337,7 +340,7 @@ export default function Page() {
             </button>
             
             <Link
-              href="/dashboard/orders"
+              href="/calculator"
               className="flex-1 min-w-0 flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-3 rounded-lg bg-gradient-to-r from-purple-900/25 to-blue-900/25 hover:from-purple-900/30 hover:to-blue-900/30 text-white/90 font-medium transition-all shadow-sm shadow-black/5 hover:shadow-black/10 backdrop-blur-sm max-w-[360px] w-full sm:w-auto justify-center"
             >
               <Calculator className="w-4 h-4 sm:w-5 sm:h-5" />

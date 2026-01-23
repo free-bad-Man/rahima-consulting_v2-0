@@ -25,6 +25,178 @@ export interface Service {
 
 let cachedServices: Service[] | null = null;
 
+/**
+ * Очищает текст от невидимых и проблемных символов
+ */
+function cleanText(text: string): string {
+  if (!text) return '';
+  
+  return text
+    // Удаляем невидимые символы, zero-width spaces, BOM, form feed
+    .replace(/[\u200B-\u200D\uFEFF\f]/g, '')
+    // Удаляем квадратики и другие placeholder символы
+    .replace(/[\uFFFD\u25A1\u25A0\u2610]/g, '')
+    // Нормализуем пробелы (заменяем множественные на один)
+    .replace(/\s+/g, ' ')
+    // Убираем пробелы перед знаками препинания
+    .replace(/\s+([,.;:!?)])/g, '$1')
+    .trim();
+}
+
+/**
+ * Склеивает обрезанные строки массива в полные предложения/пункты
+ * Если строка не начинается с заглавной буквы, маркера или ключевого слова - склеивает с предыдущей
+ */
+function mergeIncludesItems(items: string[]): string[] {
+  if (!items || items.length === 0) return [];
+  
+  const merged: string[] = [];
+  let currentItem = '';
+  
+  // Паттерны начала нового пункта
+  const startsNewItem = (str: string) => {
+    const trimmed = str.trim();
+    if (!trimmed) return false;
+    
+    // ВАЖНО: Если начинается с маленькой буквы - это ПРОДОЛЖЕНИЕ предыдущего пункта
+    if (/^[а-яa-z]/.test(trimmed)) return false;
+    
+    // Начинается с заглавной буквы и двоеточия (заголовок пункта)
+    if (/^[А-ЯA-Z][^:]+:/.test(trimmed)) return true;
+    
+    // Начинается с маркера (цифра, тире, буллет)
+    if (/^[\d\-•]\s/.test(trimmed)) return true;
+    
+    // Начинается с ключевых слов С ЗАГЛАВНОЙ БУКВЫ
+    if (/^(Для|При|Подготовка|Проверка|Формирование|Разработка|Сопровождение|Организация|Контроль|Сбор|Обновление|Уведомление|Отправка|Бухгалтерская|Персонифицированные|Отчетность)/.test(trimmed)) return true;
+    
+    return false;
+  };
+  
+  for (let i = 0; i < items.length; i++) {
+    const item = cleanText(items[i]);
+    
+    // Пропускаем пустые строки
+    if (!item) {
+      continue;
+    }
+    
+    // Обрабатываем "Цена:" / "Стоимость:" / "6. Стоимость и сроки" и т.д.
+    if (/^(\d+\.\s*)?(Цена|Стоимость)(\s*:|\s+и\s+сроки|\s*$)/i.test(item)) {
+      // Сохраняем предыдущий пункт перед ценой
+      if (currentItem) {
+        merged.push(currentItem.trim());
+        currentItem = '';
+      }
+      
+      // Ищем следующую строку с ценой (может быть число или текст со скобками)
+      if (i + 1 < items.length) {
+        const nextItem = cleanText(items[i + 1]);
+        
+        // Если следующая строка - это уже полное предложение о цене (содержит "рублей", "от", "срок" и т.д.)
+        // То используем её как есть, без форматирования
+        if (/(?:рубл[ейя]|срок|выполнени[яе]|под ключ)/i.test(nextItem)) {
+          merged.push(nextItem);
+          i++; // Пропускаем следующую строку
+          continue;
+        }
+        
+        // Проверяем на простое число или число с дополнительным текстом в скобках
+        if (/^\d+/.test(nextItem)) {
+          // Формируем "Цена: {текст} руб." или "Стоимость: {текст} руб."
+          const label = item.replace(':', '').trim();
+          const priceText = nextItem.replace(/₽/g, '').trim();
+          merged.push(`${label}: ${priceText} руб.`);
+          i++; // Пропускаем следующую строку
+          continue;
+        }
+      }
+      continue;
+    }
+    
+    // Пропускаем одиночные числа (которые не были обработаны как цена)
+    // Но сохраняем если есть дополнительный текст в скобках
+    if (/^\d+[\s\d]*₽?\s*$/.test(item) && !/\(/.test(item)) {
+      continue;
+    }
+    
+    if (startsNewItem(item)) {
+      // Сохраняем предыдущий пункт
+      if (currentItem) {
+        merged.push(currentItem.trim());
+      }
+      // Начинаем новый
+      currentItem = item;
+    } else {
+      // Продолжаем текущий пункт
+      currentItem += ' ' + item;
+    }
+  }
+  
+  // Добавляем последний пункт
+  if (currentItem) {
+    merged.push(currentItem.trim());
+  }
+  
+  return merged;
+}
+
+/**
+ * Извлекает цену из full_text если price_from отсутствует
+ * Ищет в разделе "Стоимость" или "Цена"
+ */
+function extractPriceFromText(fullText: string): number | null {
+  if (!fullText) return null;
+  
+  // Ищем секцию со стоимостью
+  const priceSection = fullText.match(/\d+\.\s*(Стоимость|Цена)[\s\S]{0,500}?(?:\d[\s\d]+рубл)/i);
+  if (!priceSection) return null;
+  
+  // Извлекаем число (от X руб, под ключ от X руб и т.д.)
+  const priceMatch = priceSection[0].match(/(?:от\s+)?(\d[\s\d]{1,10})[\s]*рубл/i);
+  if (priceMatch && priceMatch[1]) {
+    const priceStr = priceMatch[1].replace(/\s+/g, '');
+    const price = parseInt(priceStr, 10);
+    return isNaN(price) ? null : price;
+  }
+  
+  return null;
+}
+
+/**
+ * Извлекает описание из full_text для услуги
+ * Пытается найти текст между заголовком и "1. Суть услуги",
+ * если не находит - берет первые 2-3 предложения из "Суть услуги"
+ */
+function extractDescription(fullText: string, title: string): string {
+  if (!fullText) return '';
+  
+  // Убираем заголовок из начала текста и очищаем от невидимых символов
+  let text = cleanText(fullText.replace(title, ''));
+  
+  // Ищем текст до "1. Суть услуги"
+  const beforeSut = text.split(/1\.\s*Суть услуги/i)[0];
+  if (beforeSut && beforeSut.length > 50) {
+    // Убираем переносы строк и лишние пробелы
+    const cleaned = beforeSut.replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim();
+    // Берем до 200 символов
+    return cleaned.length > 200 ? cleaned.substring(0, 200).trim() : cleaned;
+  }
+  
+  // Если не нашли, ищем текст из "Суть услуги"
+  const sutMatch = text.match(/1\.\s*Суть услуги\s*\n([\s\S]+?)(?:\n2\.|$)/i);
+  if (sutMatch && sutMatch[1]) {
+    const sutText = sutMatch[1].replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim();
+    // Берем первые 2-3 предложения (до третьей точки)
+    const sentences = sutText.split(/\.\s+/);
+    const description = sentences.slice(0, 2).join('. ');
+    return description.length > 200 ? description.substring(0, 200).trim() : description;
+  }
+  
+  // Fallback: просто первые 150 символов
+  return text.replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim().substring(0, 150);
+}
+
 export function getAllServices(): Service[] {
   if (cachedServices) {
     return cachedServices;
@@ -38,14 +210,29 @@ export function getAllServices(): Service[] {
       const data = fs.readFileSync(servicesPath, 'utf-8');
       const services = JSON.parse(data) as Service[];
       
-      // Filter out invalid services and ensure all have proper slugs
+      // Filter out invalid services and ensure all have proper slugs and descriptions
       cachedServices = services
         .filter(service => service.title && service.title.length > 2)
-        .map(service => ({
-          ...service,
-          slug: service.slug || slugify(service.title),
-          short_tagline: service.short_tagline || (service.full_text ? service.full_text.substring(0, 150) : ''),
-        }));
+        .map(service => {
+          // Если short_tagline пустой, короткий (меньше 50 символов) или обрезан - извлекаем из full_text
+          let description = service.short_tagline || '';
+          if (!description || description.length < 50 || !description.trim().match(/[.!?]$/)) {
+            description = extractDescription(service.full_text || '', service.title);
+          }
+          
+          // Если price_from отсутствует - пытаемся извлечь из full_text
+          const price = service.price_from || extractPriceFromText(service.full_text || '');
+          
+          return {
+            ...service,
+            slug: service.slug || slugify(service.title),
+            short_tagline: description,
+            price_from: price,
+            includes: service.includes ? mergeIncludesItems(service.includes) : [],
+            excludes: service.excludes ? mergeIncludesItems(service.excludes) : [],
+            requirements: service.requirements ? mergeIncludesItems(service.requirements) : [],
+          };
+        });
       
       return cachedServices;
     }
