@@ -25,6 +25,40 @@ export interface Service {
 
 let cachedServices: Service[] | null = null;
 
+/**
+ * Извлекает описание из full_text для услуги
+ * Пытается найти текст между заголовком и "1. Суть услуги",
+ * если не находит - берет первые 2-3 предложения из "Суть услуги"
+ */
+function extractDescription(fullText: string, title: string): string {
+  if (!fullText) return '';
+  
+  // Убираем заголовок из начала текста
+  let text = fullText.replace(title, '').trim();
+  
+  // Ищем текст до "1. Суть услуги"
+  const beforeSut = text.split(/1\.\s*Суть услуги/i)[0];
+  if (beforeSut && beforeSut.length > 50) {
+    // Убираем переносы строк и лишние пробелы
+    const cleaned = beforeSut.replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim();
+    // Берем до 200 символов
+    return cleaned.length > 200 ? cleaned.substring(0, 200).trim() : cleaned;
+  }
+  
+  // Если не нашли, ищем текст из "Суть услуги"
+  const sutMatch = text.match(/1\.\s*Суть услуги\s*\n([\s\S]+?)(?:\n2\.|$)/i);
+  if (sutMatch && sutMatch[1]) {
+    const sutText = sutMatch[1].replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim();
+    // Берем первые 2-3 предложения (до третьей точки)
+    const sentences = sutText.split(/\.\s+/);
+    const description = sentences.slice(0, 2).join('. ');
+    return description.length > 200 ? description.substring(0, 200).trim() : description;
+  }
+  
+  // Fallback: просто первые 150 символов
+  return text.replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim().substring(0, 150);
+}
+
 export function getAllServices(): Service[] {
   if (cachedServices) {
     return cachedServices;
@@ -38,14 +72,22 @@ export function getAllServices(): Service[] {
       const data = fs.readFileSync(servicesPath, 'utf-8');
       const services = JSON.parse(data) as Service[];
       
-      // Filter out invalid services and ensure all have proper slugs
+      // Filter out invalid services and ensure all have proper slugs and descriptions
       cachedServices = services
         .filter(service => service.title && service.title.length > 2)
-        .map(service => ({
-          ...service,
-          slug: service.slug || slugify(service.title),
-          short_tagline: service.short_tagline || (service.full_text ? service.full_text.substring(0, 150) : ''),
-        }));
+        .map(service => {
+          // Если short_tagline пустой, короткий (меньше 50 символов) или обрезан - извлекаем из full_text
+          let description = service.short_tagline || '';
+          if (!description || description.length < 50 || !description.trim().match(/[.!?]$/)) {
+            description = extractDescription(service.full_text || '', service.title);
+          }
+          
+          return {
+            ...service,
+            slug: service.slug || slugify(service.title),
+            short_tagline: description,
+          };
+        });
       
       return cachedServices;
     }
