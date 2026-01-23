@@ -26,6 +26,62 @@ export interface Service {
 let cachedServices: Service[] | null = null;
 
 /**
+ * Склеивает обрезанные строки массива в полные предложения/пункты
+ * Если строка не начинается с заглавной буквы, маркера или ключевого слова - склеивает с предыдущей
+ */
+function mergeIncludesItems(items: string[]): string[] {
+  if (!items || items.length === 0) return [];
+  
+  const merged: string[] = [];
+  let currentItem = '';
+  
+  // Паттерны начала нового пункта
+  const startsNewItem = (str: string) => {
+    const trimmed = str.trim();
+    if (!trimmed) return false;
+    
+    // Начинается с заглавной буквы и двоеточия (заголовок пункта)
+    if (/^[А-ЯA-Z][^:]+:/.test(trimmed)) return true;
+    
+    // Начинается с маркера (цифра, тире, буллет)
+    if (/^[\d\-•]\s/.test(trimmed)) return true;
+    
+    // Начинается с ключевых слов
+    if (/^(Для|При|Подготовка|Проверка|Формирование|Разработка|Сопровождение|Организация|Контроль|Сбор|Обновление|Уведомление|Отправка|Бухгалтерская|Персонифицированные|Отчетность|Цена)/i.test(trimmed)) return true;
+    
+    return false;
+  };
+  
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i].trim();
+    
+    // Пропускаем пустые и "Цена:" строки
+    if (!item || item === 'Цена:' || /^Цена:\s*$/.test(item) || /^\d+\s*₽?\s*$/.test(item)) {
+      continue;
+    }
+    
+    if (startsNewItem(item)) {
+      // Сохраняем предыдущий пункт
+      if (currentItem) {
+        merged.push(currentItem.trim());
+      }
+      // Начинаем новый
+      currentItem = item;
+    } else {
+      // Продолжаем текущий пункт
+      currentItem += ' ' + item;
+    }
+  }
+  
+  // Добавляем последний пункт
+  if (currentItem) {
+    merged.push(currentItem.trim());
+  }
+  
+  return merged;
+}
+
+/**
  * Извлекает описание из full_text для услуги
  * Пытается найти текст между заголовком и "1. Суть услуги",
  * если не находит - берет первые 2-3 предложения из "Суть услуги"
@@ -86,6 +142,9 @@ export function getAllServices(): Service[] {
             ...service,
             slug: service.slug || slugify(service.title),
             short_tagline: description,
+            includes: service.includes ? mergeIncludesItems(service.includes) : [],
+            excludes: service.excludes ? mergeIncludesItems(service.excludes) : [],
+            requirements: service.requirements ? mergeIncludesItems(service.requirements) : [],
           };
         });
       
