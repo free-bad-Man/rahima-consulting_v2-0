@@ -58,8 +58,35 @@ function mergeIncludesItems(items: string[]): string[] {
   for (let i = 0; i < items.length; i++) {
     const item = items[i].trim();
     
-    // Пропускаем пустые и "Цена:" строки
-    if (!item || item === 'Цена:' || /^Цена:\s*$/.test(item) || /^\d+\s*₽?\s*$/.test(item)) {
+    // Пропускаем пустые строки
+    if (!item) {
+      continue;
+    }
+    
+    // Обрабатываем "Цена:" + число
+    if (item === 'Цена:' || /^Цена:\s*$/i.test(item)) {
+      // Сохраняем предыдущий пункт перед ценой
+      if (currentItem) {
+        merged.push(currentItem.trim());
+        currentItem = '';
+      }
+      
+      // Ищем следующую строку с числом
+      if (i + 1 < items.length) {
+        const nextItem = items[i + 1].trim();
+        if (/^\d+[\s\d]*₽?\s*$/.test(nextItem)) {
+          // Формируем "Цена: {число} руб."
+          const priceNumber = nextItem.replace(/₽/g, '').trim();
+          merged.push(`Цена: ${priceNumber} руб.`);
+          i++; // Пропускаем следующую строку (число)
+          continue;
+        }
+      }
+      continue;
+    }
+    
+    // Пропускаем одиночные числа (которые не были обработаны как цена)
+    if (/^\d+[\s\d]*₽?\s*$/.test(item)) {
       continue;
     }
     
