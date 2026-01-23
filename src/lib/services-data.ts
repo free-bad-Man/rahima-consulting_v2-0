@@ -63,22 +63,24 @@ function mergeIncludesItems(items: string[]): string[] {
       continue;
     }
     
-    // Обрабатываем "Цена:" + число
-    if (item === 'Цена:' || /^Цена:\s*$/i.test(item)) {
+    // Обрабатываем "Цена:" / "Стоимость:" + число/текст
+    if (/^(Цена|Стоимость):\s*$/i.test(item)) {
       // Сохраняем предыдущий пункт перед ценой
       if (currentItem) {
         merged.push(currentItem.trim());
         currentItem = '';
       }
       
-      // Ищем следующую строку с числом
+      // Ищем следующую строку с ценой (может быть число или текст со скобками)
       if (i + 1 < items.length) {
         const nextItem = items[i + 1].trim();
-        if (/^\d+[\s\d]*₽?\s*$/.test(nextItem)) {
-          // Формируем "Цена: {число} руб."
-          const priceNumber = nextItem.replace(/₽/g, '').trim();
-          merged.push(`Цена: ${priceNumber} руб.`);
-          i++; // Пропускаем следующую строку (число)
+        // Проверяем на число или число с дополнительным текстом в скобках
+        if (/^\d+/.test(nextItem)) {
+          // Формируем "Цена: {текст} руб." или "Стоимость: {текст} руб."
+          const label = item.replace(':', '').trim();
+          const priceText = nextItem.replace(/₽/g, '').trim();
+          merged.push(`${label}: ${priceText} руб.`);
+          i++; // Пропускаем следующую строку
           continue;
         }
       }
@@ -86,7 +88,8 @@ function mergeIncludesItems(items: string[]): string[] {
     }
     
     // Пропускаем одиночные числа (которые не были обработаны как цена)
-    if (/^\d+[\s\d]*₽?\s*$/.test(item)) {
+    // Но сохраняем если есть дополнительный текст в скобках
+    if (/^\d+[\s\d]*₽?\s*$/.test(item) && !/\(/.test(item)) {
       continue;
     }
     
