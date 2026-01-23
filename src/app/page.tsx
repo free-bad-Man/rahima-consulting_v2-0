@@ -251,8 +251,8 @@ export default function Page() {
                     Здесь Ваш личный ИИ-помощник для повышения производительности бизнеса.
                   </h1>
 
-                  <div className="w-full max-w-3xl mx-auto overflow-hidden mt-6 bg-transparent">
-                    <div className="relative">
+                  <div className="w-full h-40 overflow-hidden mt-6 bg-transparent">
+                    <div className="relative h-full">
                       <div ref={logoTrackRef} className="logo-track flex items-center gap-6" aria-hidden>
                         <div className="logo-set flex items-center gap-6">
                           <img src="/logos/1_1C.png" alt="1C" className="logo-img h-64 w-[640px] object-contain" />
