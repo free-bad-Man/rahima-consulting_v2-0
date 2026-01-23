@@ -24,11 +24,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const description = solution.short_tagline || solution.description || '';
-  const priceText = solution.price_from ? `от ${solution.price_from} ₽` : '';
 
   return {
     title: `${solution.title} | Rahima Consulting`,
-    description: `${description} ${priceText}`.trim(),
+    description: `${description} ${solution.price_display || ''}`.trim(),
     openGraph: {
       title: solution.title,
       description: description,
@@ -98,13 +97,10 @@ export default async function SolutionPage({ params }: PageProps) {
               </div>
 
               {/* Price */}
-              {solution.price_from && (
-                <div className="flex flex-wrap items-baseline gap-3 mb-8">
+              {solution.price_display && (
+                <div className="mb-8">
                   <span className="text-4xl md:text-5xl font-bold text-white">
-                    от {solution.price_from} ₽
-                  </span>
-                  <span className="text-lg text-white/60">
-                    {solution.price_display || ''}
+                    {solution.price_display}
                   </span>
                 </div>
               )}
