@@ -3,6 +3,8 @@ export const fetchCache = "force-no-store";
 
 import { NextResponse } from "next/server";
 import { createDealFromContactForm } from "@/lib/amocrm";
+import { sendContactFormEmail } from "@/lib/email";
+import { sendTelegramNotification } from "@/lib/telegram";
 
 /**
  * API для отправки формы обратной связи (Заказать звонок)
@@ -36,16 +38,38 @@ export async function POST(request: Request) {
     const trimmedName = name.trim();
     const trimmedPhone = phone.trim();
 
-    // n8n integration removed — log payload instead of sending to external workflow
-    const n8nResult = { success: true, error: null };
+    // Отправляем Email уведомление
+    let emailResult = null;
     try {
-      console.info("[n8n removed] contact form payload:", {
+      emailResult = await sendContactFormEmail({
         name: trimmedName,
         phone: trimmedPhone,
         service: "Заказ звонка",
       });
-    } catch (e) {
-      // swallow logging errors
+      if (emailResult.success) {
+        console.log("[Contact API] ✅ Email sent:", emailResult.messageId);
+      } else {
+        console.error("[Contact API] ⚠️ Email failed:", emailResult.error);
+      }
+    } catch (emailError) {
+      console.error("[Contact API] ❌ Email error:", emailError);
+    }
+
+    // Отправляем Telegram уведомление
+    let telegramResult = null;
+    try {
+      telegramResult = await sendTelegramNotification({
+        name: trimmedName,
+        phone: trimmedPhone,
+        service: "Заказ звонка",
+      });
+      if (telegramResult.success) {
+        console.log("[Contact API] ✅ Telegram sent:", telegramResult.messageId);
+      } else {
+        console.error("[Contact API] ⚠️ Telegram failed:", telegramResult.error);
+      }
+    } catch (telegramError) {
+      console.error("[Contact API] ❌ Telegram error:", telegramError);
     }
 
     // Отправляем в amoCRM (независимо от результата n8n)
@@ -61,26 +85,27 @@ export async function POST(request: Request) {
       // Не блокируем ответ, если amoCRM не работает
     }
 
-    if (!n8nResult.success) {
-      console.error("[Contact API] n8n error:", n8nResult.error);
-      // Если amoCRM успешно создал сделку, все равно возвращаем успех
-      if (amocrmResult) {
-        return NextResponse.json({
-          success: true,
-          message: "Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.",
-        });
-      }
-      // Не показываем пользователю детали ошибки n8n
+    // Проверяем, что хотя бы одна интеграция сработала
+    const anySuccess = emailResult?.success || telegramResult?.success || amocrmResult;
+
+    if (anySuccess) {
+      return NextResponse.json({
+        success: true,
+        message: "Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.",
+        details: {
+          email: emailResult?.success || false,
+          telegram: telegramResult?.success || false,
+          amocrm: !!amocrmResult,
+        }
+      });
+    } else {
+      // Если все интеграции провалились
+      console.error("[Contact API] ❌ All integrations failed");
       return NextResponse.json(
-        { error: "Не удалось отправить заявку. Попробуйте позже." },
+        { error: "Не удалось отправить заявку. Попробуйте позже или позвоните нам напрямую." },
         { status: 500 }
       );
     }
-
-    return NextResponse.json({
-      success: true,
-      message: "Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.",
-    });
   } catch (error) {
     console.error("[Contact API] Error:", error);
     return NextResponse.json(
