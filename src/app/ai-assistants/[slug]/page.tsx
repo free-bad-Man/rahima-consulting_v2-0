@@ -118,7 +118,7 @@ export default async function AIAssistantPage({ params }: PageProps) {
                   Заказать консультацию
                 </Link>
                 <Link
-                  href="/dashboard/orders"
+                  href="/calculator"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-lg
                            bg-white/10 hover:bg-white/20 backdrop-blur-sm
                            text-white font-medium transition-all

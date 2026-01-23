@@ -166,7 +166,7 @@ export default function Page() {
                   
                   <div className="flex flex-col gap-2">
                     <Link
-                      href="/dashboard/orders"
+                      href="/calculator"
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-gradient-to-r from-purple-900/25 to-blue-900/25 hover:from-purple-900/30 hover:to-blue-900/30 text-white/90 font-medium transition-all"
                     >
@@ -340,7 +340,7 @@ export default function Page() {
             </button>
             
             <Link
-              href="/dashboard/orders"
+              href="/calculator"
               className="flex-1 min-w-0 flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-3 rounded-lg bg-gradient-to-r from-purple-900/25 to-blue-900/25 hover:from-purple-900/30 hover:to-blue-900/30 text-white/90 font-medium transition-all shadow-sm shadow-black/5 hover:shadow-black/10 backdrop-blur-sm max-w-[360px] w-full sm:w-auto justify-center"
             >
               <Calculator className="w-4 h-4 sm:w-5 sm:h-5" />

@@ -150,7 +150,7 @@ export default async function ServicePage({ params }: PageProps) {
                 </a>
                 
                 <Link
-                  href="/dashboard/orders"
+                  href="/calculator"
                   className="flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 
                              bg-white/10 backdrop-blur-sm
                              rounded-lg text-white font-semibold
