@@ -102,7 +102,7 @@ export default function Footer() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`flex items-center justify-center rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 transition-transform hover:scale-110 shadow-lg shadow-purple-500/40 overflow-hidden`}
+                          className="group flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 transition-all duration-300 hover:scale-110 hover:bg-white/20 shadow-lg shadow-white/10 hover:shadow-white/20 overflow-hidden"
                           aria-label={link.label}
                           title={link.label}
                         >
@@ -112,11 +112,11 @@ export default function Footer() {
                               alt={link.label}
                               width={24}
                               height={24}
-                              className="w-4 h-4 sm:w-5 sm:h-5 object-contain opacity-70"
+                              className="w-4 h-4 sm:w-5 sm:h-5 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
                               unoptimized
                             />
                           ) : (
-                            Icon && <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white/70" />
+                            Icon && <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white/80 group-hover:text-white transition-colors" />
                           )}
                         </a>
                         {/* Кнопка голосового помощника между Яндекс и Telegram - больше остальных */}
@@ -124,10 +124,10 @@ export default function Footer() {
                           <button
                             type="button"
                             onClick={handleVoiceAssistantClick}
-                            className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:scale-110 transition-transform shadow-lg shadow-purple-500/50"
+                            className="group w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/15 backdrop-blur-md border border-white/30 text-white hover:scale-110 hover:bg-white/25 transition-all duration-300 shadow-lg shadow-white/20 hover:shadow-white/30"
                             aria-label="Голосовой помощник"
                           >
-                            <Mic className="w-4 h-4 sm:w-5 sm:h-5" />
+                            <Mic className="w-5 h-5 sm:w-6 sm:h-6 text-white/90 group-hover:text-white transition-colors" />
                           </button>
                         )}
                       </div>
