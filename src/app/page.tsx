@@ -194,19 +194,22 @@ export default function Page() {
           </Drawer.Portal>
         </Drawer.Root>
 
-        {/* Desktop header */}
+        {/* Desktop header - Современный дизайн */}
         <div className="hidden md:flex items-start justify-between gap-8">
           <div className="flex items-start justify-center flex-1 overflow-visible">
-            <Link href="/">
-              <img
-                src="/logo.png"
-                alt="Логотип компании"
-                className="h-[120px] w-auto object-contain"
-                style={{ 
-                  transform: 'scale(1.275)',
-                  filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(2000%) hue-rotate(250deg) brightness(1.5) contrast(1.1)',
-                }}
-              />
+            <Link href="/" className="group">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/30 to-blue-600/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
+                <img
+                  src="/logo.png"
+                  alt="Логотип компании"
+                  className="relative h-[120px] w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                  style={{ 
+                    transform: 'scale(1.275)',
+                    filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(2000%) hue-rotate(250deg) brightness(1.5) contrast(1.1) drop-shadow(0 0 12px rgba(167, 139, 250, 0.4))',
+                  }}
+                />
+              </div>
             </Link>
           </div>
           <div className="flex items-start justify-center flex-1 pt-2">
