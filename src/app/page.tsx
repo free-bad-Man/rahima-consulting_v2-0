@@ -124,10 +124,11 @@ export default function Page() {
           <div className="flex items-center justify-end flex-1">
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="flex items-center justify-center w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-colors"
+              className="group relative flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 hover:from-purple-500/30 hover:to-blue-500/30 border border-white/20 backdrop-blur-md text-white transition-all duration-300 shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20 hover:scale-105"
               aria-label="Открыть меню"
             >
-              <Menu className="w-5 h-5" />
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-purple-600/0 to-blue-600/0 group-hover:from-purple-600/10 group-hover:to-blue-600/10 transition-all duration-300"></div>
+              <Menu className="w-6 h-6 relative z-10 group-hover:rotate-90 transition-transform duration-300" />
             </button>
           </div>
         </div>
@@ -193,19 +194,22 @@ export default function Page() {
           </Drawer.Portal>
         </Drawer.Root>
 
-        {/* Desktop header */}
+        {/* Desktop header - Современный дизайн */}
         <div className="hidden md:flex items-start justify-between gap-8">
           <div className="flex items-start justify-center flex-1 overflow-visible">
-            <Link href="/">
-              <img
-                src="/logo.png"
-                alt="Логотип компании"
-                className="h-[120px] w-auto object-contain"
-                style={{ 
-                  transform: 'scale(1.275)',
-                  filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(2000%) hue-rotate(250deg) brightness(1.5) contrast(1.1)',
-                }}
-              />
+            <Link href="/" className="group">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/30 to-blue-600/30 rounded-2xl blur-2xl group-hover:blur-3xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
+                <img
+                  src="/logo.png"
+                  alt="Логотип компании"
+                  className="relative h-[120px] w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                  style={{ 
+                    transform: 'scale(1.275)',
+                    filter: 'brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(2000%) hue-rotate(250deg) brightness(1.5) contrast(1.1) drop-shadow(0 0 12px rgba(167, 139, 250, 0.4))',
+                  }}
+                />
+              </div>
             </Link>
           </div>
           <div className="flex items-start justify-center flex-1 pt-2">
@@ -327,24 +331,28 @@ export default function Page() {
         ))}
       </div>
       
-      {/* CTA Buttons */}
+      {/* CTA Buttons - Современный дизайн */}
       <div className="fixed bottom-36 sm:bottom-40 md:bottom-36 left-0 right-0 z-30 px-2 sm:px-4 md:px-6">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <button
               onClick={() => setShowCallOrderModal(true)}
-              className="flex-1 min-w-0 flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-3 rounded-lg bg-gradient-to-r from-purple-900/25 to-blue-900/25 hover:from-purple-900/30 hover:to-blue-900/30 text-white/90 font-medium transition-all shadow-sm shadow-black/5 hover:shadow-black/10 backdrop-blur-sm max-w-[360px] w-full sm:w-auto justify-center"
+              className="group relative flex-1 min-w-0 flex items-center justify-center gap-2 sm:gap-3 px-4 py-3 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 hover:from-purple-500/30 hover:to-blue-500/30 border border-white/20 backdrop-blur-md text-white font-semibold transition-all duration-300 shadow-xl shadow-purple-500/10 hover:shadow-purple-500/25 hover:scale-105 max-w-[360px] w-full sm:w-auto overflow-hidden"
             >
-              <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="hidden sm:inline">Заказать звонок</span>
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/0 to-blue-600/0 group-hover:from-purple-600/20 group-hover:to-blue-600/20 transition-all duration-300"></div>
+              <Phone className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+              <span className="hidden sm:inline relative z-10 text-sm sm:text-base">Заказать звонок</span>
+              <span className="sm:hidden relative z-10 text-xs">Звонок</span>
             </button>
             
             <Link
               href="/calculator"
-              className="flex-1 min-w-0 flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-3 rounded-lg bg-gradient-to-r from-purple-900/25 to-blue-900/25 hover:from-purple-900/30 hover:to-blue-900/30 text-white/90 font-medium transition-all shadow-sm shadow-black/5 hover:shadow-black/10 backdrop-blur-sm max-w-[360px] w-full sm:w-auto justify-center"
+              className="group relative flex-1 min-w-0 flex items-center justify-center gap-2 sm:gap-3 px-4 py-3 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 hover:from-blue-500/30 hover:to-purple-500/30 border border-white/20 backdrop-blur-md text-white font-semibold transition-all duration-300 shadow-xl shadow-blue-500/10 hover:shadow-blue-500/25 hover:scale-105 max-w-[360px] w-full sm:w-auto overflow-hidden"
             >
-              <Calculator className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="hidden sm:inline">Расчитать стоимость</span>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/0 to-purple-600/0 group-hover:from-blue-600/20 group-hover:to-purple-600/20 transition-all duration-300"></div>
+              <Calculator className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 group-hover:scale-110 transition-transform duration-300" />
+              <span className="hidden sm:inline relative z-10 text-sm sm:text-base">Рассчитать стоимость</span>
+              <span className="sm:hidden relative z-10 text-xs">Расчёт</span>
             </Link>
             
             <button
@@ -352,10 +360,12 @@ export default function Page() {
                 setStartAIChatWithVoice(false);
                 setShowAIChat(true);
               }}
-              className="flex-1 min-w-0 flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-3 rounded-lg bg-gradient-to-r from-purple-900/25 to-blue-900/25 hover:from-purple-900/30 hover:to-blue-900/30 text-white/90 font-medium transition-all shadow-sm shadow-black/5 hover:shadow-black/10 backdrop-blur-sm max-w-[360px] w-full sm:w-auto justify-center"
+              className="group relative flex-1 min-w-0 flex items-center justify-center gap-2 sm:gap-3 px-4 py-3 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 hover:from-pink-500/30 hover:to-purple-500/30 border border-white/20 backdrop-blur-md text-white font-semibold transition-all duration-300 shadow-xl shadow-pink-500/10 hover:shadow-pink-500/25 hover:scale-105 max-w-[360px] w-full sm:w-auto overflow-hidden"
             >
-              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="hidden sm:inline">ИИ Ассистент</span>
+              <div className="absolute inset-0 bg-gradient-to-br from-pink-600/0 to-purple-600/0 group-hover:from-pink-600/20 group-hover:to-purple-600/20 transition-all duration-300"></div>
+              <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+              <span className="hidden sm:inline relative z-10 text-sm sm:text-base">ИИ Ассистент</span>
+              <span className="sm:hidden relative z-10 text-xs">ИИ</span>
             </button>
           </div>
         </div>

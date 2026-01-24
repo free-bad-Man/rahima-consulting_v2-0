@@ -5,7 +5,7 @@ import PageHeader from "@/components/page-header";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import GlassCard from "@/components/ui/glass-card";
 import ShaderBackground from "@/components/ui/shader-background";
-import { Calculator, CheckCircle2, AlertCircle } from "lucide-react";
+import { Calculator, CheckCircle2, AlertCircle, Download, Mail, Share2, Loader2 } from "lucide-react";
 
 // ============ ТИПЫ ============
 type EntityType = 'IP' | 'OOO' | null;
@@ -151,6 +151,9 @@ export default function CalculatorPage() {
   const [comment, setComment] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [calculationId, setCalculationId] = useState<string | null>(null);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [isSendingEmail, setIsSendingEmail] = useState(false);
 
   // ============ РАСЧЁТ ============
   const calculateTotal = (): CalculationResult => {
@@ -410,6 +413,105 @@ export default function CalculatorPage() {
   const result = calculateTotal();
 
   // ============ ОТПРАВКА ФОРМЫ ============
+  const handleDownloadPdf = async () => {
+    setIsGeneratingPdf(true);
+    try {
+      const response = await fetch('/api/calculator/generate-pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          entityType,
+          taxSystem,
+          employees,
+          operations,
+          hasNDS,
+          hasVED,
+          result,
+        }),
+      });
+
+      if (!response.ok) throw new Error('Failed to generate PDF');
+
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Расчёт_Rahima_Consulting_${new Date().toISOString().split('T')[0]}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Не удалось сгенерировать PDF. Попробуйте позже.');
+    } finally {
+      setIsGeneratingPdf(false);
+    }
+  };
+
+  const handleSendEmail = async () => {
+    if (!email) {
+      alert('Укажите email для отправки расчёта');
+      return;
+    }
+
+    setIsSendingEmail(true);
+    try {
+      const response = await fetch('/api/calculator/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          name,
+          calculationId,
+        }),
+      });
+
+      if (!response.ok) throw new Error('Failed to send email');
+
+      alert('Расчёт успешно отправлен на ваш email!');
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('Не удалось отправить email. Попробуйте позже.');
+    } finally {
+      setIsSendingEmail(false);
+    }
+  };
+
+  const handleShareLink = () => {
+    if (!calculationId) {
+      alert('Сначала отправьте заявку');
+      return;
+    }
+
+    const link = `${window.location.origin}/calculator/${calculationId}`;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: 'Расчёт стоимости услуг',
+        text: 'Посмотрите мой расчёт стоимости услуг Rahima Consulting',
+        url: link,
+      }).catch((error) => {
+        if (error.name !== 'AbortError') {
+          copyToClipboard(link);
+        }
+      });
+    } else {
+      copyToClipboard(link);
+    }
+  };
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Ссылка скопирована в буфер обмена!');
+    }).catch(() => {
+      alert(`Скопируйте ссылку: ${text}`);
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -475,13 +577,14 @@ export default function CalculatorPage() {
         }),
       });
 
-      let calculationId = null;
+      let savedCalculationId = null;
       let calculationUrl = null;
 
       if (saveResponse.ok) {
         const saveData = await saveResponse.json();
-        calculationId = saveData.calculation?.id;
-        calculationUrl = saveData.url;
+        savedCalculationId = saveData.calculationId;
+        calculationUrl = `${window.location.origin}/calculator/${savedCalculationId}`;
+        setCalculationId(savedCalculationId);
         console.log('✅ Расчёт сохранён:', calculationUrl);
       } else {
         console.warn('⚠️ Не удалось сохранить расчёт, но продолжаем отправку заявки');
@@ -501,7 +604,7 @@ export default function CalculatorPage() {
           email,
           service: 'Заявка из калькулятора',
           comment: `РАСЧЁТ ИЗ КАЛЬКУЛЯТОРА\n\nИТОГО:\n- Разовые платежи: ${result.oneTime.toLocaleString('ru-RU')} руб.\n- Ежемесячные платежи: ${result.monthly.toLocaleString('ru-RU')} руб./мес\n\n${servicesDescription}\n${calculationUrl ? `\nСсылка на расчёт: ${calculationUrl}` : ''}\n\nКомментарий клиента:\n${comment}`,
-          calculationId,
+          calculationId: savedCalculationId,
           totalMonthly: result.monthly,
         }),
       });
@@ -510,20 +613,7 @@ export default function CalculatorPage() {
 
       setSubmitStatus('success');
 
-      // Если есть ссылка на расчёт - показываем её
-      if (calculationUrl) {
-        setTimeout(() => {
-          if (confirm('Хотите открыть детальный расчёт?')) {
-            window.open(calculationUrl, '_blank');
-          }
-        }, 1000);
-      }
-
-      // Очистка формы
-      setName('');
-      setPhone('');
-      setEmail('');
-      setComment('');
+      // НЕ очищаем форму, чтобы пользователь мог использовать кнопки PDF/Email/Share
 
       // Сброс статуса через 5 секунд
       setTimeout(() => setSubmitStatus('idle'), 5000);
@@ -908,10 +998,60 @@ export default function CalculatorPage() {
                     <h2 className="text-xl font-bold text-white mb-4">Оставить заявку</h2>
                     
                     {submitStatus === 'success' && (
-                      <div className="mb-4 p-4 rounded-lg bg-green-500/20 border border-green-500/30 flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                        <div className="text-green-100 text-sm">
-                          <strong>Спасибо!</strong> Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.
+                      <div className="mb-4 p-4 rounded-lg bg-green-500/20 border border-green-500/30">
+                        <div className="flex items-start gap-3 mb-4">
+                          <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                          <div className="text-green-100 text-sm">
+                            <strong>Спасибо!</strong> Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.
+                          </div>
+                        </div>
+                        
+                        {/* Кнопки действий после успешной отправки */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                          <button
+                            onClick={handleDownloadPdf}
+                            disabled={isGeneratingPdf}
+                            className="flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white text-sm font-medium transition-colors disabled:opacity-50"
+                          >
+                            {isGeneratingPdf ? (
+                              <>
+                                <Loader2 className="w-4 h-4 animate-spin" />
+                                <span>Генерация...</span>
+                              </>
+                            ) : (
+                              <>
+                                <Download className="w-4 h-4" />
+                                <span>Скачать PDF</span>
+                              </>
+                            )}
+                          </button>
+                          
+                          <button
+                            onClick={handleSendEmail}
+                            disabled={isSendingEmail || !email}
+                            className="flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white text-sm font-medium transition-colors disabled:opacity-50"
+                          >
+                            {isSendingEmail ? (
+                              <>
+                                <Loader2 className="w-4 h-4 animate-spin" />
+                                <span>Отправка...</span>
+                              </>
+                            ) : (
+                              <>
+                                <Mail className="w-4 h-4" />
+                                <span>На Email</span>
+                              </>
+                            )}
+                          </button>
+                          
+                          <button
+                            onClick={handleShareLink}
+                            disabled={!calculationId}
+                            className="flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white text-sm font-medium transition-colors disabled:opacity-50"
+                          >
+                            <Share2 className="w-4 h-4" />
+                            <span>Поделиться</span>
+                          </button>
                         </div>
                       </div>
                     )}

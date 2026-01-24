@@ -139,17 +139,17 @@ export default function Footer() {
                 </span>
               </div>
 
-              {/* Блок 3: Правовая информация (справа) */}
-              <div className="flex flex-col items-center md:items-end gap-1.5 sm:gap-2 w-full md:w-auto">
+              {/* Блок 3: Правовая информация (справа) - только на десктопе */}
+              <div className="hidden md:flex flex-col items-end gap-2 w-auto">
                 <button
                   onClick={() => setIsPrivacyModalOpen(true)}
-                  className="text-white/70 hover:text-white text-[10px] sm:text-xs md:text-sm transition-colors text-center md:text-right"
+                  className="text-white/70 hover:text-white text-sm transition-colors text-right"
                 >
                   Политика конфиденциальности
                 </button>
                 <button
                   onClick={() => setIsTermsModalOpen(true)}
-                  className="text-white/70 hover:text-white text-[10px] sm:text-xs md:text-sm transition-colors text-center md:text-right"
+                  className="text-white/70 hover:text-white text-sm transition-colors text-right"
                 >
                   Условия использования
                 </button>
