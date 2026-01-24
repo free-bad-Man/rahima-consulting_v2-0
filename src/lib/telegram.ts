@@ -14,7 +14,9 @@ export async function sendTelegramNotification({ name, phone, email, service = '
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
   if (!botToken || !chatId) {
-    console.warn('⚠️ Telegram не настроен. TELEGRAM_BOT_TOKEN или TELEGRAM_CHAT_ID отсутствуют.');
+    console.error('❌ Telegram не настроен! Проверьте переменные окружения:');
+    console.error(`   TELEGRAM_BOT_TOKEN: ${botToken ? '✅ установлен' : '❌ не установлен'}`);
+    console.error(`   TELEGRAM_CHAT_ID: ${chatId ? '✅ установлен' : '❌ не установлен'}`);
     return { success: false, error: 'Telegram not configured' };
   }
 

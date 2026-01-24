@@ -29,7 +29,11 @@ function createTransporter() {
   const smtpSecure = process.env.SMTP_SECURE === 'true';
 
   if (!smtpHost || !smtpPort || !smtpUser || !smtpPassword) {
-    console.warn('⚠️ SMTP не настроен полностью. Проверьте переменные окружения.');
+    console.error('❌ SMTP не настроен полностью! Проверьте переменные окружения:');
+    console.error(`   SMTP_HOST: ${smtpHost ? '✅ установлен' : '❌ не установлен'}`);
+    console.error(`   SMTP_PORT: ${smtpPort ? '✅ установлен' : '❌ не установлен'}`);
+    console.error(`   SMTP_USER: ${smtpUser ? '✅ установлен' : '❌ не установлен'}`);
+    console.error(`   SMTP_PASSWORD: ${smtpPassword ? '✅ установлен' : '❌ не установлен'}`);
     throw new Error('SMTP configuration is incomplete');
   }
 
