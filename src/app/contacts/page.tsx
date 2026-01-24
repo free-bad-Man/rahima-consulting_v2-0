@@ -48,8 +48,8 @@ export default function ContactsPage() {
                   <Phone className="w-6 h-6 text-purple-300" />
                 </div>
                 <div className="text-sm text-white/60 mb-2">Телефон</div>
-                <a href="tel:+79000000000" className="text-lg font-semibold text-white hover:text-purple-300 transition-colors">
-                  +7 (900) 000-00-00
+                <a href="tel:+79789987222" className="text-lg font-semibold text-white hover:text-purple-300 transition-colors">
+                  +7 (978) 998-72-22
                 </a>
               </GlassCard>
 
@@ -58,8 +58,8 @@ export default function ContactsPage() {
                   <Mail className="w-6 h-6 text-purple-300" />
                 </div>
                 <div className="text-sm text-white/60 mb-2">Email</div>
-                <a href="mailto:info@rahima.ru" className="text-lg font-semibold text-white hover:text-purple-300 transition-colors">
-                  info@rahima.ru
+                <a href="mailto:info@rahima-consulting.ru" className="text-lg font-semibold text-white hover:text-purple-300 transition-colors">
+                  info@rahima-consulting.ru
                 </a>
               </GlassCard>
 
@@ -68,8 +68,8 @@ export default function ContactsPage() {
                   <MessageCircle className="w-6 h-6 text-purple-300" />
                 </div>
                 <div className="text-sm text-white/60 mb-2">Telegram</div>
-                <a href="https://t.me/rahima_consulting" target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-white hover:text-purple-300 transition-colors">
-                  @rahima_consulting
+                <a href="https://t.me/centr_reg" target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-white hover:text-purple-300 transition-colors">
+                  @centr_reg
                 </a>
               </GlassCard>
 
@@ -192,32 +192,32 @@ export default function ContactsPage() {
                     <div>
                       <div className="text-sm text-white/60 mb-1">Адрес</div>
                       <div className="text-white font-medium">
-                        Республика Крым, г. Симферополь<br />
-                        ул. Примерная, д. 1, офис 101
+                        Россия, респ. Крым, г. Симферополь<br />
+                        ул. им Мате Залки 1
                       </div>
                     </div>
                   </div>
 
                   <div className="h-64 rounded-lg bg-white/5 border border-white/10 overflow-hidden">
-                    {/* Placeholder for map - replace with actual map integration */}
-                    <div className="w-full h-full flex items-center justify-center text-white/40">
-                      <div className="text-center">
-                        <MapPin className="w-12 h-12 mx-auto mb-2 opacity-40" />
-                        <p>Интерактивная карта</p>
-                        <p className="text-sm">(подключите Яндекс.Карты или Google Maps)</p>
-                      </div>
-                    </div>
+                    <iframe
+                      src="https://yandex.ru/map-widget/v1/?um=constructor%3A126df85cd26de115228ceddeb2958488cb30323393e8ac9b8518d873641bf6ca&amp;source=constructor"
+                      width="100%"
+                      height="100%"
+                      frameBorder="0"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      title="Rahima Consulting на карте"
+                    ></iframe>
                   </div>
 
                   <div className="p-4 rounded-lg bg-gradient-to-br from-purple-900/20 to-blue-900/20 border border-purple-500/20">
                     <div className="text-sm font-semibold text-purple-300 mb-2">
-                      📍 Как добраться
+                      📍 Местоположение
                     </div>
-                    <ul className="text-sm text-white/80 space-y-1">
-                      <li>• 5 минут пешком от станции метро «Центральная»</li>
-                      <li>• Автобусы: 12, 45, 67</li>
-                      <li>• Парковка для клиентов</li>
-                    </ul>
+                    <p className="text-sm text-white/80">
+                      Удобное расположение в центре Симферополя. Мы работаем онлайн 24/7 и готовы встретиться в офисе по предварительной договорённости.
+                    </p>
                   </div>
                 </div>
               </GlassCard>
@@ -231,11 +231,11 @@ export default function ContactsPage() {
               
               <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-purple-300 mb-2">10+</div>
+                  <div className="text-4xl font-bold text-purple-300 mb-2">12</div>
                   <div className="text-white/80">лет на рынке</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-blue-300 mb-2">500+</div>
+                  <div className="text-4xl font-bold text-blue-300 mb-2">15 000+</div>
                   <div className="text-white/80">довольных клиентов</div>
                 </div>
                 <div className="text-center">

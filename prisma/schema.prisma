@@ -237,3 +237,71 @@ enum NotificationType {
   SYSTEM
   PROMOTION
 }
+
+model Calculation {
+  id              String    @id @default(cuid())
+  userId          String?
+  name            String?
+  phone           String?
+  email           String?
+  businessType    String // "IP" | "OOO"
+  taxSystem       String // "USN_6" | "USN_15" | "OSNO" | "PATENT"
+  employeesCount  Int       @default(0)
+  hasNDS          Boolean   @default(false)
+  hasVED          Boolean   @default(false)
+  operationsCount Int       @default(0)
+  services        Json // Массив выбранных услуг
+  surcharges      Json // Надбавки
+  breakdown       Json // Детализация расчёта
+  totalMonthly    Float // Итоговая стоимость в месяц
+  totalOneTime    Float // Разовые платежи
+  totalYearly     Float // Годовая стоимость
+  viewCount       Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  expiresAt       DateTime? // Можно ограничить срок жизни ссылки
+
+  @@index([userId])
+  @@index([email])
+  @@index([createdAt])
+}
+
+model EmailSchedule {
+  id             String            @id @default(cuid())
+  recipientEmail String
+  recipientName  String?
+  templateType   EmailTemplateType
+  subject        String
+  htmlContent    String
+  textContent    String?
+  metadata       Json? // Дополнительные данные (расчёт, имя и т.д.)
+  scheduledFor   DateTime // Когда отправить
+  sentAt         DateTime? // Когда отправлено (null = ещё не отправлено)
+  status         EmailStatus       @default(PENDING)
+  error          String? // Ошибка при отправке
+  attempts       Int               @default(0)
+  maxAttempts    Int               @default(3)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  @@index([recipientEmail])
+  @@index([scheduledFor])
+  @@index([status])
+  @@index([sentAt])
+}
+
+enum EmailTemplateType {
+  THANK_YOU // День 0: Спасибо за заявку
+  FOLLOW_UP_DAY1 // День 1: Почему выбирают нас
+  FOLLOW_UP_DAY3 // День 3: Специальное предложение
+  FOLLOW_UP_DAY7 // День 7: Напоминание
+  CALCULATION_LINK // Ссылка на расчёт
+}
+
+enum EmailStatus {
+  PENDING
+  SENDING
+  SENT
+  FAILED
+  CANCELLED
+}

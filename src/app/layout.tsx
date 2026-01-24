@@ -4,6 +4,8 @@ import "./globals.css";
 import Providers from "@/components/providers/session-provider";
 import ConditionalFooter from "@/components/conditional-footer";
 import PageLoader from "@/components/ui/page-loader";
+import PWAInstallModal from "@/components/pwa-install-modal";
+import PWARegister from "@/components/pwa-register";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -52,6 +54,15 @@ export const metadata: Metadata = {
     icon: "/favicon.png",
     apple: "/favicon.png",
   },
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Rahima Consulting",
+  },
+  formatDetection: {
+    telephone: false,
+  },
   openGraph: {
     type: "website",
     locale: "ru_RU",
@@ -93,6 +104,16 @@ export default function RootLayout({
         <script src="/tv-detect.js" defer />
         <link rel="stylesheet" href="/tv-fallback.css" />
         
+        {/* PWA Meta Tags */}
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Rahima" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png" />
+        <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-192x192.png" />
+        
         {/* Organization JSON-LD */}
         <script
           type="application/ld+json"
@@ -105,8 +126,8 @@ export default function RootLayout({
               "url": process.env.NEXT_PUBLIC_SITE_URL || "https://your-domain.com",
               "logo": `${process.env.NEXT_PUBLIC_SITE_URL || "https://your-domain.com"}/logo.png`,
               "image": `${process.env.NEXT_PUBLIC_SITE_URL || "https://your-domain.com"}/logo.png`,
-              "telephone": "+7-XXX-XXX-XXXX",
-              "email": "info@rahima.ru",
+              "telephone": "+7-978-998-72-22",
+              "email": "info@rahima-consulting.ru",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "RU",
@@ -116,7 +137,7 @@ export default function RootLayout({
               "priceRange": "₽₽",
               "openingHours": "Mo-Su 00:00-23:59",
               "sameAs": [
-                "https://t.me/rahima_consulting",
+                "https://t.me/centr_reg",
               ],
             }),
           }}
@@ -129,6 +150,8 @@ export default function RootLayout({
         <Providers>
           {children}
           <ConditionalFooter />
+          <PWAInstallModal />
+          <PWARegister />
         </Providers>
       </body>
     </html>

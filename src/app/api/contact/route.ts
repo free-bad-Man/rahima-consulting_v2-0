@@ -5,6 +5,7 @@ import { NextResponse } from "next/server";
 import { createDealFromContactForm } from "@/lib/amocrm";
 import { sendContactFormEmail } from "@/lib/email";
 import { sendTelegramNotification } from "@/lib/telegram";
+import { scheduleEmailSeries } from "@/lib/email-scheduler";
 
 /**
  * API для отправки формы обратной связи (Заказать звонок)
@@ -18,7 +19,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     
-    const { name, phone, email, service, comment } = body;
+    const { name, phone, email, service, comment, calculationId, totalMonthly } = body;
 
     // Валидация обязательных полей
     if (!name || typeof name !== "string" || name.trim().length < 2) {
@@ -93,6 +94,22 @@ export async function POST(request: Request) {
     } catch (amocrmError) {
       console.error("[Contact API] ❌ amoCRM error:", amocrmError);
       // Не блокируем ответ, если amoCRM не работает
+    }
+
+    // Планируем email-серию, если это заявка из калькулятора и есть email
+    if (trimmedEmail && (serviceName === 'Заявка из калькулятора' || calculationId)) {
+      try {
+        await scheduleEmailSeries({
+          recipientEmail: trimmedEmail,
+          recipientName: trimmedName,
+          calculationId,
+          totalMonthly,
+        });
+        console.log(`[Contact API] ✅ Запланирована email-серия для ${trimmedEmail}`);
+      } catch (scheduleError) {
+        console.error("[Contact API] ❌ Ошибка планирования email-серии:", scheduleError);
+        // Не блокируем ответ, если планирование не сработало
+      }
     }
 
     // Проверяем, что хотя бы одна интеграция сработала

@@ -3,6 +3,7 @@ import './setup-proxy';
 
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
+import Yandex from "next-auth/providers/yandex";
 import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
@@ -17,19 +18,27 @@ if (!process.env.GOOGLE_CLIENT_ID) {
 if (!process.env.GOOGLE_CLIENT_SECRET) {
   console.warn("⚠️ GOOGLE_CLIENT_SECRET не установлен");
 }
+if (!process.env.YANDEX_CLIENT_ID) {
+  console.warn("⚠️ YANDEX_CLIENT_ID не установлен");
+}
+if (!process.env.YANDEX_CLIENT_SECRET) {
+  console.warn("⚠️ YANDEX_CLIENT_SECRET не установлен");
+}
 if (!process.env.NEXTAUTH_SECRET) {
   console.warn("⚠️ NEXTAUTH_SECRET не установлен");
 }
 if (!process.env.NEXTAUTH_URL) {
   console.warn("⚠️ NEXTAUTH_URL не установлен - это может вызвать проблемы с OAuth");
-  console.warn("⚠️ Установите NEXTAUTH_URL=https://www.rahima-consulting.ru в переменных окружения Vercel");
+  console.warn("⚠️ Установите NEXTAUTH_URL=https://rahima-consulting.ru в переменных окружения");
 } else {
   console.log("✅ NEXTAUTH_URL установлен:", process.env.NEXTAUTH_URL);
 }
 
-// Проверяем наличие обязательных переменных для Google провайдера
+// Проверяем наличие обязательных переменных для провайдеров
 const googleClientId = process.env.GOOGLE_CLIENT_ID;
 const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET;
+const yandexClientId = process.env.YANDEX_CLIENT_ID;
+const yandexClientSecret = process.env.YANDEX_CLIENT_SECRET;
 const nextAuthSecret = process.env.NEXTAUTH_SECRET;
 const nextAuthUrl = process.env.NEXTAUTH_URL;
 
@@ -50,8 +59,21 @@ if (googleClientId && googleClientSecret) {
       }
     })
   );
+  console.log("✅ Google OAuth настроен");
 } else {
   console.error("❌ Google OAuth не настроен: отсутствуют GOOGLE_CLIENT_ID или GOOGLE_CLIENT_SECRET");
+}
+
+if (yandexClientId && yandexClientSecret) {
+  providers.push(
+    Yandex({
+      clientId: yandexClientId,
+      clientSecret: yandexClientSecret,
+    })
+  );
+  console.log("✅ Yandex OAuth настроен");
+} else {
+  console.error("❌ Yandex OAuth не настроен: отсутствуют YANDEX_CLIENT_ID или YANDEX_CLIENT_SECRET");
 }
 
 providers.push(
@@ -112,24 +134,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: providers,
   callbacks: {
     async signIn({ user, account, profile }) {
-      // Если это OAuth провайдер (Google) и у пользователя есть email
-      if (account?.provider === "google" && user.email) {
+      // Если это OAuth провайдер (Google или Yandex) и у пользователя есть email
+      if ((account?.provider === "google" || account?.provider === "yandex") && user.email) {
         // Проверяем, существует ли пользователь с таким email
         const existingUser = await prisma.user.findUnique({
           where: { email: user.email },
         });
 
-        // Если пользователь существует, но не имеет аккаунта Google
+        // Если пользователь существует, но не имеет аккаунта OAuth
         if (existingUser) {
-          // Проверяем, есть ли уже привязанный Google аккаунт
+          // Проверяем, есть ли уже привязанный аккаунт этого провайдера
           const existingAccount = await prisma.account.findFirst({
             where: {
               userId: existingUser.id,
-              provider: "google",
+              provider: account.provider,
             },
           });
 
-          // Если Google аккаунт не привязан, создаем связь
+          // Если аккаунт не привязан, создаем связь
           if (!existingAccount && account.providerAccountId) {
             try {
               await prisma.account.create({
@@ -147,7 +169,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                   session_state: typeof account.session_state === "string" ? account.session_state : null,
                 },
               });
-              console.log(`✅ Google аккаунт связан с существующим пользователем: ${user.email}`);
+              console.log(`✅ ${account.provider} аккаунт связан с существующим пользователем: ${user.email}`);
             } catch (error) {
               console.error("❌ Ошибка при связывании аккаунта:", error);
               // Продолжаем, так как аккаунт может уже существовать
