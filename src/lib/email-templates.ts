@@ -115,7 +115,7 @@ export function getThankYouEmailTemplate(data: EmailTemplateData) {
                   </p>
                   <p style="margin: 0; font-size: 12px; color: #999999;">
                     <a href="https://rahima-consulting.ru" style="color: #667eea; text-decoration: none;">rahima-consulting.ru</a> | 
-                    <a href="tel:+7XXXXXXXXXX" style="color: #667eea; text-decoration: none;">+7 (XXX) XXX-XX-XX</a> | 
+                    <a href="tel:+79789987222" style="color: #667eea; text-decoration: none;">+7 (978) 998-72-22</a> | 
                     <a href="mailto:info@rahima-consulting.ru" style="color: #667eea; text-decoration: none;">info@rahima-consulting.ru</a>
                   </p>
                 </td>
@@ -260,7 +260,7 @@ export function getFollowUpDay1EmailTemplate(data: EmailTemplateData) {
                   </p>
                   <p style="margin: 0; font-size: 12px; color: #999999;">
                     <a href="https://rahima-consulting.ru" style="color: #667eea; text-decoration: none;">rahima-consulting.ru</a> | 
-                    <a href="tel:+7XXXXXXXXXX" style="color: #667eea; text-decoration: none;">+7 (XXX) XXX-XX-XX</a>
+                    <a href="tel:+79789987222" style="color: #667eea; text-decoration: none;">+7 (978) 998-72-22</a>
                   </p>
                 </td>
               </tr>
@@ -432,7 +432,7 @@ export function getFollowUpDay3EmailTemplate(data: EmailTemplateData) {
                   </p>
                   <p style="margin: 0; font-size: 12px; color: #999999;">
                     <a href="https://rahima-consulting.ru" style="color: #667eea; text-decoration: none;">rahima-consulting.ru</a> | 
-                    <a href="tel:+7XXXXXXXXXX" style="color: #667eea; text-decoration: none;">+7 (XXX) XXX-XX-XX</a>
+                    <a href="tel:+79789987222" style="color: #667eea; text-decoration: none;">+7 (978) 998-72-22</a>
                   </p>
                 </td>
               </tr>
@@ -553,17 +553,17 @@ export function getFollowUpDay7EmailTemplate(data: EmailTemplateData) {
                       Выберите удобный способ связи:
                     </p>
                     <div style="margin-bottom: 15px;">
-                      <a href="tel:+7XXXXXXXXXX" style="display: inline-block; padding: 12px 24px; background-color: #28a745; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 5px;">
+                      <a href="tel:+79789987222" style="display: inline-block; padding: 12px 24px; background-color: #28a745; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 5px;">
                         📞 Позвонить нам
                       </a>
                     </div>
                     <div style="margin-bottom: 15px;">
-                      <a href="https://wa.me/7XXXXXXXXXX" style="display: inline-block; padding: 12px 24px; background-color: #25D366; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 5px;">
+                      <a href="https://wa.me/79789987222" style="display: inline-block; padding: 12px 24px; background-color: #25D366; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 5px;">
                         💬 Написать в WhatsApp
                       </a>
                     </div>
                     <div>
-                      <a href="https://t.me/rahimaconsulting" style="display: inline-block; padding: 12px 24px; background-color: #0088cc; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 5px;">
+                      <a href="https://t.me/centr_reg" style="display: inline-block; padding: 12px 24px; background-color: #0088cc; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 5px;">
                         ✈️ Написать в Telegram
                       </a>
                     </div>
@@ -587,7 +587,7 @@ export function getFollowUpDay7EmailTemplate(data: EmailTemplateData) {
                   </p>
                   <p style="margin: 0; font-size: 12px; color: #999999;">
                     <a href="https://rahima-consulting.ru" style="color: #667eea; text-decoration: none;">rahima-consulting.ru</a> | 
-                    <a href="tel:+7XXXXXXXXXX" style="color: #667eea; text-decoration: none;">+7 (XXX) XXX-XX-XX</a>
+                    <a href="tel:+79789987222" style="color: #667eea; text-decoration: none;">+7 (978) 998-72-22</a>
                   </p>
                 </td>
               </tr>
@@ -618,9 +618,9 @@ export function getFollowUpDay7EmailTemplate(data: EmailTemplateData) {
 → В течение 2 часов, даже в выходные
 
 СВЯЖИТЕСЬ С НАМИ:
-📞 Позвонить: +7 (XXX) XXX-XX-XX
-💬 WhatsApp: https://wa.me/7XXXXXXXXXX
-✈️ Telegram: https://t.me/rahimaconsulting
+📞 Позвонить: +7 (978) 998-72-22
+💬 WhatsApp: https://wa.me/79789987222
+✈️ Telegram: https://t.me/centr_reg
 
 P.S. Если передумали, просто не отвечайте. Больше не будем беспокоить.
 

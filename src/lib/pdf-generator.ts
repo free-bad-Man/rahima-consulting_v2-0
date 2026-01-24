@@ -222,9 +222,13 @@ export function generateCalculationPDF(calculation: CalculationData): jsPDF {
   y += 6;
   doc.text('или свяжитесь с нами любым удобным способом:', 20, y);
   y += 6;
-  doc.text('• Телефон: +7 (XXX) XXX-XX-XX', 20, y);
+  doc.text('• Телефон: +7 (978) 998-72-22', 20, y);
   y += 6;
   doc.text('• Email: info@rahima-consulting.ru', 20, y);
+  y += 6;
+  doc.text('• Telegram: @centr_reg', 20, y);
+  y += 6;
+  doc.text('• Адрес: Россия, респ. Крым, г. Симферополь, ул. им Мате Залки 1', 20, y);
 
   return doc;
 }
