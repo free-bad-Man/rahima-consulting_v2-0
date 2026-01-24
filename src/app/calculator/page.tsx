@@ -416,6 +416,78 @@ export default function CalculatorPage() {
     setSubmitStatus('idle');
 
     try {
+      // Шаг 1: Сохраняем расчёт в БД
+      const servicesData = result.breakdown.flatMap(cat => 
+        cat.items.map(item => ({
+          name: item.name,
+          monthly: item.type === 'monthly' ? item.price : 0,
+          oneTime: item.type === 'one-time' ? item.price : 0,
+          description: '',
+        }))
+      );
+
+      const surchargesData: Record<string, any> = {};
+      if (employees > 0) {
+        surchargesData.employees = {
+          name: 'Надбавка за сотрудников',
+          amount: employees * 500,
+          percentage: `${employees} × 500 ₽`,
+        };
+      }
+      if (hasNDS) {
+        surchargesData.nds = {
+          name: 'Надбавка за НДС',
+          percentage: '+40%',
+        };
+      }
+      if (hasVED) {
+        surchargesData.ved = {
+          name: 'Надбавка за ВЭД',
+          percentage: '+30%',
+        };
+      }
+
+      const breakdownData: Record<string, any> = {};
+      result.breakdown.forEach(cat => {
+        const categoryTotal = cat.items.reduce((sum, item) => sum + item.price, 0);
+        breakdownData[cat.category] = categoryTotal;
+      });
+
+      const saveResponse = await fetch('/api/calculator/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          businessType: entityType || '',
+          taxSystem: taxSystem || '',
+          employeesCount: employees,
+          hasNDS,
+          hasVED,
+          operationsCount: operations,
+          services: servicesData,
+          surcharges: surchargesData,
+          breakdown: breakdownData,
+          totalMonthly: result.monthly,
+          totalOneTime: result.oneTime,
+          totalYearly: result.monthly * 12 + result.oneTime,
+        }),
+      });
+
+      let calculationId = null;
+      let calculationUrl = null;
+
+      if (saveResponse.ok) {
+        const saveData = await saveResponse.json();
+        calculationId = saveData.calculation?.id;
+        calculationUrl = saveData.url;
+        console.log('✅ Расчёт сохранён:', calculationUrl);
+      } else {
+        console.warn('⚠️ Не удалось сохранить расчёт, но продолжаем отправку заявки');
+      }
+
+      // Шаг 2: Отправляем заявку
       const servicesDescription = result.breakdown
         .map(cat => `${cat.category}:\n${cat.items.map(item => `  - ${item.name}: ${item.price.toLocaleString('ru-RU')} руб.`).join('\n')}`)
         .join('\n\n');
@@ -428,13 +500,25 @@ export default function CalculatorPage() {
           phone,
           email,
           service: 'Заявка из калькулятора',
-          comment: `РАСЧЁТ ИЗ КАЛЬКУЛЯТОРА\n\nИТОГО:\n- Разовые платежи: ${result.oneTime.toLocaleString('ru-RU')} руб.\n- Ежемесячные платежи: ${result.monthly.toLocaleString('ru-RU')} руб./мес\n\n${servicesDescription}\n\nКомментарий клиента:\n${comment}`,
+          comment: `РАСЧЁТ ИЗ КАЛЬКУЛЯТОРА\n\nИТОГО:\n- Разовые платежи: ${result.oneTime.toLocaleString('ru-RU')} руб.\n- Ежемесячные платежи: ${result.monthly.toLocaleString('ru-RU')} руб./мес\n\n${servicesDescription}\n${calculationUrl ? `\nСсылка на расчёт: ${calculationUrl}` : ''}\n\nКомментарий клиента:\n${comment}`,
+          calculationId,
+          totalMonthly: result.monthly,
         }),
       });
 
       if (!response.ok) throw new Error('Failed to submit');
 
       setSubmitStatus('success');
+
+      // Если есть ссылка на расчёт - показываем её
+      if (calculationUrl) {
+        setTimeout(() => {
+          if (confirm('Хотите открыть детальный расчёт?')) {
+            window.open(calculationUrl, '_blank');
+          }
+        }, 1000);
+      }
+
       // Очистка формы
       setName('');
       setPhone('');
