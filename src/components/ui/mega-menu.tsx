@@ -196,11 +196,12 @@ const MegaMenu = React.forwardRef<HTMLUListElement, MegaMenuProps>(
           const showChevron = hasSubmenu && !["Услуги", "Решения", "ИИ - Ассистенты"].includes(navItem.label);
           
           const triggerContent = (
-            <span className="relative flex cursor-pointer items-center justify-center gap-1 py-1.5 px-2 md:py-3 md:px-5 text-[10px] md:text-sm font-medium text-white/90 transition-all duration-200 group whitespace-nowrap rounded-lg bg-gradient-to-r from-purple-900/25 to-blue-900/25 hover:from-purple-900/30 hover:to-blue-900/30 shadow-sm shadow-black/5 hover:shadow-black/10 backdrop-blur-sm">
-              <span>{navItem.label}</span>
+            <span className="group relative flex cursor-pointer items-center justify-center gap-2 py-2.5 px-4 md:py-3 md:px-5 text-xs md:text-sm font-semibold text-white transition-all duration-300 whitespace-nowrap rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 hover:from-purple-500/30 hover:to-blue-500/30 border border-white/20 backdrop-blur-md shadow-lg shadow-purple-500/10 hover:shadow-purple-500/25 hover:scale-105 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/0 to-blue-600/0 group-hover:from-purple-600/20 group-hover:to-blue-600/20 transition-all duration-300"></div>
+              <span className="relative z-10">{navItem.label}</span>
               {showChevron && (
                 <ChevronDown
-                  className={`h-3 w-3 md:h-5 md:w-5 transition-transform duration-300 group-hover:rotate-180 ${
+                  className={`relative z-10 h-4 w-4 md:h-5 md:w-5 transition-transform duration-300 group-hover:rotate-180 ${
                     isOpen ? "rotate-180" : ""
                   }`}
                 />
