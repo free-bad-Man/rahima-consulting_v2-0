@@ -321,6 +321,8 @@ export default function Page() {
                         @media (prefers-reduced-motion: reduce) {
                           .logo-track { animation: none; }
                         }
+                        /* Disabled logo scroller (hidden) */
+                        .logo-track { display: none !important; }
                       `}</style>
                     </div>
                   </div>
