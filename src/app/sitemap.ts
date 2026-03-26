@@ -1,72 +1,91 @@
-import { MetadataRoute } from 'next';
-import { getAllServices } from '@/lib/services-data';
+import { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/seo";
+import { getAllServices } from "@/lib/services-data";
+import { getAllSolutions } from "@/lib/solutions-data";
+import { getAllAIAssistants } from "@/lib/ai-assistants-data";
+import { getAllCases } from "@/lib/cases-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
-  
-  // Get all services for dynamic pages
-  const services = getAllServices();
-  
-  // Static pages
+  const now = new Date();
+
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1.0,
+      url: SITE_URL,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 1,
     },
     {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
+      url: `${SITE_URL}/services`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    {
+      url: `${SITE_URL}/solutions`,
+      lastModified: now,
+      changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/solutions`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
+      url: `${SITE_URL}/ai-assistants`,
+      lastModified: now,
+      changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/ai-assistants`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      url: `${SITE_URL}/cases`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
     },
     {
-      url: `${baseUrl}/cases`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
+      url: `${SITE_URL}/calculator`,
+      lastModified: now,
+      changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/contacts`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/auth/signin`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/auth/register`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
+      url: `${SITE_URL}/contacts`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
     },
   ];
-  
-  // Dynamic service pages
-  const servicePages: MetadataRoute.Sitemap = services.map((service) => ({
-    url: `${baseUrl}/services/${service.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
+
+  const servicePages: MetadataRoute.Sitemap = getAllServices().map((service) => ({
+    url: `${SITE_URL}/services/${service.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
     priority: 0.8,
   }));
-  
-  return [...staticPages, ...servicePages];
-}
 
+  const solutionPages: MetadataRoute.Sitemap = getAllSolutions().map((solution) => ({
+    url: `${SITE_URL}/solutions/${solution.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  const aiAssistantPages: MetadataRoute.Sitemap = getAllAIAssistants().map((assistant) => ({
+    url: `${SITE_URL}/ai-assistants/${assistant.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  const casePages: MetadataRoute.Sitemap = getAllCases().map((caseItem) => ({
+    url: `${SITE_URL}/cases/${caseItem.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.75,
+  }));
+
+  return [
+    ...staticPages,
+    ...servicePages,
+    ...solutionPages,
+    ...aiAssistantPages,
+    ...casePages,
+  ];
+}

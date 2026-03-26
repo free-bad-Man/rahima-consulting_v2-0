@@ -8,6 +8,8 @@ import ShaderBackground from "@/components/ui/shader-background";
 import { getAllServices, getServiceBySlug, type Service } from "@/lib/services-data";
 import { Check, Phone, Calculator, AlertCircle, Clock, Package } from "lucide-react";
 
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://rahima-consulting.ru").replace(/\/+$/, "");
+
 interface PageProps {
   params: Promise<{ slug: string }> | { slug: string };
 }
@@ -16,33 +18,39 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const resolved = await params;
   const slug = resolved?.slug || "";
   const service = getServiceBySlug(slug);
-  
+
   if (!service) {
     return {
       title: "Услуга не найдена",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
-  const description = service.short_tagline || service.full_text?.substring(0, 160) || '';
-  const priceText = service.price_from ? `от ${service.price_from} ₽` : '';
+  const description = service.short_tagline || service.full_text?.substring(0, 160) || "";
+  const priceText = service.price_from ? `от ${service.price_from} ₽` : "";
+  const canonical = `${SITE_URL}/services/${slug}`;
 
   return {
-    title: `${service.title} | Rahima Consulting`,
+    title: service.title,
     description: `${description} ${priceText}`.trim(),
-    keywords: service.tags?.join(', '),
+    keywords: service.tags?.join(", "),
     openGraph: {
       title: service.title,
-      description: description,
-      type: 'website',
-      siteName: 'Rahima Consulting',
+      description,
+      type: "website",
+      siteName: "Rahima Consulting",
+      url: canonical,
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: service.title,
-      description: description,
+      description,
     },
     alternates: {
-      canonical: `https://your-domain.com/services/${slug}`,
+      canonical,
     },
     robots: {
       index: true,
@@ -53,7 +61,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export async function generateStaticParams() {
   const services = getAllServices();
-  return services.map(service => ({
+  return services.map((service) => ({
     slug: service.slug,
   }));
 }
@@ -69,72 +77,70 @@ export default async function ServicePage({ params }: PageProps) {
     notFound();
   }
 
-  // JSON-LD structured data
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": service.title,
-    "description": service.short_tagline || service.full_text?.substring(0, 200),
-    "provider": {
+    name: service.title,
+    description: service.short_tagline || service.full_text?.substring(0, 200),
+    url: `${SITE_URL}/services/${slug}`,
+    provider: {
       "@type": "Organization",
-      "name": "Rahima Consulting",
-      "url": "https://your-domain.com",
+      name: "Rahima Consulting",
+      url: SITE_URL,
     },
     ...(service.price_from && {
-      "offers": {
+      offers: {
         "@type": "Offer",
-        "price": service.price_from,
-        "priceCurrency": service.currency || "RUB",
-        "availability": "https://schema.org/InStock",
-      }
+        price: service.price_from,
+        priceCurrency: service.currency || "RUB",
+        availability: "https://schema.org/InStock",
+        url: `${SITE_URL}/services/${slug}`,
+      },
     }),
   };
 
   return (
     <div className="relative min-h-screen">
       <ShaderBackground />
-      
-      {/* JSON-LD */}
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      
+
       <div className="relative z-10">
         <PageHeader />
-        
+
         <main className="pt-24 md:pt-32 pb-48 md:pb-60 px-4 sm:px-6 lg:px-12">
           <div className="max-w-5xl mx-auto">
-            
-            <Breadcrumbs items={[
-              { label: 'Главная', href: '/' },
-              { label: 'Услуги', href: '/services' },
-              { label: service.title, href: `/services/${slug}` },
-            ]} />
+            <Breadcrumbs
+              items={[
+                { label: "Главная", href: "/" },
+                { label: "Услуги", href: "/services" },
+                { label: service.title, href: `/services/${slug}` },
+              ]}
+            />
 
-            {/* Main Service Card */}
             <GlassCard className="mb-8" animationDelay={0}>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 gradient-text-purple-blue">
                 {service.title}
               </h1>
-              
+
               <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed">
                 {service.short_tagline || service.full_text?.substring(0, 300)}
               </p>
 
-              {/* Price */}
               {service.price_from && (
                 <div className="flex flex-wrap items-baseline gap-3 mb-8">
                   <span className="text-4xl md:text-5xl font-bold text-white">
                     {service.price_from} ₽
                   </span>
                   <span className="text-lg text-white/60">
-                    {service.price_display || '/месяц'}
+                    {service.price_display || "/месяц"}
                   </span>
                 </div>
               )}
 
-              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="tel:+7"
@@ -148,7 +154,7 @@ export default async function ServicePage({ params }: PageProps) {
                   <Phone className="w-5 h-5" />
                   Заказать консультацию
                 </a>
-                
+
                 <Link
                   href="/calculator"
                   className="flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 
@@ -163,7 +169,6 @@ export default async function ServicePage({ params }: PageProps) {
               </div>
             </GlassCard>
 
-            {/* What's Included */}
             {service.includes && service.includes.length > 0 && (
               <GlassCard className="mb-8" animationDelay={200}>
                 <div className="flex items-center gap-3 mb-6">
@@ -172,10 +177,10 @@ export default async function ServicePage({ params }: PageProps) {
                     Что входит в услугу
                   </h2>
                 </div>
-                
+
                 <div className="grid sm:grid-cols-2 gap-4">
                   {service.includes.map((item, idx) => (
-                    <div 
+                    <div
                       key={idx}
                       className="flex items-start gap-3 p-4 rounded-lg bg-white/5 
                                  hover:bg-white/10 transition-all duration-200
@@ -189,7 +194,6 @@ export default async function ServicePage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* Requirements */}
             {service.requirements && service.requirements.length > 0 && (
               <GlassCard className="mb-8" animationDelay={300}>
                 <div className="flex items-center gap-3 mb-6">
@@ -198,7 +202,7 @@ export default async function ServicePage({ params }: PageProps) {
                     Что потребуется
                   </h2>
                 </div>
-                
+
                 <ul className="space-y-3">
                   {service.requirements.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-white/80">
@@ -210,7 +214,6 @@ export default async function ServicePage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* Duration */}
             {service.duration_estimate && (
               <GlassCard className="mb-8" animationDelay={400}>
                 <div className="flex items-center gap-3">
@@ -225,7 +228,6 @@ export default async function ServicePage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* Full Description */}
             {service.full_text && (
               <GlassCard className="mb-8 prose-glass" animationDelay={500}>
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
@@ -237,7 +239,6 @@ export default async function ServicePage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* Red Flags */}
             {service.red_flags && service.red_flags.length > 0 && (
               <GlassCard className="mb-8 border-red-500/30" animationDelay={600}>
                 <div className="flex items-center gap-3 mb-6">
@@ -246,7 +247,7 @@ export default async function ServicePage({ params }: PageProps) {
                     Важно знать
                   </h2>
                 </div>
-                
+
                 <ul className="space-y-3">
                   {service.red_flags.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-red-300/80">
@@ -258,13 +259,12 @@ export default async function ServicePage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* Final CTA */}
             <GlassCard className="text-center" animationDelay={700}>
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Готовы начать?
               </h2>
               <p className="text-white/80 mb-6 max-w-2xl mx-auto">
-                {service.cta || 'Свяжитесь с нами для получения консультации и расчета стоимости'}
+                {service.cta || "Свяжитесь с нами для получения консультации и расчета стоимости"}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
@@ -291,7 +291,6 @@ export default async function ServicePage({ params }: PageProps) {
                 </Link>
               </div>
             </GlassCard>
-
           </div>
         </main>
       </div>
