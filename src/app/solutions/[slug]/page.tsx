@@ -8,6 +8,8 @@ import ShaderBackground from "@/components/ui/shader-background";
 import { getAllSolutions, getSolutionBySlug, type Solution } from "@/lib/solutions-data";
 import { Check, Phone, Calculator, Users, Clock, Package, Briefcase } from "lucide-react";
 
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://rahima-consulting.ru").replace(/\/+$/, "");
+
 interface PageProps {
   params: Promise<{ slug: string }> | { slug: string };
 }
@@ -16,31 +18,37 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const resolved = await params;
   const slug = resolved?.slug || "";
   const solution = getSolutionBySlug(slug);
-  
+
   if (!solution) {
     return {
       title: "Решение не найдено",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
-  const description = solution.short_tagline || solution.description || '';
+  const description = solution.short_tagline || solution.description || "";
+  const canonical = `${SITE_URL}/solutions/${slug}`;
 
   return {
-    title: `${solution.title} | Rahima Consulting`,
-    description: `${description} ${solution.price_display || ''}`.trim(),
+    title: solution.title,
+    description: `${description} ${solution.price_display || ""}`.trim(),
     openGraph: {
       title: solution.title,
-      description: description,
-      type: 'website',
-      siteName: 'Rahima Consulting',
+      description,
+      type: "website",
+      siteName: "Rahima Consulting",
+      url: canonical,
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: solution.title,
-      description: description,
+      description,
     },
     alternates: {
-      canonical: `https://your-domain.com/solutions/${slug}`,
+      canonical,
     },
     robots: {
       index: true,
@@ -51,7 +59,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export async function generateStaticParams() {
   const solutions = getAllSolutions();
-  
+
   return solutions.map((solution) => ({
     slug: solution.slug,
   }));
@@ -69,20 +77,20 @@ export default async function SolutionPage({ params }: PageProps) {
   return (
     <>
       <ShaderBackground />
-      
+
       <div className="min-h-screen relative z-10">
         <PageHeader />
-        
+
         <main className="pt-24 md:pt-32 pb-48 md:pb-60 px-4 sm:px-6 lg:px-12">
           <div className="max-w-5xl mx-auto">
-            
-            <Breadcrumbs items={[
-              { label: 'Главная', href: '/' },
-              { label: 'Решения', href: '/solutions' },
-              { label: solution.title, href: `/solutions/${solution.slug}` },
-            ]} />
+            <Breadcrumbs
+              items={[
+                { label: "Главная", href: "/" },
+                { label: "Решения", href: "/solutions" },
+                { label: solution.title, href: `/solutions/${solution.slug}` },
+              ]}
+            />
 
-            {/* Hero Section */}
             <GlassCard className="mb-8" animationDelay={0}>
               <div className="flex items-start gap-4 mb-6">
                 <Briefcase className="w-12 h-12 text-purple-300 flex-shrink-0" />
@@ -96,7 +104,6 @@ export default async function SolutionPage({ params }: PageProps) {
                 </div>
               </div>
 
-              {/* Price */}
               {solution.price_display && (
                 <div className="mb-8">
                   <span className="text-4xl md:text-5xl font-bold text-white">
@@ -130,7 +137,6 @@ export default async function SolutionPage({ params }: PageProps) {
               </div>
             </GlassCard>
 
-            {/* Description */}
             {solution.description && (
               <GlassCard className="mb-8" animationDelay={100}>
                 <div className="flex items-center gap-3 mb-6">
@@ -145,7 +151,6 @@ export default async function SolutionPage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* For Whom */}
             {solution.for_whom && solution.for_whom.length > 0 && (
               <GlassCard className="mb-8" animationDelay={150}>
                 <div className="flex items-center gap-3 mb-6">
@@ -154,10 +159,10 @@ export default async function SolutionPage({ params }: PageProps) {
                     Для кого это решение
                   </h2>
                 </div>
-                
+
                 <div className="space-y-3">
                   {solution.for_whom.map((item, idx) => (
-                    <div 
+                    <div
                       key={idx}
                       className="flex items-start gap-3 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-all"
                     >
@@ -169,7 +174,6 @@ export default async function SolutionPage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* What's Included */}
             {solution.includes && solution.includes.length > 0 && (
               <GlassCard className="mb-8" animationDelay={200}>
                 <div className="flex items-center gap-3 mb-6">
@@ -178,10 +182,10 @@ export default async function SolutionPage({ params }: PageProps) {
                     Что входит в решение
                   </h2>
                 </div>
-                
+
                 <div className="grid sm:grid-cols-2 gap-4">
                   {solution.includes.map((item, idx) => (
-                    <div 
+                    <div
                       key={idx}
                       className="flex items-start gap-3 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-all"
                     >
@@ -193,7 +197,6 @@ export default async function SolutionPage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* Advantages */}
             {solution.advantages && solution.advantages.length > 0 && (
               <GlassCard className="mb-8" animationDelay={250}>
                 <div className="flex items-center gap-3 mb-6">
@@ -202,10 +205,10 @@ export default async function SolutionPage({ params }: PageProps) {
                     Ключевые преимущества
                   </h2>
                 </div>
-                
+
                 <div className="grid sm:grid-cols-2 gap-4">
                   {solution.advantages.map((item, idx) => (
-                    <div 
+                    <div
                       key={idx}
                       className="flex items-start gap-3 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-all"
                     >
@@ -217,7 +220,6 @@ export default async function SolutionPage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* Timeline */}
             {solution.timeline && (
               <GlassCard className="mb-8" animationDelay={300}>
                 <div className="flex items-center gap-3 mb-4">
@@ -230,11 +232,8 @@ export default async function SolutionPage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* CTA */}
             <GlassCard className="text-center" animationDelay={350}>
-              <h2 className="text-3xl font-bold text-white mb-4">
-                Готовы начать?
-              </h2>
+              <h2 className="text-3xl font-bold text-white mb-4">Готовы начать?</h2>
               <p className="text-white/80 mb-6">
                 Оставьте заявку, и мы свяжемся с вами в ближайшее время
               </p>
@@ -271,11 +270,9 @@ export default async function SolutionPage({ params }: PageProps) {
                 </Link>
               </div>
             </GlassCard>
-
           </div>
         </main>
       </div>
     </>
   );
 }
-

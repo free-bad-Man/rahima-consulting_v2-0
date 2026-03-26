@@ -8,6 +8,8 @@ import ShaderBackground from "@/components/ui/shader-background";
 import { getAllAIAssistants, getAIAssistantBySlug, type AIAssistant } from "@/lib/ai-assistants-data";
 import { Check, Phone, Calculator, Cpu, Zap, Settings, Code, Sparkles } from "lucide-react";
 
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://rahima-consulting.ru").replace(/\/+$/, "");
+
 interface PageProps {
   params: Promise<{ slug: string }> | { slug: string };
 }
@@ -16,31 +18,37 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const resolved = await params;
   const slug = resolved?.slug || "";
   const assistant = getAIAssistantBySlug(slug);
-  
+
   if (!assistant) {
     return {
       title: "ИИ Ассистент не найден",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
-  const description = assistant.short_tagline || assistant.description || '';
+  const description = assistant.short_tagline || assistant.description || "";
+  const canonical = `${SITE_URL}/ai-assistants/${slug}`;
 
   return {
-    title: `${assistant.title} | Rahima Consulting`,
-    description: `${description} ${assistant.price_display || ''}`.trim(),
+    title: assistant.title,
+    description: `${description} ${assistant.price_display || ""}`.trim(),
     openGraph: {
       title: assistant.title,
-      description: description,
-      type: 'website',
-      siteName: 'Rahima Consulting',
+      description,
+      type: "website",
+      siteName: "Rahima Consulting",
+      url: canonical,
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: assistant.title,
-      description: description,
+      description,
     },
     alternates: {
-      canonical: `https://your-domain.com/ai-assistants/${slug}`,
+      canonical,
     },
     robots: {
       index: true,
@@ -51,7 +59,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export async function generateStaticParams() {
   const assistants = getAllAIAssistants();
-  
+
   return assistants.map((assistant) => ({
     slug: assistant.slug,
   }));
@@ -69,20 +77,20 @@ export default async function AIAssistantPage({ params }: PageProps) {
   return (
     <>
       <ShaderBackground />
-      
+
       <div className="min-h-screen relative z-10">
         <PageHeader />
-        
+
         <main className="pt-24 md:pt-32 pb-48 md:pb-60 px-4 sm:px-6 lg:px-12">
           <div className="max-w-5xl mx-auto">
-            
-            <Breadcrumbs items={[
-              { label: 'Главная', href: '/' },
-              { label: 'ИИ-Ассистенты', href: '/ai-assistants' },
-              { label: assistant.title, href: `/ai-assistants/${assistant.slug}` },
-            ]} />
+            <Breadcrumbs
+              items={[
+                { label: "Главная", href: "/" },
+                { label: "ИИ-Ассистенты", href: "/ai-assistants" },
+                { label: assistant.title, href: `/ai-assistants/${assistant.slug}` },
+              ]}
+            />
 
-            {/* Hero Section */}
             <GlassCard className="mb-8" animationDelay={0}>
               <div className="flex items-start gap-4 mb-6">
                 <Cpu className="w-12 h-12 text-purple-300 flex-shrink-0" />
@@ -96,7 +104,6 @@ export default async function AIAssistantPage({ params }: PageProps) {
                 </div>
               </div>
 
-              {/* Price */}
               {assistant.price_display && (
                 <div className="mb-8">
                   <span className="text-4xl md:text-5xl font-bold text-white">
@@ -130,7 +137,6 @@ export default async function AIAssistantPage({ params }: PageProps) {
               </div>
             </GlassCard>
 
-            {/* Description */}
             {assistant.description && (
               <GlassCard className="mb-8" animationDelay={100}>
                 <div className="flex items-center gap-3 mb-6">
@@ -145,7 +151,6 @@ export default async function AIAssistantPage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* Features */}
             {assistant.features && assistant.features.length > 0 && (
               <GlassCard className="mb-8" animationDelay={150}>
                 <div className="flex items-center gap-3 mb-6">
@@ -154,10 +159,10 @@ export default async function AIAssistantPage({ params }: PageProps) {
                     Основные возможности
                   </h2>
                 </div>
-                
+
                 <div className="grid sm:grid-cols-2 gap-4">
                   {assistant.features.map((feature, idx) => (
-                    <div 
+                    <div
                       key={idx}
                       className="flex items-start gap-3 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-all"
                     >
@@ -169,7 +174,6 @@ export default async function AIAssistantPage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* Use Cases */}
             {assistant.use_cases && assistant.use_cases.length > 0 && (
               <GlassCard className="mb-8" animationDelay={200}>
                 <div className="flex items-center gap-3 mb-6">
@@ -178,10 +182,10 @@ export default async function AIAssistantPage({ params }: PageProps) {
                     Сценарии использования
                   </h2>
                 </div>
-                
+
                 <div className="space-y-3">
                   {assistant.use_cases.map((useCase, idx) => (
-                    <div 
+                    <div
                       key={idx}
                       className="flex items-start gap-3 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-all"
                     >
@@ -193,7 +197,6 @@ export default async function AIAssistantPage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* Tech Stack */}
             {assistant.tech_stack && assistant.tech_stack.length > 0 && (
               <GlassCard className="mb-8" animationDelay={250}>
                 <div className="flex items-center gap-3 mb-6">
@@ -202,10 +205,10 @@ export default async function AIAssistantPage({ params }: PageProps) {
                     Технологический стек
                   </h2>
                 </div>
-                
+
                 <div className="flex flex-wrap gap-3">
                   {assistant.tech_stack.map((tech, idx) => (
-                    <span 
+                    <span
                       key={idx}
                       className="px-4 py-2 rounded-lg bg-white/10 text-white/90 font-medium
                                hover:bg-white/20 transition-all"
@@ -217,7 +220,6 @@ export default async function AIAssistantPage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* Integration */}
             {assistant.integration && (
               <GlassCard className="mb-8" animationDelay={300}>
                 <div className="flex items-center gap-3 mb-4">
@@ -230,7 +232,6 @@ export default async function AIAssistantPage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {/* CTA */}
             <GlassCard className="text-center" animationDelay={350}>
               <h2 className="text-3xl font-bold text-white mb-4">
                 Готовы внедрить ИИ в свой бизнес?
@@ -271,11 +272,9 @@ export default async function AIAssistantPage({ params }: PageProps) {
                 </Link>
               </div>
             </GlassCard>
-
           </div>
         </main>
       </div>
     </>
   );
 }
-
