@@ -133,3 +133,10 @@ push
 
 # Documentation (already in main docs)
 SEO_TRANSFORMATION_README.md
+
+# Local Python venv
+.venv/
+
+# Bank files and runtime artifacts
+public/out_bank/
+tools/
