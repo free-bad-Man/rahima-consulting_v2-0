@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+﻿import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHeader from "@/components/page-header";
@@ -143,7 +143,7 @@ export default async function ServicePage({ params }: PageProps) {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="tel:+7"
+                  href="tel:+79789987222"
                   className="flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 
                              bg-gradient-to-r from-purple-600 to-blue-600 
                              rounded-lg text-white font-semibold
@@ -268,7 +268,7 @@ export default async function ServicePage({ params }: PageProps) {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="tel:+7"
+                  href="tel:+79789987222"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 
                              bg-gradient-to-r from-purple-600 to-blue-600 
                              rounded-lg text-white font-semibold

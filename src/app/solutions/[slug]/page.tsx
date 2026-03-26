@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+﻿import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHeader from "@/components/page-header";
@@ -250,7 +250,7 @@ export default async function SolutionPage({ params }: PageProps) {
                   Оставить заявку
                 </Link>
                 <Link
-                  href="tel:+79876543210"
+                  href="tel:+79789987222"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-lg
                            bg-white/10 hover:bg-white/20 backdrop-blur-sm
                            text-white font-medium transition-all text-lg
