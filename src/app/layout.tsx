@@ -154,14 +154,14 @@ export default function RootLayout({
               })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=108266849', 'ym');
 
               ym(108266849, 'init', {
-                ssr:true,
-                webvisor:true,
-                clickmap:true,
-                ecommerce:"dataLayer",
+                ssr: true,
+                webvisor: true,
+                clickmap: true,
+                ecommerce: "dataLayer",
                 referrer: document.referrer,
                 url: location.href,
-                accurateTrackBounce:true,
-                trackLinks:true
+                accurateTrackBounce: true,
+                trackLinks: true
               });
             `,
           }}
