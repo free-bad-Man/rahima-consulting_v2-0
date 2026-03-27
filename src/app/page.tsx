@@ -27,6 +27,9 @@ const navItems: MegaMenuItem[] = [
   { id: 7, label: "Контакты", link: "/contacts" },
 ];
 
+const LOGO_FILTER =
+  "brightness(0) saturate(100%) invert(34%) sepia(89%) saturate(1789%) hue-rotate(253deg) brightness(108%) contrast(101%)";
+
 export default function Page() {
   const router = useRouter();
   const [showCallOrderModal, setShowCallOrderModal] = useState(false);
@@ -61,7 +64,12 @@ export default function Page() {
       <header className="fixed top-0 left-0 right-0 z-50 w-full px-4 lg:px-20 py-2">
         <div className="md:hidden flex items-center justify-between">
           <Link href="/">
-            <img src="/RClogo.png" alt="Rahima Consulting" className="h-12 w-auto brightness-150" />
+            <img
+              src="/logo.png"
+              alt="Rahima Consulting"
+              className="h-14 w-auto"
+              style={{ filter: LOGO_FILTER }}
+            />
           </Link>
           <button
             onClick={() => setIsMobileMenuOpen(true)}
@@ -74,9 +82,10 @@ export default function Page() {
         <div className="hidden md:flex items-center justify-between gap-8">
           <Link href="/" className="group relative">
             <img
-              src="/RClogo.png"
+              src="/logo.png"
               alt="Rahima Consulting"
-              className="h-16 w-auto transition-transform group-hover:scale-105"
+              className="h-28 lg:h-32 w-auto transition-transform group-hover:scale-105"
+              style={{ filter: LOGO_FILTER }}
             />
           </Link>
 
@@ -97,18 +106,21 @@ export default function Page() {
         </div>
       </header>
 
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center pt-20">
-        <section className="text-center px-4 max-w-5xl">
+      <div className="relative z-10 h-full">
+        <section className="absolute left-1/2 bottom-[198px] -translate-x-1/2 w-full max-w-7xl px-4 text-center">
           <h1
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-purple-200 via-blue-200 to-purple-400 bg-clip-text text-transparent mb-6 leading-[0.95]"
-            style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
+            className="font-bold tracking-tight bg-gradient-to-r from-purple-200 via-blue-200 to-purple-400 bg-clip-text text-transparent leading-[0.96] mb-5"
+            style={{
+              fontFamily: "var(--font-orbitron), sans-serif",
+              fontSize: "clamp(2.1rem, 3.05vw, 3.55rem)",
+            }}
           >
             Автоматизация бизнеса и
             <br />
             бухгалтерское сопровождение в Крыму
           </h1>
 
-          <p className="text-lg md:text-xl text-white/70 mb-8 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
             Ваш персональный ИИ-Ассистент и команда экспертов для масштабирования бизнеса в единой цифровой экосистеме.
           </p>
 
@@ -117,30 +129,32 @@ export default function Page() {
           </h2>
         </section>
 
-        <div className="mt-16 flex flex-wrap justify-center gap-4 px-4 w-full">
-          <button
-            onClick={() => setShowCallOrderModal(true)}
-            className="flex items-center gap-2 px-8 py-4 bg-purple-600/20 border border-purple-500/30 rounded-2xl backdrop-blur-md hover:bg-purple-600/30 transition-all active:scale-95"
-          >
-            <Phone className="w-5 h-5" /> Заказать звонок
-          </button>
+        <div className="absolute left-1/2 bottom-[138px] -translate-x-1/2 w-full px-4">
+          <div className="flex flex-wrap justify-center gap-4">
+            <button
+              onClick={() => setShowCallOrderModal(true)}
+              className="flex items-center gap-2 px-8 py-3 bg-purple-600/20 border border-purple-500/30 rounded-2xl backdrop-blur-md hover:bg-purple-600/30 transition-all active:scale-95"
+            >
+              <Phone className="w-5 h-5" /> Заказать звонок
+            </button>
 
-          <Link
-            href="/calculator"
-            className="flex items-center gap-2 px-8 py-4 bg-blue-600/20 border border-blue-500/30 rounded-2xl backdrop-blur-md hover:bg-blue-600/30 transition-all active:scale-95"
-          >
-            <Calculator className="w-5 h-5" /> Расчёт стоимости
-          </Link>
+            <Link
+              href="/calculator"
+              className="flex items-center gap-2 px-8 py-3 bg-blue-600/20 border border-blue-500/30 rounded-2xl backdrop-blur-md hover:bg-blue-600/30 transition-all active:scale-95"
+            >
+              <Calculator className="w-5 h-5" /> Расчёт стоимости
+            </Link>
 
-          <button
-            onClick={() => {
-              setStartAIChatWithVoice(false);
-              setShowAIChat(true);
-            }}
-            className="flex items-center gap-2 px-8 py-4 bg-pink-600/20 border border-pink-500/30 rounded-2xl backdrop-blur-md hover:bg-pink-600/30 transition-all active:scale-95"
-          >
-            <MessageCircle className="w-5 h-5" /> ИИ Ассистент
-          </button>
+            <button
+              onClick={() => {
+                setStartAIChatWithVoice(false);
+                setShowAIChat(true);
+              }}
+              className="flex items-center gap-2 px-8 py-3 bg-pink-600/20 border border-pink-500/30 rounded-2xl backdrop-blur-md hover:bg-pink-600/30 transition-all active:scale-95"
+            >
+              <MessageCircle className="w-5 h-5" /> ИИ Ассистент
+            </button>
+          </div>
         </div>
       </div>
 
