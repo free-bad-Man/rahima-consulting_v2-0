@@ -20,6 +20,16 @@ import {
   Bot,
   Workflow,
   Sparkles,
+  ScrollText,
+  ShieldCheck,
+  Gavel,
+  Landmark,
+  FileSignature,
+  UserPlus,
+  Building,
+  ClipboardList,
+  Wrench,
+  BadgePercent,
 } from "lucide-react";
 import { Drawer } from "vaul";
 import MegaMenu, { type MegaMenuItem } from "@/components/ui/mega-menu";
@@ -42,71 +52,127 @@ const navItems: MegaMenuItem[] = [
     link: "/services",
     subMenus: [
       {
-        title: "Бухгалтерия и отчётность",
+        title: "Бухгалтерия",
         items: [
           {
-            label: "Бухгалтерское сопровождение",
-            description: "Комплексное ведение учёта и отчётности бизнеса",
-            icon: Briefcase,
-            link: "/services/assistsellbuy",
-          },
-          {
-            label: "Нулевая отчётность",
-            description: "Подготовка и сдача отчётности без лишних рисков",
+            label: "Подготовка и подача нулевой отчетности для ООО",
+            description: "Нулевая отчётность и сдача обязательных форм.",
             icon: FileText,
-            link: "/services/zsummery",
           },
           {
-            label: "Восстановление учёта",
-            description: "Приведение документов и базы в порядок",
+            label: "Бухгалтерское и налоговое сопровождение ИП",
+            description: "Комплексное ведение учёта и налоговой отчётности ИП.",
+            icon: Briefcase,
+          },
+          {
+            label: "Бухгалтерская и налоговая отчетность ООО",
+            description: "Подготовка и сдача отчётности для ООО.",
+            icon: Calculator,
+          },
+          {
+            label: "Срочная подготовка и подача отчетности для ИП",
+            description: "Экспресс-подготовка и подача отчётности в сжатые сроки.",
+            icon: BadgePercent,
+          },
+          {
+            label: "Подготовка и сдача отчетности по сотрудникам",
+            description: "ЕФС-1 и персонифицированные сведения без ошибок.",
+            icon: ClipboardList,
+          },
+          {
+            label: "Восстановление бухгалтерского и налогового учета",
+            description: "Приведение базы, документов и расчётов в порядок.",
             icon: RotateCcw,
-            link: "/services/vosstanovlenie-buhgalterskogo-ucheta",
           },
         ],
       },
       {
-        title: "Регистрация и юрадрес",
+        title: "Регистрация бизнеса",
         items: [
           {
-            label: "Регистрация ИП/ООО",
-            description: "Запуск бизнеса с корректным оформлением",
-            icon: Building2,
-            link: "/solutions/business-launch-turnkey",
+            label: "Регистрация ИП",
+            description: "Подготовка и подача документов на регистрацию ИП.",
+            icon: UserPlus,
           },
+          {
+            label: "Регистрация ООО",
+            description: "Запуск компании с корректным комплектом документов.",
+            icon: Building2,
+          },
+          {
+            label: "Внесение изменений в ЕГРЮЛ",
+            description: "Смена данных компании и регистрация изменений.",
+            icon: Settings,
+          },
+          {
+            label: "Внесение изменений в ЕГРИП",
+            description: "Оформление изменений по ИП без лишней бюрократии.",
+            icon: Settings,
+          },
+          {
+            label: "Смена юридического адреса",
+            description: "Подготовка документов и сопровождение изменений.",
+            icon: Landmark,
+          },
+          {
+            label: "Смена директора",
+            description: "Корректная регистрация смены руководителя.",
+            icon: Building,
+          },
+          {
+            label: "Добавление или смена ОКВЭД",
+            description: "Актуализация видов деятельности бизнеса.",
+            icon: ClipboardList,
+          },
+          {
+            label: "Вход или выход участника из ООО",
+            description: "Оформление корпоративных изменений в составе участников.",
+            icon: UserPlus,
+          },
+          {
+            label: "Купля-продажа доли в ООО",
+            description: "Сопровождение сделки по отчуждению доли.",
+            icon: ScrollText,
+          },
+          {
+            label: "Ликвидация ИП или ООО",
+            description: "Закрытие бизнеса с соблюдением процедуры.",
+            icon: Wrench,
+          },
+        ],
+      },
+      {
+        title: "Юридическое сопровождение",
+        items: [
           {
             label: "Юридический адрес",
-            description: "Подбор и сопровождение адреса для регистрации",
-            icon: Building2,
-            link: "/services/uradress",
+            description: "Подбор и сопровождение адреса для регистрации.",
+            icon: Landmark,
           },
           {
-            label: "Внесение изменений",
-            description: "Подготовка и подача изменений в реестр",
-            icon: Settings,
-            link: "/services/vnesenie-izmeneniy-v-egryul",
+            label: "Договорная работа",
+            description: "Подготовка, проверка и согласование договоров.",
+            icon: FileSignature,
+          },
+          {
+            label: "Юридическое сопровождение бизнеса",
+            description: "Поддержка по текущим правовым вопросам компании.",
+            icon: ShieldCheck,
+          },
+          {
+            label: "Сопровождение корпоративных изменений",
+            description: "Юридическая фиксация изменений в бизнесе.",
+            icon: Gavel,
           },
         ],
       },
       {
-        title: "Автоматизация процессов",
+        title: "Автоматизация бизнеса",
         items: [
           {
             label: "Автоматизация выписок",
-            description: "Снижение ручной нагрузки и ускорение операций",
+            description: "Снижение ручной нагрузки и ускорение операций.",
             icon: Workflow,
-            link: "/solutions/digital-transformation",
-          },
-          {
-            label: "Интеграция СБИС",
-            description: "Настройка обменов, ЭДО и рабочих процессов",
-            icon: BarChart3,
-            link: "/solutions/accounting-turnkey",
-          },
-          {
-            label: "Настройка CRM и n8n",
-            description: "Внедрение автоматизации под ваши сценарии",
-            icon: Zap,
-            link: "/ai-assistants/n8n-automation-assistant",
           },
         ],
       },
@@ -122,19 +188,19 @@ const navItems: MegaMenuItem[] = [
         items: [
           {
             label: "Запуск бизнеса под ключ",
-            description: "Регистрация, настройка процессов и старт без хаоса",
+            description: "Регистрация, настройка процессов и старт без хаоса.",
             icon: Building2,
             link: "/solutions/business-launch-turnkey",
           },
           {
             label: "Бухгалтерия под ключ",
-            description: "Учёт, отчётность и контроль в одной системе",
+            description: "Учёт, отчётность и контроль в одной системе.",
             icon: Briefcase,
             link: "/solutions/accounting-turnkey",
           },
           {
             label: "Цифровая трансформация",
-            description: "Автоматизация процессов и рост эффективности",
+            description: "Автоматизация процессов и рост эффективности.",
             icon: Sparkles,
             link: "/solutions/digital-transformation",
           },
@@ -145,19 +211,19 @@ const navItems: MegaMenuItem[] = [
         items: [
           {
             label: "Снижение операционной нагрузки",
-            description: "Меньше ручной работы, больше контроля и скорости",
+            description: "Меньше ручной работы, больше контроля и скорости.",
             icon: BarChart3,
             link: "/solutions/digital-transformation",
           },
           {
             label: "Упорядочивание процессов",
-            description: "Прозрачные регламенты и единая рабочая логика",
+            description: "Прозрачные регламенты и единая рабочая логика.",
             icon: Settings,
             link: "/solutions/accounting-turnkey",
           },
           {
             label: "Подготовка к масштабированию",
-            description: "Архитектура процессов без узких мест",
+            description: "Архитектура процессов без узких мест.",
             icon: Zap,
             link: "/solutions/business-launch-turnkey",
           },
@@ -175,19 +241,19 @@ const navItems: MegaMenuItem[] = [
         items: [
           {
             label: "Victoria AI Consultant",
-            description: "ИИ-консультант для продаж и клиентской коммуникации",
+            description: "ИИ-консультант для продаж и клиентской коммуникации.",
             icon: Bot,
             link: "/ai-assistants/victoria-ai-consultant",
           },
           {
             label: "n8n Automation Assistant",
-            description: "Ассистент по автоматизации процессов и интеграций",
+            description: "Ассистент по автоматизации процессов и интеграций.",
             icon: Workflow,
             link: "/ai-assistants/n8n-automation-assistant",
           },
           {
             label: "CRM AI Sales Assistant",
-            description: "ИИ-помощник для воронки продаж и CRM",
+            description: "ИИ-помощник для воронки продаж и CRM.",
             icon: Cpu,
             link: "/ai-assistants/crm-ai-sales-assistant",
           },
@@ -198,13 +264,13 @@ const navItems: MegaMenuItem[] = [
         items: [
           {
             label: "Document AI Generator",
-            description: "Генерация документов и шаблонов под бизнес-задачи",
+            description: "Генерация документов и шаблонов под бизнес-задачи.",
             icon: FileText,
             link: "/ai-assistants/document-ai-generator",
           },
           {
             label: "ИИ для внутренних процессов",
-            description: "Автоматизация рутины и ускорение работы команды",
+            description: "Автоматизация рутины и ускорение работы команды.",
             icon: Sparkles,
             link: "/ai-assistants",
           },
