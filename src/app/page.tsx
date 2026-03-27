@@ -61,7 +61,7 @@ export default function Page() {
       <header className="fixed top-0 left-0 right-0 z-50 w-full px-4 lg:px-20 py-2">
         <div className="md:hidden flex items-center justify-between">
           <Link href="/">
-            <img src="/logo.png" alt="Rahima Consulting" className="h-12 w-auto brightness-150" />
+            <img src="/RClogo.png" alt="Rahima Consulting" className="h-12 w-auto brightness-150" />
           </Link>
           <button
             onClick={() => setIsMobileMenuOpen(true)}
@@ -74,7 +74,7 @@ export default function Page() {
         <div className="hidden md:flex items-center justify-between gap-8">
           <Link href="/" className="group relative">
             <img
-              src="/logo.png"
+              src="/RClogo.png"
               alt="Rahima Consulting"
               className="h-16 w-auto transition-transform group-hover:scale-105"
             />
@@ -103,8 +103,9 @@ export default function Page() {
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-purple-200 via-blue-200 to-purple-400 bg-clip-text text-transparent mb-6 leading-[0.95]"
             style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
           >
-            <span className="block">Автоматизация бизнеса и</span>
-            <span className="block">бухгалтерское сопровождение в Крыму</span>
+            Автоматизация бизнеса и
+            <br />
+            бухгалтерское сопровождение в Крыму
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 mb-8 max-w-3xl mx-auto">
