@@ -9,7 +9,7 @@ import PWAInstallModal from "@/components/pwa-install-modal";
 import PWARegister from "@/components/pwa-register";
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://rahima-consulting.ru").replace(/\/+$/, "");
-const OG_IMAGE = `${SITE_URL}/logo.png`;
+const OG_IMAGE = `${SITE_URL}/RClogo.png`;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
