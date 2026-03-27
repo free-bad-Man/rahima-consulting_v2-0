@@ -3,9 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowLeft, Home } from "lucide-react";
-import AuthButton from "./auth-button";
-import NotificationsDropdown from "./notifications-dropdown";
+import { Menu, X, Home } from "lucide-react";
 
 export default function PageHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,23 +19,9 @@ export default function PageHeader() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-12 py-3 md:py-4 backdrop-blur-md bg-black/30 border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-12 py-2 backdrop-blur-md bg-black/25 border-b border-white/10">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
-            <div className="relative p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg shadow-black/50 hover:bg-white/15 transition-all">
-              <img
-                src="/logo.png"
-                alt="Rahima Consulting"
-                className="h-20 md:h-24 w-auto object-contain"
-                style={{
-                  filter: 'brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))',
-                }}
-              />
-            </div>
-          </Link>
-
+        <div className="flex items-center justify-center lg:justify-center min-h-[52px] relative">
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {!isHomePage && (
@@ -49,6 +33,7 @@ export default function PageHeader() {
                 <span>На главную</span>
               </Link>
             )}
+
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -60,33 +45,24 @@ export default function PageHeader() {
             ))}
           </nav>
 
-          {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center gap-3">
-            <NotificationsDropdown />
-            <AuthButton
-              onSignInClick={() => window.location.href = '/auth/signin'}
-              onRegisterClick={() => window.location.href = '/auth/register'}
-            />
-          </div>
-
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-colors"
+            className="lg:hidden absolute right-0 p-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-5 h-5" />
             )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-4 pb-4 animate-slide-down">
-            <nav className="flex flex-col space-y-3">
+          <div className="lg:hidden mt-3 pb-3 animate-slide-down">
+            <nav className="flex flex-col space-y-2">
               {!isHomePage && (
                 <Link
                   href="/"
@@ -97,6 +73,7 @@ export default function PageHeader() {
                   <span>На главную</span>
                 </Link>
               )}
+
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -108,17 +85,9 @@ export default function PageHeader() {
                 </Link>
               ))}
             </nav>
-            <div className="mt-4 px-4 flex flex-col gap-3">
-              <NotificationsDropdown />
-              <AuthButton
-                onSignInClick={() => window.location.href = '/auth/signin'}
-                onRegisterClick={() => window.location.href = '/auth/register'}
-              />
-            </div>
           </div>
         )}
       </div>
     </header>
   );
 }
-
