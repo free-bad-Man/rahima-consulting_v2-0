@@ -336,47 +336,49 @@ export default async function AIAssistantPage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            <GlassCard id="contact" className="text-center scroll-mt-32" animationDelay={350}>
-              <h2 className="text-3xl font-bold text-white mb-4">
-                Готовы внедрить ИИ в свой бизнес?
-              </h2>
-              <p className="text-white/80 mb-6">
-                Оставьте заявку, и мы проведем консультацию по внедрению
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Link
-                  href="/contacts"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-lg
+            <div id="contact" className="scroll-mt-32">
+              <GlassCard className="text-center" animationDelay={350}>
+                <h2 className="text-3xl font-bold text-white mb-4">
+                  Готовы внедрить ИИ в свой бизнес?
+                </h2>
+                <p className="text-white/80 mb-6">
+                  Оставьте заявку, и мы проведем консультацию по внедрению
+                </p>
+                <div className="flex flex-wrap gap-4 justify-center">
+                  <Link
+                    href="/contacts"
+                    className="inline-flex items-center gap-2 px-8 py-4 rounded-lg
                            bg-gradient-to-r from-purple-600 to-blue-600
                            hover:from-purple-700 hover:to-blue-700
                            text-white font-medium transition-all text-lg
                            transform hover:scale-105"
-                >
-                  <Phone className="w-5 h-5" />
-                  Заказать консультацию
-                </Link>
-                <a
-                  href={PHONE_HREF}
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-lg
+                  >
+                    <Phone className="w-5 h-5" />
+                    Заказать консультацию
+                  </Link>
+                  <a
+                    href={PHONE_HREF}
+                    className="inline-flex items-center gap-2 px-8 py-4 rounded-lg
                            bg-white/10 hover:bg-white/20 backdrop-blur-sm
                            text-white font-medium transition-all text-lg
                            transform hover:scale-105"
-                >
-                  <Phone className="w-5 h-5" />
-                  Позвонить нам
-                </a>
-                <Link
-                  href="/calculator"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-lg
+                  >
+                    <Phone className="w-5 h-5" />
+                    Позвонить нам
+                  </a>
+                  <Link
+                    href="/calculator"
+                    className="inline-flex items-center gap-2 px-8 py-4 rounded-lg
                            bg-white/10 hover:bg-white/20 backdrop-blur-sm
                            text-white font-medium transition-all text-lg
                            transform hover:scale-105"
-                >
-                  <Calculator className="w-5 h-5" />
-                  Рассчитать стоимость
-                </Link>
-              </div>
-            </GlassCard>
+                  >
+                    <Calculator className="w-5 h-5" />
+                    Рассчитать стоимость
+                  </Link>
+                </div>
+              </GlassCard>
+            </div>
           </div>
         </main>
       </div>
