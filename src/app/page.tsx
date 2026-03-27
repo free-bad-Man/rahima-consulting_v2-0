@@ -4,7 +4,23 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Menu, Calculator, MessageCircle, Phone } from "lucide-react";
+import {
+  Menu,
+  Calculator,
+  MessageCircle,
+  Phone,
+  Briefcase,
+  Building2,
+  FileText,
+  RotateCcw,
+  Settings,
+  BarChart3,
+  Zap,
+  Cpu,
+  Bot,
+  Workflow,
+  Sparkles,
+} from "lucide-react";
 import { Drawer } from "vaul";
 import MegaMenu, { type MegaMenuItem } from "@/components/ui/mega-menu";
 import AuthButton from "@/components/auth-button";
@@ -20,9 +36,182 @@ const CallOrderModal = dynamic(() => import("@/components/call-order-modal"), { 
 const AIChatAssistant = dynamic(() => import("@/components/ai-chat-assistant"), { ssr: false });
 
 const navItems: MegaMenuItem[] = [
-  { id: 1, label: "Услуги", link: "/services" },
-  { id: 2, label: "Решения", link: "/solutions" },
-  { id: 3, label: "ИИ-Ассистенты", link: "/ai-assistants" },
+  {
+    id: 1,
+    label: "Услуги",
+    link: "/services",
+    subMenus: [
+      {
+        title: "Бухгалтерия и отчётность",
+        items: [
+          {
+            label: "Бухгалтерское сопровождение",
+            description: "Комплексное ведение учёта и отчётности бизнеса",
+            icon: Briefcase,
+            link: "/services/assistsellbuy",
+          },
+          {
+            label: "Нулевая отчётность",
+            description: "Подготовка и сдача отчётности без лишних рисков",
+            icon: FileText,
+            link: "/services/zsummery",
+          },
+          {
+            label: "Восстановление учёта",
+            description: "Приведение документов и базы в порядок",
+            icon: RotateCcw,
+            link: "/services/vosstanovlenie-buhgalterskogo-ucheta",
+          },
+        ],
+      },
+      {
+        title: "Регистрация и юрадрес",
+        items: [
+          {
+            label: "Регистрация ИП/ООО",
+            description: "Запуск бизнеса с корректным оформлением",
+            icon: Building2,
+            link: "/solutions/business-launch-turnkey",
+          },
+          {
+            label: "Юридический адрес",
+            description: "Подбор и сопровождение адреса для регистрации",
+            icon: Building2,
+            link: "/services/uradress",
+          },
+          {
+            label: "Внесение изменений",
+            description: "Подготовка и подача изменений в реестр",
+            icon: Settings,
+            link: "/services/vnesenie-izmeneniy-v-egryul",
+          },
+        ],
+      },
+      {
+        title: "Автоматизация процессов",
+        items: [
+          {
+            label: "Автоматизация выписок",
+            description: "Снижение ручной нагрузки и ускорение операций",
+            icon: Workflow,
+            link: "/solutions/digital-transformation",
+          },
+          {
+            label: "Интеграция СБИС",
+            description: "Настройка обменов, ЭДО и рабочих процессов",
+            icon: BarChart3,
+            link: "/solutions/accounting-turnkey",
+          },
+          {
+            label: "Настройка CRM и n8n",
+            description: "Внедрение автоматизации под ваши сценарии",
+            icon: Zap,
+            link: "/ai-assistants/n8n-automation-assistant",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    label: "Решения",
+    link: "/solutions",
+    subMenus: [
+      {
+        title: "Бизнес под ключ",
+        items: [
+          {
+            label: "Запуск бизнеса под ключ",
+            description: "Регистрация, настройка процессов и старт без хаоса",
+            icon: Building2,
+            link: "/solutions/business-launch-turnkey",
+          },
+          {
+            label: "Бухгалтерия под ключ",
+            description: "Учёт, отчётность и контроль в одной системе",
+            icon: Briefcase,
+            link: "/solutions/accounting-turnkey",
+          },
+          {
+            label: "Цифровая трансформация",
+            description: "Автоматизация процессов и рост эффективности",
+            icon: Sparkles,
+            link: "/solutions/digital-transformation",
+          },
+        ],
+      },
+      {
+        title: "Для роста компании",
+        items: [
+          {
+            label: "Снижение операционной нагрузки",
+            description: "Меньше ручной работы, больше контроля и скорости",
+            icon: BarChart3,
+            link: "/solutions/digital-transformation",
+          },
+          {
+            label: "Упорядочивание процессов",
+            description: "Прозрачные регламенты и единая рабочая логика",
+            icon: Settings,
+            link: "/solutions/accounting-turnkey",
+          },
+          {
+            label: "Подготовка к масштабированию",
+            description: "Архитектура процессов без узких мест",
+            icon: Zap,
+            link: "/solutions/business-launch-turnkey",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    label: "ИИ-Ассистенты",
+    link: "/ai-assistants",
+    subMenus: [
+      {
+        title: "Ассистенты для бизнеса",
+        items: [
+          {
+            label: "Victoria AI Consultant",
+            description: "ИИ-консультант для продаж и клиентской коммуникации",
+            icon: Bot,
+            link: "/ai-assistants/victoria-ai-consultant",
+          },
+          {
+            label: "n8n Automation Assistant",
+            description: "Ассистент по автоматизации процессов и интеграций",
+            icon: Workflow,
+            link: "/ai-assistants/n8n-automation-assistant",
+          },
+          {
+            label: "CRM AI Sales Assistant",
+            description: "ИИ-помощник для воронки продаж и CRM",
+            icon: Cpu,
+            link: "/ai-assistants/crm-ai-sales-assistant",
+          },
+        ],
+      },
+      {
+        title: "Документы и контент",
+        items: [
+          {
+            label: "Document AI Generator",
+            description: "Генерация документов и шаблонов под бизнес-задачи",
+            icon: FileText,
+            link: "/ai-assistants/document-ai-generator",
+          },
+          {
+            label: "ИИ для внутренних процессов",
+            description: "Автоматизация рутины и ускорение работы команды",
+            icon: Sparkles,
+            link: "/ai-assistants",
+          },
+        ],
+      },
+    ],
+  },
   { id: 4, label: "Кейсы и отзывы", link: "/cases" },
   { id: 7, label: "Контакты", link: "/contacts" },
 ];
@@ -79,29 +268,35 @@ export default function Page() {
           </button>
         </div>
 
-        <div className="hidden md:flex items-center justify-between gap-8">
-          <Link href="/" className="group relative">
-            <img
-              src="/logo.png"
-              alt="Rahima Consulting"
-              className="h-28 lg:h-32 w-auto transition-transform group-hover:scale-105"
-              style={{ filter: LOGO_FILTER }}
-            />
-          </Link>
+        <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] items-start gap-8">
+          <div className="flex justify-start">
+            <Link href="/" className="group relative">
+              <img
+                src="/logo.png"
+                alt="Rahima Consulting"
+                className="h-28 lg:h-32 w-auto transition-transform group-hover:scale-105"
+                style={{ filter: LOGO_FILTER }}
+              />
+            </Link>
+          </div>
 
-          <MegaMenu
-            items={navItems}
-            onServiceClick={handleServiceClick}
-            onCasesAndReviewsClick={() => router.push("/cases")}
-            onContactsClick={() => router.push("/contacts")}
-          />
-
-          <div className="flex items-center gap-3">
-            <NotificationsDropdown />
-            <AuthButton
-              onSignInClick={() => router.push("/auth/signin")}
-              onRegisterClick={() => router.push("/auth/register")}
+          <div className="flex justify-center">
+            <MegaMenu
+              items={navItems}
+              onServiceClick={handleServiceClick}
+              onCasesAndReviewsClick={() => router.push("/cases")}
+              onContactsClick={() => router.push("/contacts")}
             />
+          </div>
+
+          <div className="flex justify-end">
+            <div className="flex items-center gap-3">
+              <NotificationsDropdown />
+              <AuthButton
+                onSignInClick={() => router.push("/auth/signin")}
+                onRegisterClick={() => router.push("/auth/register")}
+              />
+            </div>
           </div>
         </div>
       </header>
@@ -166,7 +361,7 @@ export default function Page() {
               {navItems.map((item) => (
                 <Link
                   key={item.id}
-                  href={item.link}
+                  href={item.link || "#"}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-xl py-2"
                 >
