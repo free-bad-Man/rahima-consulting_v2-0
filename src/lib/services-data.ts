@@ -25,7 +25,7 @@ export interface Service {
 
 let cachedServices: Service[] | null = null;
 
-function cleanText(text: string): string {
+function cleanInlineText(text: string): string {
   if (!text) return '';
 
   return text
@@ -38,12 +38,30 @@ function cleanText(text: string): string {
     .trim();
 }
 
+function cleanRichText(text: string): string {
+  if (!text) return '';
+
+  return text
+    .replace(/[\u200B-\u200D\uFEFF]/g, '')
+    .replace(/\u00A0/g, ' ')
+    .replace(/[\uFFFD\u25A1\u25A0\u2610]/g, '')
+    .replace(/\r\n/g, '\n')
+    .replace(/\r/g, '\n')
+    .replace(/\f/g, '\n')
+    .replace(/[ \t]+\n/g, '\n')
+    .replace(/\n[ \t]+/g, '\n')
+    .replace(/[ \t]{2,}/g, ' ')
+    .replace(/([.!?])\s+(?=\d+\.\s*[А-ЯA-ZЁ])/g, '$1\n\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
 function dedupeStrings(items: string[]): string[] {
   const seen = new Set<string>();
   const result: string[] = [];
 
   for (const item of items) {
-    const value = cleanText(item);
+    const value = cleanInlineText(item);
     if (!value) continue;
 
     const key = value.toLowerCase();
@@ -70,7 +88,11 @@ function mergeSectionItems(items: string[]): string[] {
     if (/^[А-ЯA-Z][^:]{2,80}:/.test(trimmed)) return true;
     if (/^[\d\-•]\s/.test(trimmed)) return true;
     if (/^\d+[.)]\s/.test(trimmed)) return true;
-    if (/^(Для|При|Подготовка|Проверка|Формирование|Разработка|Сопровождение|Организация|Контроль|Сбор|Обновление|Уведомление|Отправка|Регистрация|Постановка|Получение|Консультация|Предоставление|Настройка|Бухгалтерское|Персонифицированные|Отчетность)/.test(trimmed)) {
+    if (
+      /^(Для|При|Подготовка|Проверка|Формирование|Разработка|Сопровождение|Организация|Контроль|Сбор|Обновление|Уведомление|Отправка|Регистрация|Постановка|Получение|Консультация|Предоставление|Настройка|Бухгалтерское|Персонифицированные|Отчетность)/.test(
+        trimmed,
+      )
+    ) {
       return true;
     }
 
@@ -78,7 +100,7 @@ function mergeSectionItems(items: string[]): string[] {
   };
 
   for (const rawItem of items) {
-    const item = cleanText(rawItem);
+    const item = cleanInlineText(rawItem);
 
     if (!item) continue;
     if (/^(Цена|Стоимость)\s*:?\s*$/i.test(item)) continue;
@@ -129,21 +151,22 @@ function extractPriceFromText(fullText: string): number | null {
 function extractDescription(fullText: string, title: string): string {
   if (!fullText) return '';
 
-  let text = cleanText(fullText);
+  let text = cleanRichText(fullText);
 
   if (title) {
     const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     text = text.replace(new RegExp(`^\\s*${escapedTitle}\\s*`, 'i'), '');
   }
 
-  const beforeSut = text.split(/1\.\s*Суть услуги/i)[0];
+  const oneLineText = cleanInlineText(text);
+  const beforeSut = oneLineText.split(/1\.\s*Суть услуги/i)[0];
   if (beforeSut && beforeSut.length >= 60) {
-    return cleanText(beforeSut).substring(0, 220).trim();
+    return cleanInlineText(beforeSut).substring(0, 220).trim();
   }
 
-  const sutMatch = text.match(/1\.\s*Суть услуги\s*([\s\S]+?)(?:\n\s*2\.|$)/i);
+  const sutMatch = oneLineText.match(/1\.\s*Суть услуги\s*([\s\S]+?)(?:\s*2\.|$)/i);
   if (sutMatch?.[1]) {
-    const sutText = cleanText(sutMatch[1]);
+    const sutText = cleanInlineText(sutMatch[1]);
     const sentences = sutText.split(/(?<=[.!?])\s+/);
     const description = sentences.slice(0, 2).join(' ').trim();
     if (description) {
@@ -151,11 +174,11 @@ function extractDescription(fullText: string, title: string): string {
     }
   }
 
-  return cleanText(text).substring(0, 220).trim();
+  return cleanInlineText(oneLineText).substring(0, 220).trim();
 }
 
 function isBadDescription(description: string): boolean {
-  const value = cleanText(description);
+  const value = cleanInlineText(description);
 
   if (!value) return true;
   if (value.length < 45) return true;
@@ -195,10 +218,10 @@ export function getAllServices(): Service[] {
     cachedServices = services
       .filter((service) => service.title && service.title.length > 2)
       .map((service) => {
-        const fullText = cleanText(service.full_text || '');
-        const title = cleanText(service.title || '');
+        const fullText = cleanRichText(service.full_text || '');
+        const title = cleanInlineText(service.title || '');
 
-        let description = cleanText(service.short_tagline || '');
+        let description = cleanInlineText(service.short_tagline || '');
         if (isBadDescription(description)) {
           description = extractDescription(fullText, title);
         }
@@ -209,8 +232,8 @@ export function getAllServices(): Service[] {
             : extractPriceFromText(fullText);
 
         const priceDisplay =
-          service.price_display && cleanText(service.price_display)
-            ? cleanText(service.price_display)
+          service.price_display && cleanInlineText(service.price_display)
+            ? cleanInlineText(service.price_display)
             : numericPrice
               ? `Цена: ОТ ${numericPrice.toLocaleString('ru-RU')} ₽`
               : 'Цена: ОТ уточнить';
@@ -223,6 +246,7 @@ export function getAllServices(): Service[] {
           short_tagline: description,
           price_from: numericPrice,
           price_display: priceDisplay,
+          duration_estimate: cleanInlineText(service.duration_estimate || '') || null,
           includes: mergeSectionItems(service.includes || []),
           excludes: mergeSectionItems(service.excludes || []),
           requirements: mergeSectionItems(service.requirements || []),
@@ -243,13 +267,15 @@ export function getServiceBySlug(slug: string): Service | null {
   const services = getAllServices();
   const decodedSlug = decodeURIComponent(slug);
 
-  return services.find(
-    (s) =>
-      s.slug === decodedSlug ||
-      s.slug === slug ||
-      slugify(s.title) === decodedSlug ||
-      slugify(s.title) === slug,
-  ) || null;
+  return (
+    services.find(
+      (s) =>
+        s.slug === decodedSlug ||
+        s.slug === slug ||
+        slugify(s.title) === decodedSlug ||
+        slugify(s.title) === slug,
+    ) || null
+  );
 }
 
 export function getServicesByCategory(category: string): Service[] {
@@ -266,7 +292,9 @@ export function getServicesByCategory(category: string): Service[] {
   const keywords = categoryMap[category.toLowerCase()] || [category.toLowerCase()];
 
   return services.filter((service) => {
-    const searchText = `${service.title} ${service.short_tagline || ''} ${service.tags?.join(' ') || ''}`.toLowerCase();
+    const searchText =
+      `${service.title} ${service.short_tagline || ''} ${service.tags?.join(' ') || ''}`.toLowerCase();
+
     return keywords.some((keyword) => searchText.includes(keyword));
   });
 }

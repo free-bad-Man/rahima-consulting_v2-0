@@ -5,13 +5,124 @@ import PageHeader from "@/components/page-header";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import GlassCard from "@/components/ui/glass-card";
 import ShaderBackground from "@/components/ui/shader-background";
-import { getAllServices, getServiceBySlug, type Service } from "@/lib/services-data";
+import { getAllServices, getServiceBySlug } from "@/lib/services-data";
 import { Check, Phone, Calculator, AlertCircle, Clock, Package } from "lucide-react";
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://rahima-consulting.ru").replace(/\/+$/, "");
 
 interface PageProps {
   params: Promise<{ slug: string }> | { slug: string };
+}
+
+const KNOWN_SECTION_TITLES = [
+  "Суть услуги",
+  "Для кого",
+  "Ключевые преимущества",
+  "Преимущества",
+  "Что входит в услугу",
+  "Что входит",
+  "Что потребуется",
+  "Стоимость",
+  "Цена",
+  "Сроки",
+  "Результат",
+  "Порядок работы",
+  "Важно знать",
+];
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function normalizeServiceTextForRender(text: string): string {
+  return text
+    .replace(/\r/g, "")
+    .replace(/([.!?])\s+(?=\d+\.\s*[А-ЯA-ZЁ])/g, "$1\n\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+function extractSection(block: string): { title: string; body: string } | null {
+  const compact = block.replace(/\s+/g, " ").trim();
+
+  for (const title of KNOWN_SECTION_TITLES) {
+    const re = new RegExp(`^(\\d+\\.\\s*${escapeRegExp(title)})(?:\\s+|:\\s*)([\\s\\S]*)$`, "i");
+    const match = compact.match(re);
+    if (match) {
+      return {
+        title: match[1].trim(),
+        body: match[2].trim(),
+      };
+    }
+  }
+
+  const generic = compact.match(/^(\d+\.\s*[А-ЯA-ZЁ][^.?!]{2,100})(?:\s+)([\s\S]+)$/);
+  if (generic) {
+    return {
+      title: generic[1].trim(),
+      body: generic[2].trim(),
+    };
+  }
+
+  return null;
+}
+
+function renderServiceDescription(fullText: string) {
+  const normalized = normalizeServiceTextForRender(fullText);
+
+  const blocks = normalized
+    .split(/\n{2,}/)
+    .map((block) => block.trim())
+    .filter(Boolean);
+
+  return blocks.map((block, idx) => {
+    const lines = block
+      .split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean);
+
+    const isBulletList =
+      lines.length > 1 && lines.every((line) => /^[-•]\s+/.test(line));
+
+    if (isBulletList) {
+      return (
+        <ul key={idx} className="space-y-3">
+          {lines.map((line, lineIdx) => (
+            <li key={lineIdx} className="flex items-start gap-3 text-white/85 leading-relaxed">
+              <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+              <span>{line.replace(/^[-•]\s+/, "")}</span>
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    const section = extractSection(block);
+    if (section) {
+      return (
+        <div
+          key={idx}
+          className="rounded-xl border border-white/10 bg-white/5 p-5 md:p-6"
+        >
+          <h3 className="text-lg md:text-xl font-semibold text-white mb-3">
+            {section.title}
+          </h3>
+          <p className="text-white/80 leading-8 whitespace-pre-line">
+            {section.body}
+          </p>
+        </div>
+      );
+    }
+
+    return (
+      <p
+        key={idx}
+        className="text-white/80 leading-8 whitespace-pre-line"
+      >
+        {block}
+      </p>
+    );
+  });
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -233,8 +344,9 @@ export default async function ServicePage({ params }: PageProps) {
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
                   Описание услуги
                 </h2>
-                <div className="text-white/80 leading-relaxed whitespace-pre-line">
-                  {service.full_text}
+
+                <div className="space-y-5">
+                  {renderServiceDescription(service.full_text)}
                 </div>
               </GlassCard>
             )}
