@@ -39,7 +39,7 @@ export default function Page() {
   };
 
   return (
-    <main className="relative min-h-screen overflow-hidden text-white">
+    <main className="relative h-screen overflow-hidden text-white">
       <ShaderBackground />
 
       {showCallOrderModal && (
@@ -95,16 +95,17 @@ export default function Page() {
         </div>
       </header>
 
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center pt-20 px-4">
-        <section className="text-center max-w-5xl w-full">
+      <div className="relative z-10 h-full flex flex-col px-4 pt-24 pb-28">
+        <section className="flex-1 flex flex-col items-center justify-center text-center max-w-5xl w-full mx-auto">
           <h1
-            className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-purple-200 via-blue-200 to-purple-400 bg-clip-text text-transparent mb-4"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-purple-200 via-blue-200 to-purple-400 bg-clip-text text-transparent leading-[0.95] mb-6"
             style={{ fontFamily: "var(--font-orbitron), sans-serif" }}
           >
-            Автоматизация бизнеса и бухгалтерское сопровождение в Крыму
+            <span className="block">Автоматизация бизнеса и</span>
+            <span className="block">бухгалтерское сопровождение в Крыму</span>
           </h1>
 
-          <p className="text-lg text-white/70 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-white/75 max-w-3xl mx-auto">
             Ваш персональный ИИ-Ассистент и команда экспертов для масштабирования бизнеса в единой цифровой экосистеме.
           </p>
 
@@ -113,30 +114,32 @@ export default function Page() {
           </h2>
         </section>
 
-        <div className="mt-16 flex flex-wrap justify-center gap-4 px-4 w-full">
-          <button
-            onClick={() => setShowCallOrderModal(true)}
-            className="flex items-center gap-2 px-8 py-4 bg-purple-600/20 border border-purple-500/30 rounded-2xl backdrop-blur-md hover:bg-purple-600/30 transition-all active:scale-95"
-          >
-            <Phone className="w-5 h-5" /> Заказать звонок
-          </button>
+        <div className="w-full flex justify-center mt-auto">
+          <div className="flex flex-wrap justify-center gap-4 px-4">
+            <button
+              onClick={() => setShowCallOrderModal(true)}
+              className="flex items-center gap-2 px-8 py-4 bg-purple-600/20 border border-purple-500/30 rounded-2xl backdrop-blur-md hover:bg-purple-600/30 transition-all active:scale-95"
+            >
+              <Phone className="w-5 h-5" /> Заказать звонок
+            </button>
 
-          <Link
-            href="/calculator"
-            className="flex items-center gap-2 px-8 py-4 bg-blue-600/20 border border-blue-500/30 rounded-2xl backdrop-blur-md hover:bg-blue-600/30 transition-all active:scale-95"
-          >
-            <Calculator className="w-5 h-5" /> Расчёт стоимости
-          </Link>
+            <Link
+              href="/calculator"
+              className="flex items-center gap-2 px-8 py-4 bg-blue-600/20 border border-blue-500/30 rounded-2xl backdrop-blur-md hover:bg-blue-600/30 transition-all active:scale-95"
+            >
+              <Calculator className="w-5 h-5" /> Расчёт стоимости
+            </Link>
 
-          <button
-            onClick={() => {
-              setStartAIChatWithVoice(false);
-              setShowAIChat(true);
-            }}
-            className="flex items-center gap-2 px-8 py-4 bg-pink-600/20 border border-pink-500/30 rounded-2xl backdrop-blur-md hover:bg-pink-600/30 transition-all active:scale-95"
-          >
-            <MessageCircle className="w-5 h-5" /> ИИ Ассистент
-          </button>
+            <button
+              onClick={() => {
+                setStartAIChatWithVoice(false);
+                setShowAIChat(true);
+              }}
+              className="flex items-center gap-2 px-8 py-4 bg-pink-600/20 border border-pink-500/30 rounded-2xl backdrop-blur-md hover:bg-pink-600/30 transition-all active:scale-95"
+            >
+              <MessageCircle className="w-5 h-5" /> ИИ Ассистент
+            </button>
+          </div>
         </div>
       </div>
 
