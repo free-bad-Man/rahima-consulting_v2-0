@@ -17,13 +17,26 @@ def clean_text(text: str) -> str:
         .replace("\u200c", "")
         .replace("\u200d", "")
         .replace("\xa0", " ")
-        .replace("\r", "")
-        .replace("\f", "")
+        .replace("\r\n", "\n")
+        .replace("\r", "\n")
+        .replace("\f", "\n")
     )
 
 
 def one_line(text: str) -> str:
     return re.sub(r"\s+", " ", clean_text(text)).strip()
+
+
+def normalize_multiline(text: str) -> str:
+    if not text:
+        return ""
+    text = clean_text(text)
+    text = re.sub(r"[ \t]+\n", "\n", text)
+    text = re.sub(r"\n[ \t]+", "\n", text)
+    text = re.sub(r"[ \t]{2,}", " ", text)
+    text = re.sub(r"([.!?])\s+(?=\d+\.\s*[А-ЯA-ZЁ])", r"\1\n\n", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
 
 
 def parse_price(value, full_text: str = "") -> tuple[int | None, str]:
@@ -55,7 +68,7 @@ def extract_description(full_text: str, title: str) -> str:
     if not full_text:
         return title or ""
 
-    text = clean_text(full_text)
+    text = normalize_multiline(full_text)
     if title:
         text = re.sub(rf"^\s*{re.escape(title)}\s*", "", text, count=1, flags=re.IGNORECASE)
 
@@ -114,7 +127,7 @@ def merge_items(items: list[str]) -> list[str]:
         if re.match(r"^\d+[\)\.]\s+", line):
             return True
         if re.match(
-            r"^(Подготовка|Проверка|Формирование|Разработка|Сопровождение|Организация|Контроль|Сбор|Обновление|Уведомление|Отправка|Регистрация|Постановка|Получение|Консультация|Предоставление|Настройка|Бухгалтерское|Персонифицированные|Отчетность)",
+            r"^(Подготовка|Проверка|Формирование|Разработка|Сопровождение|Организация|Контроль|Сбор|Обновление|Уведомление|Отправка|Регистрация|Постановка|Получение|Консультация|Предоставление|Настройка|Бухгалтерское|Персонифицированные|Отчетность|Ведение|Расчет|Открытие|Подключение|Получение)",
             line
         ):
             return True
@@ -156,9 +169,150 @@ def merge_items(items: list[str]) -> list[str]:
     return deduped
 
 
+def split_paragraphs(text: str) -> list[str]:
+    if not text:
+        return []
+
+    chunks = [one_line(p) for p in normalize_multiline(text).split("\n\n")]
+    return [p for p in chunks if p]
+
+
+def extract_list_items(text: str) -> list[str]:
+    if not text:
+        return []
+
+    normalized = normalize_multiline(text)
+
+    raw_items = []
+
+    for line in normalized.split("\n"):
+        line = line.strip()
+        if not line:
+            continue
+
+        if re.match(r"^[\-\•]\s+", line):
+            raw_items.append(re.sub(r"^[\-\•]\s+", "", line))
+            continue
+
+        if re.match(r"^\d+[\)\.]\s+", line):
+            raw_items.append(re.sub(r"^\d+[\)\.]\s+", "", line))
+            continue
+
+    if raw_items:
+        return merge_items(raw_items)
+
+    if ";" in normalized:
+        semi_items = [one_line(x) for x in normalized.split(";")]
+        semi_items = [x for x in semi_items if x]
+        if len(semi_items) >= 3:
+            return merge_items(semi_items)
+
+    return []
+
+
+def classify_section(title: str) -> str:
+    value = one_line(title).lower()
+
+    if "суть услуги" in value:
+        return "essence"
+    if "для кого" in value:
+        return "audience"
+    if "ключевые преимущества" in value or value == "преимущества":
+        return "benefits"
+    if "что входит" in value:
+        return "includes"
+    if "что потребуется" in value or "требован" in value:
+        return "requirements"
+    if "стоимость" in value or "цена" in value:
+        return "pricing"
+    if "срок" in value:
+        return "timing"
+    if "важно" in value:
+        return "warnings"
+    if "результат" in value:
+        return "result"
+    return "generic"
+
+
+def build_content_sections(full_text: str) -> list[dict]:
+    text = normalize_multiline(full_text)
+    if not text:
+        return []
+
+    blocks = re.split(r"(?=^\s*\d+\.\s*[^\n]+)", text, flags=re.MULTILINE)
+    blocks = [b.strip() for b in blocks if b.strip()]
+
+    sections = []
+
+    if blocks and not re.match(r"^\d+\.\s*[^\n]+", blocks[0]):
+        intro = blocks.pop(0).strip()
+        if intro:
+            sections.append(
+                {
+                    "title": "Общее описание",
+                    "kind": "intro",
+                    "paragraphs": split_paragraphs(intro),
+                    "items": [],
+                }
+            )
+
+    for block in blocks:
+        lines = [line.strip() for line in block.split("\n") if line.strip()]
+        if not lines:
+            continue
+
+        first_line = lines[0]
+        title_match = re.match(r"^(\d+)\.\s*(.+)$", first_line)
+        if not title_match:
+            paragraphs = split_paragraphs(block)
+            if paragraphs:
+                sections.append(
+                    {
+                        "title": "Описание",
+                        "kind": "generic",
+                        "paragraphs": paragraphs,
+                        "items": [],
+                    }
+                )
+            continue
+
+        title = title_match.group(2).strip()
+        body = "\n".join(lines[1:]).strip()
+
+        if not body:
+            compact = one_line(block)
+            compact = re.sub(r"^\d+\.\s*[^ ]+\s*", "", compact, count=1)
+            body = compact.strip()
+
+        items = extract_list_items(body)
+        paragraphs = [] if items else split_paragraphs(body)
+
+        if not items and not paragraphs:
+            compact = one_line(body)
+            if compact:
+                paragraphs = [compact]
+
+        sections.append(
+            {
+                "title": title,
+                "kind": classify_section(title),
+                "paragraphs": paragraphs,
+                "items": items,
+            }
+        )
+
+    compacted = []
+    for section in sections:
+        if not section["items"] and not section["paragraphs"]:
+            continue
+        compacted.append(section)
+
+    return compacted
+
+
 def normalize_item(item: dict) -> dict:
     title = one_line(item.get("title", ""))
-    full_text = clean_text(item.get("full_text", ""))
+    full_text = normalize_multiline(item.get("full_text", ""))
 
     price_from, price_display = parse_price(
         item.get("price_from") or item.get("price_display"),
@@ -181,6 +335,7 @@ def normalize_item(item: dict) -> dict:
         "requirements": merge_items(item.get("requirements", []) or []),
         "red_flags": merge_items(item.get("red_flags", []) or []),
         "full_text": full_text.strip(),
+        "content_sections": build_content_sections(full_text),
     }
 
     return normalized

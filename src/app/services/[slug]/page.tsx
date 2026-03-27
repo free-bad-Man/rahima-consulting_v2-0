@@ -5,8 +5,22 @@ import PageHeader from "@/components/page-header";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import GlassCard from "@/components/ui/glass-card";
 import ShaderBackground from "@/components/ui/shader-background";
-import { getAllServices, getServiceBySlug } from "@/lib/services-data";
-import { Check, Phone, Calculator, AlertCircle, Clock, Package } from "lucide-react";
+import {
+  getAllServices,
+  getServiceBySlug,
+  type ServiceContentSection,
+} from "@/lib/services-data";
+import {
+  Check,
+  Phone,
+  Calculator,
+  AlertCircle,
+  Clock,
+  Package,
+  Users,
+  BadgeCheck,
+  FileText,
+} from "lucide-react";
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://rahima-consulting.ru").replace(/\/+$/, "");
 
@@ -14,113 +28,88 @@ interface PageProps {
   params: Promise<{ slug: string }> | { slug: string };
 }
 
-const KNOWN_SECTION_TITLES = [
-  "Суть услуги",
-  "Для кого",
-  "Ключевые преимущества",
-  "Преимущества",
-  "Что входит в услугу",
-  "Что входит",
-  "Что потребуется",
-  "Стоимость",
-  "Цена",
-  "Сроки",
-  "Результат",
-  "Порядок работы",
-  "Важно знать",
-];
-
-function escapeRegExp(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function normalizeServiceTextForRender(text: string): string {
-  return text
-    .replace(/\r/g, "")
-    .replace(/([.!?])\s+(?=\d+\.\s*[А-ЯA-ZЁ])/g, "$1\n\n")
-    .replace(/\n{3,}/g, "\n\n")
-    .trim();
-}
-
-function extractSection(block: string): { title: string; body: string } | null {
-  const compact = block.replace(/\s+/g, " ").trim();
-
-  for (const title of KNOWN_SECTION_TITLES) {
-    const re = new RegExp(`^(\\d+\\.\\s*${escapeRegExp(title)})(?:\\s+|:\\s*)([\\s\\S]*)$`, "i");
-    const match = compact.match(re);
-    if (match) {
-      return {
-        title: match[1].trim(),
-        body: match[2].trim(),
-      };
-    }
+function getSectionIcon(kind?: string) {
+  switch (kind) {
+    case "audience":
+      return Users;
+    case "benefits":
+      return BadgeCheck;
+    case "includes":
+      return Package;
+    case "requirements":
+      return AlertCircle;
+    case "warnings":
+      return AlertCircle;
+    default:
+      return FileText;
   }
-
-  const generic = compact.match(/^(\d+\.\s*[А-ЯA-ZЁ][^.?!]{2,100})(?:\s+)([\s\S]+)$/);
-  if (generic) {
-    return {
-      title: generic[1].trim(),
-      body: generic[2].trim(),
-    };
-  }
-
-  return null;
 }
 
-function renderServiceDescription(fullText: string) {
-  const normalized = normalizeServiceTextForRender(fullText);
+function getSectionAccent(kind?: string) {
+  switch (kind) {
+    case "warnings":
+      return "text-red-300";
+    case "benefits":
+      return "text-green-300";
+    case "includes":
+      return "text-purple-300";
+    case "requirements":
+      return "text-blue-300";
+    default:
+      return "text-purple-300";
+  }
+}
 
-  const blocks = normalized
-    .split(/\n{2,}/)
-    .map((block) => block.trim())
-    .filter(Boolean);
+function renderStructuredSections(sections: ServiceContentSection[]) {
+  return sections.map((section, idx) => {
+    const Icon = getSectionIcon(section.kind);
+    const accentClass = getSectionAccent(section.kind);
 
-  return blocks.map((block, idx) => {
-    const lines = block
-      .split("\n")
-      .map((line) => line.trim())
-      .filter(Boolean);
-
-    const isBulletList =
-      lines.length > 1 && lines.every((line) => /^[-•]\s+/.test(line));
-
-    if (isBulletList) {
-      return (
-        <ul key={idx} className="space-y-3">
-          {lines.map((line, lineIdx) => (
-            <li key={lineIdx} className="flex items-start gap-3 text-white/85 leading-relaxed">
-              <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-              <span>{line.replace(/^[-•]\s+/, "")}</span>
-            </li>
-          ))}
-        </ul>
-      );
-    }
-
-    const section = extractSection(block);
-    if (section) {
-      return (
-        <div
-          key={idx}
-          className="rounded-xl border border-white/10 bg-white/5 p-5 md:p-6"
-        >
-          <h3 className="text-lg md:text-xl font-semibold text-white mb-3">
-            {section.title}
-          </h3>
-          <p className="text-white/80 leading-8 whitespace-pre-line">
-            {section.body}
-          </p>
-        </div>
-      );
-    }
+    const useList = section.items.length >= 2;
 
     return (
-      <p
-        key={idx}
-        className="text-white/80 leading-8 whitespace-pre-line"
-      >
-        {block}
-      </p>
+      <GlassCard key={`${section.title}-${idx}`} className="mb-8" animationDelay={150 + idx * 50}>
+        <div className="flex items-center gap-3 mb-6">
+          <Icon className={`w-6 h-6 ${accentClass}`} />
+          <h2 className="text-2xl md:text-3xl font-bold text-white">{section.title}</h2>
+        </div>
+
+        {useList ? (
+          <div className="grid sm:grid-cols-2 gap-4">
+            {section.items.map((item, itemIdx) => (
+              <div
+                key={itemIdx}
+                className="flex items-start gap-3 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-200 transform hover:translate-x-2"
+              >
+                <Check className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                <span className="text-white/90 leading-relaxed">{item}</span>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {section.paragraphs.map((paragraph, paragraphIdx) => (
+              <p
+                key={paragraphIdx}
+                className="text-white/80 leading-8 whitespace-pre-line"
+              >
+                {paragraph}
+              </p>
+            ))}
+
+            {section.items.length > 0 && (
+              <ul className="space-y-3">
+                {section.items.map((item, itemIdx) => (
+                  <li key={itemIdx} className="flex items-start gap-3 text-white/85 leading-relaxed">
+                    <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
+      </GlassCard>
     );
   });
 }
@@ -210,6 +199,8 @@ export default async function ServicePage({ params }: PageProps) {
     }),
   };
 
+  const hasStructuredContent = !!service.content_sections && service.content_sections.length > 0;
+
   return (
     <div className="relative min-h-screen">
       <ShaderBackground />
@@ -280,53 +271,8 @@ export default async function ServicePage({ params }: PageProps) {
               </div>
             </GlassCard>
 
-            {service.includes && service.includes.length > 0 && (
-              <GlassCard className="mb-8" animationDelay={200}>
-                <div className="flex items-center gap-3 mb-6">
-                  <Package className="w-6 h-6 text-purple-300" />
-                  <h2 className="text-2xl md:text-3xl font-bold text-white">
-                    Что входит в услугу
-                  </h2>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {service.includes.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-start gap-3 p-4 rounded-lg bg-white/5 
-                                 hover:bg-white/10 transition-all duration-200
-                                 transform hover:translate-x-2"
-                    >
-                      <Check className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-white/90">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </GlassCard>
-            )}
-
-            {service.requirements && service.requirements.length > 0 && (
-              <GlassCard className="mb-8" animationDelay={300}>
-                <div className="flex items-center gap-3 mb-6">
-                  <AlertCircle className="w-6 h-6 text-blue-300" />
-                  <h2 className="text-2xl md:text-3xl font-bold text-white">
-                    Что потребуется
-                  </h2>
-                </div>
-
-                <ul className="space-y-3">
-                  {service.requirements.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-white/80">
-                      <span className="text-blue-300 mt-1">•</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </GlassCard>
-            )}
-
             {service.duration_estimate && (
-              <GlassCard className="mb-8" animationDelay={400}>
+              <GlassCard className="mb-8" animationDelay={100}>
                 <div className="flex items-center gap-3">
                   <Clock className="w-6 h-6 text-purple-300" />
                   <div>
@@ -339,16 +285,53 @@ export default async function ServicePage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            {service.full_text && (
-              <GlassCard className="mb-8 prose-glass" animationDelay={500}>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
-                  Описание услуги
-                </h2>
+            {hasStructuredContent ? (
+              renderStructuredSections(service.content_sections!)
+            ) : (
+              <>
+                {service.includes && service.includes.length > 0 && (
+                  <GlassCard className="mb-8" animationDelay={200}>
+                    <div className="flex items-center gap-3 mb-6">
+                      <Package className="w-6 h-6 text-purple-300" />
+                      <h2 className="text-2xl md:text-3xl font-bold text-white">
+                        Что входит в услугу
+                      </h2>
+                    </div>
 
-                <div className="space-y-5">
-                  {renderServiceDescription(service.full_text)}
-                </div>
-              </GlassCard>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      {service.includes.map((item, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-start gap-3 p-4 rounded-lg bg-white/5 
+                                     hover:bg-white/10 transition-all duration-200
+                                     transform hover:translate-x-2"
+                        >
+                          <Check className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                          <span className="text-white/90">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </GlassCard>
+                )}
+
+                {service.full_text && (
+                  <GlassCard className="mb-8" animationDelay={300}>
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                      Описание услуги
+                    </h2>
+                    <div className="space-y-4">
+                      {service.full_text.split(/\n{2,}/).map((paragraph, idx) => (
+                        <p
+                          key={idx}
+                          className="text-white/80 leading-8 whitespace-pre-line"
+                        >
+                          {paragraph.trim()}
+                        </p>
+                      ))}
+                    </div>
+                  </GlassCard>
+                )}
+              </>
             )}
 
             {service.red_flags && service.red_flags.length > 0 && (

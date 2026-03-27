@@ -2,6 +2,26 @@ import fs from 'fs';
 import path from 'path';
 import { slugify } from './slugify';
 
+export type ServiceSectionKind =
+  | 'intro'
+  | 'essence'
+  | 'audience'
+  | 'benefits'
+  | 'includes'
+  | 'requirements'
+  | 'pricing'
+  | 'timing'
+  | 'warnings'
+  | 'result'
+  | 'generic';
+
+export interface ServiceContentSection {
+  title: string;
+  kind: ServiceSectionKind;
+  paragraphs: string[];
+  items: string[];
+}
+
 export interface Service {
   slug: string;
   title: string;
@@ -21,6 +41,7 @@ export interface Service {
   source_doc?: string;
   service_code?: string;
   path?: string;
+  content_sections?: ServiceContentSection[];
 }
 
 let cachedServices: Service[] | null = null;
@@ -89,7 +110,7 @@ function mergeSectionItems(items: string[]): string[] {
     if (/^[\d\-•]\s/.test(trimmed)) return true;
     if (/^\d+[.)]\s/.test(trimmed)) return true;
     if (
-      /^(Для|При|Подготовка|Проверка|Формирование|Разработка|Сопровождение|Организация|Контроль|Сбор|Обновление|Уведомление|Отправка|Регистрация|Постановка|Получение|Консультация|Предоставление|Настройка|Бухгалтерское|Персонифицированные|Отчетность)/.test(
+      /^(Для|При|Подготовка|Проверка|Формирование|Разработка|Сопровождение|Организация|Контроль|Сбор|Обновление|Уведомление|Отправка|Регистрация|Постановка|Получение|Консультация|Предоставление|Настройка|Бухгалтерское|Персонифицированные|Отчетность|Ведение|Расчет|Открытие|Подключение)/.test(
         trimmed,
       )
     ) {
@@ -158,13 +179,12 @@ function extractDescription(fullText: string, title: string): string {
     text = text.replace(new RegExp(`^\\s*${escapedTitle}\\s*`, 'i'), '');
   }
 
-  const oneLineText = cleanInlineText(text);
-  const beforeSut = oneLineText.split(/1\.\s*Суть услуги/i)[0];
+  const beforeSut = cleanInlineText(text.split(/1\.\s*Суть услуги/i)[0] || '');
   if (beforeSut && beforeSut.length >= 60) {
-    return cleanInlineText(beforeSut).substring(0, 220).trim();
+    return beforeSut.substring(0, 220).trim();
   }
 
-  const sutMatch = oneLineText.match(/1\.\s*Суть услуги\s*([\s\S]+?)(?:\s*2\.|$)/i);
+  const sutMatch = text.match(/1\.\s*Суть услуги\s*([\s\S]+?)(?:\n\s*2\.|$)/i);
   if (sutMatch?.[1]) {
     const sutText = cleanInlineText(sutMatch[1]);
     const sentences = sutText.split(/(?<=[.!?])\s+/);
@@ -174,7 +194,7 @@ function extractDescription(fullText: string, title: string): string {
     }
   }
 
-  return cleanInlineText(oneLineText).substring(0, 220).trim();
+  return cleanInlineText(text).substring(0, 220).trim();
 }
 
 function isBadDescription(description: string): boolean {
@@ -186,6 +206,21 @@ function isBadDescription(description: string): boolean {
   if (value.endsWith(':')) return true;
 
   return false;
+}
+
+function normalizeContentSections(
+  sections: ServiceContentSection[] | undefined,
+): ServiceContentSection[] {
+  if (!sections || sections.length === 0) return [];
+
+  return sections
+    .map((section) => ({
+      title: cleanInlineText(section.title || ''),
+      kind: (section.kind || 'generic') as ServiceSectionKind,
+      paragraphs: dedupeStrings((section.paragraphs || []).map((x) => cleanInlineText(x))),
+      items: mergeSectionItems(section.items || []),
+    }))
+    .filter((section) => section.title && (section.paragraphs.length > 0 || section.items.length > 0));
 }
 
 function loadServicesFile(): string | null {
@@ -252,6 +287,7 @@ export function getAllServices(): Service[] {
           requirements: mergeSectionItems(service.requirements || []),
           red_flags: mergeSectionItems(service.red_flags || []),
           tags: dedupeStrings(service.tags || []),
+          content_sections: normalizeContentSections(service.content_sections),
         };
       });
 
@@ -292,9 +328,7 @@ export function getServicesByCategory(category: string): Service[] {
   const keywords = categoryMap[category.toLowerCase()] || [category.toLowerCase()];
 
   return services.filter((service) => {
-    const searchText =
-      `${service.title} ${service.short_tagline || ''} ${service.tags?.join(' ') || ''}`.toLowerCase();
-
+    const searchText = `${service.title} ${service.short_tagline || ''} ${service.tags?.join(' ') || ''}`.toLowerCase();
     return keywords.some((keyword) => searchText.includes(keyword));
   });
 }
