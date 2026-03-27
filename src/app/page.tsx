@@ -111,41 +111,6 @@ export default function Page() {
           <h2 className="sr-only">
             Регистрация ИП и ООО, интеграция СБИС, автоматизация выписок в Симферополе
           </h2>
-
-          <div className="w-full mt-12">
-            <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
-              <img
-                src="/logos/1_1C.png"
-                alt="Интеграция с 1С"
-                className="h-12 w-auto opacity-70 grayscale hover:grayscale-0 transition-all"
-              />
-              <img
-                src="/logos/3_alfa.png"
-                alt="Синхронизация Альфа-Банк"
-                className="h-12 w-auto opacity-70 grayscale hover:grayscale-0 transition-all"
-              />
-              <img
-                src="/logos/8_saby.png"
-                alt="Автоматизация СБИС Saby"
-                className="h-12 w-auto opacity-70 grayscale hover:grayscale-0 transition-all"
-              />
-              <img
-                src="/logos/9_tbank.png"
-                alt="Т-Банк партнеры"
-                className="h-12 w-auto opacity-70 grayscale hover:grayscale-0 transition-all"
-              />
-              <img
-                src="/logos/11_sber-856.png"
-                alt="СберБизнес консалтинг"
-                className="h-12 w-auto opacity-70 grayscale hover:grayscale-0 transition-all"
-              />
-              <img
-                src="/logos/5_amocrm.png"
-                alt="Внедрение amoCRM"
-                className="h-12 w-auto opacity-70 grayscale hover:grayscale-0 transition-all"
-              />
-            </div>
-          </div>
         </section>
 
         <div className="mt-16 flex flex-wrap justify-center gap-4 px-4 w-full">
