@@ -6,12 +6,94 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import GlassCard from "@/components/ui/glass-card";
 import ShaderBackground from "@/components/ui/shader-background";
 import { getAllSolutions, getSolutionBySlug, type Solution } from "@/lib/solutions-data";
+import { SITE_NAME, SITE_URL, absoluteUrl } from "@/lib/seo";
 import { Check, Phone, Calculator, Users, Clock, Package, Briefcase } from "lucide-react";
 
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://rahima-consulting.ru").replace(/\/+$/, "");
+const PHONE_HREF = "tel:+79789987222";
 
 interface PageProps {
   params: Promise<{ slug: string }> | { slug: string };
+}
+
+function buildMetaDescription(solution: Solution): string {
+  const raw = [solution.short_tagline, solution.description, solution.price_display]
+    .filter(Boolean)
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!raw) {
+    return "Бизнес-решение от Rahima Consulting.";
+  }
+
+  return raw.length > 180 ? `${raw.slice(0, 177).trim()}...` : raw;
+}
+
+function buildSolutionJsonLd(solution: Solution, slug: string) {
+  const url = absoluteUrl(`/solutions/${slug}`);
+  const description = buildMetaDescription(solution);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: solution.title,
+    description,
+    url,
+    provider: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      telephone: "+7-978-998-72-22",
+    },
+    areaServed: {
+      "@type": "AdministrativeArea",
+      name: "Республика Крым",
+    },
+    serviceType: solution.title,
+    audience: solution.for_whom?.length
+      ? {
+          "@type": "Audience",
+          audienceType: solution.for_whom.join(", "),
+        }
+      : undefined,
+    offers:
+      solution.price_from && solution.price_from > 0
+        ? {
+            "@type": "Offer",
+            price: solution.price_from,
+            priceCurrency: "RUB",
+            availability: "https://schema.org/InStock",
+            url,
+          }
+        : undefined,
+  };
+}
+
+function buildBreadcrumbJsonLd(solution: Solution, slug: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Главная",
+        item: absoluteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Решения",
+        item: absoluteUrl("/solutions"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: solution.title,
+        item: absoluteUrl(`/solutions/${slug}`),
+      },
+    ],
+  };
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -29,17 +111,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const description = solution.short_tagline || solution.description || "";
-  const canonical = `${SITE_URL}/solutions/${slug}`;
+  const canonical = absoluteUrl(`/solutions/${slug}`);
+  const description = buildMetaDescription(solution);
 
   return {
     title: solution.title,
-    description: `${description} ${solution.price_display || ""}`.trim(),
+    description,
+    keywords: [
+      solution.title,
+      ...solution.for_whom,
+      ...solution.includes.slice(0, 5),
+      ...solution.advantages.slice(0, 5),
+    ],
     openGraph: {
       title: solution.title,
       description,
       type: "website",
-      siteName: "Rahima Consulting",
+      siteName: SITE_NAME,
       url: canonical,
     },
     twitter: {
@@ -65,6 +153,8 @@ export async function generateStaticParams() {
   }));
 }
 
+export const dynamicParams = false;
+
 export default async function SolutionPage({ params }: PageProps) {
   const resolved = await params;
   const slug = resolved?.slug || "";
@@ -74,9 +164,21 @@ export default async function SolutionPage({ params }: PageProps) {
     notFound();
   }
 
+  const solutionJsonLd = buildSolutionJsonLd(solution, slug);
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd(solution, slug);
+
   return (
     <>
       <ShaderBackground />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(solutionJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
 
       <div className="min-h-screen relative z-10">
         <PageHeader />
@@ -99,7 +201,7 @@ export default async function SolutionPage({ params }: PageProps) {
                     {solution.title}
                   </h1>
                   <p className="text-lg md:text-xl text-white/80">
-                    {solution.short_tagline}
+                    {solution.short_tagline || solution.description}
                   </p>
                 </div>
               </div>
@@ -122,7 +224,7 @@ export default async function SolutionPage({ params }: PageProps) {
                            transform hover:scale-105"
                 >
                   <Phone className="w-5 h-5" />
-                  Заказать звонок
+                  Обсудить решение
                 </Link>
                 <Link
                   href="/calculator"
@@ -232,14 +334,14 @@ export default async function SolutionPage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            <GlassCard className="text-center" animationDelay={350}>
+            <GlassCard id="contact" className="text-center scroll-mt-32" animationDelay={350}>
               <h2 className="text-3xl font-bold text-white mb-4">Готовы начать?</h2>
               <p className="text-white/80 mb-6">
                 Оставьте заявку, и мы свяжемся с вами в ближайшее время
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link
-                  href="#contact"
+                  href="/contacts"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-lg
                            bg-gradient-to-r from-purple-600 to-blue-600
                            hover:from-purple-700 hover:to-blue-700
@@ -249,8 +351,8 @@ export default async function SolutionPage({ params }: PageProps) {
                   <Phone className="w-5 h-5" />
                   Оставить заявку
                 </Link>
-                <Link
-                  href="tel:+79789987222"
+                <a
+                  href={PHONE_HREF}
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-lg
                            bg-white/10 hover:bg-white/20 backdrop-blur-sm
                            text-white font-medium transition-all text-lg
@@ -258,15 +360,16 @@ export default async function SolutionPage({ params }: PageProps) {
                 >
                   <Phone className="w-5 h-5" />
                   Позвонить нам
-                </Link>
+                </a>
                 <Link
-                  href="/contacts"
+                  href="/calculator"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-lg
                            bg-white/10 hover:bg-white/20 backdrop-blur-sm
                            text-white font-medium transition-all text-lg
                            transform hover:scale-105"
                 >
-                  Написать нам
+                  <Calculator className="w-5 h-5" />
+                  Рассчитать стоимость
                 </Link>
               </div>
             </GlassCard>
