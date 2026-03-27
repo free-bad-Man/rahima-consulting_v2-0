@@ -5,13 +5,97 @@ import PageHeader from "@/components/page-header";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import GlassCard from "@/components/ui/glass-card";
 import ShaderBackground from "@/components/ui/shader-background";
-import { getAllAIAssistants, getAIAssistantBySlug, type AIAssistant } from "@/lib/ai-assistants-data";
+import {
+  getAllAIAssistants,
+  getAIAssistantBySlug,
+  type AIAssistant,
+} from "@/lib/ai-assistants-data";
+import { SITE_NAME, SITE_URL, absoluteUrl } from "@/lib/seo";
 import { Check, Phone, Calculator, Cpu, Zap, Settings, Code, Sparkles } from "lucide-react";
 
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://rahima-consulting.ru").replace(/\/+$/, "");
+const PHONE_HREF = "tel:+79789987222";
 
 interface PageProps {
   params: Promise<{ slug: string }> | { slug: string };
+}
+
+function buildMetaDescription(assistant: AIAssistant): string {
+  const raw = [assistant.short_tagline, assistant.description, assistant.price_display]
+    .filter(Boolean)
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!raw) {
+    return "ИИ-ассистент для бизнеса от Rahima Consulting.";
+  }
+
+  return raw.length > 180 ? `${raw.slice(0, 177).trim()}...` : raw;
+}
+
+function buildAssistantJsonLd(assistant: AIAssistant, slug: string) {
+  const url = absoluteUrl(`/ai-assistants/${slug}`);
+  const description = buildMetaDescription(assistant);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: assistant.title,
+    description,
+    url,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    creator: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    provider: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      telephone: "+7-978-998-72-22",
+    },
+    featureList: assistant.features,
+    softwareRequirements: assistant.integration || undefined,
+    offers:
+      assistant.price_from && assistant.price_from > 0
+        ? {
+            "@type": "Offer",
+            price: assistant.price_from,
+            priceCurrency: "RUB",
+            availability: "https://schema.org/InStock",
+            url,
+          }
+        : undefined,
+  };
+}
+
+function buildBreadcrumbJsonLd(assistant: AIAssistant, slug: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Главная",
+        item: absoluteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "ИИ-Ассистенты",
+        item: absoluteUrl("/ai-assistants"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: assistant.title,
+        item: absoluteUrl(`/ai-assistants/${slug}`),
+      },
+    ],
+  };
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -29,17 +113,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const description = assistant.short_tagline || assistant.description || "";
-  const canonical = `${SITE_URL}/ai-assistants/${slug}`;
+  const canonical = absoluteUrl(`/ai-assistants/${slug}`);
+  const description = buildMetaDescription(assistant);
 
   return {
     title: assistant.title,
-    description: `${description} ${assistant.price_display || ""}`.trim(),
+    description,
+    keywords: [
+      assistant.title,
+      ...assistant.features.slice(0, 5),
+      ...assistant.use_cases.slice(0, 5),
+      ...assistant.tech_stack.slice(0, 5),
+    ],
     openGraph: {
       title: assistant.title,
       description,
       type: "website",
-      siteName: "Rahima Consulting",
+      siteName: SITE_NAME,
       url: canonical,
     },
     twitter: {
@@ -65,6 +155,8 @@ export async function generateStaticParams() {
   }));
 }
 
+export const dynamicParams = false;
+
 export default async function AIAssistantPage({ params }: PageProps) {
   const resolved = await params;
   const slug = resolved?.slug || "";
@@ -74,9 +166,21 @@ export default async function AIAssistantPage({ params }: PageProps) {
     notFound();
   }
 
+  const assistantJsonLd = buildAssistantJsonLd(assistant, slug);
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd(assistant, slug);
+
   return (
     <>
       <ShaderBackground />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(assistantJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
 
       <div className="min-h-screen relative z-10">
         <PageHeader />
@@ -99,7 +203,7 @@ export default async function AIAssistantPage({ params }: PageProps) {
                     {assistant.title}
                   </h1>
                   <p className="text-lg md:text-xl text-white/80">
-                    {assistant.short_tagline}
+                    {assistant.short_tagline || assistant.description}
                   </p>
                 </div>
               </div>
@@ -232,7 +336,7 @@ export default async function AIAssistantPage({ params }: PageProps) {
               </GlassCard>
             )}
 
-            <GlassCard className="text-center" animationDelay={350}>
+            <GlassCard id="contact" className="text-center scroll-mt-32" animationDelay={350}>
               <h2 className="text-3xl font-bold text-white mb-4">
                 Готовы внедрить ИИ в свой бизнес?
               </h2>
@@ -241,7 +345,7 @@ export default async function AIAssistantPage({ params }: PageProps) {
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link
-                  href="#contact"
+                  href="/contacts"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-lg
                            bg-gradient-to-r from-purple-600 to-blue-600
                            hover:from-purple-700 hover:to-blue-700
@@ -251,8 +355,8 @@ export default async function AIAssistantPage({ params }: PageProps) {
                   <Phone className="w-5 h-5" />
                   Заказать консультацию
                 </Link>
-                <Link
-                  href="tel:+79789987222"
+                <a
+                  href={PHONE_HREF}
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-lg
                            bg-white/10 hover:bg-white/20 backdrop-blur-sm
                            text-white font-medium transition-all text-lg
@@ -260,15 +364,16 @@ export default async function AIAssistantPage({ params }: PageProps) {
                 >
                   <Phone className="w-5 h-5" />
                   Позвонить нам
-                </Link>
+                </a>
                 <Link
-                  href="/contacts"
+                  href="/calculator"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-lg
                            bg-white/10 hover:bg-white/20 backdrop-blur-sm
                            text-white font-medium transition-all text-lg
                            transform hover:scale-105"
                 >
-                  Написать нам
+                  <Calculator className="w-5 h-5" />
+                  Рассчитать стоимость
                 </Link>
               </div>
             </GlassCard>

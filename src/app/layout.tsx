@@ -35,24 +35,22 @@ const orbitron = Orbitron({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Rahima Consulting — бухгалтерское сопровождение и автоматизация бизнеса",
+    default: "Rahima Consulting — Бухгалтерские услуги и автоматизация бизнеса в Крыму",
     template: "%s | Rahima Consulting",
   },
   description:
-    "Профессиональное бухгалтерское сопровождение, регистрация бизнеса, юридические услуги, автоматизация и ИИ-решения для вашего бизнеса в Крыму.",
+    "Профессиональное бухгалтерское сопровождение, регистрация бизнеса и автоматизация процессов через СБИС и ИИ в Симферополе. Режим одного окна для вашего бизнеса.",
   applicationName: "Rahima Consulting",
   keywords: [
-    "бухгалтерские услуги",
-    "бухгалтерское сопровождение",
-    "регистрация ООО",
-    "регистрация ИП",
-    "юридические услуги",
-    "автоматизация бизнеса",
-    "CRM",
-    "n8n",
-    "ИИ для бизнеса",
-    "Крым",
-    "Симферополь",
+    "бухгалтерские услуги симферополь",
+    "бухгалтерское сопровождение крым",
+    "автоматизация бизнеса сбис",
+    "регистрация ООО и ИП симферополь",
+    "внедрение ИИ для бизнеса",
+    "интеграция банковских выписок",
+    "налоговый консалтинг крым",
+    "n8n интеграции",
+    "рахима консалтинг",
   ],
   authors: [{ name: "Rahima Consulting" }],
   creator: "Rahima Consulting",
@@ -93,24 +91,17 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     url: SITE_URL,
     siteName: "Rahima Consulting",
-    title: "Rahima Consulting — бухгалтерское сопровождение и автоматизация бизнеса",
+    title: "Rahima Consulting — Бухгалтерские услуги и автоматизация в Крыму",
     description:
-      "Бухгалтерское сопровождение, автоматизация, ИИ-решения и юридическая поддержка для бизнеса.",
+      "Бухгалтерское сопровождение, автоматизация СБИС, ИИ-решения и юридическая поддержка бизнеса в режиме одного окна.",
     images: [
       {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Rahima Consulting",
+        alt: "Rahima Consulting — автоматизация и бухгалтерия",
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Rahima Consulting — бухгалтерское сопровождение и автоматизация бизнеса",
-    description:
-      "Бухгалтерское сопровождение, автоматизация, ИИ-решения и юридическая поддержка для бизнеса.",
-    images: [OG_IMAGE],
   },
 };
 
@@ -127,18 +118,12 @@ export default function RootLayout({
     logo: OG_IMAGE,
     image: OG_IMAGE,
     description:
-      "Бухгалтерское сопровождение, регистрация бизнеса, юридические услуги, автоматизация и ИИ-решения для бизнеса.",
+      "Бухгалтерское сопровождение, регистрация бизнеса, юридические услуги, автоматизация и ИИ-решения для бизнеса в Крыму.",
     telephone: "+7-978-998-72-22",
     email: "info@rahima-consulting.ru",
     areaServed: [
-      {
-        "@type": "AdministrativeArea",
-        name: "Республика Крым",
-      },
-      {
-        "@type": "City",
-        name: "Симферополь",
-      },
+      { "@type": "AdministrativeArea", name: "Республика Крым" },
+      { "@type": "City", name: "Симферополь" },
     ],
     address: {
       "@type": "PostalAddress",
@@ -157,18 +142,7 @@ export default function RootLayout({
       <head>
         <script src="/tv-detect.js" defer />
         <link rel="stylesheet" href="/tv-fallback.css" />
-
         <meta name="theme-color" content="#0b1020" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Rahima Consulting" />
-
-        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
-        <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-192x192.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png" />
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
