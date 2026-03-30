@@ -70,6 +70,7 @@ const MegaMenu = React.forwardRef<HTMLUListElement, MegaMenuProps>(
         {items.map((navItem) => {
           const isOpen = openMenu === navItem.label;
           const hasSubmenu = !!navItem.subMenus?.length;
+          const isServicesMenu = navItem.label === "Услуги";
 
           return (
             <li
@@ -138,8 +139,20 @@ const MegaMenu = React.forwardRef<HTMLUListElement, MegaMenuProps>(
                     transition={{ duration: 0.16, ease: "easeOut" }}
                     className="absolute left-1/2 top-full z-50 pt-3 -translate-x-1/2"
                   >
-                    <div className="min-w-[760px] max-w-[920px] rounded-2xl border border-white/10 bg-black/45 p-5 backdrop-blur-2xl shadow-2xl shadow-black/35">
-                      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+                    <div
+                      className={`rounded-2xl border border-white/10 bg-black/45 p-5 backdrop-blur-2xl shadow-2xl shadow-black/35 ${
+                        isServicesMenu
+                          ? "min-w-[1180px] max-w-[1320px]"
+                          : "min-w-[760px] max-w-[920px]"
+                      }`}
+                    >
+                      <div
+                        className={`gap-8 ${
+                          isServicesMenu
+                            ? "grid grid-cols-4"
+                            : "grid md:grid-cols-2 xl:grid-cols-3"
+                        }`}
+                      >
                         {navItem.subMenus?.map((group) => (
                           <div key={group.title} className="min-w-0">
                             <h3 className="mb-4 text-sm font-medium text-white/55">
