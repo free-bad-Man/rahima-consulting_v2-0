@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
@@ -22,6 +20,8 @@
 
 # misc
 .DS_Store
+Thumbs.db
+Desktop.ini
 *.pem
 
 # debug
@@ -29,23 +29,25 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+lerna-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files
 .env
-.env*
+.env.*
 .env.local
-.env.production
-.env.development
+.env.development.local
+.env.test.local
+.env.production.local
 *.local
 
 # vercel
 .vercel
 
-# Docker compose with secrets (use docker-compose.yml.example instead)
+# docker
 docker-compose.yml
 docker-compose.override.yml
 
-# Secrets and credentials
+# secrets and credentials
 *.key
 *.pem
 *.p12
@@ -54,17 +56,9 @@ docker-compose.override.yml
 *.cer
 secrets/
 credentials/
-*.secret
-*secret*
-*password*
-*token*
-*credential*
+public/keys
 
-# npm data (contains sensitive nginx configs)
-npm_data/
-npm_letsencrypt/
-
-# Logs (may contain sensitive info)
+# logs
 *.log
 logs/
 
@@ -72,72 +66,61 @@ logs/
 *.tsbuildinfo
 next-env.d.ts
 
-# Database
+# database
 /prisma/dev.db
 /prisma/dev.db-journal
 *.db
 *.db-journal
 
-# Uploads
+# uploads
 /uploads
 
-# Main-app specific (legacy files)
-/lib/
-# Ignore literal chrome-data directories (sometimes committed by mistake)
+# temp / backup
+backups/
+tmp/
+temp/
+*.bak
+*.old
+*.tmp
+*.temp
+*.pid
+
+# local generated / service data
+npm_data/
+npm_letsencrypt/
+data/docs/
+data/qdrant/*.jsonl
+
+# NOTE:
+# data/services/generated*.json are required for the app to work,
+# so we do NOT ignore them.
+
+# IDE / editors
+.cursor/
+.vscode/
+.idea/
+
+# local chrome/dev artifacts
 ~/.chrome-data/
 dev/~/.chrome-data/
 **/~/.chrome-data/
-# Ignore local file that may contain secrets
-public/keys
 
-# === Project cleanup: temporary and generated files ===
+# local python venv
+.venv/
 
-# Backups and old data
-backups/
-tmp/
-*.bak
-*.old
+# old / runtime artifacts
+public/out_bank/
 
-# PID files
-*.pid
+# windows scripts and local deployment helpers
+*.ps1
+pull
+push
 
-# Large binary/compiled files
-bcrypt,sys
-
-# Old documentation and generated data
-data/docs/
-data/qdrant/*.jsonl
-# Note: data/services/generated*.json are NEEDED for the app to work!
-
-# IDE and editor files
-.cursor/
-.vscode/
-
-# Dev utilities and scripts (if not needed in prod)
-scripts/
-dev/
-
-# Old images
-img/
-
-# Stub and temporary files
+# optional stubs / temp files
 *_stub.*
 wf_dev_stub.json
 embed_server_stub.py
 
-# PowerShell scripts (Windows-specific)
-*.ps1
-
-# Deployment scripts (use standard git workflow instead)
-pull
-push
-
-# Documentation (already in main docs)
-SEO_TRANSFORMATION_README.md
-
-# Local Python venv
-.venv/
-
-# Bank files and runtime artifacts
-public/out_bank/
-tools/
+# swap files
+*.swp
+*.swo

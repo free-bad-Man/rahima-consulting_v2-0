@@ -8,7 +8,10 @@ import PageLoader from "@/components/ui/page-loader";
 import PWAInstallModal from "@/components/pwa-install-modal";
 import PWARegister from "@/components/pwa-register";
 
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://rahima-consulting.ru").replace(/\/+$/, "");
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://rahima-consulting.ru").replace(
+  /\/+$/,
+  "",
+);
 const OG_IMAGE = `${SITE_URL}/RClogo.png`;
 
 const geistSans = Geist({
@@ -166,15 +169,15 @@ export default function RootLayout({
             `,
           }}
         />
-        <script src="/tv-detect.js" defer />
-        <link rel="stylesheet" href="/tv-fallback.css" />
         <meta name="theme-color" content="#0b1020" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${orbitron.variable} antialiased`}
+      >
         <noscript>
           <div>
             <img

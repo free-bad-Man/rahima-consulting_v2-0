@@ -35,7 +35,6 @@ import { Drawer } from "vaul";
 import MegaMenu, { type MegaMenuItem } from "@/components/ui/mega-menu";
 import AuthButton from "@/components/auth-button";
 import NotificationsDropdown from "@/components/notifications-dropdown";
-import { slugify } from "@/lib/slugify";
 
 const ShaderBackground = dynamic(() => import("@/components/ui/shader-background"), {
   ssr: false,
@@ -58,31 +57,37 @@ const navItems: MegaMenuItem[] = [
             label: "Подготовка и подача нулевой отчетности для ООО",
             description: "Нулевая отчётность и сдача обязательных форм.",
             icon: FileText,
+            link: "/services/zsummery",
           },
           {
             label: "Бухгалтерское и налоговое сопровождение ИП",
             description: "Комплексное ведение учёта и налоговой отчётности ИП.",
             icon: Briefcase,
+            link: "/services/buhassistip",
           },
           {
             label: "Бухгалтерская и налоговая отчетность ООО",
             description: "Подготовка и сдача отчётности для ООО.",
             icon: Calculator,
+            link: "/services/buhnalogotchetooo",
           },
           {
             label: "Срочная подготовка и подача отчетности для ИП",
             description: "Экспресс-подготовка и подача отчётности в сжатые сроки.",
             icon: BadgePercent,
+            link: "/services/expressotchetip",
           },
           {
             label: "Подготовка и сдача отчетности по сотрудникам",
             description: "ЕФС-1 и персонифицированные сведения без ошибок.",
             icon: ClipboardList,
+            link: "/services/prepareotchetstaff",
           },
           {
             label: "Восстановление бухгалтерского и налогового учета",
             description: "Приведение базы, документов и расчётов в порядок.",
             icon: RotateCcw,
+            link: "/services/restorebuhnalogychet",
           },
         ],
       },
@@ -93,51 +98,61 @@ const navItems: MegaMenuItem[] = [
             label: "Регистрация ИП",
             description: "Подготовка и подача документов на регистрацию ИП.",
             icon: UserPlus,
+            link: "/services/registrationip",
           },
           {
             label: "Регистрация ООО",
             description: "Запуск компании с корректным комплектом документов.",
             icon: Building2,
+            link: "/services/registrationooo",
           },
           {
             label: "Внесение изменений в ЕГРЮЛ",
             description: "Смена данных компании и регистрация изменений.",
             icon: Settings,
+            link: "/services/checkegrurl2",
           },
           {
             label: "Внесение изменений в ЕГРИП",
             description: "Оформление изменений по ИП без лишней бюрократии.",
             icon: Settings,
+            link: "/services/checkegrurl2",
           },
           {
             label: "Смена юридического адреса",
             description: "Подготовка документов и сопровождение изменений.",
             icon: Landmark,
+            link: "/services/changeadress",
           },
           {
             label: "Смена директора",
             description: "Корректная регистрация смены руководителя.",
             icon: Building,
+            link: "/services/changehead",
           },
           {
             label: "Добавление или смена ОКВЭД",
             description: "Актуализация видов деятельности бизнеса.",
             icon: ClipboardList,
+            link: "/services/checkegrurl2",
           },
           {
             label: "Вход или выход участника из ООО",
             description: "Оформление корпоративных изменений в составе участников.",
             icon: UserPlus,
+            link: "/services/outmember",
           },
           {
             label: "Купля-продажа доли в ООО",
             description: "Сопровождение сделки по отчуждению доли.",
             icon: ScrollText,
+            link: "/services/assistsellbuy",
           },
           {
             label: "Ликвидация ИП или ООО",
             description: "Закрытие бизнеса с соблюдением процедуры.",
             icon: Wrench,
+            link: "/services/destroyooounderkey",
           },
         ],
       },
@@ -148,21 +163,25 @@ const navItems: MegaMenuItem[] = [
             label: "Юридический адрес",
             description: "Подбор и сопровождение адреса для регистрации.",
             icon: Landmark,
+            link: "/services/cowork",
           },
           {
             label: "Договорная работа",
             description: "Подготовка, проверка и согласование договоров.",
             icon: FileSignature,
+            link: "/services/checkegrurl",
           },
           {
             label: "Юридическое сопровождение бизнеса",
             description: "Поддержка по текущим правовым вопросам компании.",
             icon: ShieldCheck,
+            link: "/services/checkegrurl",
           },
           {
             label: "Сопровождение корпоративных изменений",
             description: "Юридическая фиксация изменений в бизнесе.",
             icon: Gavel,
+            link: "/services/checkegrurl2",
           },
         ],
       },
@@ -173,6 +192,7 @@ const navItems: MegaMenuItem[] = [
             label: "Автоматизация выписок",
             description: "Снижение ручной нагрузки и ускорение операций.",
             icon: Workflow,
+            link: "/services/automatisation",
           },
         ],
       },
@@ -292,10 +312,6 @@ export default function Page() {
   const [showAIChat, setShowAIChat] = useState(false);
   const [startAIChatWithVoice, setStartAIChatWithVoice] = useState(false);
 
-  const handleServiceClick = (serviceTitle: string) => {
-    router.push(`/services/${slugify(serviceTitle)}`);
-  };
-
   return (
     <main className="relative h-screen overflow-hidden text-white">
       <ShaderBackground />
@@ -349,7 +365,6 @@ export default function Page() {
           <div className="flex justify-center">
             <MegaMenu
               items={navItems}
-              onServiceClick={handleServiceClick}
               onCasesAndReviewsClick={() => router.push("/cases")}
               onContactsClick={() => router.push("/contacts")}
             />
