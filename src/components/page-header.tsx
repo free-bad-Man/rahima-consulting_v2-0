@@ -265,38 +265,6 @@ const NAV_ITEMS: NavItem[] = [
   {
     label: "СЭЗ / Субсидии",
     href: "/sez-subsidii/",
-    children: [
-      {
-        label: "Вступление в СЭЗ",
-        href: "/sez-subsidii/vstuplenie-v-sez/",
-        description: "Подготовка проекта, инвестдекларации и пакета документов.",
-      },
-      {
-        label: "Сопровождение резидентов",
-        href: "/sez-subsidii/soprovozhdenie-rezidentov/",
-        description: "Раздельный учёт, KPI, реестры и контроль обязательств.",
-      },
-      {
-        label: "Отчётность резидента",
-        href: "/sez-subsidii/otchetnost-rezidenta/",
-        description: "Комплект за период и подтверждение исполнения условий.",
-      },
-      {
-        label: "Проверки резидентов",
-        href: "/sez-subsidii/proverki-rezidentov/",
-        description: "Подготовка к запросам и проверкам, сбор доказательств.",
-      },
-      {
-        label: "Получение субсидий",
-        href: "/sez-subsidii/subsidii-poluchenie/",
-        description: "Скрининг мер поддержки, заявка и сопровождение уточнений.",
-      },
-      {
-        label: "Отчётность по субсидиям",
-        href: "/sez-subsidii/otchetnost-po-subsidiyam/",
-        description: "Реестр подтверждений и контроль целевого использования.",
-      },
-    ],
   },
   {
     label: "Автоматизация и ИИ",
@@ -337,38 +305,6 @@ const NAV_ITEMS: NavItem[] = [
   {
     label: "Кейсы",
     href: "/cases",
-    children: [
-      {
-        label: "Кейсы по бухгалтерии",
-        href: "/cases/accounting/",
-        description: "Сопровождение, восстановление учёта и разовые задачи.",
-      },
-      {
-        label: "Кейсы по налогам",
-        href: "/cases/taxes/",
-        description: "Отчётность, требования ИФНС, декларации и сверки.",
-      },
-      {
-        label: "Кейсы по СЭЗ",
-        href: "/cases/sez/",
-        description: "Вступление, сопровождение, отчётность и проверки.",
-      },
-      {
-        label: "Кейсы по субсидиям",
-        href: "/cases/subsidies/",
-        description: "Получение мер поддержки и отчётный контур.",
-      },
-      {
-        label: "Кейсы по автоматизации",
-        href: "/cases/automation/",
-        description: "CRM, интеграции, n8n и ИИ-аналитика на практике.",
-      },
-      {
-        label: "Отзывы",
-        href: "/reviews/",
-        description: "Доверительный контур с отзывами клиентов.",
-      },
-    ],
   },
   {
     label: "О компании",
@@ -388,11 +324,6 @@ const NAV_ITEMS: NavItem[] = [
         label: "Партнёры",
         href: "/about/partners/",
         description: "Банки, сервисы и платформы, с которыми мы работаем.",
-      },
-      {
-        label: "Документы",
-        href: "/about/documents/",
-        description: "Документы компании и trust-контур.",
       },
       {
         label: "Вакансии",
