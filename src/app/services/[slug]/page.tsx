@@ -1,6 +1,6 @@
 ﻿import { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import PageHeader from "@/components/page-header";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import GlassCard from "@/components/ui/glass-card";
@@ -22,10 +22,74 @@ import {
   FileText,
 } from "lucide-react";
 
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://rahima-consulting.ru").replace(/\/+$/, "");
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://rahima-consulting.ru").replace(
+  /\/+$/,
+  "",
+);
 
 interface PageProps {
   params: Promise<{ slug: string }> | { slug: string };
+}
+
+const LEGACY_SERVICE_ALIASES: Record<string, string> = {
+  "подготовка-и-подача-нулевой-отчетности-для-ооо": "zsummery",
+  "бухгалтерское-и-налоговое-сопровождение-ип": "buhassistip",
+  "бухгалтерская-и-налоговая-отчетность-ооо": "buhnalogotchetooo",
+  "срочная-подготовка-и-подача-отчетности-для-ип": "expressotchetip",
+  "подготовка-и-сдача-отчетности-по-сотрудникам": "prepareotchetstaff",
+  "восстановление-бухгалтерского-и-налогового-учета": "restorebuhnalogychet",
+
+  "регистрация-ип": "registrationip",
+  "регистрация-ооо": "registrationooo",
+  "регистрация-ооо-под-ключ": "registrationooo",
+  "регистрация-ооо-через-эцп": "registrationooodistination",
+
+  "внесение-изменений-в-егрюл": "checkegrurl2",
+  "внесение-изменений-в-егрип": "checkegrurl2",
+  "внесение-изменений-в-учредительные-документы": "checkegrurl2",
+  "добавление-или-смена-оквэд": "checkegrurl2",
+  "смена-юридического-адреса": "changeadress",
+  "смена-директора": "changehead",
+
+  "вход-или-выход-участника-из-ооо": "outmember",
+  "выход-участника-из-состава-ооо": "outmember",
+  "купля-продажа-доли-в-ооо": "assistsellbuy",
+  "сопровождение-купли-продажи-доли-в-ооо": "assistsellbuy",
+  "ликвидация-ип-или-ооо": "destroyooounderkey",
+  "добровольная-ликвидация-ооо-под-ключ": "destroyooounderkey",
+
+  "юридический-адрес": "cowork",
+  "юридический-адрес-с-почтовым-сопровождением": "uradress",
+  "предоставление-юридического-адреса": "cowork",
+  "предоставление-юридического-адреса-с-почтовым-сопровождением": "uradress",
+  "устранение-недостоверности-сведений-в-егрюл": "checkegrurl3",
+  "устранение-записи-о-недостоверности-сведений-в-егрюл": "checkegrurl3",
+  "регистрация-нко": "registrationnko",
+
+  "договорная-работа": "checkegrurl",
+  "юридическое-сопровождение-бизнеса": "checkegrurl",
+  "сопровождение-корпоративных-изменений": "checkegrurl2",
+
+  "открытие-расчетного-счета": "openbankaccaunt",
+  "открытие-расчётного-счета": "openbankaccaunt",
+  "автоматизация-выписок": "automatisation",
+  "автоматизация-бизнес-процессов": "automatisation",
+};
+
+function normalizeIncomingSlug(input: string) {
+  return decodeURIComponent(input || "")
+    .trim()
+    .toLowerCase()
+    .replace(/^\/+|\/+$/g, "");
+}
+
+function resolveLegacyAlias(slug: string) {
+  return LEGACY_SERVICE_ALIASES[normalizeIncomingSlug(slug)] || null;
+}
+
+function resolveCanonicalSlug(slug: string) {
+  const normalized = normalizeIncomingSlug(slug);
+  return resolveLegacyAlias(normalized) || normalized;
 }
 
 function getSectionIcon(kind?: string) {
@@ -64,7 +128,6 @@ function renderStructuredSections(sections: ServiceContentSection[]) {
   return sections.map((section, idx) => {
     const Icon = getSectionIcon(section.kind);
     const accentClass = getSectionAccent(section.kind);
-
     const useList = section.items.length >= 2;
 
     return (
@@ -89,10 +152,7 @@ function renderStructuredSections(sections: ServiceContentSection[]) {
         ) : (
           <div className="space-y-4">
             {section.paragraphs.map((paragraph, paragraphIdx) => (
-              <p
-                key={paragraphIdx}
-                className="text-white/80 leading-8 whitespace-pre-line"
-              >
+              <p key={paragraphIdx} className="text-white/80 leading-8 whitespace-pre-line">
                 {paragraph}
               </p>
             ))}
@@ -116,8 +176,9 @@ function renderStructuredSections(sections: ServiceContentSection[]) {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolved = await params;
-  const slug = resolved?.slug || "";
-  const service = getServiceBySlug(slug);
+  const rawSlug = resolved?.slug || "";
+  const canonicalSlug = resolveCanonicalSlug(rawSlug);
+  const service = getServiceBySlug(canonicalSlug);
 
   if (!service) {
     return {
@@ -131,7 +192,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const description = service.short_tagline || service.full_text?.substring(0, 160) || "";
   const priceText = service.price_from ? `от ${service.price_from} ₽` : "";
-  const canonical = `${SITE_URL}/services/${slug}`;
+  const canonical = `${SITE_URL}/services/${canonicalSlug}`;
 
   return {
     title: service.title,
@@ -161,16 +222,30 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export async function generateStaticParams() {
   const services = getAllServices();
-  return services.map((service) => ({
+  const canonicalParams = services.map((service) => ({
     slug: service.slug,
   }));
+
+  const aliasParams = Object.keys(LEGACY_SERVICE_ALIASES).map((slug) => ({
+    slug,
+  }));
+
+  return [...canonicalParams, ...aliasParams];
 }
 
 export const dynamicParams = false;
 
 export default async function ServicePage({ params }: PageProps) {
   const resolved = await params;
-  const slug = resolved?.slug || "";
+  const rawSlug = resolved?.slug || "";
+  const normalizedRawSlug = normalizeIncomingSlug(rawSlug);
+  const aliasTarget = resolveLegacyAlias(normalizedRawSlug);
+
+  if (aliasTarget && aliasTarget !== normalizedRawSlug) {
+    permanentRedirect(`/services/${aliasTarget}`);
+  }
+
+  const slug = resolveCanonicalSlug(normalizedRawSlug);
   const service = getServiceBySlug(slug);
 
   if (!service) {
@@ -237,9 +312,7 @@ export default async function ServicePage({ params }: PageProps) {
                   <span className="text-4xl md:text-5xl font-bold text-white">
                     {service.price_from} ₽
                   </span>
-                  <span className="text-lg text-white/60">
-                    {service.price_display || "/месяц"}
-                  </span>
+                  <span className="text-lg text-white/60">{service.price_display || "/месяц"}</span>
                 </div>
               )}
 
@@ -276,9 +349,7 @@ export default async function ServicePage({ params }: PageProps) {
                 <div className="flex items-center gap-3">
                   <Clock className="w-6 h-6 text-purple-300" />
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-1">
-                      Срок выполнения
-                    </h3>
+                    <h3 className="text-xl font-semibold text-white mb-1">Срок выполнения</h3>
                     <p className="text-white/80">{service.duration_estimate}</p>
                   </div>
                 </div>
@@ -321,10 +392,7 @@ export default async function ServicePage({ params }: PageProps) {
                     </h2>
                     <div className="space-y-4">
                       {service.full_text.split(/\n{2,}/).map((paragraph, idx) => (
-                        <p
-                          key={idx}
-                          className="text-white/80 leading-8 whitespace-pre-line"
-                        >
+                        <p key={idx} className="text-white/80 leading-8 whitespace-pre-line">
                           {paragraph.trim()}
                         </p>
                       ))}
@@ -338,9 +406,7 @@ export default async function ServicePage({ params }: PageProps) {
               <GlassCard className="mb-8 border-red-500/30" animationDelay={600}>
                 <div className="flex items-center gap-3 mb-6">
                   <AlertCircle className="w-6 h-6 text-red-400" />
-                  <h2 className="text-2xl md:text-3xl font-bold text-white">
-                    Важно знать
-                  </h2>
+                  <h2 className="text-2xl md:text-3xl font-bold text-white">Важно знать</h2>
                 </div>
 
                 <ul className="space-y-3">
@@ -355,9 +421,7 @@ export default async function ServicePage({ params }: PageProps) {
             )}
 
             <GlassCard className="text-center" animationDelay={700}>
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                Готовы начать?
-              </h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Готовы начать?</h2>
               <p className="text-white/80 mb-6 max-w-2xl mx-auto">
                 {service.cta || "Свяжитесь с нами для получения консультации и расчета стоимости"}
               </p>
