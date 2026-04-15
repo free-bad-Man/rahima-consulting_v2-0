@@ -1,11 +1,10 @@
 import { permanentRedirect } from "next/navigation";
 
 interface PageProps {
-  params: Promise<{ slug?: string[] }> | { slug?: string[] };
+  params: Promise<{ slug: string[] }> | { slug: string[] };
 }
 
 const AUTOMATION_AI_REDIRECTS: Record<string, string> = {
-  "": "/solutions",
   "crm": "/solutions/digital-transformation",
   "site-crm-integration": "/solutions/digital-transformation",
   "n8n": "/ai-assistants/n8n-automation-assistant",
@@ -30,10 +29,6 @@ function resolveAutomationAiRedirect(segments?: string[]) {
 
   if (AUTOMATION_AI_REDIRECTS[joined]) {
     return AUTOMATION_AI_REDIRECTS[joined];
-  }
-
-  if (normalizedSegments.length === 0) {
-    return "/solutions";
   }
 
   return "/solutions";
