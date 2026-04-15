@@ -124,3 +124,5 @@ embed_server_stub.py
 # swap files
 *.swp
 *.swo
+env
+tree.txt
