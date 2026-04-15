@@ -11,248 +11,142 @@ type NavChild = {
   description?: string;
 };
 
-type ServicesHub = {
-  label: string;
-  href: string;
-  description: string;
-  children: NavChild[];
-};
-
 type NavItem = {
   label: string;
   href: string;
   children?: NavChild[];
-  megaGroups?: ServicesHub[];
 };
 
-const SERVICES_GROUPS: ServicesHub[] = [
+const SERVICES_CHILDREN: NavChild[] = [
   {
-    label: "Бухгалтерское сопровождение",
-    href: "/services",
-    description:
-      "Бухгалтерия, отчётность, восстановление учёта и сопровождение бизнеса на постоянной основе.",
-    children: [
-      {
-        label: "Бухгалтерская и налоговая отчетность ООО",
-        href: "/services/buhnalogotchetooo",
-        description: "ООО: ведение учёта, отчётность, налоги, зарплатный блок.",
-      },
-      {
-        label: "Бухгалтерское и налоговое сопровождение ИП",
-        href: "/services/buhassistip",
-        description: "ИП: КУДиР, налоги, взносы, декларации и сверка с ФНС.",
-      },
-      {
-        label: "Восстановление бухгалтерского и налогового учета",
-        href: "/services/restorebuhnalogychet",
-        description: "Восстановление базы, первички, отчётности и налоговой истории.",
-      },
-      {
-        label: "Подготовка и подача налоговой декларации по УСН",
-        href: "/services/preparenalogdeclarationusn",
-        description: "Декларация УСН, КУДиР, ЕНС и камеральная проверка.",
-      },
-      {
-        label: "Подготовка и подача нулевой отчетности для ООО",
-        href: "/services/zsummery",
-        description: "Нулевая отчётность для компаний без движения.",
-      },
-      {
-        label: "Срочная подготовка и подача отчетности для ИП",
-        href: "/services/expressotchetip",
-        description: "Экспресс-отчётность и закрытие просрочек по ИП.",
-      },
-    ],
+    label: "Бухгалтерская и налоговая отчетность ООО",
+    href: "/services/buhnalogotchetooo",
+    description: "ООО: ведение учёта, отчётность, налоги, зарплатный блок.",
   },
   {
-    label: "Налоги и отчётность",
-    href: "/services",
-    description:
-      "Налоговые декларации, 3-НДФЛ, отчётность по сотрудникам и сопровождение отчётных задач.",
-    children: [
-      {
-        label: "Подготовка и подача налоговой декларации 3-НДФЛ",
-        href: "/services/preparenalogdeclaration-",
-        description: "3-НДФЛ для доходов, вычетов и возврата налога.",
-      },
-      {
-        label: "Подготовка и подача налоговой декларации по УСН",
-        href: "/services/preparenalogdeclarationusn",
-        description: "Годовая декларация УСН для ИП и ООО.",
-      },
-      {
-        label: "Подготовка и сдача отчетности по сотрудникам",
-        href: "/services/prepareotchetstaff",
-        description: "ЕФС-1, персонифицированные сведения, НДФЛ и взносы.",
-      },
-      {
-        label: "Подготовка и подача нулевой отчетности для ООО",
-        href: "/services/zsummery",
-        description: "Нулевая отчётность при отсутствии деятельности.",
-      },
-      {
-        label: "Срочная подготовка и подача отчетности для ИП",
-        href: "/services/expressotchetip",
-        description: "Срочная сдача пропущенной отчётности.",
-      },
-      {
-        label: "Бухгалтерская и налоговая отчетность ООО",
-        href: "/services/buhnalogotchetooo",
-        description: "Комплексная налоговая и бухгалтерская отчётность для ООО.",
-      },
-    ],
+    label: "Бухгалтерское и налоговое сопровождение ИП",
+    href: "/services/buhassistip",
+    description: "ИП: КУДиР, налоги, взносы, декларации и сверка с ФНС.",
   },
   {
-    label: "Кадры и зарплата",
-    href: "/services",
-    description:
-      "Кадровая и зарплатная отчётность, блок сотрудников и обязательные сведения в СФР и ФНС.",
-    children: [
-      {
-        label: "Подготовка и сдача отчетности по сотрудникам",
-        href: "/services/prepareotchetstaff",
-        description: "ЕФС-1, стаж, зарплата, персонифицированные сведения.",
-      },
-      {
-        label: "Бухгалтерская и налоговая отчетность ООО",
-        href: "/services/buhnalogotchetooo",
-        description: "Зарплатный блок и отчётность по сотрудникам для ООО.",
-      },
-      {
-        label: "Бухгалтерское и налоговое сопровождение ИП",
-        href: "/services/buhassistip",
-        description: "Отчётность ИП с сотрудниками, НДФЛ и страховые взносы.",
-      },
-      {
-        label: "Срочная подготовка и подача отчетности для ИП",
-        href: "/services/expressotchetip",
-        description: "Срочное закрытие кадрово-отчётных обязательств.",
-      },
-      {
-        label: "Закрытие ИП",
-        href: "/services/closeip",
-        description: "Финальная отчётность, увольнения и корректное завершение статуса ИП.",
-      },
-      {
-        label: "Восстановление бухгалтерского и налогового учета",
-        href: "/services/restorebuhnalogychet",
-        description: "Восстановление кадрового и зарплатного контура.",
-      },
-    ],
+    label: "Восстановление бухгалтерского и налогового учета",
+    href: "/services/restorebuhnalogychet",
+    description: "Восстановление базы, первички, отчётности и налоговой истории.",
   },
   {
-    label: "Регистрация и изменения",
-    href: "/services",
-    description:
-      "Регистрация ООО и ИП, смены, изменения в ЕГРЮЛ, адрес, директор, устав и корпоративные действия.",
-    children: [
-      {
-        label: "Регистрация ООО «под ключ»",
-        href: "/services/registrationooo",
-        description: "Комплексная регистрация ООО с нуля.",
-      },
-      {
-        label: "Регистрация ООО через ЭЦП",
-        href: "/services/registrationooodistination",
-        description: "Дистанционная регистрация ООО через электронную подпись.",
-      },
-      {
-        label: "Регистрация ИП «под ключ»",
-        href: "/services/registrationip",
-        description: "Открытие ИП с подбором режима и стартовой настройкой.",
-      },
-      {
-        label: "Смена юридического адреса организации",
-        href: "/services/changeadress",
-        description: "Смена адреса и регистрация изменений в реестре.",
-      },
-      {
-        label: "Смена генерального директора",
-        href: "/services/changehead",
-        description: "Смена единоличного исполнительного органа.",
-      },
-      {
-        label: "Внесение изменений в ЕГРЮЛ и учредительные документы",
-        href: "/services/checkegrurl2",
-        description: "Комплексная регистрация изменений по компании.",
-      },
-    ],
+    label: "Подготовка и подача налоговой декларации по УСН",
+    href: "/services/preparenalogdeclarationusn",
+    description: "Декларация УСН, КУДиР, ЕНС и камеральная проверка.",
   },
   {
-    label: "Юридическое сопровождение",
-    href: "/services",
-    description:
-      "Корпоративные документы, участники, устав, ликвидация, НКО и правовое сопровождение бизнеса.",
-    children: [
-      {
-        label: "Разработка и регистрация изменений в Устав ООО",
-        href: "/services/changeystav",
-        description: "Подготовка новой редакции устава и регистрация.",
-      },
-      {
-        label: "Приведение учредительных документов и сведений ЕГРЮЛ в соответствие",
-        href: "/services/checkegrurl",
-        description: "Аудит и легализация корпоративных документов.",
-      },
-      {
-        label: "Выход участника из состава ООО",
-        href: "/services/outmember",
-        description: "Выход участника, расчёт доли и оформление изменений.",
-      },
-      {
-        label: "Сопровождение купли-продажи доли в ООО",
-        href: "/services/assistsellbuy",
-        description: "Нотариальная сделка и переход доли в ООО.",
-      },
-      {
-        label: "Добровольная ликвидация ООО «под ключ»",
-        href: "/services/destroyooounderkey",
-        description: "Ликвидация компании с бухгалтерским и юридическим сопровождением.",
-      },
-      {
-        label: "Регистрация НКО «под ключ»",
-        href: "/services/registrationnko",
-        description: "Создание НКО, АНО, фонда, ассоциации.",
-      },
-    ],
+    label: "Подготовка и подача налоговой декларации 3-НДФЛ",
+    href: "/services/preparenalogdeclaration-",
+    description: "3-НДФЛ для доходов, вычетов и возврата налога.",
   },
   {
-    label: "Банки / 115-ФЗ / гарантии",
-    href: "/services",
-    description:
-      "Расчётные счета, банковое сопровождение, юридический адрес и смежные банковые сценарии.",
-    children: [
-      {
-        label: "Открытие расчетного счета (РКО)",
-        href: "/services/openbankaccaunt",
-        description: "Подбор банка, тарифов и открытие счёта.",
-      },
-      {
-        label: "Предоставление юридического адреса",
-        href: "/services/cowork",
-        description: "Юридический адрес для регистрации и работы компании.",
-      },
-      {
-        label: "Предоставление юридического адреса с почтовым сопровождением",
-        href: "/services/uradress",
-        description: "Адрес регистрации с почтовым и секретарским обслуживанием.",
-      },
-      {
-        label: "Устранение записи о недостоверности сведений в ЕГРЮЛ",
-        href: "/services/checkegrurl3",
-        description: "Снятие метки недостоверности для банков и ФНС.",
-      },
-      {
-        label: "Изготовление печатей и штампов для бизнеса",
-        href: "/services/pechatshtamp",
-        description: "Печати, штампы и офисные атрибуты для запуска бизнеса.",
-      },
-      {
-        label: "Закрытие ИП",
-        href: "/services/closeip",
-        description: "Финальное сопровождение закрытия бизнеса и счёта.",
-      },
-    ],
+    label: "Подготовка и сдача отчетности по сотрудникам",
+    href: "/services/prepareotchetstaff",
+    description: "ЕФС-1, персонифицированные сведения, НДФЛ и взносы.",
+  },
+  {
+    label: "Подготовка и подача нулевой отчетности для ООО",
+    href: "/services/zsummery",
+    description: "Нулевая отчётность для компаний без движения.",
+  },
+  {
+    label: "Срочная подготовка и подача отчетности для ИП",
+    href: "/services/expressotchetip",
+    description: "Экспресс-отчётность и закрытие просрочек по ИП.",
+  },
+  {
+    label: "Регистрация ООО «под ключ»",
+    href: "/services/registrationooo",
+    description: "Комплексная регистрация ООО с нуля.",
+  },
+  {
+    label: "Регистрация ООО через ЭЦП",
+    href: "/services/registrationooodistination",
+    description: "Дистанционная регистрация ООО через электронную подпись.",
+  },
+  {
+    label: "Регистрация ИП «под ключ»",
+    href: "/services/registrationip",
+    description: "Открытие ИП с подбором режима и стартовой настройкой.",
+  },
+  {
+    label: "Смена юридического адреса организации",
+    href: "/services/changeadress",
+    description: "Смена адреса и регистрация изменений в реестре.",
+  },
+  {
+    label: "Смена генерального директора",
+    href: "/services/changehead",
+    description: "Смена единоличного исполнительного органа.",
+  },
+  {
+    label: "Внесение изменений в ЕГРЮЛ и учредительные документы",
+    href: "/services/checkegrurl2",
+    description: "Комплексная регистрация изменений по компании.",
+  },
+  {
+    label: "Разработка и регистрация изменений в Устав ООО",
+    href: "/services/changeystav",
+    description: "Подготовка новой редакции устава и регистрация.",
+  },
+  {
+    label: "Приведение учредительных документов и сведений ЕГРЮЛ в соответствие",
+    href: "/services/checkegrurl",
+    description: "Аудит и легализация корпоративных документов.",
+  },
+  {
+    label: "Выход участника из состава ООО",
+    href: "/services/outmember",
+    description: "Выход участника, расчёт доли и оформление изменений.",
+  },
+  {
+    label: "Сопровождение купли-продажи доли в ООО",
+    href: "/services/assistsellbuy",
+    description: "Нотариальная сделка и переход доли в ООО.",
+  },
+  {
+    label: "Добровольная ликвидация ООО «под ключ»",
+    href: "/services/destroyooounderkey",
+    description: "Ликвидация компании с бухгалтерским и юридическим сопровождением.",
+  },
+  {
+    label: "Регистрация НКО «под ключ»",
+    href: "/services/registrationnko",
+    description: "Создание НКО, АНО, фонда, ассоциации.",
+  },
+  {
+    label: "Открытие расчетного счета (РКО)",
+    href: "/services/openbankaccaunt",
+    description: "Подбор банка, тарифов и открытие счёта.",
+  },
+  {
+    label: "Предоставление юридического адреса",
+    href: "/services/cowork",
+    description: "Юридический адрес для регистрации и работы компании.",
+  },
+  {
+    label: "Предоставление юридического адреса с почтовым сопровождением",
+    href: "/services/uradress",
+    description: "Адрес регистрации с почтовым и секретарским обслуживанием.",
+  },
+  {
+    label: "Устранение записи о недостоверности сведений в ЕГРЮЛ",
+    href: "/services/checkegrurl3",
+    description: "Снятие метки недостоверности для банков и ФНС.",
+  },
+  {
+    label: "Изготовление печатей и штампов для бизнеса",
+    href: "/services/pechatshtamp",
+    description: "Печати, штампы и офисные атрибуты для запуска бизнеса.",
+  },
+  {
+    label: "Закрытие ИП",
+    href: "/services/closeip",
+    description: "Финальное сопровождение закрытия бизнеса и счёта.",
   },
 ];
 
@@ -260,41 +154,26 @@ const NAV_ITEMS: NavItem[] = [
   {
     label: "Услуги",
     href: "/services",
-    megaGroups: SERVICES_GROUPS,
+    children: SERVICES_CHILDREN,
   },
   {
     label: "СЭЗ / Субсидии",
-    href: "/sez-subsidii/",
+    href: "/cases/sez/",
     children: [
       {
-        label: "Вступление в СЭЗ",
-        href: "/sez-subsidii/vstuplenie-v-sez/",
-        description: "Подготовка проекта, инвестдекларации и пакета документов.",
+        label: "Кейсы по СЭЗ",
+        href: "/cases/sez/",
+        description: "Практические сценарии по вступлению, сопровождению и отчётности.",
       },
       {
-        label: "Сопровождение резидентов",
-        href: "/sez-subsidii/soprovozhdenie-rezidentov/",
-        description: "Раздельный учёт, KPI, реестры и контроль обязательств.",
+        label: "Кейсы по субсидиям",
+        href: "/cases/subsidies/",
+        description: "Рабочие маршруты по мерам поддержки, документам и отчётности.",
       },
       {
-        label: "Отчётность резидента",
-        href: "/sez-subsidii/otchetnost-rezidenta/",
-        description: "Комплект за период и подтверждение исполнения условий.",
-      },
-      {
-        label: "Проверки резидентов",
-        href: "/sez-subsidii/proverki-rezidentov/",
-        description: "Подготовка к запросам и проверкам, сбор доказательств.",
-      },
-      {
-        label: "Получение субсидий",
-        href: "/sez-subsidii/subsidii-poluchenie/",
-        description: "Скрининг мер поддержки, заявка и сопровождение уточнений.",
-      },
-      {
-        label: "Отчётность по субсидиям",
-        href: "/sez-subsidii/otchetnost-po-subsidiyam/",
-        description: "Реестр подтверждений и контроль целевого использования.",
+        label: "Отзывы",
+        href: "/reviews/",
+        description: "Trust-контур по связанным задачам бизнеса.",
       },
     ],
   },
@@ -302,6 +181,11 @@ const NAV_ITEMS: NavItem[] = [
     label: "Автоматизация и ИИ",
     href: "/automation-ai/",
     children: [
+      {
+        label: "Хаб автоматизации",
+        href: "/automation-ai/",
+        description: "Единая точка входа в CRM, интеграции, n8n и ИИ-контур.",
+      },
       {
         label: "CRM",
         href: "/automation-ai/crm/",
@@ -372,13 +256,8 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     label: "О компании",
-    href: "/about/",
+    href: "/about/team/",
     children: [
-      {
-        label: "О компании",
-        href: "/about/",
-        description: "Кто такая Rahima Consulting и как мы работаем.",
-      },
       {
         label: "Команда",
         href: "/about/team/",
@@ -390,11 +269,6 @@ const NAV_ITEMS: NavItem[] = [
         description: "Банки, сервисы и платформы, с которыми мы работаем.",
       },
       {
-        label: "Документы",
-        href: "/about/documents/",
-        description: "Документы компании и trust-контур.",
-      },
-      {
         label: "Вакансии",
         href: "/about/vacancies/",
         description: "Открытые роли и кадровый резерв.",
@@ -402,49 +276,29 @@ const NAV_ITEMS: NavItem[] = [
       {
         label: "Блог",
         href: "/blog/",
-        description: "Разборы, инструкции и AEO-материалы.",
+        description: "Разборы, инструкции и полезные материалы.",
       },
     ],
   },
   {
     label: "Контакты",
-    href: "/contacts",
+    href: "/contacts/",
     children: [
       {
         label: "Контакты",
         href: "/contacts/",
-        description: "Главная витрина каналов связи и маршрутов обращения.",
-      },
-      {
-        label: "Симферополь",
-        href: "/contacts/simferopol/",
-        description: "Офис в Симферополе, NAP и очный формат работы.",
-      },
-      {
-        label: "Удалённо по РФ",
-        href: "/contacts/remote/",
-        description: "Документы, контроль и удалённый формат сопровождения.",
-      },
-      {
-        label: "Регионы",
-        href: "/contacts/regions/",
-        description: "География услуг без геоспама и клонов.",
+        description: "Главная точка связи и маршрутов обращения.",
       },
       {
         label: "Реквизиты",
         href: "/contacts/requisites/",
         description: "Реквизиты для договоров, оплат и ЭДО.",
       },
-      {
-        label: "Оставить заявку",
-        href: "/contacts/ask/",
-        description: "Главная конверсионная точка сайта.",
-      },
     ],
   },
 ];
 
-const CTA_LINK = "/contacts/ask/";
+const CTA_LINK = "/calculator";
 const LOGO_FILTER =
   "brightness(0) saturate(100%) invert(34%) sepia(89%) saturate(1789%) hue-rotate(253deg) brightness(108%) contrast(101%)";
 
@@ -456,176 +310,9 @@ function normalizePath(path: string) {
 function isCurrentPath(pathname: string, href: string) {
   const current = normalizePath(pathname);
   const target = normalizePath(href);
+
   if (target === "/") return current === "/";
   return current === target || current.startsWith(`${target}/`);
-}
-
-function ServicesMegaMenu({
-  item,
-  pathname,
-  isOpen,
-  onOpen,
-  onClose,
-}: {
-  item: NavItem;
-  pathname: string;
-  isOpen: boolean;
-  onOpen: () => void;
-  onClose: () => void;
-}) {
-  const initialGroup =
-    item.megaGroups?.find(
-      (group) =>
-        isCurrentPath(pathname, group.href) ||
-        group.children.some((child) => isCurrentPath(pathname, child.href)),
-    ) ||
-    item.megaGroups?.[0] ||
-    null;
-
-  const [selectedGroupHref, setSelectedGroupHref] = useState(initialGroup?.href ?? "");
-
-  const selectedGroup =
-    item.megaGroups?.find((group) => group.href === selectedGroupHref) ||
-    initialGroup ||
-    null;
-
-  const active =
-    isCurrentPath(pathname, item.href) ||
-    item.megaGroups?.some(
-      (group) =>
-        isCurrentPath(pathname, group.href) ||
-        group.children.some((child) => isCurrentPath(pathname, child.href)),
-    );
-
-  return (
-    <div
-      className="relative"
-      onMouseEnter={() => {
-        if (!selectedGroup && item.megaGroups?.[0]) {
-          setSelectedGroupHref(item.megaGroups[0].href);
-        }
-        onOpen();
-      }}
-      onMouseLeave={onClose}
-    >
-      <Link
-        href={item.href}
-        className={`inline-flex items-center gap-2 rounded-2xl border px-4 py-2.5 text-sm font-semibold transition-all duration-200 ${
-          active
-            ? "border-purple-400/40 bg-white/15 text-white"
-            : "border-white/15 bg-white/5 text-white/85 hover:bg-white/10 hover:text-white"
-        }`}
-      >
-        <span>{item.label}</span>
-        <ChevronDown
-          className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-        />
-      </Link>
-
-      {isOpen && selectedGroup && (
-        <div className="absolute left-1/2 top-full z-50 w-[980px] max-w-[calc(100vw-32px)] -translate-x-1/2 pt-3">
-          <div className="overflow-hidden rounded-[28px] border border-white/10 bg-[#0b1020]/95 shadow-2xl backdrop-blur-xl">
-            <div className="border-b border-white/10 px-6 py-5">
-              <div className="text-base font-semibold text-white">Услуги</div>
-              <div className="mt-1 text-sm text-white/55">
-                Все ссылки ведут на реальные страницы услуг `/services/[slug]` без 404.
-              </div>
-            </div>
-
-            <div className="grid h-[70vh] min-h-[420px] grid-cols-[280px_minmax(0,1fr)] overflow-hidden">
-              <div className="min-w-0 h-full overflow-y-auto border-r border-white/10 bg-white/5 p-4 pr-2">
-                <div className="space-y-2">
-                  {item.megaGroups?.map((group) => {
-                    const groupActive =
-                      selectedGroup.href === group.href ||
-                      isCurrentPath(pathname, group.href) ||
-                      group.children.some((child) => isCurrentPath(pathname, child.href));
-
-                    return (
-                      <button
-                        key={group.label}
-                        type="button"
-                        onMouseEnter={() => setSelectedGroupHref(group.href)}
-                        onFocus={() => setSelectedGroupHref(group.href)}
-                        onClick={() => setSelectedGroupHref(group.href)}
-                        className={`w-full rounded-2xl border px-4 py-4 text-left transition-colors ${
-                          groupActive
-                            ? "border-purple-400/30 bg-white/10"
-                            : "border-white/10 bg-white/5 hover:bg-white/8"
-                        }`}
-                      >
-                        <div className="text-sm font-semibold text-white">{group.label}</div>
-                        <div className="mt-2 text-xs leading-5 text-white/55">
-                          {group.description}
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="min-w-0 h-full overflow-y-auto p-5">
-                <div className="mb-5">
-                  <Link
-                    href={selectedGroup.href}
-                    className="text-xl font-semibold text-white transition-colors hover:text-purple-200"
-                  >
-                    {selectedGroup.label}
-                  </Link>
-                  <p className="mt-2 max-w-3xl text-sm leading-6 text-white/60">
-                    {selectedGroup.description}
-                  </p>
-                </div>
-
-                <div className="grid gap-3 md:grid-cols-2">
-                  {selectedGroup.children.map((child) => {
-                    const childActive = isCurrentPath(pathname, child.href);
-
-                    return (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className={`rounded-2xl border px-4 py-4 text-sm transition-colors ${
-                          childActive
-                            ? "border-purple-400/30 bg-white/12 text-white"
-                            : "border-white/10 bg-white/5 text-white/80 hover:bg-white/8 hover:text-white"
-                        }`}
-                      >
-                        <div className="font-medium">{child.label}</div>
-                        {child.description ? (
-                          <div className="mt-2 text-xs leading-5 text-white/55">
-                            {child.description}
-                          </div>
-                        ) : null}
-                      </Link>
-                    );
-                  })}
-                </div>
-
-                <div className="mt-5 border-t border-white/10 pt-4">
-                  <Link
-                    href={selectedGroup.href}
-                    className="text-sm font-medium text-purple-300 transition-colors hover:text-purple-200"
-                  >
-                    Открыть раздел услуг
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-t border-white/10 p-3">
-              <Link
-                href={item.href}
-                className="block rounded-xl px-4 py-3 text-sm font-medium text-purple-300 transition-colors hover:bg-white/8 hover:text-purple-200"
-              >
-                Открыть весь раздел услуг
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
 }
 
 function StandardDropdown({
@@ -664,7 +351,7 @@ function StandardDropdown({
       </Link>
 
       {isOpen && !!item.children?.length && (
-        <div className="absolute left-1/2 top-full z-50 w-[520px] max-w-[calc(100vw-32px)] -translate-x-1/2 pt-3">
+        <div className="absolute left-1/2 top-full z-50 w-[560px] max-w-[calc(100vw-32px)] -translate-x-1/2 pt-3">
           <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0b1020]/95 shadow-2xl backdrop-blur-xl">
             <div className="border-b border-white/10 px-5 py-4">
               <div className="text-sm font-semibold text-white">{item.label}</div>
@@ -726,12 +413,7 @@ function MobileMenuItem({
 }) {
   const active =
     isCurrentPath(pathname, item.href) ||
-    item.children?.some((child) => isCurrentPath(pathname, child.href)) ||
-    item.megaGroups?.some(
-      (group) =>
-        isCurrentPath(pathname, group.href) ||
-        group.children.some((child) => isCurrentPath(pathname, child.href)),
-    );
+    item.children?.some((child) => isCurrentPath(pathname, child.href));
 
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5">
@@ -746,7 +428,7 @@ function MobileMenuItem({
           {item.label}
         </Link>
 
-        {(!!item.children?.length || !!item.megaGroups?.length) && (
+        {!!item.children?.length && (
           <button
             type="button"
             onClick={onToggle}
@@ -760,48 +442,7 @@ function MobileMenuItem({
         )}
       </div>
 
-      {isOpen && !!item.megaGroups?.length && (
-        <div className="border-t border-white/10 px-2 py-2">
-          <div className="max-h-[65vh] space-y-3 overflow-y-auto">
-            {item.megaGroups.map((group) => (
-              <div key={group.label} className="rounded-xl border border-white/10 bg-white/5 p-3">
-                <Link
-                  href={group.href}
-                  onClick={onNavigate}
-                  className="block text-sm font-semibold text-white"
-                >
-                  {group.label}
-                </Link>
-                <div className="mt-1 text-xs leading-5 text-white/55">{group.description}</div>
-
-                <div className="mt-3 space-y-1">
-                  {group.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      onClick={onNavigate}
-                      className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
-                        isCurrentPath(pathname, child.href)
-                          ? "bg-white/10 text-white"
-                          : "text-white/75 hover:bg-white/8 hover:text-white"
-                      }`}
-                    >
-                      <div>{child.label}</div>
-                      {child.description ? (
-                        <div className="mt-1 text-xs leading-5 text-white/50">
-                          {child.description}
-                        </div>
-                      ) : null}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {isOpen && !item.megaGroups?.length && !!item.children?.length && (
+      {isOpen && !!item.children?.length && (
         <div className="border-t border-white/10 px-2 py-2">
           <div className="max-h-[65vh] space-y-1 overflow-y-auto">
             {item.children.map((child) => {
@@ -858,27 +499,16 @@ export default function PageHeader() {
           </div>
 
           <nav className="hidden items-center justify-center gap-3 xl:flex">
-            {visibleNavItems.map((item) =>
-              item.megaGroups?.length ? (
-                <ServicesMegaMenu
-                  key={item.label}
-                  item={item}
-                  pathname={pathname}
-                  isOpen={openDesktopMenu === item.label}
-                  onOpen={() => setOpenDesktopMenu(item.label)}
-                  onClose={() => setOpenDesktopMenu(null)}
-                />
-              ) : (
-                <StandardDropdown
-                  key={item.label}
-                  item={item}
-                  pathname={pathname}
-                  isOpen={openDesktopMenu === item.label}
-                  onOpen={() => setOpenDesktopMenu(item.label)}
-                  onClose={() => setOpenDesktopMenu(null)}
-                />
-              ),
-            )}
+            {visibleNavItems.map((item) => (
+              <StandardDropdown
+                key={item.label}
+                item={item}
+                pathname={pathname}
+                isOpen={openDesktopMenu === item.label}
+                onOpen={() => setOpenDesktopMenu(item.label)}
+                onClose={() => setOpenDesktopMenu(null)}
+              />
+            ))}
           </nav>
 
           <div className="hidden justify-end xl:flex">
