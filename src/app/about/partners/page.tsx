@@ -9,6 +9,7 @@ import {
   Building2,
   CheckCircle2,
   Handshake,
+  Landmark,
   Network,
   ShieldCheck,
   WalletCards,
@@ -17,11 +18,11 @@ import {
 export const metadata: Metadata = {
   title: "Партнёры | Rahima Consulting",
   description:
-    "Партнёрский контур Rahima Consulting: банки, сервисы, платформы и рабочие интеграционные связи.",
+    "Партнёры Rahima Consulting: банки, CRM-платформы, сервисы документооборота и технологические решения, которые помогают быстрее решать задачи бизнеса.",
   openGraph: {
     title: "Партнёры | Rahima Consulting",
     description:
-      "Trust-страница о партнёрском контуре: с кем и в какой логике работает Rahima Consulting.",
+      "С кем работает Rahima Consulting и как партнёрские связи помогают бизнесу быстрее запускать процессы, сопровождать документы и внедрять решения.",
     type: "website",
   },
 };
@@ -30,47 +31,60 @@ const PARTNER_GROUPS = [
   {
     title: "Банки и финансовые сервисы",
     description:
-      "Партнёрские связи в банковом контуре: расчётные счета, базовые финансовые сценарии, сопровождение по смежным маршрутам.",
+      "Партнёрские связи по расчётным счетам, финансовым сервисам и смежным банковским сценариям для бизнеса.",
+    icon: WalletCards,
   },
   {
-    title: "CRM и digital-платформы",
+    title: "CRM и цифровые платформы",
     description:
-      "Платформы для автоматизации, CRM, интеграций и цифрового контроля процессов бизнеса.",
+      "Сервисы для автоматизации продаж, работы с лидами, контроля клиентского пути и управления воронкой.",
+    icon: Network,
   },
   {
-    title: "Документооборот и учётные сервисы",
+    title: "Документооборот и учётные решения",
     description:
-      "Инструменты и сервисы, которые поддерживают рабочий документооборот, отчётность и бухгалтерский контур.",
+      "Системы и инструменты, которые помогают выстраивать электронный документооборот, обмен документами и рабочий порядок в учёте.",
+    icon: Building2,
   },
   {
-    title: "Юридические и регистрационные контуры",
+    title: "Юридические и регистрационные сервисы",
     description:
-      "Связки и партнёрские каналы по смежным маршрутам: регистрация, сопровождение и корпоративные задачи.",
+      "Смежные направления, где важны надёжные связки по корпоративным вопросам, регистрационным действиям и сопровождению бизнеса.",
+    icon: ShieldCheck,
   },
   {
-    title: "СЭЗ / субсидии / региональные маршруты",
+    title: "СЭЗ, субсидии и региональные маршруты",
     description:
-      "Контуры, где важны связность процесса, пакет документов и понятная логика следующего шага.",
+      "Партнёрские и экспертные связки для задач, где важны документы, сроки, координация действий и корректный порядок работы.",
+    icon: Landmark,
   },
   {
-    title: "Технологические интеграторы",
+    title: "Интеграции и автоматизация",
     description:
-      "Связки вокруг интеграций, n8n, CRM, сайта и бизнес-аналитики — там, где нужны не обещания, а работающий контур.",
+      "Технологические решения для CRM, сайта, мессенджеров, телефонии, n8n и связанных процессов цифровой автоматизации.",
+    icon: Handshake,
   },
 ];
 
-const PARTNER_PRINCIPLES = [
-  "Партнёрство — это не “логотип ради доверия”, а рабочая связка, которая помогает клиенту пройти маршрут быстрее и чище.",
-  "Мы не публикуем неподтверждённые статусы, регалии и формулировки “официальный партнёр”, если это отдельно не согласовано.",
-  "Страница про партнёров усиливает trust-контур и помогает понять экосистему работы компании.",
-  "Главный коммерческий вход остаётся через заявку и разбор задачи, а не через витрину партнёрских логотипов.",
+const HOW_WE_WORK = [
+  "Мы не строим страницу партнёров как витрину логотипов без смысла — важен практический результат для клиента.",
+  "Партнёрские связи подключаются там, где они реально ускоряют задачу, упрощают запуск или делают процесс надёжнее.",
+  "Если клиенту не нужна сторонняя связка, мы не усложняем маршрут ради формальности.",
+  "Главная цель — не показать список названий, а помочь бизнесу быстрее пройти к решению.",
 ];
 
-const PARTNER_FLOW = [
-  "Клиент приходит с задачей, а не с желанием “посмотреть список логотипов”.",
-  "Мы определяем маршрут и понимаем, нужен ли партнёрский контур вообще.",
-  "Подключаем нужную связку только там, где это ускоряет процесс или снижает хаос.",
-  "Доводим задачу до рабочего следующего шага внутри единого маршрута.",
+const WHY_IT_MATTERS = [
+  "Бизнес получает не разрозненные советы, а более понятный и собранный процесс работы.",
+  "Снижается количество лишних касаний, ручных переделок и потерь времени на поиски подрядчиков по каждому блоку отдельно.",
+  "По смежным задачам проще держать единый темп работы, когда участники процесса понимают общий результат.",
+  "Для клиента это удобнее, потому что разные части задачи собираются в более понятную систему.",
+];
+
+const WHEN_PARTNERS_HELP = [
+  "Когда нужно открыть расчётный счёт и параллельно запустить бизнес без задержек.",
+  "Когда требуется связать сайт, CRM, интеграции и автоматизацию в один рабочий процесс.",
+  "Когда важно быстро собрать документооборот, бухгалтерский или юридический контур без хаоса.",
+  "Когда задача затрагивает сразу несколько направлений и нужна координация действий, а не разрозненные исполнители.",
 ];
 
 export default function AboutPartnersPage() {
@@ -81,12 +95,12 @@ export default function AboutPartnersPage() {
       <div className="relative z-10">
         <PageHeader />
 
-        <main className="pt-24 md:pt-32 pb-48 md:pb-60 px-4 sm:px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
+        <main className="px-4 pb-48 pt-24 sm:px-6 md:pb-60 md:pt-32 lg:px-12">
+          <div className="mx-auto max-w-7xl">
             <Breadcrumbs
               items={[
                 { label: "Главная", href: "/" },
-                { label: "О компании", href: "/about/" },
+                { label: "О компании", href: "/about/team/" },
                 { label: "Партнёры", href: "/about/partners/" },
               ]}
             />
@@ -94,18 +108,18 @@ export default function AboutPartnersPage() {
             <GlassCard className="mb-12 text-center" animationDelay={0}>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
                 <Handshake className="h-4 w-4 text-purple-300" />
-                Партнёрский контур
+                Партнёры и рабочие сервисы
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-text-purple-blue">
+              <h1 className="gradient-text-purple-blue mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
                 Партнёры Rahima Consulting
               </h1>
 
-              <p className="text-lg md:text-xl text-white/80 max-w-4xl mx-auto leading-8">
-                Эта страница показывает не “галерею логотипов ради солидности”, а
-                партнёрский контур компании: с кем и в какой логике строится работа,
-                когда это действительно помогает клиенту быстрее пройти маршрут,
-                уменьшить хаос и получить понятный следующий шаг.
+              <p className="mx-auto max-w-4xl text-lg leading-8 text-white/80 md:text-xl">
+                Rahima Consulting работает не изолированно, а в связке с банками,
+                цифровыми платформами, системами документооборота и технологическими
+                решениями. Это помогает быстрее запускать бизнес-процессы, аккуратнее
+                сопровождать задачи и собирать более понятный маршрут для клиента.
               </p>
 
               <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -113,156 +127,173 @@ export default function AboutPartnersPage() {
                   <Network className="mx-auto mb-3 h-6 w-6 text-purple-300" />
                   <div className="text-2xl font-bold text-white">Экосистема</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Партнёры — часть рабочего контура, а не декор
+                    Связки с сервисами, которые реально помогают в работе
                   </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                   <ShieldCheck className="mx-auto mb-3 h-6 w-6 text-blue-300" />
-                  <div className="text-2xl font-bold text-white">Trust</div>
+                  <div className="text-2xl font-bold text-white">Практичность</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Без неподтверждённых статусов и громких формулировок
+                    Подключаем решения под задачу, а не ради красивой витрины
                   </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                   <Building2 className="mx-auto mb-3 h-6 w-6 text-green-400" />
-                  <div className="text-2xl font-bold text-white">B2B</div>
+                  <div className="text-2xl font-bold text-white">B2B-подход</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Всё подчинено реальной задаче клиента
+                    В центре всегда остаётся реальный результат для бизнеса
                   </div>
                 </div>
               </div>
             </GlassCard>
 
             <GlassCard className="mb-12" animationDelay={100}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
-                Какие партнёрские контуры здесь имеются в виду
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                По каким направлениям строятся партнёрские связи
               </h2>
 
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                {PARTNER_GROUPS.map((group) => (
-                  <div
-                    key={group.title}
-                    className="rounded-2xl border border-white/10 bg-white/5 p-5"
-                  >
-                    <div className="text-lg font-semibold text-white">{group.title}</div>
-                    <div className="mt-3 text-sm leading-7 text-white/65">
-                      {group.description}
+                {PARTNER_GROUPS.map((group) => {
+                  const Icon = group.icon;
+
+                  return (
+                    <div
+                      key={group.title}
+                      className="rounded-2xl border border-white/10 bg-white/5 p-5"
+                    >
+                      <div className="mb-3 flex items-center gap-2 text-purple-300">
+                        <Icon className="h-5 w-5" />
+                        <span className="font-medium">{group.title}</span>
+                      </div>
+
+                      <div className="text-sm leading-7 text-white/70">
+                        {group.description}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </GlassCard>
 
             <GlassCard className="mb-12" animationDelay={160}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
-                Как работает партнёрская логика
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                Как мы используем партнёрские связи в работе
               </h2>
 
               <div className="grid gap-4 md:grid-cols-2">
-                {PARTNER_FLOW.map((step, index) => (
+                {HOW_WE_WORK.map((item) => (
                   <div
-                    key={step}
-                    className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-5"
+                    key={item}
+                    className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-5"
                   >
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white font-semibold">
-                      {index + 1}
-                    </div>
-                    <div className="text-white/80 leading-7">{step}</div>
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-400" />
+                    <span className="leading-7 text-white/80">{item}</span>
                   </div>
                 ))}
               </div>
             </GlassCard>
 
             <GlassCard className="mb-12" animationDelay={220}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
-                Что важно по этой странице
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                Почему это важно для клиента
               </h2>
 
               <div className="grid gap-4 md:grid-cols-2">
-                {PARTNER_PRINCIPLES.map((item) => (
+                {WHY_IT_MATTERS.map((item) => (
                   <div
                     key={item}
                     className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-5"
                   >
                     <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-400" />
-                    <span className="text-white/80 leading-7">{item}</span>
+                    <span className="leading-7 text-white/80">{item}</span>
                   </div>
                 ))}
-              </div>
-
-              <div className="mt-6 rounded-2xl border border-amber-400/20 bg-amber-500/10 p-4 text-sm leading-7 text-amber-100/90">
-                Если позже захотите добавить конкретные названия, логотипы, статусы или
-                формулировки партнёрства, публикуйте только то, что реально подтверждено.
-                Всё неподтверждённое на этом этапе лучше оставлять как{" "}
-                <span className="font-semibold">[Нужно уточнить]</span>.
               </div>
             </GlassCard>
 
             <GlassCard className="mb-12" animationDelay={280}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                В каких ситуациях это особенно полезно
+              </h2>
+
+              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                {WHEN_PARTNERS_HELP.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-5 leading-7 text-white/80"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+
+            <GlassCard className="mb-12" animationDelay={340}>
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
                 Куда перейти дальше
               </h2>
 
               <div className="grid gap-4 md:grid-cols-3">
-                <Link
-                  href="/about/"
-                  className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10"
-                >
-                  <div className="text-xl font-semibold text-white">О компании</div>
-                  <div className="mt-2 text-sm leading-6 text-white/60">
-                    Главный trust-хаб компании: логика работы, команда и контактный контур.
-                  </div>
-                </Link>
-
                 <Link
                   href="/about/team/"
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10"
                 >
                   <div className="text-xl font-semibold text-white">Команда</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Кто закрывает направления и как строится работа по задачам бизнеса.
+                    Посмотреть, по каким направлениям работает Rahima Consulting.
                   </div>
                 </Link>
 
                 <Link
-                  href="/contacts/ask/"
+                  href="/about/vacancies/"
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10"
                 >
-                  <div className="text-xl font-semibold text-white">Оставить заявку</div>
+                  <div className="text-xl font-semibold text-white">Вакансии</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Главный вход, если уже есть задача и нужен рабочий следующий шаг.
+                    Перейти к открытым ролям и кадровому резерву компании.
+                  </div>
+                </Link>
+
+                <Link
+                  href="/contacts/"
+                  className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10"
+                >
+                  <div className="text-xl font-semibold text-white">Контакты</div>
+                  <div className="mt-2 text-sm leading-6 text-white/60">
+                    Связаться с нами и обсудить задачу бизнеса в удобном формате.
                   </div>
                 </Link>
               </div>
             </GlassCard>
 
-            <GlassCard className="text-center" animationDelay={340}>
-              <h2 className="text-3xl font-bold text-white mb-4">
-                Нужен не общий обзор, а конкретный маршрут по задаче?
+            <GlassCard className="text-center" animationDelay={400}>
+              <h2 className="mb-4 text-3xl font-bold text-white">
+                Нужен понятный маршрут по задаче бизнеса?
               </h2>
 
-              <p className="text-white/80 mb-6 max-w-3xl mx-auto leading-7">
-                Тогда не выбирайте партнёра “вслепую”. Опишите ситуацию, и мы поймём,
-                нужен ли вообще партнёрский контур, какой именно, и какой следующий шаг
-                будет для бизнеса самым уместным.
+              <p className="mx-auto mb-6 max-w-3xl leading-7 text-white/80">
+                Если задача затрагивает сразу несколько направлений — бухгалтерию,
+                банки, CRM, документооборот или автоматизацию — опишите ситуацию.
+                Мы подскажем, какой формат работы подойдёт лучше и какой следующий шаг
+                будет самым уместным.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
-                  href="/contacts/ask/"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg text-white font-semibold hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg shadow-purple-500/50"
+                  href="/contacts/"
+                  className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-4 font-semibold text-white shadow-lg shadow-purple-500/50 transition-all duration-200 hover:scale-105 hover:from-purple-700 hover:to-blue-700"
                 >
-                  Оставить заявку
-                  <ArrowRight className="w-5 h-5" />
+                  Связаться с нами
+                  <ArrowRight className="h-5 w-5" />
                 </Link>
 
                 <Link
-                  href="/about/"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm rounded-lg text-white font-semibold hover:bg-white/20 border border-white/20 transform hover:scale-105 transition-all duration-200"
+                  href="/calculator"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:bg-white/20"
                 >
-                  Вернуться в раздел о компании
+                  Рассчитать стоимость
                 </Link>
               </div>
             </GlassCard>

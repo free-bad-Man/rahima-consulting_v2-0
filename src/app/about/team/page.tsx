@@ -9,67 +9,82 @@ import {
   Briefcase,
   Building2,
   CheckCircle2,
+  Scale,
   ShieldCheck,
   Users,
+  Workflow,
 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Команда | Rahima Consulting",
   description:
-    "Команда Rahima Consulting: как устроена работа по направлениям, кто ведёт задачи и почему компании можно доверять.",
+    "Команда Rahima Consulting: бухгалтерия, налоги, регистрация бизнеса, юридическое сопровождение, СЭЗ, субсидии и автоматизация. Показываем, как устроена работа и почему бизнесу удобно решать задачи с профильной командой.",
   openGraph: {
     title: "Команда | Rahima Consulting",
     description:
-      "Trust-страница команды: роли, логика работы и связка с заявкой и реквизитами.",
+      "Кто работает в Rahima Consulting, по каким направлениям распределена экспертиза и как строится работа по задаче клиента.",
     type: "website",
   },
 };
 
-const TEAM_ROLES = [
+const TEAM_DIRECTIONS = [
   {
-    title: "Бухгалтерский контур",
+    title: "Бухгалтерия и отчётность",
     description:
-      "Сопровождение бухгалтерии, отчётности, восстановления учёта и рабочих задач по финансовому контуру бизнеса.",
+      "Сопровождение бизнеса по бухгалтерии, регулярной отчётности, восстановлению учёта и разовым рабочим задачам.",
+    icon: Briefcase,
   },
   {
     title: "Налоги и отчётность",
     description:
-      "Разовые и регулярные налоговые сценарии: декларации, требования, сверки, логика следующего шага.",
+      "Декларации, требования налоговой, камеральные проверки, сверки и сопровождение задач, где важна аккуратность в деталях.",
+    icon: CheckCircle2,
   },
   {
     title: "Регистрация и изменения",
     description:
-      "Запуск бизнеса, смены, корпоративные изменения, маршруты по ЕГРЮЛ и регистрационным сценариям.",
+      "Запуск ИП и ООО, смены, изменения в ЕГРЮЛ, адрес, директор, корпоративные документы и регистрационные действия.",
+    icon: Building2,
   },
   {
     title: "Юридическое сопровождение",
     description:
-      "Договоры, корпоративные документы, маршруты по спорным и прикладным юридическим задачам бизнеса.",
+      "Договоры, корпоративные вопросы, правовые документы и прикладные юридические задачи для бизнеса.",
+    icon: Scale,
   },
   {
     title: "СЭЗ и субсидии",
     description:
-      "Сервисный контур по СЭЗ, сопровождению резидентов, рабочим пакетам и сценариям по субсидиям.",
+      "Работа с маршрутами по свободной экономической зоне, сопровождению резидентов, субсидиям и связанным документам.",
+    icon: ShieldCheck,
   },
   {
     title: "Автоматизация и ИИ",
     description:
-      "CRM, сайт → CRM, интеграции, n8n и сценарии, где нужен контроль, аналитика и цифровой контур.",
+      "CRM, интеграции, n8n, маршруты данных и цифровые решения, которые помогают бизнесу работать быстрее и понятнее.",
+    icon: Workflow,
   },
 ];
 
 const WORKFLOW_STEPS = [
-  "Сначала разбираем задачу и фиксируем, какой именно маршрут нужен бизнесу.",
-  "Подключаем профильный контур, а не “всех сразу”, чтобы не размазывать ответственность.",
-  "Собираем документы, рабочие вводные и следующий шаг без лишнего хаоса.",
-  "Ведём задачу через понятную коммуникацию, контроль и итоговый результат по маршруту.",
+  "Сначала мы разбираем саму задачу, а не предлагаем шаблонное решение без контекста.",
+  "Дальше в работу включается профильный специалист или профильная группа по нужному направлению.",
+  "По каждой задаче выстраивается понятный порядок действий, чтобы клиент видел, что происходит и какой следующий шаг нужен.",
+  "Итог — не просто консультация ради консультации, а движение к конкретному результату по задаче бизнеса.",
 ];
 
-const TRUST_POINTS = [
-  "Команда работает по направлениям, а не по принципу “один человек делает всё сразу”.",
-  "Страница не публикует несогласованные персональные данные: если профиль нужно показать отдельно, он должен быть утверждён.",
-  "На сайте важен не декоративный HR-блок, а доверие через понятную структуру ролей и процесса работы.",
-  "Для старта работы главный маршрут остаётся через заявку, а не через абстрактное “познакомиться с нами”.",
+const WHY_CLIENTS_TRUST = [
+  "Клиент работает не с разрозненными исполнителями, а с командой, где роли разделены по специализациям.",
+  "Такой подход снижает хаос в коммуникации и помогает быстрее переводить задачу в рабочее решение.",
+  "Мы не обещаем универсального исполнителя на всё сразу — под каждую задачу нужен свой профильный специалист.",
+  "Для бизнеса это означает более понятный процесс, меньше лишних кругов и выше качество результата.",
+];
+
+const TEAM_VALUES = [
+  "Внимание к деталям и аккуратность в документах.",
+  "Ясная коммуникация без лишней сложности.",
+  "Работа на результат, а не на видимость активности.",
+  "Понимание, что у бизнеса важны сроки, понятный процесс и ответственность.",
 ];
 
 export default function AboutTeamPage() {
@@ -80,12 +95,12 @@ export default function AboutTeamPage() {
       <div className="relative z-10">
         <PageHeader />
 
-        <main className="pt-24 md:pt-32 pb-48 md:pb-60 px-4 sm:px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
+        <main className="px-4 pb-48 pt-24 sm:px-6 md:pb-60 md:pt-32 lg:px-12">
+          <div className="mx-auto max-w-7xl">
             <Breadcrumbs
               items={[
                 { label: "Главная", href: "/" },
-                { label: "О компании", href: "/about/" },
+                { label: "О компании", href: "/about/team/" },
                 { label: "Команда", href: "/about/team/" },
               ]}
             />
@@ -93,69 +108,76 @@ export default function AboutTeamPage() {
             <GlassCard className="mb-12 text-center" animationDelay={0}>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
                 <Users className="h-4 w-4 text-purple-300" />
-                Trust-страница команды
+                Профильная команда по направлениям бизнеса
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-text-purple-blue">
+              <h1 className="gradient-text-purple-blue mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
                 Команда Rahima Consulting
               </h1>
 
-              <p className="text-lg md:text-xl text-white/80 max-w-4xl mx-auto leading-8">
-                Эта страница показывает не “биографии ради галочки”, а то, как у нас
-                устроена работа по направлениям и почему бизнесу понятнее и безопаснее
-                работать с профильной командой, а не искать одного универсального исполнителя
-                на все задачи сразу.
+              <p className="mx-auto max-w-4xl text-lg leading-8 text-white/80 md:text-xl">
+                Rahima Consulting — это команда специалистов по бухгалтерии, налогам,
+                регистрации бизнеса, юридическим вопросам, СЭЗ, субсидиям и
+                автоматизации. Мы показываем не абстрактную “витрину компании”, а
+                реальную структуру экспертизы: кто подключается к задаче и почему
+                бизнесу удобнее решать такие вопросы с профильной командой.
               </p>
 
               <div className="mt-8 grid gap-4 md:grid-cols-3">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                   <Briefcase className="mx-auto mb-3 h-6 w-6 text-purple-300" />
-                  <div className="text-2xl font-bold text-white">6</div>
+                  <div className="text-2xl font-bold text-white">6 направлений</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Ключевых рабочих контуров
+                    Бухгалтерия, налоги, право, регистрация, СЭЗ и автоматизация
                   </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                   <ShieldCheck className="mx-auto mb-3 h-6 w-6 text-blue-300" />
-                  <div className="text-2xl font-bold text-white">1</div>
+                  <div className="text-2xl font-bold text-white">Профильный подход</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Главный вход в работу — через заявку и маршрут
+                    Задачи распределяются по специализациям, а не “на одного человека”
                   </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                   <Building2 className="mx-auto mb-3 h-6 w-6 text-green-400" />
-                  <div className="text-2xl font-bold text-white">B2B</div>
+                  <div className="text-2xl font-bold text-white">B2B-фокус</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Команда собрана под реальные задачи бизнеса
+                    Работаем под реальные задачи бизнеса, а не под формальные описания
                   </div>
                 </div>
               </div>
             </GlassCard>
 
             <GlassCard className="mb-12" animationDelay={100}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
-                Какие направления закрывает команда
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                По каким направлениям работает команда
               </h2>
 
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                {TEAM_ROLES.map((role) => (
-                  <div
-                    key={role.title}
-                    className="rounded-2xl border border-white/10 bg-white/5 p-5"
-                  >
-                    <div className="text-lg font-semibold text-white">{role.title}</div>
-                    <div className="mt-3 text-sm leading-7 text-white/65">
-                      {role.description}
+                {TEAM_DIRECTIONS.map((role) => {
+                  const Icon = role.icon;
+
+                  return (
+                    <div
+                      key={role.title}
+                      className="rounded-2xl border border-white/10 bg-white/5 p-5"
+                    >
+                      <div className="mb-3 flex items-center gap-2 text-purple-300">
+                        <Icon className="h-5 w-5" />
+                        <span className="font-medium">{role.title}</span>
+                      </div>
+
+                      <div className="text-sm leading-7 text-white/70">{role.description}</div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </GlassCard>
 
             <GlassCard className="mb-12" animationDelay={160}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
                 Как строится работа по задаче клиента
               </h2>
 
@@ -165,102 +187,114 @@ export default function AboutTeamPage() {
                     key={step}
                     className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-5"
                   >
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white font-semibold">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 font-semibold text-white">
                       {index + 1}
                     </div>
-                    <div className="text-white/80 leading-7">{step}</div>
+                    <div className="leading-7 text-white/80">{step}</div>
                   </div>
                 ))}
               </div>
             </GlassCard>
 
             <GlassCard className="mb-12" animationDelay={220}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
-                Что важно по этой странице
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                Почему бизнесу удобнее работать с профильной командой
               </h2>
 
               <div className="grid gap-4 md:grid-cols-2">
-                {TRUST_POINTS.map((item) => (
+                {WHY_CLIENTS_TRUST.map((item) => (
                   <div
                     key={item}
                     className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-5"
                   >
                     <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-400" />
-                    <span className="text-white/80 leading-7">{item}</span>
+                    <span className="leading-7 text-white/80">{item}</span>
                   </div>
                 ))}
-              </div>
-
-              <div className="mt-6 rounded-2xl border border-amber-400/20 bg-amber-500/10 p-4 text-sm leading-7 text-amber-100/90">
-                Если позже захотите добавить реальные карточки сотрудников, все имена,
-                фото, должности и описания нужно публиковать только после отдельного согласования.
-                Всё неподтверждённое на этом этапе оставляем как <span className="font-semibold">[Нужно уточнить]</span>.
               </div>
             </GlassCard>
 
             <GlassCard className="mb-12" animationDelay={280}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                Что мы ценим в работе
+              </h2>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                {TEAM_VALUES.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-5"
+                  >
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-400" />
+                    <span className="leading-7 text-white/80">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+
+            <GlassCard className="mb-12" animationDelay={340}>
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
                 Куда перейти дальше
               </h2>
 
               <div className="grid gap-4 md:grid-cols-3">
                 <Link
-                  href="/about/"
+                  href="/about/partners/"
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10"
                 >
-                  <div className="text-xl font-semibold text-white">О компании</div>
+                  <div className="text-xl font-semibold text-white">Партнёры</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Главный trust-хаб: кто мы, как работаем и куда перейти дальше.
+                    Посмотреть, с какими сервисами, банками и платформами работает компания.
                   </div>
                 </Link>
 
                 <Link
-                  href="/contacts/requisites/"
+                  href="/about/vacancies/"
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10"
                 >
-                  <div className="text-xl font-semibold text-white">Реквизиты</div>
+                  <div className="text-xl font-semibold text-white">Вакансии</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Trust-страница для договоров, оплат и проверки контрагента.
+                    Перейти к открытым ролям и кадровому резерву Rahima Consulting.
                   </div>
                 </Link>
 
                 <Link
-                  href="/contacts/ask/"
+                  href="/contacts/"
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10"
                 >
-                  <div className="text-xl font-semibold text-white">Оставить заявку</div>
+                  <div className="text-xl font-semibold text-white">Контакты</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Лучший вход, если уже есть задача и нужен следующий рабочий шаг.
+                    Связаться с нами и обсудить задачу бизнеса в удобном формате.
                   </div>
                 </Link>
               </div>
             </GlassCard>
 
-            <GlassCard className="text-center" animationDelay={340}>
-              <h2 className="text-3xl font-bold text-white mb-4">
-                Нужен не “общий разговор”, а понятный профильный маршрут?
+            <GlassCard className="text-center" animationDelay={400}>
+              <h2 className="mb-4 text-3xl font-bold text-white">
+                Нужна команда под конкретную задачу бизнеса?
               </h2>
 
-              <p className="text-white/80 mb-6 max-w-3xl mx-auto leading-7">
-                Опишите задачу, и мы подключим нужный контур команды: бухгалтерию,
-                налоги, регистрацию, право, СЭЗ, субсидии или автоматизацию. Так
-                старт работы получается быстрее и чище, без лишней потери времени.
+              <p className="mx-auto mb-6 max-w-3xl leading-7 text-white/80">
+                Опишите ситуацию, и мы подключим профильное направление: бухгалтерию,
+                налоги, юридическое сопровождение, регистрацию, СЭЗ, субсидии или
+                автоматизацию. Так работа начинается быстрее и понятнее уже с первого шага.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
-                  href="/contacts/ask/"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg text-white font-semibold hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg shadow-purple-500/50"
+                  href="/contacts/"
+                  className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-4 font-semibold text-white shadow-lg shadow-purple-500/50 transition-all duration-200 hover:scale-105 hover:from-purple-700 hover:to-blue-700"
                 >
-                  Оставить заявку
-                  <ArrowRight className="w-5 h-5" />
+                  Связаться с нами
+                  <ArrowRight className="h-5 w-5" />
                 </Link>
 
                 <Link
-                  href="/about/"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm rounded-lg text-white font-semibold hover:bg-white/20 border border-white/20 transform hover:scale-105 transition-all duration-200"
+                  href="/calculator"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:bg-white/20"
                 >
-                  Вернуться в раздел о компании
+                  Рассчитать стоимость
                 </Link>
               </div>
             </GlassCard>

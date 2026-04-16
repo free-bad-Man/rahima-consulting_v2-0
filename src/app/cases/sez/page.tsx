@@ -19,11 +19,11 @@ import {
 export const metadata: Metadata = {
   title: "Кейсы по СЭЗ | Rahima Consulting",
   description:
-    "Кейсы по СЭЗ: вступление, сопровождение резидентов, рабочие сценарии и понятные маршруты без опасных обещаний.",
+    "Кейсы по свободной экономической зоне: вступление, сопровождение резидентов, подготовка документов, рабочие ситуации и примеры решений для бизнеса.",
   openGraph: {
     title: "Кейсы по СЭЗ | Rahima Consulting",
     description:
-      "Каталог кейсов по СЭЗ: ситуация, действия, результат и переход в профильный маршрут.",
+      "Практические кейсы по СЭЗ: ситуации бизнеса, действия, результат и полезные выводы для компаний, которые планируют работать с этим направлением.",
     type: "website",
   },
 };
@@ -73,6 +73,43 @@ function getSezCases() {
   return allCases.slice(0, 4);
 }
 
+const SITUATIONS = [
+  "Бизнесу нужно понять, подходит ли ему работа через свободную экономическую зону и с чего начинать.",
+  "Есть намерение стать резидентом, но нет ясности по документам, последовательности шагов и объёму подготовки.",
+  "Компания уже движется по этому направлению, но возникли вопросы по сопровождению, срокам и пакету документов.",
+  "Нужен не общий обзор темы, а примеры похожих ситуаций и понятный способ двигаться дальше.",
+];
+
+const WHY_CASES_HELP = [
+  "Кейсы помогают увидеть не теорию, а реальные рабочие сценарии и типовую логику действий.",
+  "По ним проще понять, какие документы и этапы обычно оказываются ключевыми.",
+  "Они снижают неопределённость и помогают бизнесу быстрее понять масштаб задачи.",
+  "Кейсы полезны как для первой оценки ситуации, так и для подготовки к разговору со специалистом.",
+];
+
+const FAQ = [
+  {
+    question: "Что можно понять из кейсов по СЭЗ?",
+    answer:
+      "Из кейсов можно понять, какие задачи чаще всего возникают, какие шаги обычно требуются и на что бизнесу стоит обратить внимание ещё на старте.",
+  },
+  {
+    question: "Подойдут ли эти материалы тем, кто только изучает тему СЭЗ?",
+    answer:
+      "Да, раздел полезен и тем, кто только рассматривает это направление, и тем, кто уже начал движение по нему и хочет сопоставить свою ситуацию с практикой.",
+  },
+  {
+    question: "Можно ли на основе кейса понять, подходит ли СЭЗ именно моей компании?",
+    answer:
+      "Кейсы помогают увидеть похожие сценарии, но финальный вывод всегда зависит от ваших документов, статуса бизнеса, целей и условий проекта.",
+  },
+  {
+    question: "Что делать, если ситуация срочная или нестандартная?",
+    answer:
+      "В таком случае лучше не ограничиваться чтением кейсов, а сразу связаться с нами и описать текущую задачу. Так можно быстрее получить понятный следующий шаг.",
+  },
+];
+
 export default function SezCasesPage() {
   const sezCases = getSezCases();
   const featuredTestimonials = sezCases.slice(0, 4);
@@ -84,8 +121,8 @@ export default function SezCasesPage() {
       <div className="relative z-10">
         <PageHeader />
 
-        <main className="pt-24 md:pt-32 pb-48 md:pb-60 px-4 sm:px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
+        <main className="px-4 pb-48 pt-24 sm:px-6 md:pb-60 md:pt-32 lg:px-12">
+          <div className="mx-auto max-w-7xl">
             <Breadcrumbs
               items={[
                 { label: "Главная", href: "/" },
@@ -97,60 +134,58 @@ export default function SezCasesPage() {
             <GlassCard className="mb-12 text-center" animationDelay={0}>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
                 <Landmark className="h-4 w-4 text-purple-300" />
-                Кейсы по СЭЗ
+                Кейсы по свободной экономической зоне
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-text-purple-blue">
-                Кейсы по свободной экономической зоне
+              <h1 className="gradient-text-purple-blue mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
+                Кейсы по СЭЗ
               </h1>
 
-              <p className="text-lg md:text-xl text-white/80 max-w-4xl mx-auto leading-8">
-                Это отдельный каталог кейсов по СЭЗ: вступление, сопровождение резидентов,
-                рабочие ситуации по документам и маршрутам. Здесь нет “гарантий включения”
-                и красивых обещаний ради витрины — только сценарии, в которых важно понять,
-                что происходит, какие шаги нужны и куда идти дальше.
+              <p className="mx-auto max-w-4xl text-lg leading-8 text-white/80 md:text-xl">
+                В этом разделе собраны кейсы по свободной экономической зоне: вступление,
+                сопровождение резидентов, подготовка документов и типовые рабочие
+                ситуации. Здесь вы можете посмотреть, как обычно развивается задача,
+                какие шаги оказываются важными и на что стоит обратить внимание ещё до
+                старта активной работы.
               </p>
 
               <div className="mt-8 grid gap-4 md:grid-cols-3">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                   <TrendingUp className="mx-auto mb-3 h-6 w-6 text-purple-300" />
                   <div className="text-3xl font-bold text-white">{sezCases.length}+</div>
-                  <div className="mt-2 text-sm text-white/60">Кейсов и типовых сценариев</div>
+                  <div className="mt-2 text-sm text-white/60">
+                    Кейсов и типовых рабочих сценариев
+                  </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                   <ShieldCheck className="mx-auto mb-3 h-6 w-6 text-blue-300" />
-                  <div className="text-3xl font-bold text-white">1</div>
+                  <div className="text-3xl font-bold text-white">Практика</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Главный следующий шаг — выбрать профильный маршрут и подать заявку
+                    Не теория ради текста, а примеры реальных бизнес-ситуаций
                   </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                   <FileText className="mx-auto mb-3 h-6 w-6 text-green-400" />
-                  <div className="text-3xl font-bold text-white">HTML</div>
+                  <div className="text-3xl font-bold text-white">Понятно</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Полезный контент без дублей и опасных обещаний
+                    С акцентом на документы, шаги и логику действий
                   </div>
                 </div>
               </div>
             </GlassCard>
 
             <GlassCard className="mb-12" animationDelay={80}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
-                Какие ситуации сюда обычно приводят
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                В каких ситуациях этот раздел особенно полезен
               </h2>
 
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                {[
-                  "Нужно понять, подходит ли бизнесу маршрут по СЭЗ и с чего начинать.",
-                  "Уже есть статус или подготовка к нему, но дальше неясно, какой пакет и порядок действий нужен.",
-                  "Нужен не общий обзор, а понятный рабочий сценарий: документы, контрольные точки и следующий шаг.",
-                  "Важно снизить хаос в сопровождении резидента и собрать маршрут без лишних кругов.",
-                ].map((item) => (
+                {SITUATIONS.map((item) => (
                   <div
                     key={item}
-                    className="rounded-2xl border border-white/10 bg-white/5 p-5 text-white/80 leading-7"
+                    className="rounded-2xl border border-white/10 bg-white/5 p-5 leading-7 text-white/80"
                   >
                     {item}
                   </div>
@@ -158,28 +193,28 @@ export default function SezCasesPage() {
               </div>
             </GlassCard>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="mb-12 grid gap-6 md:grid-cols-2">
               {sezCases.map((caseStudy, index) => (
                 <Link
                   key={caseStudy.slug}
                   href={`/cases/${caseStudy.slug}`}
-                  className="block group"
+                  className="group block"
                 >
-                  <GlassCard className="h-full flex flex-col" animationDelay={120 + index * 50}>
-                    <div className="inline-flex items-center gap-2 text-sm text-purple-300 mb-3">
-                      <Landmark className="w-4 h-4" />
+                  <GlassCard className="flex h-full flex-col" animationDelay={120 + index * 50}>
+                    <div className="mb-3 inline-flex items-center gap-2 text-sm text-purple-300">
+                      <Landmark className="h-4 w-4" />
                       <span>{caseStudy.category}</span>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">
+                    <h3 className="mb-3 text-2xl font-bold text-white transition-colors group-hover:text-purple-300">
                       {caseStudy.title}
                     </h3>
 
-                    <p className="text-white/60 text-sm mb-4">
+                    <p className="mb-4 text-sm text-white/60">
                       <span className="font-semibold">Клиент:</span> {caseStudy.client}
                     </p>
 
-                    <p className="text-white/70 mb-4 flex-grow">
+                    <p className="mb-4 flex-grow text-white/70">
                       {caseStudy.challenge.length > 180
                         ? `${caseStudy.challenge.slice(0, 177)}...`
                         : caseStudy.challenge}
@@ -188,17 +223,17 @@ export default function SezCasesPage() {
                     <div className="mb-4 space-y-2">
                       {caseStudy.results.slice(0, 2).map((result, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
-                          <span className="text-white/60 text-sm">{result}</span>
+                          <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-400" />
+                          <span className="text-sm text-white/60">{result}</span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                      <span className="text-white/50 text-sm">Срок: {caseStudy.timeline}</span>
-                      <div className="flex items-center text-purple-300 font-medium group-hover:text-purple-200 transition-colors">
+                    <div className="flex items-center justify-between border-t border-white/10 pt-4">
+                      <span className="text-sm text-white/50">Срок: {caseStudy.timeline}</span>
+                      <div className="flex items-center font-medium text-purple-300 transition-colors group-hover:text-purple-200">
                         Подробнее
-                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                       </div>
                     </div>
                   </GlassCard>
@@ -206,41 +241,59 @@ export default function SezCasesPage() {
               ))}
             </div>
 
-            <div className="mb-12">
-              <h2 className="text-3xl font-bold text-white mb-8 text-center">
-                Что чаще всего отмечают клиенты
+            <GlassCard className="mb-12" animationDelay={220}>
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                Почему кейсы полезны ещё до старта работы
               </h2>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid gap-4 md:grid-cols-2">
+                {WHY_CASES_HELP.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-5"
+                  >
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-400" />
+                    <span className="leading-7 text-white/80">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+
+            <div className="mb-12">
+              <h2 className="mb-8 text-center text-3xl font-bold text-white">
+                Что отмечают клиенты
+              </h2>
+
+              <div className="grid gap-6 md:grid-cols-2">
                 {featuredTestimonials.map((caseStudy, index) => (
                   <GlassCard
                     key={caseStudy.slug}
                     className="relative"
-                    animationDelay={220 + index * 50}
+                    animationDelay={280 + index * 50}
                   >
-                    <Quote className="absolute top-4 right-4 w-8 h-8 text-purple-300/20" />
+                    <Quote className="absolute right-4 top-4 h-8 w-8 text-purple-300/20" />
 
-                    <div className="flex items-center gap-1 mb-3">
+                    <div className="mb-3 flex items-center gap-1">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                       ))}
                     </div>
 
-                    <p className="text-white/80 mb-4 italic leading-7">
+                    <p className="mb-4 italic leading-7 text-white/80">
                       "{caseStudy.testimonial.text}"
                     </p>
 
-                    <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center">
-                        <span className="text-white font-bold text-sm">
+                    <div className="flex items-center gap-3 border-t border-white/10 pt-4">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-purple-500/20 to-blue-500/20">
+                        <span className="text-sm font-bold text-white">
                           {caseStudy.testimonial.author.charAt(0)}
                         </span>
                       </div>
                       <div>
-                        <p className="text-white font-semibold text-sm">
+                        <p className="text-sm font-semibold text-white">
                           {caseStudy.testimonial.author}
                         </p>
-                        <p className="text-white/50 text-xs">{caseStudy.client}</p>
+                        <p className="text-xs text-white/50">{caseStudy.client}</p>
                       </div>
                     </div>
                   </GlassCard>
@@ -249,66 +302,84 @@ export default function SezCasesPage() {
             </div>
 
             <GlassCard className="mb-12" animationDelay={420}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                Частые вопросы
+              </h2>
+
+              <div className="space-y-4">
+                {FAQ.map((item) => (
+                  <div
+                    key={item.question}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-5"
+                  >
+                    <div className="mb-2 text-lg font-semibold text-white">{item.question}</div>
+                    <div className="leading-7 text-white/75">{item.answer}</div>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+
+            <GlassCard className="mb-12" animationDelay={500}>
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
                 Куда перейти дальше
               </h2>
 
               <div className="grid gap-4 md:grid-cols-3">
                 <Link
-                  href="/sez-subsidii/"
+                  href="/services"
                   className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
                 >
-                  <div className="text-xl font-semibold text-white">Хаб СЭЗ и субсидий</div>
+                  <div className="text-xl font-semibold text-white">Услуги</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Общий вход в SEZ-контур: маршруты, сценарии и выбор следующего шага.
+                    Перейти к услугам и выбрать направление, связанное с вашей задачей.
                   </div>
                 </Link>
 
                 <Link
-                  href="/contacts/ask/"
-                  className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
-                >
-                  <div className="text-xl font-semibold text-white">Оставить заявку</div>
-                  <div className="mt-2 text-sm leading-6 text-white/60">
-                    Получить маршрут, список документов и следующий шаг по ситуации.
-                  </div>
-                </Link>
-
-                <Link
-                  href="/reviews/"
+                  href="/reviews"
                   className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
                 >
                   <div className="text-xl font-semibold text-white">Отзывы</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Trust-раздел по основным направлениям работы и клиентскому опыту.
+                    Посмотреть клиентский опыт и дополнительные подтверждения доверия.
+                  </div>
+                </Link>
+
+                <Link
+                  href="/contacts"
+                  className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
+                >
+                  <div className="text-xl font-semibold text-white">Контакты</div>
+                  <div className="mt-2 text-sm leading-6 text-white/60">
+                    Связаться с нами и обсудить свою задачу в удобном формате.
                   </div>
                 </Link>
               </div>
             </GlassCard>
 
-            <GlassCard className="text-center" animationDelay={520}>
-              <h2 className="text-3xl font-bold text-white mb-4">
-                Нужен понятный маршрут по СЭЗ без лишней неопределённости?
+            <GlassCard className="text-center" animationDelay={580}>
+              <h2 className="mb-4 text-3xl font-bold text-white">
+                Нужен понятный следующий шаг по теме СЭЗ?
               </h2>
-              <p className="text-white/80 mb-6 max-w-3xl mx-auto leading-7">
-                Опишите ситуацию, и мы вернёмся с рабочим следующим шагом:
-                что проверить, какие документы нужны и в какой маршрут внутри SEZ-контура
-                вам идти дальше.
+              <p className="mx-auto mb-6 max-w-3xl leading-7 text-white/80">
+                Опишите свою ситуацию, и мы поможем понять, с чего начинать, какие
+                документы подготовить и какой формат работы будет наиболее уместным для
+                вашей компании.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
-                  href="/contacts/ask/"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg text-white font-semibold hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg shadow-purple-500/50"
+                  href="/contacts"
+                  className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-4 font-semibold text-white shadow-lg shadow-purple-500/50 transition-all duration-200 hover:scale-105 hover:from-purple-700 hover:to-blue-700"
                 >
-                  Оставить заявку
-                  <ArrowRight className="w-5 h-5" />
+                  Связаться с нами
+                  <ArrowRight className="h-5 w-5" />
                 </Link>
 
                 <Link
-                  href="/sez-subsidii/"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm rounded-lg text-white font-semibold hover:bg-white/20 border border-white/20 transform hover:scale-105 transition-all duration-200"
+                  href="/services"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:bg-white/20"
                 >
-                  Перейти в SEZ-хаб
+                  Перейти в услуги
                 </Link>
               </div>
             </GlassCard>

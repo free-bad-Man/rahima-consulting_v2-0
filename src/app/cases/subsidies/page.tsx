@@ -19,11 +19,11 @@ import {
 export const metadata: Metadata = {
   title: "Кейсы по субсидиям | Rahima Consulting",
   description:
-    "Кейсы по субсидиям: получение, сопровождение, отчётность, замечания и рабочие сценарии по пакету документов.",
+    "Кейсы по субсидиям: получение, сопровождение, отчётность, замечания к пакету документов и практические примеры решений для бизнеса.",
   openGraph: {
     title: "Кейсы по субсидиям | Rahima Consulting",
     description:
-      "Каталог кейсов по субсидиям: задача, действия, результат и переход в профильный маршрут.",
+      "Практические кейсы по субсидиям: ситуация бизнеса, действия, результат и полезные выводы для компаний, которые работают с мерами поддержки.",
     type: "website",
   },
 };
@@ -76,6 +76,43 @@ function getSubsidyCases() {
   return allCases.slice(0, 4);
 }
 
+const SITUATIONS = [
+  "Нужно понять, подходит ли компании работа с субсидией и с какого шага лучше начинать.",
+  "Есть замечания к пакету документов, не хватает подтверждений или нужно собрать комплект заново.",
+  "Нужна отчётность по субсидии, порядок по документам и понятная логика сопровождения.",
+  "Важно не общее объяснение темы, а практический пример похожей ситуации и понимание, что делать дальше.",
+];
+
+const WHY_CASES_HELP = [
+  "Кейсы показывают, как похожие задачи решаются на практике, а не только в теории.",
+  "По ним проще понять, какие документы, сроки и этапы оказываются самыми чувствительными.",
+  "Они помогают быстрее оценить сложность задачи и подготовиться к разговору со специалистом.",
+  "Кейсы полезны и на старте, и в середине процесса, когда нужно сверить свою ситуацию с практикой.",
+];
+
+const FAQ = [
+  {
+    question: "Что можно понять из кейсов по субсидиям?",
+    answer:
+      "Кейсы помогают увидеть типовые рабочие ситуации: получение субсидии, замечания к пакету, сопровождение, подтверждение расходов и отчётность.",
+  },
+  {
+    question: "Подходит ли этот раздел тем, кто только рассматривает субсидию?",
+    answer:
+      "Да. По кейсам можно понять, какие задачи чаще всего возникают и к чему лучше подготовиться заранее.",
+  },
+  {
+    question: "Можно ли по кейсу понять, подходит ли мера поддержки моей компании?",
+    answer:
+      "Кейс даёт ориентир, но окончательный вывод зависит от ваших документов, статуса бизнеса, программы и конкретных условий подачи.",
+  },
+  {
+    question: "Что делать, если времени мало и вопрос срочный?",
+    answer:
+      "В такой ситуации лучше сразу связаться с нами и описать задачу, чтобы быстрее получить понятный порядок действий.",
+  },
+];
+
 export default function SubsidiesCasesPage() {
   const subsidyCases = getSubsidyCases();
   const featuredTestimonials = subsidyCases.slice(0, 4);
@@ -87,8 +124,8 @@ export default function SubsidiesCasesPage() {
       <div className="relative z-10">
         <PageHeader />
 
-        <main className="pt-24 md:pt-32 pb-48 md:pb-60 px-4 sm:px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
+        <main className="px-4 pb-48 pt-24 sm:px-6 md:pb-60 md:pt-32 lg:px-12">
+          <div className="mx-auto max-w-7xl">
             <Breadcrumbs
               items={[
                 { label: "Главная", href: "/" },
@@ -103,16 +140,15 @@ export default function SubsidiesCasesPage() {
                 Кейсы по субсидиям
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-text-purple-blue">
-                Кейсы по работе с субсидиями
+              <h1 className="gradient-text-purple-blue mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
+                Кейсы по субсидиям
               </h1>
 
-              <p className="text-lg md:text-xl text-white/80 max-w-4xl mx-auto leading-8">
-                Это отдельный каталог кейсов по субсидиям: получение, сопровождение,
-                замечания к пакету, подтверждения, отчётность и восстановление понятного
-                рабочего маршрута. Здесь важны не обещания “точного получения”, а логика:
-                какая задача у клиента сейчас, что нужно собрать и какой следующий шаг
-                реально уместен. 
+              <p className="mx-auto max-w-4xl text-lg leading-8 text-white/80 md:text-xl">
+                В этом разделе собраны кейсы по субсидиям: получение мер поддержки,
+                сопровождение пакета документов, замечания, подтверждение расходов и
+                отчётность. Эти материалы помогают бизнесу быстрее понять ситуацию,
+                увидеть типовые ошибки и подготовиться к следующему практическому шагу.
               </p>
 
               <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -120,43 +156,38 @@ export default function SubsidiesCasesPage() {
                   <TrendingUp className="mx-auto mb-3 h-6 w-6 text-purple-300" />
                   <div className="text-3xl font-bold text-white">{subsidyCases.length}+</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Кейсов и рабочих сценариев по субсидиям
+                    Кейсов и типовых рабочих сценариев
                   </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                   <ShieldCheck className="mx-auto mb-3 h-6 w-6 text-blue-300" />
-                  <div className="text-3xl font-bold text-white">1</div>
+                  <div className="text-3xl font-bold text-white">Практика</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Главный следующий шаг — собрать пакет и выбрать правильный маршрут
+                    Примеры реальных задач, а не общий обзор темы
                   </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                   <FileText className="mx-auto mb-3 h-6 w-6 text-green-400" />
-                  <div className="text-3xl font-bold text-white">HTML</div>
+                  <div className="text-3xl font-bold text-white">Понятно</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Польза, кейсы и trust без фейковых обещаний
+                    С акцентом на документы, этапы и рабочую логику действий
                   </div>
                 </div>
               </div>
             </GlassCard>
 
             <GlassCard className="mb-12" animationDelay={80}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
-                Какие ситуации сюда обычно приводят
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                В каких ситуациях этот раздел особенно полезен
               </h2>
 
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                {[
-                  "Нужно понять, подходит ли маршрут по субсидии и как правильно собрать стартовый пакет.",
-                  "Есть замечания, хвосты или неполный комплект подтверждений, и нужен рабочий порядок действий.",
-                  "Нужна отчётность по субсидии, реестр, папка документов и понятный контроль статуса.",
-                  "Нужно не “общее объяснение”, а конкретный следующий шаг по действующей ситуации.",
-                ].map((item) => (
+                {SITUATIONS.map((item) => (
                   <div
                     key={item}
-                    className="rounded-2xl border border-white/10 bg-white/5 p-5 text-white/80 leading-7"
+                    className="rounded-2xl border border-white/10 bg-white/5 p-5 leading-7 text-white/80"
                   >
                     {item}
                   </div>
@@ -164,28 +195,28 @@ export default function SubsidiesCasesPage() {
               </div>
             </GlassCard>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="mb-12 grid gap-6 md:grid-cols-2">
               {subsidyCases.map((caseStudy, index) => (
                 <Link
                   key={caseStudy.slug}
                   href={`/cases/${caseStudy.slug}`}
-                  className="block group"
+                  className="group block"
                 >
-                  <GlassCard className="h-full flex flex-col" animationDelay={120 + index * 50}>
-                    <div className="inline-flex items-center gap-2 text-sm text-purple-300 mb-3">
-                      <BadgePercent className="w-4 h-4" />
+                  <GlassCard className="flex h-full flex-col" animationDelay={120 + index * 50}>
+                    <div className="mb-3 inline-flex items-center gap-2 text-sm text-purple-300">
+                      <BadgePercent className="h-4 w-4" />
                       <span>{caseStudy.category}</span>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">
+                    <h3 className="mb-3 text-2xl font-bold text-white transition-colors group-hover:text-purple-300">
                       {caseStudy.title}
                     </h3>
 
-                    <p className="text-white/60 text-sm mb-4">
+                    <p className="mb-4 text-sm text-white/60">
                       <span className="font-semibold">Клиент:</span> {caseStudy.client}
                     </p>
 
-                    <p className="text-white/70 mb-4 flex-grow">
+                    <p className="mb-4 flex-grow text-white/70">
                       {caseStudy.challenge.length > 180
                         ? `${caseStudy.challenge.slice(0, 177)}...`
                         : caseStudy.challenge}
@@ -194,17 +225,17 @@ export default function SubsidiesCasesPage() {
                     <div className="mb-4 space-y-2">
                       {caseStudy.results.slice(0, 2).map((result, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
-                          <span className="text-white/60 text-sm">{result}</span>
+                          <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-400" />
+                          <span className="text-sm text-white/60">{result}</span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                      <span className="text-white/50 text-sm">Срок: {caseStudy.timeline}</span>
-                      <div className="flex items-center text-purple-300 font-medium group-hover:text-purple-200 transition-colors">
+                    <div className="flex items-center justify-between border-t border-white/10 pt-4">
+                      <span className="text-sm text-white/50">Срок: {caseStudy.timeline}</span>
+                      <div className="flex items-center font-medium text-purple-300 transition-colors group-hover:text-purple-200">
                         Подробнее
-                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                       </div>
                     </div>
                   </GlassCard>
@@ -212,41 +243,59 @@ export default function SubsidiesCasesPage() {
               ))}
             </div>
 
-            <div className="mb-12">
-              <h2 className="text-3xl font-bold text-white mb-8 text-center">
-                Что чаще всего отмечают клиенты
+            <GlassCard className="mb-12" animationDelay={220}>
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                Почему кейсы полезны ещё до старта работы
               </h2>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid gap-4 md:grid-cols-2">
+                {WHY_CASES_HELP.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-5"
+                  >
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-400" />
+                    <span className="leading-7 text-white/80">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+
+            <div className="mb-12">
+              <h2 className="mb-8 text-center text-3xl font-bold text-white">
+                Что отмечают клиенты
+              </h2>
+
+              <div className="grid gap-6 md:grid-cols-2">
                 {featuredTestimonials.map((caseStudy, index) => (
                   <GlassCard
                     key={caseStudy.slug}
                     className="relative"
-                    animationDelay={220 + index * 50}
+                    animationDelay={280 + index * 50}
                   >
-                    <Quote className="absolute top-4 right-4 w-8 h-8 text-purple-300/20" />
+                    <Quote className="absolute right-4 top-4 h-8 w-8 text-purple-300/20" />
 
-                    <div className="flex items-center gap-1 mb-3">
+                    <div className="mb-3 flex items-center gap-1">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                       ))}
                     </div>
 
-                    <p className="text-white/80 mb-4 italic leading-7">
+                    <p className="mb-4 italic leading-7 text-white/80">
                       "{caseStudy.testimonial.text}"
                     </p>
 
-                    <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center">
-                        <span className="text-white font-bold text-sm">
+                    <div className="flex items-center gap-3 border-t border-white/10 pt-4">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-purple-500/20 to-blue-500/20">
+                        <span className="text-sm font-bold text-white">
                           {caseStudy.testimonial.author.charAt(0)}
                         </span>
                       </div>
                       <div>
-                        <p className="text-white font-semibold text-sm">
+                        <p className="text-sm font-semibold text-white">
                           {caseStudy.testimonial.author}
                         </p>
-                        <p className="text-white/50 text-xs">{caseStudy.client}</p>
+                        <p className="text-xs text-white/50">{caseStudy.client}</p>
                       </div>
                     </div>
                   </GlassCard>
@@ -255,65 +304,84 @@ export default function SubsidiesCasesPage() {
             </div>
 
             <GlassCard className="mb-12" animationDelay={420}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                Частые вопросы
+              </h2>
+
+              <div className="space-y-4">
+                {FAQ.map((item) => (
+                  <div
+                    key={item.question}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-5"
+                  >
+                    <div className="mb-2 text-lg font-semibold text-white">{item.question}</div>
+                    <div className="leading-7 text-white/75">{item.answer}</div>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+
+            <GlassCard className="mb-12" animationDelay={500}>
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
                 Куда перейти дальше
               </h2>
 
               <div className="grid gap-4 md:grid-cols-3">
                 <Link
-                  href="/sez-subsidii/"
+                  href="/services"
                   className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
                 >
-                  <div className="text-xl font-semibold text-white">Хаб СЭЗ и субсидий</div>
+                  <div className="text-xl font-semibold text-white">Услуги</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Общий вход в контур по СЭЗ и субсидиям: маршруты, сценарии и связанный next step.
+                    Перейти к услугам и выбрать направление, связанное с вашей задачей.
                   </div>
                 </Link>
 
                 <Link
-                  href="/contacts/remote/"
-                  className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
-                >
-                  <div className="text-xl font-semibold text-white">Удалённо по РФ</div>
-                  <div className="mt-2 text-sm leading-6 text-white/60">
-                    Как устроена работа по документам, контролю и сопровождению без офлайн-встреч.
-                  </div>
-                </Link>
-
-                <Link
-                  href="/reviews/"
+                  href="/reviews"
                   className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
                 >
                   <div className="text-xl font-semibold text-white">Отзывы</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Trust-раздел по основным направлениям услуг и клиентскому опыту.
+                    Посмотреть клиентский опыт и дополнительные подтверждения доверия.
+                  </div>
+                </Link>
+
+                <Link
+                  href="/contacts"
+                  className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
+                >
+                  <div className="text-xl font-semibold text-white">Контакты</div>
+                  <div className="mt-2 text-sm leading-6 text-white/60">
+                    Связаться с нами и обсудить свою задачу в удобном формате.
                   </div>
                 </Link>
               </div>
             </GlassCard>
 
-            <GlassCard className="text-center" animationDelay={520}>
-              <h2 className="text-3xl font-bold text-white mb-4">
-                Нужен понятный маршрут по субсидии без хаоса?
+            <GlassCard className="text-center" animationDelay={580}>
+              <h2 className="mb-4 text-3xl font-bold text-white">
+                Нужен понятный следующий шаг по теме субсидий?
               </h2>
-              <p className="text-white/80 mb-6 max-w-3xl mx-auto leading-7">
-                Опишите ситуацию, и мы вернёмся с рабочим следующим шагом:
-                что собрать, что проверить и в какой маршрут по субсидиям вам идти дальше.
+              <p className="mx-auto mb-6 max-w-3xl leading-7 text-white/80">
+                Опишите свою ситуацию, и мы поможем понять, какие документы проверить,
+                как собрать пакет и какой формат работы будет наиболее уместным именно
+                для вашей компании.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
-                  href="/contacts/ask/"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg text-white font-semibold hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg shadow-purple-500/50"
+                  href="/contacts"
+                  className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-4 font-semibold text-white shadow-lg shadow-purple-500/50 transition-all duration-200 hover:scale-105 hover:from-purple-700 hover:to-blue-700"
                 >
-                  Оставить заявку
-                  <ArrowRight className="w-5 h-5" />
+                  Связаться с нами
+                  <ArrowRight className="h-5 w-5" />
                 </Link>
 
                 <Link
-                  href="/sez-subsidii/"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm rounded-lg text-white font-semibold hover:bg-white/20 border border-white/20 transform hover:scale-105 transition-all duration-200"
+                  href="/services"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:bg-white/20"
                 >
-                  Перейти в хаб
+                  Перейти в услуги
                 </Link>
               </div>
             </GlassCard>
