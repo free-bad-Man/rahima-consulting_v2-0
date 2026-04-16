@@ -7,107 +7,108 @@ import ShaderBackground from "@/components/ui/shader-background";
 import {
   ArrowRight,
   BookOpen,
+  Briefcase,
   Calculator,
   CheckCircle2,
   FileText,
   Landmark,
-  Lightbulb,
+  Scale,
+  ShieldCheck,
   Workflow,
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Блог | Rahima Consulting",
+  title: "Блог Rahima Consulting: статьи для бизнеса, бухгалтерии и автоматизации",
   description:
-    "Блог Rahima Consulting: практические разборы по бухгалтерии, налогам, регистрации, СЭЗ, субсидиям и автоматизации бизнеса.",
+    "Блог Rahima Consulting: практические статьи и разборы по бухгалтерии, налогам, регистрации бизнеса, юридическим вопросам, СЭЗ, субсидиям и автоматизации.",
   openGraph: {
-    title: "Блог | Rahima Consulting",
+    title: "Блог Rahima Consulting: статьи для бизнеса, бухгалтерии и автоматизации",
     description:
-      "Полезные материалы и разборы для бизнеса: маршруты, сценарии и рабочие следующие шаги.",
+      "Полезные материалы для бизнеса: бухгалтерия, налоги, право, регистрация, СЭЗ, субсидии, CRM и автоматизация.",
     type: "website",
   },
 };
 
-const BLOG_DIRECTIONS = [
+const BLOG_TOPICS = [
   {
-    title: "Бухгалтерия",
+    title: "Бухгалтерия и отчётность",
     description:
-      "Материалы по сопровождению, восстановлению учёта, отчётности и рабочим бухгалтерским сценариям.",
-    href: "/services/accounting/",
+      "Статьи о ведении бухгалтерии, сдаче отчётности, восстановлении учёта и регулярном сопровождении бизнеса.",
+    href: "/cases/accounting/",
     icon: Calculator,
   },
   {
     title: "Налоги и отчётность",
     description:
-      "Разборы по декларациям, требованиям, камералкам, отчётным маршрутам и следующему шагу.",
-    href: "/services/taxes-reporting/",
+      "Разборы по налоговым декларациям, требованиям налоговой, проверкам и типовым вопросам предпринимателей.",
+    href: "/cases/taxes/",
     icon: FileText,
+  },
+  {
+    title: "Регистрация и изменения",
+    description:
+      "Материалы по регистрации ИП и ООО, сменам в ЕГРЮЛ, юридическому адресу и другим корпоративным изменениям.",
+    href: "/services",
+    icon: Briefcase,
+  },
+  {
+    title: "Юридические вопросы бизнеса",
+    description:
+      "Публикации о договорах, корпоративных документах, сопровождении сделок и рабочих юридических сценариях.",
+    href: "/services",
+    icon: Scale,
   },
   {
     title: "СЭЗ и субсидии",
     description:
-      "Пояснения по рабочим маршрутам, пакетам документов и логике следующего действия без опасных обещаний.",
-    href: "/sez-subsidii/",
+      "Практические разборы по свободной экономической зоне, сопровождению резидентов, субсидиям и отчётности.",
+    href: "/cases/sez/",
     icon: Landmark,
   },
   {
     title: "Автоматизация и ИИ",
     description:
-      "CRM, сайт → CRM, интеграции, n8n и сценарии, где бизнесу нужен порядок, а не хаос.",
+      "Материалы про CRM, интеграции, автоматизацию процессов, n8n и цифровые решения для бизнеса.",
     href: "/automation-ai/",
     icon: Workflow,
   },
 ];
 
-const FEATURED_MATERIALS = [
-  {
-    title: "Как понять, какой маршрут нужен бизнесу: услуга, кейс или заявка",
-    description:
-      "Базовый материал для сайта: как человеку быстрее выбрать правильный вход и не потеряться в разделах.",
-    href: "/contacts/ask/",
-    category: "Навигация по решению",
-  },
-  {
-    title: "Когда бизнесу уже нужен бухгалтерский контур, а не разовая консультация",
-    description:
-      "Материал о том, как отличить единичную задачу от регулярного сопровождения и почему это важно для бизнеса.",
-    href: "/services/accounting/",
-    category: "Бухгалтерия",
-  },
-  {
-    title: "Что делать, если налоговая задача выглядит запутанной",
-    description:
-      "Как не распыляться: сначала собрать ситуацию, документы и определить следующий шаг по налоговому сценарию.",
-    href: "/services/taxes-reporting/",
-    category: "Налоги и отчётность",
-  },
-  {
-    title: "СЭЗ и субсидии: почему опасно начинать с обещаний вместо маршрута",
-    description:
-      "Разбор подхода: сначала сценарий, документы и условия, а потом уже конкретные действия по направлению.",
-    href: "/sez-subsidii/",
-    category: "СЭЗ / Субсидии",
-  },
-  {
-    title: "Автоматизация без хаоса: когда бизнесу реально нужен CRM-контур",
-    description:
-      "Материал про то, как понять, что пора наводить порядок в лидах, процессах и маршруте данных.",
-    href: "/automation-ai/",
-    category: "Автоматизация и ИИ",
-  },
-  {
-    title: "Отзывы, кейсы и статьи: зачем на сайте все три контура одновременно",
-    description:
-      "Пояснение, чем отличаются trust-страницы, кейсы и полезные статьи и как они работают вместе.",
-    href: "/reviews/",
-    category: "Контент и доверие",
-  },
+const WHAT_YOU_GET = [
+  "Понятные объяснения без лишней теории и перегруженного языка.",
+  "Практические сценарии: что делать, с чего начать и каких ошибок избегать.",
+  "Связку с реальными услугами, кейсами и контактами, если нужна помощь по задаче.",
+  "Материалы, которые полезны и собственнику бизнеса, и бухгалтеру, и руководителю.",
 ];
 
-const BLOG_PRINCIPLES = [
-  "Блог нужен не ради “новостей ради новостей”, а ради полезных разборов и следующего шага для клиента.",
-  "Материалы должны поддерживать основные рабочие контуры сайта: услуги, кейсы, trust-страницы и заявку.",
-  "Лучше меньше, но полезнее: одна сильная статья лучше десяти пустых SEO-заготовок.",
-  "Каждый материал должен вести дальше в понятный маршрут, а не оставлять человека без действия.",
+const HOW_TO_USE_BLOG = [
+  "Если вы пока только разбираетесь в ситуации, начните с блога и выберите близкую тему.",
+  "Если задача уже понятна, переходите сразу в услуги или кейсы по нужному направлению.",
+  "Если вопрос срочный и нужен не текст, а решение, лучше сразу связаться с нами.",
+  "Если нужно понять стоимость, удобнее использовать калькулятор и затем обсудить детали.",
+];
+
+const FAQ = [
+  {
+    question: "Для кого этот блог?",
+    answer:
+      "Для собственников бизнеса, руководителей, бухгалтеров, юристов и предпринимателей, которым нужны понятные материалы по рабочим вопросам бизнеса.",
+  },
+  {
+    question: "Какие темы здесь публикуются?",
+    answer:
+      "Бухгалтерия, налоги, регистрация бизнеса, юридические вопросы, СЭЗ, субсидии, CRM, автоматизация и цифровые решения.",
+  },
+  {
+    question: "Можно ли решить задачу только по статье?",
+    answer:
+      "Иногда статья помогает понять ситуацию и сделать первый шаг. Но если вопрос связан с документами, сроками или рисками, лучше обсудить его с профильным специалистом.",
+  },
+  {
+    question: "Куда перейти, если нужна практическая помощь?",
+    answer:
+      "В услуги, кейсы, контакты или калькулятор — в зависимости от того, что вам нужно сейчас: разобраться, посмотреть примеры или сразу начать работу.",
+  },
 ];
 
 export default function BlogPage() {
@@ -118,8 +119,8 @@ export default function BlogPage() {
       <div className="relative z-10">
         <PageHeader />
 
-        <main className="pt-24 md:pt-32 pb-48 md:pb-60 px-4 sm:px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
+        <main className="px-4 pb-48 pt-24 sm:px-6 md:pb-60 md:pt-32 lg:px-12">
+          <div className="mx-auto max-w-7xl">
             <Breadcrumbs
               items={[
                 { label: "Главная", href: "/" },
@@ -130,54 +131,55 @@ export default function BlogPage() {
             <GlassCard className="mb-12 text-center" animationDelay={0}>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
                 <BookOpen className="h-4 w-4 text-purple-300" />
-                Полезные материалы
+                Полезные статьи и разборы для бизнеса
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 gradient-text-purple-blue">
+              <h1 className="gradient-text-purple-blue mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
                 Блог Rahima Consulting
               </h1>
 
-              <p className="text-lg md:text-xl text-white/80 max-w-4xl mx-auto leading-8">
-                Здесь собираются не “дежурные статьи ради трафика”, а практические
-                материалы, которые помогают бизнесу быстрее понять ситуацию, выбрать
-                правильный маршрут и перейти к следующему шагу: в услугу, кейс,
-                trust-раздел или заявку.
+              <p className="mx-auto max-w-4xl text-lg leading-8 text-white/80 md:text-xl">
+                В блоге Rahima Consulting мы публикуем практические материалы для бизнеса:
+                бухгалтерия, налоги, регистрация, юридическое сопровождение, СЭЗ,
+                субсидии, CRM и автоматизация. Наша цель — помочь вам быстрее понять
+                ситуацию, выбрать правильное направление и перейти к понятному следующему
+                шагу.
               </p>
 
               <div className="mt-8 grid gap-4 md:grid-cols-3">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                  <Lightbulb className="mx-auto mb-3 h-6 w-6 text-purple-300" />
-                  <div className="text-2xl font-bold text-white">Практика</div>
+                  <BookOpen className="mx-auto mb-3 h-6 w-6 text-purple-300" />
+                  <div className="text-2xl font-bold text-white">Практично</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Материалы про реальные рабочие сценарии
+                    Материалы, которые помогают в реальной работе, а не просто заполняют страницу
                   </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                  <CheckCircle2 className="mx-auto mb-3 h-6 w-6 text-blue-300" />
-                  <div className="text-2xl font-bold text-white">Маршрут</div>
+                  <ShieldCheck className="mx-auto mb-3 h-6 w-6 text-blue-300" />
+                  <div className="text-2xl font-bold text-white">Понятно</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Каждый материал должен вести к следующему шагу
+                    Без перегруженного языка и случайных терминов
                   </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                  <BookOpen className="mx-auto mb-3 h-6 w-6 text-green-400" />
-                  <div className="text-2xl font-bold text-white">Контент</div>
+                  <CheckCircle2 className="mx-auto mb-3 h-6 w-6 text-green-400" />
+                  <div className="text-2xl font-bold text-white">По делу</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Без пустых текстов и случайных SEO-заготовок
+                    Каждая тема связана с реальными задачами бизнеса
                   </div>
                 </div>
               </div>
             </GlassCard>
 
             <GlassCard className="mb-12" animationDelay={100}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
-                Основные направления материалов
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                Основные темы блога
               </h2>
 
-              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                {BLOG_DIRECTIONS.map((item) => {
+              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {BLOG_TOPICS.map((item) => {
                   const Icon = item.icon;
 
                   return (
@@ -190,9 +192,8 @@ export default function BlogPage() {
                         <Icon className="h-5 w-5" />
                         <span className="font-medium">{item.title}</span>
                       </div>
-                      <div className="text-sm leading-7 text-white/65">
-                        {item.description}
-                      </div>
+
+                      <div className="text-sm leading-7 text-white/70">{item.description}</div>
                     </Link>
                   );
                 })}
@@ -200,126 +201,134 @@ export default function BlogPage() {
             </GlassCard>
 
             <GlassCard className="mb-12" animationDelay={160}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
-                Актуальные материалы и маршруты
-              </h2>
-
-              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                {FEATURED_MATERIALS.map((item) => (
-                  <Link
-                    key={item.title}
-                    href={item.href}
-                    className="group rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
-                  >
-                    <div className="mb-3 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-purple-300">
-                      {item.category}
-                    </div>
-                    <div className="text-xl font-semibold text-white group-hover:text-purple-200 transition-colors">
-                      {item.title}
-                    </div>
-                    <div className="mt-3 text-sm leading-7 text-white/65">
-                      {item.description}
-                    </div>
-                    <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-purple-300 group-hover:text-purple-200 transition-colors">
-                      Открыть материал
-                      <ArrowRight className="h-4 w-4" />
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </GlassCard>
-
-            <GlassCard className="mb-12" animationDelay={220}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
-                Каким должен быть блог на этом сайте
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                Что вы найдёте в блоге
               </h2>
 
               <div className="grid gap-4 md:grid-cols-2">
-                {BLOG_PRINCIPLES.map((item) => (
+                {WHAT_YOU_GET.map((item) => (
                   <div
                     key={item}
                     className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-5"
                   >
                     <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-400" />
-                    <span className="text-white/80 leading-7">{item}</span>
+                    <span className="leading-7 text-white/80">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+
+            <GlassCard className="mb-12" animationDelay={220}>
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                Как лучше использовать этот раздел
+              </h2>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                {HOW_TO_USE_BLOG.map((item, index) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-5"
+                  >
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 font-semibold text-white">
+                      {index + 1}
+                    </div>
+                    <div className="leading-7 text-white/80">{item}</div>
                   </div>
                 ))}
               </div>
             </GlassCard>
 
             <GlassCard className="mb-12" animationDelay={280}>
-              <h2 className="text-3xl font-bold text-white mb-6 text-center">
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                Частые вопросы
+              </h2>
+
+              <div className="space-y-4">
+                {FAQ.map((item) => (
+                  <div
+                    key={item.question}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-5"
+                  >
+                    <div className="mb-2 text-lg font-semibold text-white">{item.question}</div>
+                    <div className="leading-7 text-white/75">{item.answer}</div>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+
+            <GlassCard className="mb-12" animationDelay={340}>
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
                 Куда перейти дальше
               </h2>
 
               <div className="grid gap-4 md:grid-cols-4">
                 <Link
-                  href="/services/"
+                  href="/services"
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10"
                 >
                   <div className="text-xl font-semibold text-white">Услуги</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Перейти в рабочие маршруты по направлениям.
+                    Перейти к услугам и выбрать нужное направление.
                   </div>
                 </Link>
 
                 <Link
-                  href="/cases/"
+                  href="/cases"
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10"
                 >
                   <div className="text-xl font-semibold text-white">Кейсы</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Посмотреть реальные сценарии и результаты.
+                    Посмотреть примеры решений и типовые рабочие ситуации.
                   </div>
                 </Link>
 
                 <Link
-                  href="/reviews/"
+                  href="/reviews"
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10"
                 >
                   <div className="text-xl font-semibold text-white">Отзывы</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Усилить trust-контур через клиентский опыт.
+                    Изучить клиентский опыт и дополнительные подтверждения доверия.
                   </div>
                 </Link>
 
                 <Link
-                  href="/contacts/ask/"
+                  href="/contacts"
                   className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10"
                 >
-                  <div className="text-xl font-semibold text-white">Оставить заявку</div>
+                  <div className="text-xl font-semibold text-white">Контакты</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Если уже нужна не статья, а следующий шаг по задаче.
+                    Связаться с нами, если нужна помощь не по статье, а по задаче.
                   </div>
                 </Link>
               </div>
             </GlassCard>
 
-            <GlassCard className="text-center" animationDelay={340}>
-              <h2 className="text-3xl font-bold text-white mb-4">
-                Нужен материал под вашу реальную ситуацию?
+            <GlassCard className="text-center" animationDelay={400}>
+              <h2 className="mb-4 text-3xl font-bold text-white">
+                Нужна не статья, а решение по вашей ситуации?
               </h2>
 
-              <p className="text-white/80 mb-6 max-w-3xl mx-auto leading-7">
-                Тогда лучше не искать “статью наудачу”, а описать задачу. Так мы быстрее
-                поймём, в какой рабочий маршрут вас вести дальше: в услугу, кейс,
-                trust-раздел или сразу в заявку.
+              <p className="mx-auto mb-6 max-w-3xl leading-7 text-white/80">
+                Если вопрос уже перешёл в практическую задачу, не тратьте время на поиск
+                похожих текстов. Свяжитесь с нами напрямую или перейдите к расчёту
+                стоимости — так вы быстрее получите понятный следующий шаг.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
-                  href="/contacts/ask/"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg text-white font-semibold hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg shadow-purple-500/50"
+                  href="/contacts"
+                  className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-4 font-semibold text-white shadow-lg shadow-purple-500/50 transition-all duration-200 hover:scale-105 hover:from-purple-700 hover:to-blue-700"
                 >
-                  Оставить заявку
-                  <ArrowRight className="w-5 h-5" />
+                  Связаться с нами
+                  <ArrowRight className="h-5 w-5" />
                 </Link>
 
                 <Link
-                  href="/services/"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm rounded-lg text-white font-semibold hover:bg-white/20 border border-white/20 transform hover:scale-105 transition-all duration-200"
+                  href="/calculator"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:bg-white/20"
                 >
-                  Перейти в услуги
+                  Перейти к калькулятору
                 </Link>
               </div>
             </GlassCard>

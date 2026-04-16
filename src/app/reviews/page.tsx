@@ -18,11 +18,11 @@ import {
 export const metadata: Metadata = {
   title: "Отзывы клиентов | Rahima Consulting",
   description:
-    "Отзывы клиентов Rahima Consulting по бухгалтерии, налогам, регистрации, юридическому сопровождению, СЭЗ и автоматизации.",
+    "Отзывы клиентов Rahima Consulting по бухгалтерии, налогам, регистрации бизнеса, юридическому сопровождению, СЭЗ, субсидиям и автоматизации.",
   openGraph: {
     title: "Отзывы клиентов | Rahima Consulting",
     description:
-      "Доверительный раздел с отзывами клиентов и переходами в кейсы, услуги и заявку.",
+      "Отзывы клиентов Rahima Consulting по ключевым направлениям работы компании: бухгалтерия, право, СЭЗ, субсидии и автоматизация бизнеса.",
     type: "website",
   },
 };
@@ -40,6 +40,36 @@ function getDirectionLabel(category: string) {
 
   return category;
 }
+
+const REVIEW_POINTS = [
+  "Клиентам важны не обещания, а понятный процесс работы и конкретный результат.",
+  "Отзывы помогают увидеть, с какими задачами к нам приходят чаще всего и как выглядит итог работы.",
+  "Этот раздел полезен тем, кто хочет не только посмотреть услуги, но и понять клиентский опыт по направлениям.",
+  "Отзывы особенно важны в темах, где бизнесу нужен аккуратный порядок действий: бухгалтерия, налоги, право, СЭЗ, субсидии и автоматизация.",
+];
+
+const FAQ = [
+  {
+    question: "Что можно понять по отзывам?",
+    answer:
+      "По отзывам можно понять, с какими задачами чаще всего обращаются клиенты, как они оценивают процесс работы и какие результаты считают для себя важными.",
+  },
+  {
+    question: "Связаны ли отзывы с реальными кейсами?",
+    answer:
+      "Да, многие отзывы связаны с конкретными кейсами. Поэтому из этого раздела можно сразу перейти к более подробному описанию похожей ситуации.",
+  },
+  {
+    question: "Чем отзывы отличаются от кейсов?",
+    answer:
+      "Кейсы показывают структуру задачи, ход работы и результат. Отзывы передают клиентский взгляд: что было важно, как ощущался процесс и что дало сотрудничество на практике.",
+  },
+  {
+    question: "Что делать, если я хочу не читать отзывы, а обсудить свою задачу?",
+    answer:
+      "В таком случае лучше сразу перейти в контакты или к расчёту стоимости, чтобы быстрее получить предметный следующий шаг.",
+  },
+];
 
 export default function ReviewsPage() {
   const cases = getAllCases();
@@ -64,7 +94,7 @@ export default function ReviewsPage() {
       <div className="relative z-10">
         <PageHeader />
 
-        <main className="px-4 pb-48 pt-24 sm:px-6 lg:px-12 md:pt-32 md:pb-60">
+        <main className="px-4 pb-48 pt-24 sm:px-6 lg:px-12 md:pb-60 md:pt-32">
           <div className="mx-auto max-w-7xl">
             <Breadcrumbs
               items={[
@@ -76,19 +106,19 @@ export default function ReviewsPage() {
             <GlassCard className="mb-12 text-center" animationDelay={0}>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
                 <ShieldCheck className="h-4 w-4 text-purple-300" />
-                Доверительный раздел
+                Отзывы клиентов по основным направлениям
               </div>
 
-              <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl gradient-text-purple-blue">
+              <h1 className="gradient-text-purple-blue mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
                 Отзывы клиентов Rahima Consulting
               </h1>
 
               <p className="mx-auto max-w-4xl text-lg leading-8 text-white/80 md:text-xl">
-                Здесь мы собираем клиентский опыт по ключевым направлениям работы:
-                бухгалтерия, налоги, регистрация и изменения, юридическое сопровождение,
-                СЭЗ, субсидии и автоматизация. Это не витрина “идеальных обещаний”, а
-                доверительный контур, который помогает понять, с какими задачами к нам
-                приходят и как выглядит результат работы.
+                Здесь собран клиентский опыт по ключевым направлениям работы Rahima
+                Consulting: бухгалтерия, налоги, регистрация бизнеса, юридическое
+                сопровождение, СЭЗ, субсидии и автоматизация. Этот раздел помогает
+                увидеть, с какими задачами к нам приходят, что особенно ценят клиенты и
+                как выглядит результат работы на практике.
               </p>
 
               <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -97,7 +127,9 @@ export default function ReviewsPage() {
                     <Users className="h-6 w-6 text-purple-300" />
                   </div>
                   <div className="text-3xl font-bold text-white">{testimonials.length}+</div>
-                  <div className="mt-2 text-sm text-white/60">Отзывов и клиентских историй</div>
+                  <div className="mt-2 text-sm text-white/60">
+                    Отзывов и клиентских историй
+                  </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
@@ -112,9 +144,9 @@ export default function ReviewsPage() {
                   <div className="mb-2 flex items-center justify-center">
                     <CheckCircle2 className="h-6 w-6 text-green-400" />
                   </div>
-                  <div className="text-3xl font-bold text-white">1</div>
+                  <div className="text-3xl font-bold text-white">Практика</div>
                   <div className="mt-2 text-sm text-white/60">
-                    Главный следующий шаг — заявка и маршрут по ситуации
+                    Реальный клиентский опыт вместо абстрактных обещаний
                   </div>
                 </div>
               </div>
@@ -139,7 +171,7 @@ export default function ReviewsPage() {
                     {item.category}
                   </div>
 
-                  <p className="mb-5 text-white/85 italic leading-7">"{item.text}"</p>
+                  <p className="mb-5 italic leading-7 text-white/85">"{item.text}"</p>
 
                   <div className="border-t border-white/10 pt-4">
                     <div className="font-semibold text-white">{item.author}</div>
@@ -161,7 +193,25 @@ export default function ReviewsPage() {
             </div>
 
             <GlassCard className="mb-12" animationDelay={450}>
-              <h2 className="mb-6 text-3xl font-bold text-white text-center">
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                Почему этот раздел полезен
+              </h2>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                {REVIEW_POINTS.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-5"
+                  >
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-400" />
+                    <span className="leading-7 text-white/80">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+
+            <GlassCard className="mb-12" animationDelay={520}>
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
                 По каким направлениям нас чаще всего оценивают
               </h2>
 
@@ -175,15 +225,15 @@ export default function ReviewsPage() {
                     <div className="space-y-2 text-sm text-white/65">
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-400" />
-                        <span>Понятный маршрут работы и следующий шаг</span>
+                        <span>Понятный порядок работы и ясные шаги</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-400" />
-                        <span>Нормальная коммуникация без хаоса</span>
+                        <span>Спокойная коммуникация без лишнего хаоса</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-400" />
-                        <span>Ощутимый результат в документах, процессе и контроле</span>
+                        <span>Ощутимый результат в документах, процессах и контроле</span>
                       </div>
                     </div>
                   </div>
@@ -191,8 +241,26 @@ export default function ReviewsPage() {
               </div>
             </GlassCard>
 
-            <GlassCard className="mb-12" animationDelay={520}>
-              <h2 className="mb-6 text-3xl font-bold text-white text-center">
+            <GlassCard className="mb-12" animationDelay={580}>
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
+                Частые вопросы
+              </h2>
+
+              <div className="space-y-4">
+                {FAQ.map((item) => (
+                  <div
+                    key={item.question}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-5"
+                  >
+                    <div className="mb-2 text-lg font-semibold text-white">{item.question}</div>
+                    <div className="leading-7 text-white/75">{item.answer}</div>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+
+            <GlassCard className="mb-12" animationDelay={640}>
+              <h2 className="mb-6 text-center text-3xl font-bold text-white">
                 Куда перейти дальше
               </h2>
 
@@ -203,7 +271,7 @@ export default function ReviewsPage() {
                 >
                   <div className="text-lg font-semibold text-white">Кейсы</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Реальные сценарии: ситуация, действия и результат.
+                    Посмотреть реальные сценарии: задача, действия и результат.
                   </div>
                 </Link>
 
@@ -213,56 +281,57 @@ export default function ReviewsPage() {
                 >
                   <div className="text-lg font-semibold text-white">Услуги</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Подобрать правильный рабочий маршрут по задаче бизнеса.
+                    Выбрать нужное направление для своей бизнес-задачи.
                   </div>
                 </Link>
 
                 <Link
-                  href="/about/"
+                  href="/about/team/"
                   className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
                 >
-                  <div className="text-lg font-semibold text-white">О компании</div>
+                  <div className="text-lg font-semibold text-white">Команда</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Команда, партнёры и доверительный контур компании.
+                    Посмотреть, по каким направлениям работает Rahima Consulting.
                   </div>
                 </Link>
 
                 <Link
-                  href="/contacts/ask/"
+                  href="/contacts/"
                   className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
                 >
-                  <div className="text-lg font-semibold text-white">Оставить заявку</div>
+                  <div className="text-lg font-semibold text-white">Контакты</div>
                   <div className="mt-2 text-sm leading-6 text-white/60">
-                    Получить маршрут, список документов и следующий шаг.
+                    Связаться с нами и обсудить свою ситуацию в удобном формате.
                   </div>
                 </Link>
               </div>
             </GlassCard>
 
-            <GlassCard className="text-center" animationDelay={600}>
+            <GlassCard className="text-center" animationDelay={700}>
               <h2 className="mb-4 text-3xl font-bold text-white">
                 Хотите такой же понятный результат по своей задаче?
               </h2>
 
               <p className="mx-auto mb-6 max-w-3xl text-white/80">
-                Опишите ситуацию, и мы вернёмся с маршрутом, списком документов и
-                следующим шагом. Это самый быстрый вход в работу без лишних кругов.
+                Опишите ситуацию, и мы поможем понять, какие шаги нужны, какие документы
+                стоит подготовить и какой формат работы будет самым уместным именно для
+                вашего бизнеса.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
-                  href="/contacts/ask/"
+                  href="/contacts/"
                   className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-4 font-semibold text-white transition-all hover:scale-[1.02] hover:from-purple-700 hover:to-blue-700"
                 >
-                  Оставить заявку
+                  Связаться с нами
                   <ArrowRight className="h-5 w-5" />
                 </Link>
 
                 <Link
-                  href="/contacts/"
+                  href="/calculator"
                   className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-8 py-4 font-semibold text-white transition-colors hover:bg-white/15"
                 >
-                  Перейти в контакты
+                  Рассчитать стоимость
                 </Link>
               </div>
             </GlassCard>
